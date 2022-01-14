@@ -1,0 +1,173 @@
+.section {
+  background-color: var(--backgroundGray);
+  border-radius: 0 0 0 100px;
+  max-width: 1280px;
+  height: 583px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.boxBalance {
+  display: flex;
+  align-items: center;
+
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: right;
+
+  margin-right: 115px;
+  padding-top: 40px;
+}
+
+.balance {
+  /* display: block; */
+  /* width: 369px; */
+  /* margin-right: 205px; */
+}
+
+.text {
+  font-size: 12px;
+  margin-right: 21px;
+  font-weight: 500;
+  color: var(--fontColorSecondary);
+}
+
+.reportsLink {
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 400;
+
+  color: var(--fontColorSecondary);
+  margin-left: 205px;
+}
+
+.reportsLink:hover {
+  color: var(--backgroundActive);
+}
+
+.icon {
+  min-width: 14px;
+  height: 14px;
+  margin-left: 20px;
+}
+
+.Summ {
+  width: 125px;
+  height: 37px;
+  line-height: 1.17;
+  font-weight: 700;
+
+  text-align: center;
+
+  border-radius: 16px;
+  border: solid 2px;
+  border-color: var(--mainBackgroundColor);
+  background-color: var(--backgroundGray);
+  color: var(--mainFontColor);
+  outline: none;
+  margin-right: 15px;
+}
+
+.analysis {
+  width: 1060px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--mainBackgroundColor);
+
+  border-radius: 0px 30px 30px 30px;
+}
+
+.cashflowInput {
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  align-items: center;
+}
+
+.formCashflow {
+  margin-left: 23px;
+  display: flex;
+  margin-top: 33px;
+  margin-bottom: 59px;
+}
+
+/* .boxDataPicKer {
+  display: flex;
+  flex-direction: row;
+} */
+
+.description {
+  width: 287px;
+  height: 40px;
+
+  border: solid 2px #f5f6fb;
+  border-radius: 16px 0 0 0;
+}
+
+.category {
+  width: 184px;
+  height: 40px;
+  border: solid 2px #f5f6fb;
+  /* border-radius: 16px 0 0 0; */
+}
+
+.calculator {
+  width: 122px;
+  height: 40px;
+  border: solid 2px #f5f6fb;
+  border-radius: 0 16px 16px 0;
+  margin-right: 27px;
+}
+
+.btn {
+  margin-right: 15px;
+}
+
+.boxTabl {
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.tabCashflow {
+  width: 780px;
+  height: 344px;
+  background-color: tomato;
+  border-radius: 16px 16px 0 0;
+  margin-right: 30px;
+}
+
+.monthCashflow {
+  width: 278px;
+  height: 230px;
+  background-color: turquoise;
+  border-radius: 16px 16px 16px 0;
+}
+
+.btnForMobil {
+  display: none;
+}
+
+.boxBtn {
+  margin-left: 110px;
+}
+
+.navBtn {
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 700;
+
+  width: 138px;
+  height: 40px;
+  color: black;
+  background-color: #fafbfd;
+  border: none;
+  border-radius: 16px 16px 0 0;
+  cursor: pointer;
+}
+
+.navBtn:hover {
+  color: var(--backgroundActive);
+}

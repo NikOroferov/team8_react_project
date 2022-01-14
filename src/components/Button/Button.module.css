@@ -1,8 +1,8 @@
-button {
+.button {
   font-family: Roboto, sans-serif;
   font-size: 12px;
-  font-weight: 700;
   line-height: 1.17;
+  font-weight: 700;
   text-align: center;
 
   width: 125px;
@@ -15,8 +15,9 @@ button {
   border-color: #f6f7fc;
 }
 
-button:hover {
+.button:hover {
   background-color: var(--backgroundActive);
   color: #ffffff;
   border-color: var(--backgroundActive);
+  cursor: pointer;
 }

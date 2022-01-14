@@ -1,4 +1,4 @@
-import s from './Button.css';
+import s from './Button.module.css';
 
 export default function Button(data) {
   return (

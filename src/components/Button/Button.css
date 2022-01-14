@@ -1,0 +1,22 @@
+button {
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.17;
+  text-align: center;
+
+  width: 125px;
+  height: 44px;
+
+  background-color: var(--mainBackgroundColor);
+  color: var(--fontСolorTextForms);
+  border-radius: 16px;
+  border: solid;
+  border-color: #f6f7fc;
+}
+
+button:hover {
+  background-color: var(--backgroundActive);
+  color: #ffffff;
+  border-color: var(--backgroundActive);
+}

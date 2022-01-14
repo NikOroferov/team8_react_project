@@ -1,17 +1,17 @@
-import './ReportByIncomeCategory.css';
+import styles from './ReportByIncomeCategory.module.css';
 
-function ReportCategoryIncome() {
+function ReportByIncomeCategory() {
   const incCategories = []; // Временная переменная, чтоб не было ошибки
   return (
-    <section className="Income_icons">
-      <h4 className="Income_icons_title">Доходы</h4>
-      <div className="Income_icons_container">
-        <ul className="Category_list">
+    <section className={styles.section}>
+      <h4 className={styles.section_title}>Доходы</h4>
+      <div className={styles.container}>
+        <ul className={styles.list}>
           {incCategories.map(cat => (
-            <li key={cat.id} className="Category_item">
-              <div className="Category_sum">{cat.sum}</div>
+            <li key={cat.id}>
+              <div className={styles.sum}>{cat.sum}</div>
               <div>{cat.icon}</div>
-              <div className="Category_title">{cat.title}</div>
+              <div className={styles.category_title}>{cat.title}</div>
             </li>
           ))}
         </ul>
@@ -20,4 +20,4 @@ function ReportCategoryIncome() {
   );
 }
 
-export default ReportCategoryIncome;
+export default ReportByIncomeCategory;

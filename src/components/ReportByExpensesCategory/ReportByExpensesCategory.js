@@ -1,18 +1,18 @@
-import './ReportByExpensesCategory.css';
+import styles from './ReportByExpensesCategory.module.css';
 
-function ReportCategoryExpenses() {
+function ReportByExpensesCategory() {
   const expCategories = []; // Временная переменная, чтоб не было ошибки
 
   return (
-    <section className="Expenses_icons">
-      <h4 className="Expenses_icons_title">Расходы</h4>
-      <div className="Icons_container">
-        <ul className="Category_list">
+    <section className={styles.sections}>
+      <h4 className={styles.section_title}>Расходы</h4>
+      <div className={styles.container}>
+        <ul className={styles.list}>
           {expCategories.map(cat => (
-            <li key={cat.id} className="Category_item">
-              <div className="Category_sum">{cat.sum}</div>
+            <li key={cat.id}>
+              <div className={styles.sum}>{cat.sum}</div>
               <div>{cat.icon}</div>
-              <div className="Category_title">{cat.title}</div>
+              <div className={styles.category_title}>{cat.title}</div>
             </li>
           ))}
         </ul>
@@ -21,4 +21,4 @@ function ReportCategoryExpenses() {
   );
 }
 
-export default ReportCategoryExpenses;
+export default ReportByExpensesCategory;

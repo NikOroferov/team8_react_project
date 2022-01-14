@@ -1,4 +1,4 @@
-.Expenses_icons {
+.sections {
   width: 1060px;
   height: 348px;
   background-color: #ffffff;
@@ -9,7 +9,7 @@
   padding-top: 20px;
 }
 
-.Expenses_icons_title {
+.section_title {
   margin: 0;
   font-weight: bold;
   font-size: 14px;
@@ -19,7 +19,7 @@
   color: #000000;
 }
 
-.Icons_container {
+.container {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
@@ -29,7 +29,7 @@
   display: grid;
 }
 
-.Category_list {
+.list {
   display: flex;
   justify-content: center;
   margin: 0;
@@ -38,7 +38,7 @@
   gap: 20px;
 }
 
-.Category_sum {
+.sum {
   font-weight: normal;
   font-size: 12px;
   line-height: 14px;
@@ -48,7 +48,7 @@
   margin-bottom: 5px;
 }
 
-.Category_title {
+.category_title {
   font-weight: normal;
   font-size: 12px;
   line-height: 14px;

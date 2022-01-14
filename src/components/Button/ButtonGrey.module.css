@@ -1,23 +1,25 @@
-.button {
+.greyBtn {
   font-family: Roboto, sans-serif;
   font-size: 12px;
   line-height: 1.17;
-  font-weight: 700;
+  font-weight: 400;
   text-align: center;
+  letter-spacing: 1px;
 
   width: 125px;
   height: 44px;
 
-  background-color: var(--mainBackgroundColor);
-  color: var(--fontСolorTextForms);
+  background-color: var(--backgroundGray);
+  color: var(--fontColorSecondary);
   border-radius: 16px;
-  border: solid;
-  border-color: #f6f7fc;
+  border: solid 2px;
+  border-color: var(--mainBackgroundColor);
+  /* border-color: red; */
+  cursor: pointer;
 }
 
-.button:hover {
+.greyBtn:hover {
   background-color: var(--backgroundActive);
   color: #ffffff;
   border-color: var(--backgroundActive);
-  cursor: pointer;
 }

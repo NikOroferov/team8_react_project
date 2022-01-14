@@ -1,3 +1,28 @@
+:root {
+  --mainBackgroundColor: #ffffff;
+  --secondaryBackgroundColor: #f6f7fb;
+  --backgroundActive: #ff751d;
+  --chartBackgroundFirst: #ff751d;
+  --chartBackgroundSecond: #ff751d;
+
+  --mainFontColor: #000000;
+  --fontСolorTextForms: #52555f;
+  --errorFontColor: #eb5757;
+  --fontColorDataWater: #a6abb9;
+  --placeholderFontColor: #c7ccdc;
+  --fontColorSecondary: rgba(82, 85, 95, 0.7);
+  --fontColorIncome: #407946;
+  --fontColorCosts: #e7192e;
+  --totalIncomeFont: #407946;
+  --totalExpenseFont: #e53935;
+
+  --fillColorModal: #1d346a @0%;
+  --fillLinearGradient: #031634 @100%;
+
+  --separatorColor: #e0e5eb;
+  --elipsColor: #f5f6fa;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

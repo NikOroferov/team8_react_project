@@ -2,6 +2,7 @@
   background-color: var(--backgroundGray);
   border-radius: 0 0 0 100px;
   max-width: 1280px;
+  height: 583px;
   margin-left: auto;
   margin-right: auto;
 }

@@ -5,6 +5,12 @@
   height: 583px;
   margin-left: auto;
   margin-right: auto;
+
+  @media screen and (min-width: 320px) {
+    .section {
+      background-color: orange;
+    }
+  }
 }
 
 .hero {
@@ -179,6 +185,7 @@
 
 .boxBtn {
   margin-left: 110px;
+  margin-top: 9px;
 }
 
 .navBtn {

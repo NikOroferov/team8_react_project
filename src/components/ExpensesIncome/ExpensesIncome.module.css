@@ -99,26 +99,46 @@
 } */
 
 .description {
-  width: 287px;
+  width: 247px;
   height: 40px;
 
   border: solid 2px #f5f6fb;
   border-radius: 16px 0 0 0;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.description:focus {
+  outline: var(--backgroundActive);
+  border: solid 2px var(--backgroundActive);
 }
 
 .category {
-  width: 184px;
+  width: 144px;
   height: 40px;
   border: solid 2px #f5f6fb;
-  /* border-radius: 16px 0 0 0; */
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.category:focus {
+  outline: var(--backgroundActive);
+  border: solid 2px var(--backgroundActive);
 }
 
 .calculator {
-  width: 122px;
+  width: 82px;
   height: 40px;
   border: solid 2px #f5f6fb;
   border-radius: 0 16px 16px 0;
   margin-right: 27px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.calculator:focus {
+  outline: var(--backgroundActive);
+  border: solid 2px var(--backgroundActive);
 }
 
 .btn {
@@ -170,4 +190,19 @@
 
 .navBtn:hover {
   color: var(--backgroundActive);
+}
+
+.boxCalculator {
+  position: relative;
+}
+
+.calcIcon {
+  width: 20px;
+  height: 20px;
+  /* position: relative; */
+  position: absolute;
+  top: 25%;
+  left: 50%;
+
+  /* position: fixed; */
 }

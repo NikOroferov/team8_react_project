@@ -1,5 +1,6 @@
 import { MdBarChart } from 'react-icons/md';
 import { FcCalendar } from 'react-icons/fc';
+import { BiCalculator } from 'react-icons/bi';
 
 import Button from '../Button/Button';
 import ButtonGrey from '../Button/ButtonGrey';
@@ -49,8 +50,11 @@ export default function ExpensesIncome() {
             <label>
               <input className={s.category} placeholder="Категория товара" />
             </label>
-            <label>
-              <input className={s.calculator} placeholder="0,00" />
+            <label className={s.boxCalculator}>
+              <input className={s.calculator} placeholder="0,00" />{' '}
+              {/* <span className={s.calcIcon}> */}
+              <BiCalculator className={s.calcIcon} />
+              {/* </span> */}
             </label>
 
             <div className={s.btn}>

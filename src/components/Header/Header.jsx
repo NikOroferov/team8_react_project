@@ -21,11 +21,8 @@ function Header() {
               // onClick={toggleModal}
               className={styles.logOutBtn}
             >
-              <svg width="16" height="16">
-                <use
-                  xlinkHref={`${Icons}#icon-logout`}
-                  className={styles.iconLogout}
-                />
+              <svg width="16" height="16" className={styles.iconLogout}>
+                <use xlinkHref={`${Icons}#icon-logout`} />
               </svg>
             </button>
             <button className={styles.logOutTextBtn}>Выйти</button>

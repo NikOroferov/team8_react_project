@@ -56,7 +56,6 @@
 .logOutTextBtn:hover,
 .logOutTextBtn:focus {
   color: #ff751d;
-  border-color: #ff751d;
 }
 
 @media only screen and (max-width: 768px) {
@@ -72,8 +71,21 @@
     background: transparent;
   }
   .iconLogout {
+    color: #cbccd0;
+  }
+
+  .logOutBtn:hover {
+    color: #ff751d;
+    fill: #ff751d;
+    cursor: pointer;
+  }
+
+  .iconLogout {
+    fill: #cbccd0;
   }
   .iconLogout:hover {
     fill: #ff751d;
+    cursor: pointer;
   }
+  /* fill="#cbccd0" style="fill: var(--color13, #cbccd0)" */
 }

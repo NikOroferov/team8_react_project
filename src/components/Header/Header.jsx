@@ -3,8 +3,6 @@ import styles from './Header.module.css';
 import Logo from '../Logo/Logo';
 import Icons from '../../img/svg/sprite.svg';
 
-const name = 'icon-calculator';
-
 function Header() {
   const isLoggedIn = true;
 
@@ -23,15 +21,9 @@ function Header() {
               // onClick={toggleModal}
               className={styles.logOutBtn}
             >
-              <svg width="18" height="18">
+              <svg width="16" height="16">
                 <use xlinkHref={`${Icons}#icon-logout`} />
               </svg>
-              {/* <Icons 
-         name='icon-calculator'
-    viewBox="0 0 32 32"
-         size='32'
-         
-       /> */}
             </button>
             <button className={styles.logOutTextBtn}>Выйти</button>
           </div>

@@ -10,6 +10,7 @@ import s from './ExpensesIncome.module.css';
 export default function ExpensesIncome() {
   return (
     <section className={s.section}>
+      {/* <div className={s.hero}> */}
       <div className={s.boxBalance}>
         <div className={s.balance}>
           <form>
@@ -79,6 +80,8 @@ export default function ExpensesIncome() {
           <button>ДОХОД</button>
         </div>
       </div>
+      {/* </div> */}
+      <div className={s.hero}></div>
     </section>
   );
 }

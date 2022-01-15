@@ -50,11 +50,9 @@
   padding-top: 40px;
 }
 
-.balance {
-  /* display: block; */
-  /* width: 369px; */
-  /* margin-right: 205px; */
-}
+/* .balance {
+  font-size: 12px;
+} */
 
 .text {
   font-size: 12px;
@@ -84,6 +82,8 @@
 }
 
 .Summ {
+  font-size: 12px;
+
   width: 125px;
   height: 37px;
   line-height: 1.17;

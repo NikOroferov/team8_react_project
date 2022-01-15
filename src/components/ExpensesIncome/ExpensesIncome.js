@@ -1,4 +1,5 @@
-import * as React from 'react';
+// import * as React from 'react';
+import { useState } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -13,15 +14,36 @@ import ButtonGrey from '../Button/ButtonGrey';
 import s from './ExpensesIncome.module.css';
 
 export default function ExpensesIncome() {
-  const [age, setAge] = React.useState('');
+  const [category, setСategory] = useState('');
+  const [description, setDescription] = useState('');
+  const [sum, setSum] = useState([]);
+  const [balance, setBalance] = useState(55000.0);
 
-  const handleChange = event => {
-    setAge(event.target.value);
+  const hendleChangeDescription = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'description':
+        return setDescription(value);
+      case 'category':
+        return setСategory(value);
+      case 'sum':
+        return setSum(value);
+      case 'balance':
+        return setBalance(value);
+      default:
+        return;
+    }
+  };
+
+  const handleChange = e => {
+    setСategory(e.target.value);
   };
 
   const clearForm = e => {
     e.preventDefault();
     console.log(e.target);
+    setСategory('');
+    setDescription('');
+    setSum();
   };
 
   return (
@@ -32,7 +54,14 @@ export default function ExpensesIncome() {
           <form>
             <label>
               <span className={s.text}>Баланс:</span>
-              <input className={s.Summ} value="55 000.00 UAH " />
+              <input
+                className={s.Summ}
+                type="number"
+                name="balance"
+                value={balance}
+                pattern="/^\s*-?[1-9]\d*(\.\d{1,2})?\s*$/"
+                onChange={hendleChangeDescription}
+              />
             </label>
             <ButtonGrey name="ПОДТВЕРДИТЬ" />
           </form>
@@ -62,24 +91,23 @@ export default function ExpensesIncome() {
           {/* </div> */}
           <form className={s.formCashflow}>
             <label>
-              <input className={s.description} placeholder="Описание товара" />
+              <input
+                className={s.description}
+                type="text"
+                placeholder="Описание товара"
+                name="description"
+                value={description}
+                onChange={hendleChangeDescription}
+              />
             </label>
             {/* <label> */}
             {/* <input className={s.category} placeholder="Категория товара" /> */}
-            <InputLabel
-              id="demo-simple-select-label"
-              //   sx={{
-              //     color: 'success.main',
-              //     '& .MuiInputBase': {
-              //       borderRadius: '5px',
-              //     },
-              //   }}
-            ></InputLabel>
+            <InputLabel id="demo-simple-select-label"></InputLabel>
             <Select
               className={s.category}
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={age}
+              value={category}
               onChange={handleChange}
             >
               <MenuItem value="Транспорт">Транспорт</MenuItem>
@@ -96,10 +124,16 @@ export default function ExpensesIncome() {
             </Select>
             {/* </label> */}
             <label className={s.boxCalculator}>
-              <input className={s.calculator} placeholder="0,00" />
-              {/* <span className={s.calcIcon}> */}
+              <input
+                className={s.calculator}
+                type="number"
+                placeholder="0,00"
+                name="sum"
+                value={sum}
+                onChange={hendleChangeDescription}
+              />
+
               <BiCalculator className={s.calcIcon} />
-              {/* </span> */}
             </label>
 
             <div className={s.btn}>

@@ -1,3 +1,8 @@
+import * as React from 'react';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+
 import { MdBarChart } from 'react-icons/md';
 import { FcCalendar } from 'react-icons/fc';
 import { BiCalculator } from 'react-icons/bi';
@@ -8,6 +13,17 @@ import ButtonGrey from '../Button/ButtonGrey';
 import s from './ExpensesIncome.module.css';
 
 export default function ExpensesIncome() {
+  const [age, setAge] = React.useState('');
+
+  const handleChange = event => {
+    setAge(event.target.value);
+  };
+
+  const clearForm = e => {
+    e.preventDefault();
+    console.log(e.target);
+  };
+
   return (
     <section className={s.section}>
       {/* <div className={s.hero}> */}
@@ -48,11 +64,39 @@ export default function ExpensesIncome() {
             <label>
               <input className={s.description} placeholder="Описание товара" />
             </label>
-            <label>
-              <input className={s.category} placeholder="Категория товара" />
-            </label>
+            {/* <label> */}
+            {/* <input className={s.category} placeholder="Категория товара" /> */}
+            <InputLabel
+              id="demo-simple-select-label"
+              //   sx={{
+              //     color: 'success.main',
+              //     '& .MuiInputBase': {
+              //       borderRadius: '5px',
+              //     },
+              //   }}
+            ></InputLabel>
+            <Select
+              className={s.category}
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={age}
+              onChange={handleChange}
+            >
+              <MenuItem value="Транспорт">Транспорт</MenuItem>
+              <MenuItem value="Продукты">Продукты</MenuItem>
+              <MenuItem value="Здоровье">Здоровье</MenuItem>
+              <MenuItem value="Алкоголь">Алкоголь</MenuItem>
+              <MenuItem value="Развлечения">Развлечения</MenuItem>
+              <MenuItem value="Все для дома">Все для дома</MenuItem>
+              <MenuItem value="Техника">Техника</MenuItem>
+              <MenuItem value="Коммуналка, связь">Коммуналка, связь</MenuItem>
+              <MenuItem value="Спорт, хобби">Спорт, хобби</MenuItem>
+              <MenuItem value="Образование">Образование</MenuItem>
+              <MenuItem value="Прочее">Прочее</MenuItem>
+            </Select>
+            {/* </label> */}
             <label className={s.boxCalculator}>
-              <input className={s.calculator} placeholder="0,00" />{' '}
+              <input className={s.calculator} placeholder="0,00" />
               {/* <span className={s.calcIcon}> */}
               <BiCalculator className={s.calcIcon} />
               {/* </span> */}
@@ -61,17 +105,17 @@ export default function ExpensesIncome() {
             <div className={s.btn}>
               <Button name="ВВОД" />
             </div>
-            <Button name="ОЧИСТИТЬ" />
+            <Button name="ОЧИСТИТЬ" type="submit" click={clearForm} />
           </form>
         </div>
 
         <div className={s.boxTabl}>
           <div className={s.tabCashflow}>
-            <table>ТАБЛИЦА- ДОХОДЫ РАСХОДЫ</table>
+            <p>ТАБЛИЦА- ДОХОДЫ РАСХОДЫ</p>
           </div>
 
           <div className={s.monthCashflow}>
-            <table>ТАБЛИЦА - СВОДКА</table>
+            <p>ТАБЛИЦА - СВОДКА</p>
           </div>
         </div>
 

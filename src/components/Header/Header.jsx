@@ -22,7 +22,10 @@ function Header() {
               className={styles.logOutBtn}
             >
               <svg width="16" height="16">
-                <use xlinkHref={`${Icons}#icon-logout`} />
+                <use
+                  xlinkHref={`${Icons}#icon-logout`}
+                  className={styles.iconLogout}
+                />
               </svg>
             </button>
             <button className={styles.logOutTextBtn}>Выйти</button>

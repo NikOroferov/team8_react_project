@@ -71,4 +71,9 @@
     display: block;
     background: transparent;
   }
+  .iconLogout {
+  }
+  .iconLogout:hover {
+    fill: #ff751d;
+  }
 }

@@ -1,7 +1,3 @@
-.body {
-  background-color: #e5e5e5;
-}
-
 .section {
   background-color: var(--backgroundGray);
   border-radius: 0 0 0 100px;
@@ -9,33 +5,6 @@
   height: 583px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.hero {
-  object-fit: contain;
-  width: 100%;
-  height: 232px;
-}
-
-@media screen and (min-width: 320px) {
-  .hero {
-    background-image: none;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .hero {
-    background-image: url(../../img/Kapusta2.png);
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .hero {
-    background-image: url(../../img/Group\ 37.png);
-    object-fit: contain;
-    width: 100%;
-    height: 232px;
-  }
 }
 
 .boxBalance {
@@ -50,9 +19,11 @@
   padding-top: 40px;
 }
 
-/* .balance {
-  font-size: 12px;
-} */
+.balance {
+  /* display: block; */
+  /* width: 369px; */
+  /* margin-right: 205px; */
+}
 
 .text {
   font-size: 12px;
@@ -82,8 +53,6 @@
 }
 
 .Summ {
-  font-size: 12px;
-
   width: 125px;
   height: 37px;
   line-height: 1.17;
@@ -105,10 +74,8 @@
   margin-left: auto;
   margin-right: auto;
   background-color: var(--mainBackgroundColor);
+
   border-radius: 0px 30px 30px 30px;
-  padding-bottom: 61px;
-  box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
-  /* box-shadow: 0 1px 6px rgba(170, 178, 197, 0.2); */
 }
 
 .cashflowInput {
@@ -132,62 +99,26 @@
 } */
 
 .description {
-  width: 247px;
+  width: 287px;
   height: 40px;
 
   border: solid 2px #f5f6fb;
   border-radius: 16px 0 0 0;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
-.description:focus {
-  outline: var(--backgroundActive);
-  border: solid 2px var(--backgroundActive);
-}
-
-.formCashflow .category {
-  font-size: 12px;
-  color: #52555f;
-
-  font-weight: 500;
-  width: 144px;
+.category {
+  width: 184px;
   height: 40px;
   border: solid 2px #f5f6fb;
-  padding-left: 6px;
-  padding-right: 6px;
-}
-
-/* .ExpensesIncome_formCashflow__VCD\+v .ExpensesIncome_category__kyoxE {
-  margin-right: 0;
-} */
-
-/* .MuiSlider-root {
-  color: red;
-} */
-
-/* .MuiFormControl-root .css-gbgt40-MuiFormControl-root {
-  margin: 0;
-} */
-
-.category:focus {
-  outline: var(--backgroundActive);
-  border: solid 2px var(--backgroundActive);
+  /* border-radius: 16px 0 0 0; */
 }
 
 .calculator {
-  width: 82px;
+  width: 122px;
   height: 40px;
   border: solid 2px #f5f6fb;
   border-radius: 0 16px 16px 0;
   margin-right: 27px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.calculator:focus {
-  outline: var(--backgroundActive);
-  border: solid 2px var(--backgroundActive);
 }
 
 .btn {
@@ -200,13 +131,13 @@
   margin-right: 20px;
 }
 
-/* .tabCashflow {
+.tabCashflow {
   width: 780px;
-  height: 384px;
+  height: 344px;
   background-color: tomato;
   border-radius: 16px 16px 0 0;
   margin-right: 30px;
-} */
+}
 
 .monthCashflow {
   width: 278px;
@@ -221,7 +152,6 @@
 
 .boxBtn {
   margin-left: 110px;
-  margin-top: 9px;
 }
 
 .navBtn {
@@ -240,49 +170,4 @@
 
 .navBtn:hover {
   color: var(--backgroundActive);
-}
-
-.boxCalculator {
-  position: relative;
-}
-
-.calcIcon {
-  width: 20px;
-  height: 20px;
-  /* position: relative; */
-  position: absolute;
-  top: 25%;
-  left: 60%;
-  color: var(--fontСolorTextForms);
-
-  /* position: fixed; */
-}
-
-.iconCaltndar {
-  width: 20px;
-  height: 20px;
-  margin-right: 20px;
-}
-
-.cashflowInput .datePicker {
-  width: 74px;
-  height: 40px;
-  border: none;
-  outline: none;
-}
-
-.boxDate {
-  height: 40px;
-  display: flex;
-  align-items: center;
-
-  margin-top: 33px;
-  margin-bottom: 59px;
-}
-
-.dateNowe {
-  font-size: 12px;
-  line-height: 1.17;
-  font-weight: 700;
-  color: #52555f;
 }

@@ -200,14 +200,13 @@
   margin-right: 20px;
 }
 
-.tabCashflow {
+/* .tabCashflow {
   width: 780px;
   height: 384px;
   background-color: tomato;
   border-radius: 16px 16px 0 0;
   margin-right: 30px;
-  /* margin-bottom: 66px; */
-}
+} */
 
 .monthCashflow {
   width: 278px;

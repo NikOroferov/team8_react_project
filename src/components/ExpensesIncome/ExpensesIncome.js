@@ -9,11 +9,9 @@ import { BiCalculator } from 'react-icons/bi';
 
 import Button from '../Button/Button';
 import ButtonGrey from '../Button/ButtonGrey';
+import TableCashflo from '../TableCashflo/TableCashflo';
 
 import s from './ExpensesIncome.module.css';
-
-const dataNow = new Date().toLocaleDateString();
-console.log(dataNow);
 
 export default function ExpensesIncome() {
   const [category, setСategory] = useState('');
@@ -106,7 +104,7 @@ export default function ExpensesIncome() {
                 onChange={hendleChangeDescription}
               />
             </label>
-            {/* <label> */}
+
             <InputLabel id="demo-simple-select-label"></InputLabel>
             <Select
               className={s.category}
@@ -115,19 +113,19 @@ export default function ExpensesIncome() {
               value={category}
               onChange={handleChange}
             >
-              <MenuItem value="Транспорт">Транспорт</MenuItem>
-              <MenuItem value="Продукты">Продукты</MenuItem>
-              <MenuItem value="Здоровье">Здоровье</MenuItem>
               <MenuItem value="Алкоголь">Алкоголь</MenuItem>
-              <MenuItem value="Развлечения">Развлечения</MenuItem>
               <MenuItem value="Все для дома">Все для дома</MenuItem>
-              <MenuItem value="Техника">Техника</MenuItem>
+              <MenuItem value="Здоровье">Здоровье</MenuItem>
               <MenuItem value="Коммуналка, связь">Коммуналка, связь</MenuItem>
-              <MenuItem value="Спорт, хобби">Спорт, хобби</MenuItem>
               <MenuItem value="Образование">Образование</MenuItem>
+              <MenuItem value="Продукты">Продукты</MenuItem>
+              <MenuItem value="Развлечения">Развлечения</MenuItem>
+              <MenuItem value="Спорт, хобби">Спорт, хобби</MenuItem>
+              <MenuItem value="Транспорт">Транспорт</MenuItem>
+              <MenuItem value="Техника">Техника</MenuItem>
               <MenuItem value="Прочее">Прочее</MenuItem>
             </Select>
-            {/* </label> */}
+
             <label className={s.boxCalculator}>
               <input
                 className={s.calculator}
@@ -149,10 +147,10 @@ export default function ExpensesIncome() {
         </div>
 
         <div className={s.boxTabl}>
-          <div className={s.tabCashflow}>
+          {/* <div className={s.tabCashflow}>
             <p>ТАБЛИЦА- ДОХОДЫ РАСХОДЫ</p>
-          </div>
-
+          </div> */}
+          <TableCashflo />
           <div className={s.monthCashflow}>
             <p>ТАБЛИЦА - СВОДКА</p>
           </div>

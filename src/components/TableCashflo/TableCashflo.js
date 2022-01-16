@@ -1,45 +1,11 @@
 import { useMemo, useCallback } from 'react';
 import { useTable, useBlockLayout } from 'react-table';
-import styled from 'styled-components';
 import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
 
 import { AiFillDelete } from 'react-icons/ai';
 
-import s from './TableCashflo.module.css';
-
-const Styles = styled.div`
-  .table {
-    display: inline-block;
-    border-spacing: 0;
-    width: 760px;
-    margin-right: 30px;
-    border: solid 2px #f5f6fb;
-    border-radius: 16px 16px 0 0;
-    border-collapse: collapse;
-
-    .tr {
-      :last-child {
-        .td {
-          border-bottom: 0;
-          color: red;
-        }
-      }
-    }
-
-    .th,
-    .td {
-      margin: 0;
-      padding: 0.5rem;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
-
-      :last-child {
-        border-right: 1px solid black;
-      }
-    }
-  }
-`;
+import Styles from './staylTabl';
 
 function Table({ columns, data }) {
   //   const defaultColumn = useMemo(
@@ -76,11 +42,11 @@ function Table({ columns, data }) {
           {...row.getRowProps({
             style,
           })}
-          className={s.trTabLine}
+          className="tr"
         >
           {row.cells.map(cell => {
             return (
-              <div {...cell.getCellProps()} className={s.tdTabLine}>
+              <div {...cell.getCellProps()} className="td">
                 {cell.render('Cell')}
               </div>
             );
@@ -93,11 +59,11 @@ function Table({ columns, data }) {
 
   return (
     <div {...getTableProps()} className="table">
-      <div className={s.tablHead}>
+      <div className="tablHead">
         {headerGroups.map(headerGroup => (
-          <div {...headerGroup.getHeaderGroupProps()} className={s.trHeadTabl}>
+          <div {...headerGroup.getHeaderGroupProps()} className="tr">
             {headerGroup.headers.map(column => (
-              <div {...column.getHeaderProps()} className={s.thHeadTabl}>
+              <div {...column.getHeaderProps()} className="th">
                 {column.render('Header')}
               </div>
             ))}
@@ -105,7 +71,7 @@ function Table({ columns, data }) {
         ))}
       </div>
 
-      <div {...getTableBodyProps()} className={s.boxLine}>
+      <div {...getTableBodyProps()} className="boxLine">
         <FixedSizeList
           height={400}
           itemCount={rows.length}

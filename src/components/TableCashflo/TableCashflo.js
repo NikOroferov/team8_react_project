@@ -9,11 +9,14 @@ import { AiFillDelete } from 'react-icons/ai';
 import s from './TableCashflo.module.css';
 
 const Styles = styled.div`
-  /* width: 0; */
   .table {
     display: inline-block;
     border-spacing: 0;
-    /* border: 1px solid black; */
+    width: 760px;
+    margin-right: 30px;
+    border: solid 2px #f5f6fb;
+    border-radius: 16px 16px 0 0;
+    border-collapse: collapse;
 
     .tr {
       :last-child {
@@ -89,7 +92,7 @@ function Table({ columns, data }) {
   );
 
   return (
-    <div {...getTableProps()} className={s.table}>
+    <div {...getTableProps()} className="table">
       <div className={s.tablHead}>
         {headerGroups.map(headerGroup => (
           <div {...headerGroup.getHeaderGroupProps()} className={s.trHeadTabl}>
@@ -124,7 +127,7 @@ export default function TableCashflo() {
         col2: 'Купил что то',
         col3: 'Прочее',
         col4: '-10 000',
-        col5: <AiFillDelete />,
+        col5: <AiFillDelete width={32} height={32} />,
       },
 
       {

@@ -18,18 +18,23 @@ function IncomesReport() {
   ]; // Временная константа для тестирования
 
   return (
-    <ul className={styles.list}>
-      {incCategories.map(cat => (
-        <li key={cat.id} className={styles.item}>
-          <div className={styles.sum}>{cat.sum}</div>
-          <svg width="56" height="56">
-            <use xlinkHref={`${Icons}#icon-oval-expenditure`}></use>
-            <use xlinkHref={`${Icons}${cat.icon}`}></use>
-          </svg>
-          <div className={styles.category_title}>{cat.title}</div>
-        </li>
-      ))}
-    </ul>
+    <section className={styles.sections}>
+      <p className={styles.section_title}>Расходы</p>
+      <div className={styles.container}>
+        <ul className={styles.list}>
+          {incCategories.map(cat => (
+            <li key={cat.id} className={styles.item}>
+              <div className={styles.sum}>{cat.sum}</div>
+              <svg width="56" height="56">
+                <use xlinkHref={`${Icons}#icon-oval-expenditure`}></use>
+                <use xlinkHref={`${Icons}${cat.icon}`}></use>
+              </svg>
+              <div className={styles.category_title}>{cat.title}</div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   );
 }
 

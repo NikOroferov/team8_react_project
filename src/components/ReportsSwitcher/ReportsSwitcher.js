@@ -41,21 +41,21 @@ export default function ReportsSwitcher() {
   };
 
   return (
-    <section className={styles.sections}>
+    <>
       <div className={styles.reportSwitcher}>
         <button
           className={styles.reportSwitcher__btn}
           type="button"
           onClick={() => handleSwitchReport('prev')}
         ></button>
-        <p className={styles.section_title}>{reports[idxActiveReport].name}</p>
+        {/* <p className={styles.section_title}>{reports[idxActiveReport].name}</p> */}
         <button
           className={styles.reportSwitcher__btn}
           type="button"
           onClick={() => handleSwitchReport('next')}
         ></button>
       </div>
-      <div className={styles.container}>{reports[idxActiveReport].element}</div>
-    </section>
+      <div>{reports[idxActiveReport].element}</div>
+    </>
   );
 }

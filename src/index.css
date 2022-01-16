@@ -40,7 +40,6 @@ code {
     monospace;
 }
 
-
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -99,5 +98,9 @@ a:not([class]) {
 /* Упрощаем работу с изображениями */
 img {
   max-width: 100%;
+  display: block;
+}
+tr {
+  width: 0;
   display: block;
 }

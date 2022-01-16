@@ -1,4 +1,3 @@
-// import * as React from 'react';
 import { useState } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -12,6 +11,9 @@ import Button from '../Button/Button';
 import ButtonGrey from '../Button/ButtonGrey';
 
 import s from './ExpensesIncome.module.css';
+
+const dataNow = new Date().toLocaleDateString();
+console.log(dataNow);
 
 export default function ExpensesIncome() {
   const [category, setСategory] = useState('');
@@ -83,16 +85,20 @@ export default function ExpensesIncome() {
 
       <div className={s.analysis}>
         <div className={s.cashflowInput}>
-          {/* <div className="boxDataPicKer"> */}
-          <span>
-            <FcCalendar />
-          </span>
-          <p>14.01.2022</p>
-          {/* </div> */}
+          <div className={s.boxDate}>
+            <span>
+              <FcCalendar className={s.iconCaltndar} />
+            </span>
+            <span className={s.dateNowe}>
+              {new Date().toLocaleDateString()}
+            </span>
+          </div>
+
           <form className={s.formCashflow}>
             <label>
               <input
                 className={s.description}
+                //  mask={maskMap[locale]}
                 type="text"
                 placeholder="Описание товара"
                 name="description"
@@ -101,7 +107,6 @@ export default function ExpensesIncome() {
               />
             </label>
             {/* <label> */}
-            {/* <input className={s.category} placeholder="Категория товара" /> */}
             <InputLabel id="demo-simple-select-label"></InputLabel>
             <Select
               className={s.category}

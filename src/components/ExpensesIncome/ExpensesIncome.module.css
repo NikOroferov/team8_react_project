@@ -258,3 +258,32 @@
 
   /* position: fixed; */
 }
+
+.iconCaltndar {
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+}
+
+.cashflowInput .datePicker {
+  width: 74px;
+  height: 40px;
+  border: none;
+  outline: none;
+}
+
+.boxDate {
+  height: 40px;
+  display: flex;
+  align-items: center;
+
+  margin-top: 33px;
+  margin-bottom: 59px;
+}
+
+.dateNowe {
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 700;
+  color: #52555f;
+}

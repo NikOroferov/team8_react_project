@@ -9,9 +9,11 @@ import { AiFillDelete } from 'react-icons/ai';
 import s from './TableCashflo.module.css';
 
 const Styles = styled.div`
+  /* width: 0; */
   .table {
     display: inline-block;
     border-spacing: 0;
+    /* border: 1px solid black; */
 
     .tr {
       :last-child {
@@ -23,7 +25,7 @@ const Styles = styled.div`
     }
 
     .th,
-    tableBox .td {
+    .td {
       margin: 0;
       padding: 0.5rem;
       border-bottom: 1px solid black;
@@ -31,19 +33,18 @@ const Styles = styled.div`
 
       :last-child {
         border-right: 1px solid black;
-        color: red;
       }
     }
   }
 `;
 
 function Table({ columns, data }) {
-  const defaultColumn = useMemo(
-    () => ({
-      width: 148,
-    }),
-    [],
-  );
+  //   const defaultColumn = useMemo(
+  //     () => ({
+  //       width: 148,
+  //     }),
+  //     [],
+  //   );
 
   const scrollBarSize = useMemo(() => scrollbarWidth(), []);
 
@@ -58,7 +59,7 @@ function Table({ columns, data }) {
     {
       columns,
       data,
-      defaultColumn,
+      // defaultColumn,
     },
     useBlockLayout,
   );
@@ -101,12 +102,12 @@ function Table({ columns, data }) {
         ))}
       </div>
 
-      <div {...getTableBodyProps()}>
+      <div {...getTableBodyProps()} className={s.boxLine}>
         <FixedSizeList
           height={400}
           itemCount={rows.length}
           itemSize={35}
-          width={totalColumnsWidth + scrollBarSize}
+          width={totalColumnsWidth + scrollBarSize - 18}
         >
           {RenderRow}
         </FixedSizeList>

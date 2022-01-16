@@ -1,13 +1,13 @@
-.tabCashflow {
+/* .tabCashflow {
   width: 780px;
   height: 384px;
   background-color: var(--secondaryBackgroundColor);
   border-radius: 16px 16px 0 0;
   margin-right: 30px;
-  /* max-height: 400px; */
-}
 
-.headTabl {
+} */
+
+/* .headTabl {
   font-size: 12px;
   line-height: 1.17;
   font-weight: 700;
@@ -16,13 +16,13 @@
   text-align: left;
   color: #000000;
   text-transform: uppercase;
-}
+} */
 
-.line {
+/* .line {
   height: 40px;
   background-color: var(--mainBackgroundColor);
   outline: solid 1px var(--mainBackgroundColor);
-}
+} */
 
 /* ///////////////////// */
 
@@ -44,6 +44,7 @@
 .tablHead {
   background-color: var(--secondaryBackgroundColor);
   border-radius: 16px 16px 0 0;
+  padding-left: 20px;
 }
 
 .trHeadTabl {
@@ -68,3 +69,10 @@
 .tdTabLine {
   height: 40px;
 }
+
+.boxLine {
+  padding-left: 20px;
+  /* padding-right: 20px; */
+}
+
+/* стиль сктрола */

@@ -100,7 +100,20 @@ img {
   max-width: 100%;
   display: block;
 }
-tr {
-  width: 0;
-  display: block;
+
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 8px;
+ background-color: #F5F6FB);
 }
+
+::-webkit-scrollbar-thumb {
+  background-color: #FF751D;
+  border-radius: 9em;
+}
+
+/* ::-webkit-scrollbar-thumb:hover :focus{
+   background-color: #253861;
+   width: 18px;
+} */

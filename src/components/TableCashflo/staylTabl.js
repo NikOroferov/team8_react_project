@@ -38,7 +38,7 @@ const Styles = styled.div`
       /* border-right: 1px solid black; */
 
       :last-child {
-        /* border-right: 1px solid black; */
+        border-right: 1px solid black;
       }
     }
 
@@ -51,10 +51,18 @@ const Styles = styled.div`
         width: 40px;
         height: 40px;
         :hover {
-          color: tomato;
+          color: #ff751d;
           cursor: pointer;
         }
       }
+      :nth-child(1) {
+        width: 84px;
+      }
+
+      :nth-child(2) {
+        width: 208px;
+      }
+
       :nth-child(4) {
         color: #e7192e;
         font-weight: 700;

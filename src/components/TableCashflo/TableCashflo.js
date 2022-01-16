@@ -203,7 +203,7 @@ export default function TableCashflo() {
         accessor: 'col4',
       },
       {
-        Header: '',
+        Header: ' w',
         accessor: 'col5',
       },
     ],

@@ -38,6 +38,7 @@
   margin-right: 30px;
   border: solid 2px #f5f6fb;
   border-radius: 16px 16px 0 0;
+  border-collapse: collapse;
 }
 
 .tablHead {

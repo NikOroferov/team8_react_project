@@ -4,8 +4,8 @@ import { ReactComponent as LogoIcon } from './logo.svg';
 
 function Logo() {
   return (
-    <NavLink exact to="/" >
-      <LogoIcon  />
+    <NavLink to="/">
+      <LogoIcon />
     </NavLink>
   );
 }

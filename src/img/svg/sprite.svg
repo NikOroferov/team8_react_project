@@ -280,7 +280,7 @@
             </path>
         </symbol>
         <symbol id="icon-oval-expenditure" viewBox="0 0 32 32">
-            <path fill="#f5f6fb" style="fill: var(--color1, #f5f6fb)"
+            <path 
                 d="M10.847 3.646h10.305c5.991 0 10.847 4.857 10.847 10.847v3.254c0 5.991-4.857 10.847-10.847 10.847h-10.305c-5.991 0-10.847-4.857-10.847-10.847v-3.254c0-5.991 4.857-10.847 10.847-10.847z">
             </path>
         </symbol>

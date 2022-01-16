@@ -100,3 +100,21 @@ img {
   max-width: 100%;
   display: block;
 }
+
+/* Стили для свг иконок */
+
+.ellipse {
+  fill: #f5f6fb;
+}
+
+.svg-icons {
+  fill: #071f41;
+}
+
+.active .svg-icons {
+  fill: #ff751d;
+}
+
+.active .ellipse {
+  fill: #ffdac0;
+}

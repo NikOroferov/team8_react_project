@@ -34,9 +34,9 @@
 }
 
 .text {
-  font-weight: bold;
+  font-weight: normal;
   font-size: 10px;
-  line-height: 12px;
+  line-height: 1.2;
   color: #52555f;
   margin-bottom: 24px;
 }
@@ -95,5 +95,26 @@
   }
   .gogRegContainer {
     height: 168px;
+  }
+  .text {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.4;
+
+    margin-bottom: 20px;
+  }
+
+  .label {
+    width: 265px;
+    height: 14px;
+    font-size: 12px;
+    line-height: 1.16;
+  }
+  .input {
+    width: 265px;
+    height: 52px;
+
+    margin-top: 10px;
+    padding-left: 20px;
   }
 }

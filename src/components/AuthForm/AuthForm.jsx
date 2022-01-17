@@ -12,7 +12,7 @@ export default function AuthForm() {
       alert(JSON.stringify(values, null, 2));
     },
   });
-
+  // console.log(email);
   return (
     <div className={s.wrapper}>
       <div className={s.wrapperForm}>

@@ -151,6 +151,7 @@ export default function ExpensesIncome() {
             <p>ТАБЛИЦА- ДОХОДЫ РАСХОДЫ</p>
           </div> */}
           <TableCashflo />
+          {/* <TestTab /> */}
           <div className={s.monthCashflow}>
             <p>ТАБЛИЦА - СВОДКА</p>
           </div>

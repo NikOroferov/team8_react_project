@@ -2,9 +2,10 @@
   text-decoration: none;
 }
 
-.reportsLinkText {
+.reportsLink {
   color: var(--fontColorSecondary);
-  margin-left: 205px;
+  display: flex;
+  align-items: center;
 }
 
 .reportsLink:hover {
@@ -18,7 +19,7 @@
 }
 
 .icon {
-  min-width: 14px;
-  height: 14px;
+  min-width: 24px;
+  height: 24px;
   margin-left: 20px;
 }

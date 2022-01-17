@@ -4,12 +4,14 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
 import { MdBarChart } from 'react-icons/md';
-import { FcCalendar } from 'react-icons/fc';
 import { BiCalculator } from 'react-icons/bi';
 
 import Button from '../Button/Button';
 import ButtonGrey from '../Button/ButtonGrey';
+import DateCalendar from '../DateCalendar/DateCalendar';
+
 import TableCashflo from '../TableCashflo/TableCashflo';
+import TableMonth from '../TableMonth/TableMonth';
 
 import s from './ExpensesIncome.module.css';
 
@@ -83,15 +85,7 @@ export default function ExpensesIncome() {
 
       <div className={s.analysis}>
         <div className={s.cashflowInput}>
-          <div className={s.boxDate}>
-            <span>
-              <FcCalendar className={s.iconCaltndar} />
-            </span>
-            <span className={s.dateNowe}>
-              {new Date().toLocaleDateString()}
-            </span>
-          </div>
-
+          <DateCalendar />
           <form className={s.formCashflow}>
             <label>
               <input
@@ -147,13 +141,10 @@ export default function ExpensesIncome() {
         </div>
 
         <div className={s.boxTabl}>
-          {/* <div className={s.tabCashflow}>
-            <p>ТАБЛИЦА- ДОХОДЫ РАСХОДЫ</p>
-          </div> */}
           <TableCashflo />
-          {/* <TestTab /> */}
           <div className={s.monthCashflow}>
-            <p>ТАБЛИЦА - СВОДКА</p>
+            <p className={s.summaryTitle}>СВОДКА</p>
+            <TableMonth />
           </div>
         </div>
 

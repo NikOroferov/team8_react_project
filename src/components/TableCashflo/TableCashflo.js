@@ -5,7 +5,7 @@ import scrollbarWidth from './scrollbarWidth';
 
 import { AiFillDelete } from 'react-icons/ai';
 
-import Styles from './staylTabl';
+import Styles from './styleTabl';
 
 function Table({ columns, data }) {
   const scrollBarSize = useMemo(() => scrollbarWidth(), []);

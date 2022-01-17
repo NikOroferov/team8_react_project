@@ -50,10 +50,6 @@
   padding-top: 40px;
 }
 
-/* .balance {
-  font-size: 12px;
-} */
-
 .text {
   font-size: 12px;
   margin-right: 21px;
@@ -120,7 +116,7 @@
 }
 
 .formCashflow {
-  margin-left: 23px;
+  /* margin-left: 23px; */
   display: flex;
   margin-top: 33px;
   margin-bottom: 59px;
@@ -132,7 +128,7 @@
 } */
 
 .description {
-  width: 247px;
+  width: 289px;
   height: 40px;
 
   border: solid 2px #f5f6fb;
@@ -151,7 +147,7 @@
   color: #52555f;
 
   font-weight: 500;
-  width: 144px;
+  width: 188px;
   height: 40px;
   border: solid 2px #f5f6fb;
   padding-left: 6px;
@@ -176,7 +172,7 @@
 }
 
 .calculator {
-  width: 82px;
+  width: 124px;
   height: 40px;
   border: solid 2px #f5f6fb;
   border-radius: 0 16px 16px 0;
@@ -200,18 +196,10 @@
   margin-right: 20px;
 }
 
-/* .tabCashflow {
-  width: 780px;
-  height: 384px;
-  background-color: tomato;
-  border-radius: 16px 16px 0 0;
-  margin-right: 30px;
-} */
-
 .monthCashflow {
   width: 230px;
   height: 278px;
-  background-color: turquoise;
+  /* background-color: turquoise; */
   border-radius: 16px 16px 16px 0;
 }
 
@@ -249,19 +237,10 @@
 .calcIcon {
   width: 20px;
   height: 20px;
-  /* position: relative; */
   position: absolute;
   top: 25%;
   left: 60%;
   color: var(--fontСolorTextForms);
-
-  /* position: fixed; */
-}
-
-.iconCaltndar {
-  width: 20px;
-  height: 20px;
-  margin-right: 20px;
 }
 
 .cashflowInput .datePicker {
@@ -271,18 +250,21 @@
   outline: none;
 }
 
-.boxDate {
-  height: 40px;
+.summaryTitle {
   display: flex;
-  align-items: center;
-
-  margin-top: 33px;
-  margin-bottom: 59px;
-}
-
-.dateNowe {
   font-size: 12px;
   line-height: 1.17;
   font-weight: 700;
-  color: #52555f;
+  color: #000000;
+
+  height: 38px;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #f5f6fb;
+  border-radius: 16px 16px 0 0;
+  border-bottom-style: solid;
+  border-bottom-color: #ffffff;
+
+  text-transform: uppercase;
 }

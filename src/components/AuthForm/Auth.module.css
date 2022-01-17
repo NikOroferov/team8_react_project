@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 142px;
+}
+
+.wrapperForm {
+  width: 300px;
+  height: 525px;
+  background: #ffffff;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 30px;
+
+  display: block;
+}
+
+/* p {
+  margin: 0;
+  margin-bottom: 0.25rem;
+  color: red;
+  font-size: 0.5rem;
+} */
+
+.formContainer {
+  /* display: flex;
+  align-items: center; */
+
+  width: 253px;
+}
+
+.gogRegContainer {
+  height: 158px;
+  background: #ffffff;
+}
+
+.text {
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 12px;
+  color: #52555f;
+}
+@media only screen and (min-width: 768px) {
+  .wrapperForm {
+    width: 436px;
+  }
+}

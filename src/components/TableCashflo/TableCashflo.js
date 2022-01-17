@@ -8,13 +8,6 @@ import { AiFillDelete } from 'react-icons/ai';
 import Styles from './staylTabl';
 
 function Table({ columns, data }) {
-  //   const defaultColumn = useMemo(
-  //     () => ({
-  //       width: 148,
-  //     }),
-  //     [],
-  //   );
-
   const scrollBarSize = useMemo(() => scrollbarWidth(), []);
 
   const {
@@ -28,7 +21,6 @@ function Table({ columns, data }) {
     {
       columns,
       data,
-      // defaultColumn,
     },
     useBlockLayout,
   );
@@ -40,7 +32,7 @@ function Table({ columns, data }) {
       return (
         <div
           {...row.getRowProps({
-            style,
+            // style,
           })}
           className="tr"
         >
@@ -76,7 +68,7 @@ function Table({ columns, data }) {
           height={400}
           itemCount={rows.length}
           itemSize={35}
-          width={totalColumnsWidth + scrollBarSize - 18}
+          //  width={totalColumnsWidth + scrollBarSize - 18}
         >
           {RenderRow}
         </FixedSizeList>
@@ -90,10 +82,11 @@ export default function TableCashflo() {
     () => [
       {
         col1: '15.01.2022',
-        col2: 'Купил что то',
+        //   col2: 'Купил что то очень дорогое и длинное еще длинееееееееее ееееее йййй йййййй ййййй йййй ывывывыв вывывыв ывывыв вы ы ыв  ывыввв',
+        col2: 'Купил что то очень дорогое',
         col3: 'Прочее',
-        col4: '-10 000',
-        col5: <AiFillDelete width={32} height={32} />,
+        col4: '-10 000.00 грн.',
+        col5: <AiFillDelete />,
       },
 
       {
@@ -187,23 +180,29 @@ export default function TableCashflo() {
   const columns = useMemo(
     () => [
       {
+        width: '90',
         Header: 'Дата',
         accessor: 'col1',
       },
       {
+        width: '300',
         Header: 'Описание',
         accessor: 'col2',
       },
       {
+        width: '160',
         Header: 'Категория',
         accessor: 'col3',
       },
       {
+        width: '130',
         Header: 'Сумма',
         accessor: 'col4',
       },
       {
-        Header: ' w',
+        width: '70',
+        marginLeft: '20',
+        Header: '',
         accessor: 'col5',
       },
     ],

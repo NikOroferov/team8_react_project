@@ -13,6 +13,8 @@ const Styles = styled.div`
     .tr {
       height: 38px;
       align-items: center;
+      border-bottom-style: solid;
+      border-bottom-color: #f5f6fb;
       :last-child {
         .td {
           border-bottom: 0;
@@ -27,19 +29,22 @@ const Styles = styled.div`
       text-align: left;
       color: #000000;
       text-transform: uppercase;
+
+      :first-child {
+        padding-left: 20px;
+      }
+      :nth-child(3) {
+        text-align: center;
+      }
+      :nth-child(4) {
+        text-align: right;
+      }
     }
 
     .th,
     .td {
       margin: 0;
       padding: 0.5rem;
-
-      /* border-bottom: 1px solid black; */
-      /* border-right: 1px solid black; */
-
-      :last-child {
-        border-right: 1px solid black;
-      }
     }
 
     .td {
@@ -47,9 +52,10 @@ const Styles = styled.div`
       line-height: 1.17;
       font-weight: 400;
       color: #52555f;
+      :first-child {
+        padding-left: 20px;
+      }
       :last-child {
-        width: 40px;
-        height: 40px;
         :hover {
           color: #ff751d;
           cursor: pointer;
@@ -63,20 +69,34 @@ const Styles = styled.div`
         width: 208px;
       }
 
+      :nth-child(3) {
+        text-align: center;
+      }
+
       :nth-child(4) {
         color: #e7192e;
         font-weight: 700;
+        text-align: right;
       }
     }
 
     .tablHead {
       background-color: var(--secondaryBackgroundColor);
       border-radius: 16px 16px 0 0;
-      padding-left: 20px;
     }
 
     .boxLine {
-      padding-left: 20px;
+      /* padding-left: 20px; */
+    }
+
+    .td svg {
+      width: 32px;
+      height: 32px;
+      height: 2em;
+      width: 2em;
+      border: solid 4px #f5f6fb;
+      background-color: #f5f6fb;
+      border-radius: 16px;
     }
   }
 `;

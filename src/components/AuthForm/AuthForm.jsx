@@ -22,10 +22,12 @@ export default function AuthForm() {
             Или зайти с помощью e-mail и пароля, предварительно
             зарегистрировавшись:
           </p>
-
-          <form onSubmit={formik.handleSubmit} className="formContainer">
-            <label htmlFor="email">"Электронная почта"</label>
+          <form onSubmit={formik.handleSubmit} className={s.form}>
+            <label className={s.label} htmlFor="email">
+              "Электронная почта"
+            </label>
             <input
+              className={s.input}
               id="email"
               name="email"
               type="email"
@@ -33,8 +35,11 @@ export default function AuthForm() {
               onChange={formik.handleChange}
               value={formik.values.email}
             />
-            <label htmlFor="password">"Электронная почта"</label>
+            <label className={s.label} htmlFor="password">
+              "Электронная почта"
+            </label>
             <input
+              className={s.input}
               id="password"
               name="password"
               type="password"
@@ -42,7 +47,14 @@ export default function AuthForm() {
               value={formik.values.firstName}
               placeholder="password"
             />
-            <button type="submit">Submit</button>
+            <div className={s.butBox}>
+              <button className={s.buttonAct} type="submit">
+                <span className={s.butTextAct}>Войти</span>
+              </button>
+              <button className={s.buttonAct} type="submit">
+                <span className={s.butTextAct}>Регистрация</span>
+              </button>
+            </div>
           </form>
         </div>
       </div>

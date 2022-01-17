@@ -26,8 +26,14 @@ function IncomesReport() {
             <li key={cat.id} className={styles.item}>
               <div className={styles.sum}>{cat.sum}</div>
               <svg width="56" height="56">
-                <use xlinkHref={`${Icons}#icon-oval-expenditure`}></use>
-                <use xlinkHref={`${Icons}${cat.icon}`}></use>
+                <use
+                  xlinkHref={`${Icons}#icon-oval-expenditure`}
+                  className="ellipse"
+                ></use>
+                <use
+                  xlinkHref={`${Icons}${cat.icon}`}
+                  className="svg-icons"
+                ></use>
               </svg>
               <div className={styles.category_title}>{cat.title}</div>
             </li>

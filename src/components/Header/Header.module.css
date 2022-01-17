@@ -1,0 +1,91 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+}
+.firstLetter {
+  background: var(--elipsColor);
+  color: var(--fontСolorTextForms);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  line-height: 1.17;
+}
+
+.userMenu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 56px;
+}
+.userName {
+  margin-left: 10px;
+}
+.line {
+  border-left: 1px solid #e0e5eb;
+  height: 36px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.logOutBtn {
+  display: none;
+  background: transparent;
+  border: none;
+}
+
+.logOutTextBtn {
+  display: block;
+  color: #52555f;
+  cursor: pointer;
+  border-bottom: 1px solid #52555f;
+  border: none;
+  background: none;
+  text-decoration-line: underline;
+
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.17;
+}
+
+.logOutTextBtn:hover,
+.logOutTextBtn:focus {
+  color: #ff751d;
+}
+
+@media only screen and (max-width: 768px) {
+  .userName {
+    display: none;
+  }
+
+  .logOutTextBtn {
+    display: none;
+  }
+  .logOutBtn {
+    display: block;
+    background: transparent;
+  }
+  .iconLogout {
+    color: #cbccd0;
+  }
+
+  .logOutBtn:hover {
+    color: #ff751d;
+    fill: #ff751d;
+    cursor: pointer;
+  }
+
+  .iconLogout {
+    fill: #cbccd0;
+  }
+  .iconLogout:hover {
+    fill: #ff751d;
+    cursor: pointer;
+  }
+  /* fill="#cbccd0" style="fill: var(--color13, #cbccd0)" */
+}

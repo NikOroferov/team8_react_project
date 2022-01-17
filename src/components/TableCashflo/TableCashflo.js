@@ -1,10 +1,89 @@
-import { useMemo } from 'react';
-import { useTable } from 'react-table';
-// import styled from 'styled-components';
+import { useMemo, useCallback } from 'react';
+import { useTable, useBlockLayout } from 'react-table';
+import { FixedSizeList } from 'react-window';
+import scrollbarWidth from './scrollbarWidth';
 
 import { AiFillDelete } from 'react-icons/ai';
 
-import s from './TableCashflo.module.css';
+import Styles from './staylTabl';
+
+function Table({ columns, data }) {
+  //   const defaultColumn = useMemo(
+  //     () => ({
+  //       width: 148,
+  //     }),
+  //     [],
+  //   );
+
+  const scrollBarSize = useMemo(() => scrollbarWidth(), []);
+
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    totalColumnsWidth,
+    prepareRow,
+  } = useTable(
+    {
+      columns,
+      data,
+      // defaultColumn,
+    },
+    useBlockLayout,
+  );
+
+  const RenderRow = useCallback(
+    ({ index, style }) => {
+      const row = rows[index];
+      prepareRow(row);
+      return (
+        <div
+          {...row.getRowProps({
+            style,
+          })}
+          className="tr"
+        >
+          {row.cells.map(cell => {
+            return (
+              <div {...cell.getCellProps()} className="td">
+                {cell.render('Cell')}
+              </div>
+            );
+          })}
+        </div>
+      );
+    },
+    [prepareRow, rows],
+  );
+
+  return (
+    <div {...getTableProps()} className="table">
+      <div className="tablHead">
+        {headerGroups.map(headerGroup => (
+          <div {...headerGroup.getHeaderGroupProps()} className="tr">
+            {headerGroup.headers.map(column => (
+              <div {...column.getHeaderProps()} className="th">
+                {column.render('Header')}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <div {...getTableBodyProps()} className="boxLine">
+        <FixedSizeList
+          height={400}
+          itemCount={rows.length}
+          itemSize={35}
+          width={totalColumnsWidth + scrollBarSize - 18}
+        >
+          {RenderRow}
+        </FixedSizeList>
+      </div>
+    </div>
+  );
+}
 
 export default function TableCashflo() {
   const data = useMemo(
@@ -14,7 +93,7 @@ export default function TableCashflo() {
         col2: 'Купил что то',
         col3: 'Прочее',
         col4: '-10 000',
-        col5: <AiFillDelete />,
+        col5: <AiFillDelete width={32} height={32} />,
       },
 
       {
@@ -26,7 +105,77 @@ export default function TableCashflo() {
       },
       {
         col1: '15.01.2022',
-        col2: 'Потрати',
+        col2: 'Потратил',
+        col3: 'Прочее',
+        col4: '-2 000',
+        col5: <AiFillDelete />,
+      },
+      {
+        col1: '15.01.2022',
+        col2: 'Потратил',
+        col3: 'Прочее',
+        col4: '-2 000',
+        col5: <AiFillDelete />,
+      },
+      {
+        col1: '15.01.2022',
+        col2: 'Потратил',
+        col3: 'Прочее',
+        col4: '-2 000',
+        col5: <AiFillDelete />,
+      },
+      {
+        col1: '15.01.2022',
+        col2: 'Потратил',
+        col3: 'Прочее',
+        col4: '-2 000',
+        col5: <AiFillDelete />,
+      },
+      {
+        col1: '15.01.2022',
+        col2: 'Потратил',
+        col3: 'Прочее',
+        col4: '-2 000',
+        col5: <AiFillDelete />,
+      },
+      {
+        col1: '15.01.2022',
+        col2: 'Потратил',
+        col3: 'Прочее',
+        col4: '-2 000',
+        col5: <AiFillDelete />,
+      },
+      {
+        col1: '15.01.2022',
+        col2: 'Потратил',
+        col3: 'Прочее',
+        col4: '-2 000',
+        col5: <AiFillDelete />,
+      },
+      {
+        col1: '15.01.2022',
+        col2: 'Потратил',
+        col3: 'Прочее',
+        col4: '-2 000',
+        col5: <AiFillDelete />,
+      },
+      {
+        col1: '15.01.2022',
+        col2: 'Потратил',
+        col3: 'Прочее',
+        col4: '-2 000',
+        col5: <AiFillDelete />,
+      },
+      {
+        col1: '15.01.2022',
+        col2: 'Потратил',
+        col3: 'Прочее',
+        col4: '-2 000',
+        col5: <AiFillDelete />,
+      },
+      {
+        col1: '15.01.2022',
+        col2: 'Потратил',
         col3: 'Прочее',
         col4: '-2 000',
         col5: <AiFillDelete />,
@@ -39,7 +188,7 @@ export default function TableCashflo() {
     () => [
       {
         Header: 'Дата',
-        accessor: 'col1', // accessor is the "key" in the data
+        accessor: 'col1',
       },
       {
         Header: 'Описание',
@@ -54,75 +203,16 @@ export default function TableCashflo() {
         accessor: 'col4',
       },
       {
-        Header: '',
+        Header: ' w',
         accessor: 'col5',
       },
     ],
     [],
   );
 
-  const tableInstance = useTable({ columns, data });
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    tableInstance;
-
   return (
-    <div className={s.tabCashflow}>
-      {/* <Styles> */}
-      <table className={s.tableBox} {...getTableProps()}>
-        <thead className={s.headTabl}>
-          {
-            // Loop over the header rows
-            headerGroups.map(headerGroup => (
-              // Apply the header row props
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {
-                  // Loop over the headers in each row
-                  headerGroup.headers.map(column => (
-                    // Apply the header cell props
-                    <th {...column.getHeaderProps()}>
-                      {
-                        // Render the header
-                        column.render('Header')
-                      }
-                    </th>
-                  ))
-                }
-              </tr>
-            ))
-          }
-        </thead>
-        {/* Apply the table body props */}
-        <tbody {...getTableBodyProps()}>
-          {
-            // Loop over the table rows
-            rows.map(row => {
-              // Prepare the row for display
-              prepareRow(row);
-              return (
-                // Apply the row props
-                <tr className={s.lineBox} {...row.getRowProps()}>
-                  {
-                    // Loop over the rows cells
-                    row.cells.map(cell => {
-                      // Apply the cell props
-                      return (
-                        <td className={s.line} {...cell.getCellProps()}>
-                          {
-                            // Render the cell contents
-                            cell.render('Cell')
-                          }
-                        </td>
-                      );
-                    })
-                  }
-                </tr>
-              );
-            })
-          }
-        </tbody>
-      </table>
-      {/* </Styles> */}
-    </div>
+    <Styles>
+      <Table columns={columns} data={data} />
+    </Styles>
   );
 }

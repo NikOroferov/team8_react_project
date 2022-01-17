@@ -40,7 +40,6 @@ code {
     monospace;
 }
 
-
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -92,8 +91,8 @@ ol[class] {
 }
 
 /* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
+a {
+  text-decoration: none;
 }
 
 /* Упрощаем работу с изображениями */
@@ -102,6 +101,7 @@ img {
   display: block;
 }
 
+/* стиль скрола */
 ::-webkit-scrollbar {
   width: 6px;
   height: 8px;
@@ -111,6 +111,7 @@ img {
 ::-webkit-scrollbar-thumb {
   background-color: #FF751D;
   border-radius: 9em;
+
 }
 
 /* Стили для свг иконок */
@@ -130,3 +131,4 @@ img {
 .active .ellipse {
   fill: #ffdac0;
 }
+

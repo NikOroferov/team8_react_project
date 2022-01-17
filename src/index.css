@@ -101,7 +101,6 @@ img {
   display: block;
 }
 
-/* cashflow-markings*/
 /* стиль скрола */
 ::-webkit-scrollbar {
   width: 6px;
@@ -112,6 +111,8 @@ img {
 ::-webkit-scrollbar-thumb {
   background-color: #FF751D;
   border-radius: 9em;
+
+}
 
 /* Стили для свг иконок */
 
@@ -129,5 +130,5 @@ img {
 
 .active .ellipse {
   fill: #ffdac0;
-
 }
+

@@ -68,7 +68,7 @@ function Table({ columns, data }) {
           height={400}
           itemCount={rows.length}
           itemSize={35}
-          //  width={totalColumnsWidth + scrollBarSize - 18}
+          width={totalColumnsWidth + scrollBarSize}
         >
           {RenderRow}
         </FixedSizeList>

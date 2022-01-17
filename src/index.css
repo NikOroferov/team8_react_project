@@ -91,8 +91,8 @@ ol[class] {
 }
 
 /* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
+a {
+  text-decoration: none;
 }
 
 /* Упрощаем работу с изображениями */
@@ -101,6 +101,7 @@ img {
   display: block;
 }
 
+/* cashflow-markings*/
 /* стиль скрола */
 ::-webkit-scrollbar {
   width: 6px;
@@ -111,4 +112,22 @@ img {
 ::-webkit-scrollbar-thumb {
   background-color: #FF751D;
   border-radius: 9em;
+
+/* Стили для свг иконок */
+
+.ellipse {
+  fill: #f5f6fb;
+}
+
+.svg-icons {
+  fill: #071f41;
+}
+
+.active .svg-icons {
+  fill: #ff751d;
+}
+
+.active .ellipse {
+  fill: #ffdac0;
+
 }

@@ -1,0 +1,78 @@
+.backdrop{
+	color: rgb(61, 36, 36);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #52555fbd;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 1000;
+}
+
+.exitModal {
+  position: fixed;
+  margin: 0 auto;
+  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  border-radius: 30px;
+  width: 280px;
+  height: 150px;
+  background-color: #fff;
+  padding-top: 30px;
+  top: 50%;
+  left: 50%;
+  margin-left: -140px;
+}
+@media screen and (min-width: 768px) {
+  .exitModal {
+    padding-top: 40px;
+    width: 380px;
+    height: 194px;
+    top: 50%;
+    left: 60%;
+    margin-top: -100px;
+    margin-left: -270px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .exitModal {
+		padding-top: 50px;
+    top: 50%;
+    left: 53%;
+    margin-top: -100px;
+    margin-left: -250px;
+  }
+}
+
+.closeBtn {
+  padding: 0;
+  margin: 5px;
+  border-color: transparent;
+  background-color: transparent;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+}
+
+.closeBtn:hover,
+.closeBtn:focus{
+  transform: scale(1.2);
+}
+
+.title{
+
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.btnContainer {
+	margin: 0 auto;
+	width: 265px;
+	display: flex;
+	justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}

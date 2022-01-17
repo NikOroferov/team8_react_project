@@ -1,0 +1,24 @@
+.linkReport {
+  text-decoration: none;
+}
+
+.reportsLinkText {
+  color: var(--fontColorSecondary);
+  margin-left: 205px;
+}
+
+.reportsLink:hover {
+  color: var(--backgroundActive);
+}
+
+.text {
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 400;
+}
+
+.icon {
+  min-width: 14px;
+  height: 14px;
+  margin-left: 20px;
+}

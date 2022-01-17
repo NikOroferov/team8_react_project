@@ -50,52 +50,6 @@
   padding-top: 40px;
 }
 
-.text {
-  font-size: 12px;
-  margin-right: 21px;
-  font-weight: 500;
-  color: var(--fontColorSecondary);
-}
-
-.reportsLink {
-  text-decoration: none;
-  font-size: 12px;
-  line-height: 1.17;
-  font-weight: 400;
-
-  color: var(--fontColorSecondary);
-  margin-left: 205px;
-}
-
-.reportsLink:hover {
-  color: var(--backgroundActive);
-}
-
-.icon {
-  min-width: 14px;
-  height: 14px;
-  margin-left: 20px;
-}
-
-.Summ {
-  font-size: 12px;
-
-  width: 125px;
-  height: 37px;
-  line-height: 1.17;
-  font-weight: 700;
-
-  text-align: center;
-
-  border-radius: 16px;
-  border: solid 2px;
-  border-color: var(--mainBackgroundColor);
-  background-color: var(--backgroundGray);
-  color: var(--mainFontColor);
-  outline: none;
-  margin-right: 15px;
-}
-
 .analysis {
   width: 1060px;
   margin-left: auto;
@@ -104,7 +58,6 @@
   border-radius: 0px 30px 30px 30px;
   padding-bottom: 61px;
   box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
-  /* box-shadow: 0 1px 6px rgba(170, 178, 197, 0.2); */
 }
 
 .cashflowInput {
@@ -115,79 +68,9 @@
   align-items: center;
 }
 
-.formCashflow {
-  /* margin-left: 23px; */
-  display: flex;
-  margin-top: 33px;
-  margin-bottom: 59px;
-}
-
-/* .boxDataPicKer {
-  display: flex;
-  flex-direction: row;
-} */
-
-.description {
-  width: 289px;
-  height: 40px;
-
-  border: solid 2px #f5f6fb;
-  border-radius: 16px 0 0 0;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
 .description:focus {
   outline: var(--backgroundActive);
   border: solid 2px var(--backgroundActive);
-}
-
-.formCashflow .category {
-  font-size: 12px;
-  color: #52555f;
-
-  font-weight: 500;
-  width: 188px;
-  height: 40px;
-  border: solid 2px #f5f6fb;
-  padding-left: 6px;
-  padding-right: 6px;
-}
-
-/* .ExpensesIncome_formCashflow__VCD\+v .ExpensesIncome_category__kyoxE {
-  margin-right: 0;
-} */
-
-/* .MuiSlider-root {
-  color: red;
-} */
-
-/* .MuiFormControl-root .css-gbgt40-MuiFormControl-root {
-  margin: 0;
-} */
-
-.category:focus {
-  outline: var(--backgroundActive);
-  border: solid 2px var(--backgroundActive);
-}
-
-.calculator {
-  width: 124px;
-  height: 40px;
-  border: solid 2px #f5f6fb;
-  border-radius: 0 16px 16px 0;
-  margin-right: 27px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.calculator:focus {
-  outline: var(--backgroundActive);
-  border: solid 2px var(--backgroundActive);
-}
-
-.btn {
-  margin-right: 15px;
 }
 
 .boxTabl {
@@ -230,19 +113,6 @@
   color: var(--backgroundActive);
 }
 
-.boxCalculator {
-  position: relative;
-}
-
-.calcIcon {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  top: 25%;
-  left: 60%;
-  color: var(--fontСolorTextForms);
-}
-
 .cashflowInput .datePicker {
   width: 74px;
   height: 40px;
@@ -267,4 +137,7 @@
   border-bottom-color: #ffffff;
 
   text-transform: uppercase;
+}
+
+.btn {
 }

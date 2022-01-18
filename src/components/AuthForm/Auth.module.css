@@ -1,0 +1,136 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  /* padding-top: 142px; */
+}
+
+.wrapperForm {
+  width: 300px;
+  height: 525px;
+  background: #ffffff;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formContainer {
+  display: block;
+  width: 253px;
+}
+
+.gogRegContainer {
+  height: 158px;
+  background: #ffffff;
+}
+
+.text {
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #52555f;
+  margin-bottom: 24px;
+}
+
+.input {
+  width: 253px;
+  height: 52px;
+
+  background: #f6f7fb;
+  border-radius: 30px;
+  border: none;
+  margin-top: 12px;
+  padding-left: 20px;
+  margin-bottom: 4px;
+}
+
+.label {
+  width: 242px;
+  height: 12px;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 1.2;
+
+  color: #000000;
+}
+.butBox {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 52px;
+}
+
+.buttonAct {
+  width: 125px;
+  height: 44px;
+
+  background: #f5f6fb;
+  border-radius: 16px;
+  border: none;
+  transition: box-shadow 600ms ease-in-out, background-color 600ms ease-in-out;
+}
+.butTextAct {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1.16;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+
+  color: #52555f;
+  transition: box-shadow 600ms ease-in-out, background-color 600ms ease-in-out;
+}
+.buttonAct:hover {
+  background-color: #ff751d;
+  color: #ffffff;
+  box-shadow: 0 0 20px 20px #ff751d inset;
+}
+.butTextAct:hover {
+  color: #ffffff;
+}
+
+.error {
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #eb5757;
+}
+.er {
+  display: flex;
+  margin-top: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .wrapperForm {
+    width: 436px;
+    height: 535px;
+  }
+  .gogRegContainer {
+    height: 168px;
+  }
+  .text {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.4;
+
+    margin-bottom: 20px;
+  }
+
+  .label {
+    width: 265px;
+    height: 14px;
+    font-size: 12px;
+    line-height: 1.16;
+  }
+  .input {
+    width: 265px;
+    height: 52px;
+
+    margin-top: 10px;
+    padding-left: 20px;
+  }
+}

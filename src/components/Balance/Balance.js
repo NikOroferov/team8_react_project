@@ -7,7 +7,6 @@ import { BalanceModal } from '../Modal';
 
 import css from './Balance.module.css';
 
-
 export default function Balance() {
   // const initialBalance = useSelector(getBalance);
 
@@ -29,11 +28,11 @@ export default function Balance() {
         Баланс:
       </label>
 
-
       <span className={css.span}>
         <input
           className={css.input}
           id="input"
+          placeholder="00.00"
           pattern="^[ 0-9]+$"
           title="Пожалуйста, вводите только цифры"
           type="number"
@@ -41,7 +40,6 @@ export default function Balance() {
           onChange={handleChange}
         />
       </span>
-
 
       <button type="button" className={css.btn} onClick={null}>
         Подтвердить

@@ -1,38 +1,28 @@
 import styles from './ReportsSwitcher.module.css';
-import CostsReport from '../CostsReport/CostsReport';
-import IncomesReport from '../IncomesReport/IncomesReport';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function ReportsSwitcher() {
-  const [idxActiveReport, setIdxActiveReport] = useState(0);
+export default function ReportsSwitcher({ handleTypeReport }) {
+  const [type, setType] = useState(false);
+  const [typeName, setTypeName] = useState('РАСХОДЫ');
 
-  const reports = [
-    {
-      name: 'РАСХОДЫ',
-      element: <CostsReport />,
-    },
-    {
-      name: 'ДОХОДЫ',
-      element: <IncomesReport />,
-    },
-  ];
+  useEffect(() => {
+    if (type === true) {
+      setTypeName('ДОХОДЫ');
+      return handleTypeReport(type);
+    } else {
+      setTypeName('РАСХОДЫ');
+      return handleTypeReport(type);
+    }
+  }, [type, handleTypeReport])
 
   const handleSwitchReport = value => {
     switch (value) {
       case 'next':
-        if (idxActiveReport === reports.length - 1) {
-          setIdxActiveReport(0);
-        } else {
-          setIdxActiveReport(idxActiveReport + 1);
-        }
+        setType(!type);
         break;
 
       case 'prev':
-        if (idxActiveReport === 0) {
-          setIdxActiveReport(reports.length - 1);
-        } else {
-          setIdxActiveReport(idxActiveReport - 1);
-        }
+        setType(!type);
         break;
 
       default:
@@ -46,16 +36,15 @@ export default function ReportsSwitcher() {
         <button
           className={styles.reportSwitcher__btn}
           type="button"
-          onClick={() => handleSwitchReport('prev')}
+          onClick={()=>handleSwitchReport('prev')}
         ></button>
-        {/* <p className={styles.section_title}>{reports[idxActiveReport].name}</p> */}
+        <p className={styles.section_title}>{typeName}</p>
         <button
           className={styles.reportSwitcher__btn}
           type="button"
           onClick={() => handleSwitchReport('next')}
         ></button>
       </div>
-      <div>{reports[idxActiveReport].element}</div>
     </>
   );
 }

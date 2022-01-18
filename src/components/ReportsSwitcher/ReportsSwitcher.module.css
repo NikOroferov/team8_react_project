@@ -1,5 +1,6 @@
 .reportSwitcher {
   height: 20px;
+  width: 134px;
   display: flex;
   justify-content: space-between;
 }

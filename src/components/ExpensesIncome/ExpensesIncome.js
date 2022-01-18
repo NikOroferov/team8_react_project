@@ -2,6 +2,14 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import Balance from '../Balance/Balance';
+
+import { MdBarChart } from 'react-icons/md';
+import { FcCalendar } from 'react-icons/fc';
+import { BiCalculator } from 'react-icons/bi';
+
+import Button from '../Button/Button';
+// import ButtonGrey from '../Button/ButtonGrey';
+
 import LinkToReports from '../LinkToReports/LinkToReports';
 import DateCalendar from '../DateCalendar/DateCalendar';
 import CashflowDataEntry from '../CashflowDataEntry/CashflowDataEntry';
@@ -13,9 +21,29 @@ import Icons from '../../img/svg/sprite.svg';
 import s from './ExpensesIncome.module.css';
 
 export default function ExpensesIncome() {
+
   const [typeInfo, setTypeInfo] = useState('расход');
   const [activeCostsBtn, setActiveCostsBtn] = useState(true);
   const [activeIncomeBtn, setActiveIncomeBtn] = useState(false);
+
+  const [category, setСategory] = useState('');
+  const [description, setDescription] = useState('');
+  const [sum, setSum] = useState([]);
+  // const [balance, setBalance] = useState(55000.0);
+
+//   const handleChange = e => {
+//     setСategory(e.target.value);
+//   };
+
+//   const clearForm = e => {
+//     e.preventDefault();
+//     console.log(e.target);
+//     setСategory('');
+//     setDescription('');
+//     setSum();
+//   };
+  //   const [balance, setBalance] = useState(55000.0);
+
 
   const classes = ['navBtn'];
   const classesStr = classes.join(' ');
@@ -39,11 +67,13 @@ export default function ExpensesIncome() {
   };
 
   return (
+
     <>
       <section className={s.section}>
         <div className={s.boxBalance}>
           <Balance />
           <LinkToReports />
+
         </div>
 
         <div className={s.boxBtn}>

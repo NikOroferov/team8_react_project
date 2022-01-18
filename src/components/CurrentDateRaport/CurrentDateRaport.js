@@ -35,7 +35,13 @@ const CurrentDateRaport = () => {
     setSelectedMonth(month);
   };
 
+  const monthNumber = selectedMonth + 1;
+  const normalizedMonth =
+  monthNumber > 9 ? `${monthNumber}-${selectedYear}` : `0${monthNumber}-${selectedYear}`;
+  console.log(normalizedMonth)
+  
   return (
+    
     <>
       <div className={s.section}>
       <CurrentDate

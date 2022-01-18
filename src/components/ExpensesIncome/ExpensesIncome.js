@@ -3,12 +3,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
+import Balance from '../Balance/Balance';
 import { MdBarChart } from 'react-icons/md';
 import { FcCalendar } from 'react-icons/fc';
 import { BiCalculator } from 'react-icons/bi';
 
 import Button from '../Button/Button';
-import ButtonGrey from '../Button/ButtonGrey';
+// import ButtonGrey from '../Button/ButtonGrey';
 import TableCashflo from '../TableCashflo/TableCashflo';
 
 import s from './ExpensesIncome.module.css';
@@ -17,7 +18,7 @@ export default function ExpensesIncome() {
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState([]);
-  const [balance, setBalance] = useState(55000.0);
+  // const [balance, setBalance] = useState(55000.0);
 
   const hendleChangeDescription = ({ target: { name, value } }) => {
     switch (name) {
@@ -27,8 +28,8 @@ export default function ExpensesIncome() {
         return setСategory(value);
       case 'sum':
         return setSum(value);
-      case 'balance':
-        return setBalance(value);
+      // case 'balance':
+      //   return setBalance(value);
       default:
         return;
     }
@@ -50,7 +51,8 @@ export default function ExpensesIncome() {
     <section className={s.section}>
       {/* <div className={s.hero}> */}
       <div className={s.boxBalance}>
-        <div className={s.balance}>
+        <Balance />
+        {/* <div className={s.balance}>
           <form>
             <label>
               <span className={s.text}>Баланс:</span>
@@ -65,8 +67,8 @@ export default function ExpensesIncome() {
             </label>
             <ButtonGrey name="ПОДТВЕРДИТЬ" />
           </form>
-        </div>
-        <div>
+        </div> */}
+        <div className={s.reportBox}>
           <a className={s.reportsLink} href="restart">
             Перейти к отчетам
             <span className={s.icon}>

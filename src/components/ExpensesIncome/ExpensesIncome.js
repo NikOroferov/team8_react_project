@@ -1,43 +1,21 @@
-// import { useState } from 'react';
-// import { MdBarChart } from 'react-icons/md';
-
 import Balance from '../Balance/Balance';
 import LinkToReports from '../LinkToReports/LinkToReports';
-// import ButtonGrey from '../Button/ButtonGrey';
 import DateCalendar from '../DateCalendar/DateCalendar';
 import CashflowDataEntry from '../CashflowDataEntry/CashflowDataEntry';
 
 import TableCashflo from '../TableCashflo/TableCashflo';
 import TableMonth from '../TableMonth/TableMonth';
+import Icons from '../../img/svg/sprite.svg';
 
 import s from './ExpensesIncome.module.css';
 
 export default function ExpensesIncome() {
-  //   const [balance, setBalance] = useState(55000.0);
-
-  //   const hendleChangeDescription = ({ target: { name, value } }) => {
-  //     switch (name) {
-  //       case 'balance':
-  //         return setBalance(value);
-  //       default:
-  //         return;
-  //     }
-  //   };
-
   return (
     <section className={s.section}>
       <div className={s.boxBalance}>
-        <Balance />
+        {/* <Balance /> */}
 
         <LinkToReports />
-        {/* <div>
-          <a className={s.reportsLink} href="restart">
-            Перейти к отчетам
-            <span className={s.icon}>
-              <MdBarChart />
-            </span>
-          </a>
-        </div> */}
       </div>
 
       <div className={s.boxBtn}>
@@ -64,6 +42,18 @@ export default function ExpensesIncome() {
         <button>РАСХОД</button>
         <button>ДОХОД</button>
       </div>
+
+      <svg width="56" height="56" className="">
+        <use xlinkHref={`${Icons}#icon-calculator`} className=""></use>
+      </svg>
+
+      <svg width="56" height="56" className="">
+        <use xlinkHref={`${Icons}#icon-icon-ellipse2`} className=""></use>
+      </svg>
+
+      <svg width="56" height="56" className="">
+        <use xlinkHref={`${Icons}#icon-vector11`} className=""></use>
+      </svg>
     </section>
   );
 }

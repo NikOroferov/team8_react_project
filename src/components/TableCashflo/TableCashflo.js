@@ -3,9 +3,18 @@ import { useTable, useBlockLayout } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
 
-import { AiFillDelete } from 'react-icons/ai';
-
 import Styles from './styleTabl';
+import Icons from '../../img/svg/sprite.svg';
+
+const ButtoDelet = data => {
+  return (
+    <button className="buttonDel" type="button" onClick={data.click}>
+      <svg width="18" height="18" className="iconButtonDel">
+        <use xlinkHref={`${Icons}#icon-delete-1`} className=""></use>
+      </svg>
+    </button>
+  );
+};
 
 function Table({ columns, data }) {
   const scrollBarSize = useMemo(() => scrollbarWidth(), []);
@@ -78,6 +87,10 @@ function Table({ columns, data }) {
 }
 
 export default function TableCashflo() {
+  const onClickDelete = () => {
+    console.log(`УДИЛИТЬ`);
+  };
+
   const data = useMemo(
     () => [
       {
@@ -86,7 +99,7 @@ export default function TableCashflo() {
         col2: 'Купил что то очень дорогое',
         col3: 'Прочее',
         col4: '-10 000.00 грн.',
-        col5: <AiFillDelete />,
+        col5: <ButtoDelet click={onClickDelete} />,
       },
 
       {
@@ -94,84 +107,84 @@ export default function TableCashflo() {
         col2: 'Купил опять',
         col3: 'Прочее',
         col4: '-20 000',
-        col5: <AiFillDelete />,
+        col5: <ButtoDelet />,
       },
       {
         col1: '15.01.2022',
         col2: 'Потратил',
         col3: 'Прочее',
         col4: '-2 000',
-        col5: <AiFillDelete />,
+        col5: <ButtoDelet />,
       },
       {
         col1: '15.01.2022',
         col2: 'Потратил',
         col3: 'Прочее',
         col4: '-2 000',
-        col5: <AiFillDelete />,
+        col5: <ButtoDelet />,
       },
       {
         col1: '15.01.2022',
         col2: 'Потратил',
         col3: 'Прочее',
         col4: '-2 000',
-        col5: <AiFillDelete />,
+        col5: <ButtoDelet />,
       },
       {
         col1: '15.01.2022',
         col2: 'Потратил',
         col3: 'Прочее',
         col4: '-2 000',
-        col5: <AiFillDelete />,
+        col5: <ButtoDelet />,
       },
       {
         col1: '15.01.2022',
         col2: 'Потратил',
         col3: 'Прочее',
         col4: '-2 000',
-        col5: <AiFillDelete />,
+        col5: <ButtoDelet />,
       },
       {
         col1: '15.01.2022',
         col2: 'Потратил',
         col3: 'Прочее',
         col4: '-2 000',
-        col5: <AiFillDelete />,
+        col5: <ButtoDelet />,
       },
       {
         col1: '15.01.2022',
         col2: 'Потратил',
         col3: 'Прочее',
         col4: '-2 000',
-        col5: <AiFillDelete />,
+        col5: <ButtoDelet />,
       },
       {
         col1: '15.01.2022',
         col2: 'Потратил',
         col3: 'Прочее',
         col4: '-2 000',
-        col5: <AiFillDelete />,
+        col5: <ButtoDelet />,
       },
       {
         col1: '15.01.2022',
         col2: 'Потратил',
         col3: 'Прочее',
         col4: '-2 000',
-        col5: <AiFillDelete />,
+        col5: <ButtoDelet />,
       },
       {
         col1: '15.01.2022',
         col2: 'Потратил',
         col3: 'Прочее',
         col4: '-2 000',
-        col5: <AiFillDelete />,
+        col5: <ButtoDelet />,
       },
       {
         col1: '15.01.2022',
         col2: 'Потратил',
         col3: 'Прочее',
         col4: '-2 000',
-        col5: <AiFillDelete />,
+        col5: <ButtoDelet />,
       },
     ],
     [],

@@ -7,6 +7,7 @@ import { BiCalculator } from 'react-icons/bi';
 
 import Button from '../Button/Button';
 import s from './CashflowDataEntry.module.css';
+import Icons from '../../img/svg/sprite.svg';
 
 export default function CashflowDataEntry() {
   const [category, setСategory] = useState('');
@@ -84,7 +85,10 @@ export default function CashflowDataEntry() {
           value={sum}
           onChange={hendleChangeDescription}
         />
-        <BiCalculator className={s.calcIcon} />
+        {/* <BiCalculator className={s.calcIcon} /> */}
+        <svg width="56" height="56" className={s.calcIcon}>
+          <use xlinkHref={`${Icons}#icon-calculator`} className=""></use>
+        </svg>
       </label>
 
       <div className={s.btn}>

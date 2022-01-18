@@ -191,10 +191,9 @@ export default function TableCashflo({ typeInfo }) {
   const dataCashFoTabl = dataCash.map(
     ({ id, date, subcategory, category, transactionType, costs }) => {
       return {
-        //   id: id,
         col1: date,
         col2: subcategory,
-        col3: category,
+        col3: `${category} грн.`,
         col4: costs,
         col5: <ButtoDelet click={onClickDelete} idItams={id} />,
         transactionType: transactionType,

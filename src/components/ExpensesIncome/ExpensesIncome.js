@@ -58,7 +58,7 @@ export default function ExpensesIncome() {
         <div className={s.analysis}>
           <div className={s.cashflowInput}>
             <DateCalendar />
-            <CashflowDataEntry />
+            <CashflowDataEntry typeInfo={typeInfo} />
           </div>
 
           <div className={s.boxTabl}>

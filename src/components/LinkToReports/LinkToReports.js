@@ -1,16 +1,15 @@
-import './LinkToReports.css';
 import { Link } from 'react-router-dom';
-// import ReportsPage from '../../pages/ReportsPage';
+import { MdBarChart } from 'react-icons/md';
+
+import s from './LinkToReports.module.css';
 
 export default function LinkToReports() {
   return (
-    <div className="linkReport">
-      {/* <Link className="linkReport__link" to="/reports" element={<ReportsPage />}> */}
-        <p className="linkReport__text">Перейти к отчетам</p>
-        <svg className="linkReport__icon" width="24" height="24">
-          <use href="#"></use>
-        </svg>
-      {/* </Link> */}
-    </div>
+    <Link to="/reports" className={s.reportsLink}>
+      <span className={s.text}>Перейти к отчетам</span>
+      <span className={s.icon}>
+        <MdBarChart />
+      </span>
+    </Link>
   );
 }

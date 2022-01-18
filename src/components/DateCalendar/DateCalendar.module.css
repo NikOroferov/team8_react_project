@@ -1,0 +1,28 @@
+.boxDate {
+  height: 40px;
+  display: flex;
+  align-items: center;
+
+  margin-top: 33px;
+  margin-bottom: 59px;
+}
+
+.iconBox {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.iconCalendar {
+  width: 20px;
+  height: 20px;
+}
+
+.dateNowe {
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 700;
+  color: #52555f;
+  margin-right: 23px;
+  width: 74px;
+}

@@ -3,15 +3,17 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
-import { BiCalculator } from 'react-icons/bi';
-
 import Button from '../Button/Button';
 import s from './CashflowDataEntry.module.css';
+import Icons from '../../img/svg/sprite.svg';
+import categoryData from '../../json/categoryCosts.json';
 
-export default function CashflowDataEntry() {
+export default function CashflowDataEntry({ typeInfo }) {
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState([]);
+  const [dataItem, setDataItem] = useState([]);
+  //   const [dataCategory, setDataItem] = useState([]);
 
   const hendleChangeDescription = ({ target: { name, value } }) => {
     switch (name) {
@@ -37,9 +39,41 @@ export default function CashflowDataEntry() {
     setСategory(e.target.value);
   };
 
-  const enterData = e => {
-    console.log(e);
+  const typeInfoEnty = () => {
+    if (typeInfo === 'расход') {
+      return true;
+    } else {
+      return false;
+    }
   };
+
+  const enterData = e => {
+    setDataItem({
+      created_at: Date.now(),
+      subcategory: description,
+      category: category,
+      transactionType: typeInfo,
+      costs: sum,
+      incomes: typeInfoEnty(),
+    });
+    setСategory('');
+    setDescription('');
+    setSum([]);
+  };
+
+  const dataCategoryFoTabl = categoryData.map(({ id, category }) => {
+    return {
+      item: <MenuItem value={id}> {category}</MenuItem>,
+    };
+  });
+
+  const fff = dataCategoryFoTabl.forEach(data => {
+    //  console.log(data.item);
+    return data.item;
+  });
+
+  //   console.log(dataCategoryFoTabl);
+  //   console.log(fff);
 
   return (
     <form className={s.formCashflow}>
@@ -51,16 +85,22 @@ export default function CashflowDataEntry() {
           name="description"
           value={description}
           onChange={hendleChangeDescription}
+          required
         />
       </label>
 
-      <InputLabel id="demo-simple-select-label"></InputLabel>
+      <InputLabel
+        id="demo-simple-select-label"
+        placeholder="Описание товара"
+      ></InputLabel>
       <Select
         className={s.category}
         labelId="demo-simple-select-label"
         id="demo-simple-select"
         value={category}
         onChange={handleChange}
+        placeholder="Описание товара"
+        required
       >
         <MenuItem value="Алкоголь">Алкоголь</MenuItem>
         <MenuItem value="Все для дома">Все для дома</MenuItem>
@@ -82,9 +122,14 @@ export default function CashflowDataEntry() {
           placeholder="0,00"
           name="sum"
           value={sum}
+          step="0.01"
+          min="0"
           onChange={hendleChangeDescription}
+          required
         />
-        <BiCalculator className={s.calcIcon} />
+        <svg width="56" height="56" className={s.calcIcon}>
+          <use xlinkHref={`${Icons}#icon-calculator`} className=""></use>
+        </svg>
       </label>
 
       <div className={s.btn}>

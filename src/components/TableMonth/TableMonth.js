@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { useTable } from 'react-table';
 
 import Styles from './styleTabMouth';
@@ -47,6 +47,33 @@ function Table({ columns, data }) {
 }
 
 export default function TableMonth() {
+  const [dataCash, setDatadCash] = useState([
+    {
+      col1: 'Декабрь',
+      col2: '10 000.00',
+    },
+    {
+      col1: 'Ноябрь',
+      col2: '15 000.00',
+    },
+    {
+      col1: 'Октябрь',
+      col2: '20 000,00',
+    },
+    {
+      col1: 'Сентябрь',
+      col2: '2 000,00',
+    },
+    {
+      col1: 'Август',
+      col2: '7 000,00',
+    },
+    {
+      col1: 'Июль',
+      col2: '10 000,00',
+    },
+  ]);
+
   const data = useMemo(
     () => [
       {

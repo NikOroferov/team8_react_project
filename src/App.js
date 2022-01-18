@@ -6,6 +6,7 @@ import CashFlowPage from './views/CashFlowPage/CashFlowPage';
 import ReportsPage from './views/ReportsPage/ReportsPage';
 import Header from './components/Header/Header';
 import Container from './components/Container';
+// import Balance from './components/Balance/Balance';
 // import CommonModal from './components/Modal/CommonModal';
 
 function App() {

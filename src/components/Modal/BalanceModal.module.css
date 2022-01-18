@@ -6,15 +6,16 @@
   box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
   padding: 20px 30px 31px 30px;
   display: block;
-  top: 120%;
+  top: 50%;
   position: absolute;
   z-index: 2;
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
   .modalContainer {
     width: 292px;
-    left: 15%;
+    left: 35%;
   }
 }
 
@@ -38,6 +39,7 @@
   font-size: 14px;
   line-height: 20px;
   color: #ffffff;
+  margin: 15px 0;
 }
 
 .tagline {

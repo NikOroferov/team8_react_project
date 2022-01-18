@@ -1,32 +1,78 @@
-.forma {
-  margin-right: 205px;
+
+.form{
+	display: flex;
+  align-items: center;
+  justify-content: space-around;
+	margin: 0 auto;
+	width: 370px;
+	text-align: center;
 }
 
-.text {
+.label{
+	font-family: Roboto, sans-serif;
   font-size: 12px;
-  line-height: 1.17;
-  font-weight: 700;
-
-  margin-right: 21px;
-
-  color: var(--fontColorSecondary);
-}
-
-.summ {
-  font-size: 12px;
-
-  width: 125px;
-  height: 37px;
-  line-height: 1.17;
-  font-weight: 700;
-
+  font-weight: 500;
   text-align: center;
+  line-height: 1.17;
+  color: #52555fb2;
+}
 
+.span{
+	position: relative;
+}
+
+.span::after{
+  content: "UAH";
+	position: absolute;
+  top: 12px;
+  right: 17px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.input{
+	color: #000000;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1.17;
+  text-align: center;
+  text-transform: uppercase;
+
+  padding: 12px 35px 12px 10px;
+  width: 125px;
   border-radius: 16px;
-  border: solid 2px;
-  border-color: var(--mainBackgroundColor);
-  background-color: var(--backgroundGray);
-  color: var(--mainFontColor);
-  outline: none;
-  margin-right: 15px;
+  border: 2px solid rgba(255, 255, 255, 1);
+  background-color: #f2f5fc;
+  filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+}
+
+.btn{
+  display: inline-block;
+  color: #52555fb2;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 12px 6px 12px 6px;
+  margin-left: 0px;
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 1);
+  background-color: #f2f5fc;
+  width: 125px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+}
+
+
+.btn:hover{
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+	cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

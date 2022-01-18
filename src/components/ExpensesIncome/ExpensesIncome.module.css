@@ -41,13 +41,69 @@
 .boxBalance {
   display: flex;
   align-items: center;
+  justify-content: right;
 
   margin-left: auto;
   margin-right: auto;
-  justify-content: right;
 
-  margin-right: 115px;
+  /* margin-right: 115px; */
   padding-top: 40px;
+}
+
+.reportBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 154px;
+}
+
+/* .balance {
+  font-size: 12px;
+} */
+
+.text {
+  font-size: 12px;
+  margin-right: 21px;
+  font-weight: 500;
+  color: var(--fontColorSecondary);
+}
+
+.reportsLink {
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 400;
+
+  color: var(--fontColorSecondary);
+}
+
+.reportsLink:hover {
+  color: var(--backgroundActive);
+}
+
+.icon {
+  min-width: 14px;
+  height: 14px;
+  margin-left: 20px;
+}
+
+.Summ {
+  font-size: 12px;
+
+  width: 125px;
+  height: 37px;
+  line-height: 1.17;
+  font-weight: 700;
+
+  text-align: center;
+
+  border-radius: 16px;
+  border: solid 2px;
+  border-color: var(--mainBackgroundColor);
+  background-color: var(--backgroundGray);
+  color: var(--mainFontColor);
+  outline: none;
+  margin-right: 15px;
 }
 
 .analysis {

@@ -3,11 +3,12 @@ import { NavLink } from 'react-router-dom';
 
 import Balance from '../Balance/Balance';
 
-import { MdBarChart } from 'react-icons/md';
+/* import { MdBarChart } from 'react-icons/md';
+
 import { FcCalendar } from 'react-icons/fc';
 import { BiCalculator } from 'react-icons/bi';
 
-import Button from '../Button/Button';
+import Button from '../Button/Button'; */
 // import ButtonGrey from '../Button/ButtonGrey';
 
 import LinkToReports from '../LinkToReports/LinkToReports';
@@ -22,13 +23,14 @@ import s from './ExpensesIncome.module.css';
 
 export default function ExpensesIncome() {
 
+
   const [typeInfo, setTypeInfo] = useState('расход');
   const [activeCostsBtn, setActiveCostsBtn] = useState(true);
   const [activeIncomeBtn, setActiveIncomeBtn] = useState(false);
 
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
-  const [sum, setSum] = useState([]);
+  const [sum, setSum] = useState([]); */
   // const [balance, setBalance] = useState(55000.0);
 
 //   const handleChange = e => {
@@ -100,23 +102,13 @@ export default function ExpensesIncome() {
           </div>
         </div>
 
-        <div className={s.btnForMobil}>
-          <button>РАСХОД</button>
-          <button>ДОХОД</button>
+
+      <div className={s.btnForMobil}>
+        <button>РАСХОД</button>
+        <button>ДОХОД</button>
         </div>
+        </div>
+    </section>
 
-        <svg width="56" height="56" className="">
-          <use xlinkHref={`${Icons}#icon-calculator`} className=""></use>
-        </svg>
-
-        <svg width="56" height="56" className="">
-          <use xlinkHref={`${Icons}#icon-icon-ellipse2`} className=""></use>
-        </svg>
-
-        <svg width="56" height="56" className="">
-          <use xlinkHref={`${Icons}#icon-vector11`} className=""></use>
-        </svg>
-      </section>
-    </>
   );
 }

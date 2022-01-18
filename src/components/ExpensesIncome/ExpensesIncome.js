@@ -42,7 +42,7 @@ export default function ExpensesIncome() {
     <>
       <section className={s.section}>
         <div className={s.boxBalance}>
-          {/* <Balance /> */}
+          <Balance />
           <LinkToReports />
         </div>
 

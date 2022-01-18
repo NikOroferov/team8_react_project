@@ -10,6 +10,30 @@ const Styles = styled.div`
     border-radius: 16px 16px 0 0;
     border-collapse: collapse;
 
+    .buttonDel {
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      display: inline-block;
+      border: none;
+      background-color: #ffffff;
+      border-radius: 16px;
+      cursor: pointer;
+
+      :hover {
+        background-color: #f5f6fb;
+        .iconButtonDel {
+          border: solid 4px #f5f6fb;
+          border-radius: 16px;
+        }
+      }
+      .iconButtonDel {
+        height: 2em;
+        width: 2em;
+        border: solid 4px #ffffff;
+      }
+    }
+
     .tr {
       height: 38px;
       align-items: center;
@@ -55,12 +79,6 @@ const Styles = styled.div`
       :first-child {
         padding-left: 20px;
       }
-      :last-child {
-        :hover {
-          color: #ff751d;
-          cursor: pointer;
-        }
-      }
       :nth-child(1) {
         width: 84px;
       }
@@ -83,20 +101,6 @@ const Styles = styled.div`
     .tablHead {
       background-color: var(--secondaryBackgroundColor);
       border-radius: 16px 16px 0 0;
-    }
-
-    .boxLine {
-      /* padding-left: 20px; */
-    }
-
-    .td svg {
-      width: 32px;
-      height: 32px;
-      height: 2em;
-      width: 2em;
-      border: solid 4px #f5f6fb;
-      background-color: #f5f6fb;
-      border-radius: 16px;
     }
   }
 `;

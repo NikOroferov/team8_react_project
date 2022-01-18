@@ -17,6 +17,10 @@
   padding-right: 6px;
 }
 
+.category:focus {
+  outline: var(--backgroundActive);
+  border: solid 2px var(--backgroundActive);
+}
 .description {
   width: 289px;
   height: 40px;
@@ -25,11 +29,6 @@
   border-radius: 16px 0 0 0;
   padding-left: 20px;
   padding-right: 20px;
-}
-
-.category:focus {
-  outline: var(--backgroundActive);
-  border: solid 2px var(--backgroundActive);
 }
 
 .boxCalculator {
@@ -43,7 +42,8 @@
   border-radius: 0 16px 16px 0;
   margin-right: 27px;
   padding-left: 20px;
-  padding-right: 20px;
+  padding-right: 40px;
+  text-align: right;
 }
 
 .calculator:focus {
@@ -62,4 +62,19 @@
 
 .btn {
   margin-right: 15px;
+}
+
+.formCashflow
+  .MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  color: red;
+  background-color: royalblue;
+}
+
+.formCashflow
+  .MuiList-root.MuiList-padding.MuiMenu-list.ss-6hp17o-MuiList-root-MuiMenu-list {
+  background-color: royalblue;
+}
+
+.formCashflow .MuiSelect-select {
+  color: aqua;
 }

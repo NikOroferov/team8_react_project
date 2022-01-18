@@ -2,11 +2,11 @@
 // import { MdBarChart } from 'react-icons/md';
 
 import Balance from '../Balance/Balance';
-import { MdBarChart } from 'react-icons/md';
+/* import { MdBarChart } from 'react-icons/md';
 import { FcCalendar } from 'react-icons/fc';
 import { BiCalculator } from 'react-icons/bi';
 
-import Button from '../Button/Button';
+import Button from '../Button/Button'; */
 // import ButtonGrey from '../Button/ButtonGrey';
 import LinkToReports from '../LinkToReports/LinkToReports';
 import DateCalendar from '../DateCalendar/DateCalendar';
@@ -18,9 +18,9 @@ import TableMonth from '../TableMonth/TableMonth';
 import s from './ExpensesIncome.module.css';
 
 export default function ExpensesIncome() {
-  const [category, setСategory] = useState('');
+  /* const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
-  const [sum, setSum] = useState([]);
+  const [sum, setSum] = useState([]); */
   // const [balance, setBalance] = useState(55000.0);
 
 //   const handleChange = e => {
@@ -86,7 +86,8 @@ export default function ExpensesIncome() {
       <div className={s.btnForMobil}>
         <button>РАСХОД</button>
         <button>ДОХОД</button>
-      </div>
+        </div>
+        </div>
     </section>
   );
 }

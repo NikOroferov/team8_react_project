@@ -193,8 +193,8 @@ export default function TableCashflo({ typeInfo }) {
       return {
         col1: date,
         col2: subcategory,
-        col3: `${category} грн.`,
-        col4: costs,
+        col3: category,
+        col4: `${costs} грн.`,
         col5: <ButtoDelet click={onClickDelete} idItams={id} />,
         transactionType: transactionType,
       };

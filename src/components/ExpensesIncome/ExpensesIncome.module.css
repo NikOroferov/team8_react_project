@@ -11,7 +11,7 @@
   margin-right: auto;
 }
 
-.hero {
+/* .hero {
   object-fit: contain;
   width: 100%;
   height: 232px;
@@ -36,7 +36,7 @@
     width: 100%;
     height: 232px;
   }
-}
+} */
 
 .boxBalance {
   display: flex;
@@ -82,7 +82,6 @@
 .monthCashflow {
   width: 230px;
   height: 278px;
-  /* background-color: turquoise; */
   border-radius: 16px 16px 16px 0;
 }
 
@@ -93,6 +92,22 @@
 .boxBtn {
   margin-left: 110px;
   margin-top: 9px;
+}
+
+.navBtnActive {
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 700;
+
+  width: 138px;
+  height: 40px;
+  /* color: black; */
+  color: var(--backgroundActive);
+
+  background-color: #ffffff;
+  border: none;
+  border-radius: 16px 16px 0 0;
+  cursor: pointer;
 }
 
 .navBtn {
@@ -110,7 +125,8 @@
 }
 
 .navBtn:hover {
-  color: var(--backgroundActive);
+  color: #ffffff;
+  background-color: var(--backgroundActive);
 }
 
 .cashflowInput .datePicker {

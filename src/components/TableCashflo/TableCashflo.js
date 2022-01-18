@@ -8,7 +8,12 @@ import Icons from '../../img/svg/sprite.svg';
 
 const ButtoDelet = data => {
   return (
-    <button className="buttonDel" type="button" onClick={data.click}>
+    <button
+      className="buttonDel"
+      type="button"
+      onClick={data.click}
+      id={data.idItams}
+    >
       <svg width="18" height="18" className="iconButtonDel">
         <use xlinkHref={`${Icons}#icon-delete-1`} className=""></use>
       </svg>
@@ -86,7 +91,7 @@ function Table({ columns, data }) {
   );
 }
 
-export default function TableCashflo() {
+export default function TableCashflo({ typeInfo }) {
   const [dataCash, setDatadCash] = useState([
     {
       id: '1',
@@ -121,6 +126,14 @@ export default function TableCashflo() {
       subcategory: 'Описание товара',
     },
     {
+      id: '11',
+      date: '05.01.2022',
+      category: 'зп',
+      transactionType: 'доход',
+      costs: '6000.00',
+      subcategory: 'Аренда',
+    },
+    {
       id: '5',
       date: '16.01.2022',
       category: 'Продукты',
@@ -144,27 +157,56 @@ export default function TableCashflo() {
       costs: '10000.00',
       subcategory: 'Описание товара',
     },
+    {
+      id: '8',
+      date: '17.01.2022',
+      category: 'зп',
+      transactionType: 'доход',
+      costs: '15000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '9',
+      date: '17.01.2022',
+      category: 'доп.доход',
+      transactionType: 'доход',
+      costs: '1000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '10',
+      date: '18.01.2022',
+      category: 'зп',
+      transactionType: 'доход',
+      costs: '15000.00',
+      subcategory: 'Описание товара',
+    },
   ]);
 
-  const onClickDelete = () => {
+  const onClickDelete = e => {
     console.log(`УДИЛИТЬ`);
+    console.log(e.currentTarget.id);
   };
 
   const dataCashFoTabl = dataCash.map(
     ({ id, date, subcategory, category, transactionType, costs }) => {
-      // console.log(date);
       return {
-        id: { id },
+        //   id: id,
         col1: date,
         col2: subcategory,
         col3: category,
         col4: costs,
-        col5: <ButtoDelet click={onClickDelete} />,
+        col5: <ButtoDelet click={onClickDelete} idItams={id} />,
+        transactionType: transactionType,
       };
     },
   );
 
-  const data = useMemo(() => [...dataCashFoTabl], [dataCashFoTabl]);
+  const dataCashFoTablFiter = dataCashFoTabl.filter(function (e) {
+    return e.transactionType === typeInfo;
+  });
+
+  const data = useMemo(() => [...dataCashFoTablFiter], [dataCashFoTablFiter]);
 
   const columns = useMemo(
     () => [

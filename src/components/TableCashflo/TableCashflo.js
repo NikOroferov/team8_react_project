@@ -1,4 +1,4 @@
-import { useMemo, useCallback } from 'react';
+import { useMemo, useCallback, useState } from 'react';
 import { useTable, useBlockLayout } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
@@ -87,108 +87,84 @@ function Table({ columns, data }) {
 }
 
 export default function TableCashflo() {
+  const [dataCash, setDatadCash] = useState([
+    {
+      id: '1',
+      date: '12.01.2022',
+      category: 'Продукты',
+      transactionType: 'расход',
+      costs: '10000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '2',
+      date: '13.01.2022',
+      category: 'Алкоголь',
+      transactionType: 'расход',
+      costs: '5000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '3',
+      date: '14.01.2022',
+      category: 'Продукты',
+      transactionType: 'расход',
+      costs: '10000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '4',
+      date: '15.01.2022',
+      category: 'Продукты',
+      transactionType: 'расход',
+      costs: '10000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '5',
+      date: '16.01.2022',
+      category: 'Продукты',
+      transactionType: 'расход',
+      costs: '10000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '6',
+      date: '17.01.2022',
+      category: 'Продукты',
+      transactionType: 'расход',
+      costs: '10000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '7',
+      date: '18.01.2022',
+      category: 'Продукты',
+      transactionType: 'расход',
+      costs: '10000.00',
+      subcategory: 'Описание товара',
+    },
+  ]);
+
   const onClickDelete = () => {
     console.log(`УДИЛИТЬ`);
   };
 
-  const data = useMemo(
-    () => [
-      {
-        col1: '15.01.2022',
-        //   col2: 'Купил что то очень дорогое и длинное еще длинееееееееее ееееее йййй йййййй ййййй йййй ывывывыв вывывыв ывывыв вы ы ыв  ывыввв',
-        col2: 'Купил что то очень дорогое',
-        col3: 'Прочее',
-        col4: '-10 000.00 грн.',
+  const dataCashFoTabl = dataCash.map(
+    ({ id, date, subcategory, category, transactionType, costs }) => {
+      // console.log(date);
+      return {
+        id: { id },
+        col1: date,
+        col2: subcategory,
+        col3: category,
+        col4: costs,
         col5: <ButtoDelet click={onClickDelete} />,
-      },
-
-      {
-        col1: '15.01.2022',
-        col2: 'Купил опять',
-        col3: 'Прочее',
-        col4: '-20 000',
-        col5: <ButtoDelet />,
-      },
-      {
-        col1: '15.01.2022',
-        col2: 'Потратил',
-        col3: 'Прочее',
-        col4: '-2 000',
-        col5: <ButtoDelet />,
-      },
-      {
-        col1: '15.01.2022',
-        col2: 'Потратил',
-        col3: 'Прочее',
-        col4: '-2 000',
-        col5: <ButtoDelet />,
-      },
-      {
-        col1: '15.01.2022',
-        col2: 'Потратил',
-        col3: 'Прочее',
-        col4: '-2 000',
-        col5: <ButtoDelet />,
-      },
-      {
-        col1: '15.01.2022',
-        col2: 'Потратил',
-        col3: 'Прочее',
-        col4: '-2 000',
-        col5: <ButtoDelet />,
-      },
-      {
-        col1: '15.01.2022',
-        col2: 'Потратил',
-        col3: 'Прочее',
-        col4: '-2 000',
-        col5: <ButtoDelet />,
-      },
-      {
-        col1: '15.01.2022',
-        col2: 'Потратил',
-        col3: 'Прочее',
-        col4: '-2 000',
-        col5: <ButtoDelet />,
-      },
-      {
-        col1: '15.01.2022',
-        col2: 'Потратил',
-        col3: 'Прочее',
-        col4: '-2 000',
-        col5: <ButtoDelet />,
-      },
-      {
-        col1: '15.01.2022',
-        col2: 'Потратил',
-        col3: 'Прочее',
-        col4: '-2 000',
-        col5: <ButtoDelet />,
-      },
-      {
-        col1: '15.01.2022',
-        col2: 'Потратил',
-        col3: 'Прочее',
-        col4: '-2 000',
-        col5: <ButtoDelet />,
-      },
-      {
-        col1: '15.01.2022',
-        col2: 'Потратил',
-        col3: 'Прочее',
-        col4: '-2 000',
-        col5: <ButtoDelet />,
-      },
-      {
-        col1: '15.01.2022',
-        col2: 'Потратил',
-        col3: 'Прочее',
-        col4: '-2 000',
-        col5: <ButtoDelet />,
-      },
-    ],
-    [],
+      };
+    },
   );
+
+  const data = useMemo(() => [...dataCashFoTabl], [dataCashFoTabl]);
 
   const columns = useMemo(
     () => [

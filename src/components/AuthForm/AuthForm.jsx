@@ -42,9 +42,12 @@ export default function AuthForm() {
             зарегистрировавшись:
           </p>
           <form onSubmit={formik.handleSubmit} className={s.form}>
-            <label className={s.label} htmlFor="email">
-              Электронная почта
-            </label>
+            <div className={s.er}>
+              {formik.errors.password && <p className={s.error}>*</p>}
+              <label className={s.label} htmlFor="email">
+                Электронная почта
+              </label>
+            </div>
             <input
               className={s.input}
               id="email"
@@ -57,9 +60,12 @@ export default function AuthForm() {
             {formik.errors.email ? (
               <p className={s.error}>{formik.errors.email}</p>
             ) : null}
-            <label className={s.label} htmlFor="password">
-              Пароль
-            </label>
+            <div className={s.er}>
+              {formik.errors.password && <p className={s.error}>*</p>}
+              <label className={s.label} htmlFor="password">
+                Пароль
+              </label>
+            </div>
             <input
               className={s.input}
               id="password"

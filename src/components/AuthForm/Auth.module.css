@@ -43,6 +43,7 @@
   border: none;
   margin-top: 12px;
   padding-left: 20px;
+  margin-bottom: 4px;
 }
 
 .label {
@@ -97,6 +98,10 @@
   font-size: 10px;
   line-height: 1.2;
   color: #eb5757;
+}
+.er {
+  display: flex;
+  margin-top: 10px;
 }
 
 @media only screen and (min-width: 768px) {

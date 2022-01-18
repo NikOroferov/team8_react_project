@@ -1,38 +1,70 @@
+
 .form{
 	display: flex;
+  align-items: center;
+  justify-content: space-around;
 	margin: 0 auto;
 	width: 370px;
-	background-color: rgba(242, 245, 252, 1);
 	text-align: center;
 }
 
 .label{
+	font-family: Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.17;
+  color: #52555fb2;
+}
+
+.span{
+	position: relative;
+}
+
+.span::after{
+  content: "UAH";
+	position: absolute;
+  top: 12px;
+  right: 17px;
+  font-weight: bold;
+  font-size: 12px;
 }
 
 .input{
-	color: black;
-	text-align: center;
-	margin-left: 24px;
+	color: #000000;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1.17;
+  text-align: center;
+  text-transform: uppercase;
 
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 12px 35px 12px 10px;
+  width: 125px;
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 1);
+  background-color: #f2f5fc;
+  filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
 }
 
 .btn{
-	margin-left: 15px;
-	color: rgba(82, 85, 95, 0,7);
-
-	text-transform: uppercase;
+  display: inline-block;
+  color: #52555fb2;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 12px 6px 12px 6px;
+  margin-left: 0px;
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 1);
+  background-color: #f2f5fc;
+  width: 125px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
 }
 
-.input, .btn{
-	width: 125px;
-	height: 44px;
-
-	border: 2px solid #FFFFFF;
-	box-sizing: border-box;
-	border-radius: 16px;
-	background-color: transparent;
-}
 
 .btn:hover{
 	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));

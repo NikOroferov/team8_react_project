@@ -11,10 +11,7 @@ export default function CashFlowPage() {
       <button>
         <Link to="/reports">Go to ReportsPage</Link>
       </button>
-      {/* <Container> */}
       <ExpensesIncome />
-      {/* <Balance /> */}
-      {/* </Container> */}
     </>
   );
 }

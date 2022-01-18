@@ -1,0 +1,25 @@
+.linkReport {
+  text-decoration: none;
+}
+
+.reportsLink {
+  color: var(--fontColorSecondary);
+  display: flex;
+  align-items: center;
+}
+
+.reportsLink:hover {
+  color: var(--backgroundActive);
+}
+
+.text {
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 400;
+}
+
+.icon {
+  min-width: 24px;
+  height: 24px;
+  margin-left: 20px;
+}

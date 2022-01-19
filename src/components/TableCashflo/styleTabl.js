@@ -77,7 +77,7 @@ const Styles = styled.div`
       :first-child {
         padding-left: 20px;
         @media screen and (min-width: 768px) {
-          width: 84px;
+          width: 104px;
         }
         @media screen and (min-width: 1280px) {
           width: 90px;

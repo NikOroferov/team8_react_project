@@ -85,9 +85,8 @@ export default function ExpensesIncome() {
           <CashflowDataEntry typeInfo={typeInfo} /> */}
         </div>
 
-        <p>
-          <div className={s.boxTabl}>
-            {/* <Media
+        <div className={s.boxTabl}>
+          {/* <Media
               queries={{
                 small: '(min-width: 320px) and (max-width: 767px)',
                 medium: '(min-width: 768px) and (max-width: 1279px)',
@@ -103,13 +102,12 @@ export default function ExpensesIncome() {
               )}
             </Media> */}
 
-            <TableCashfloTabl typeInfo={typeInfo} />
-            <div className={s.monthCashflow}>
-              <p className={s.summaryTitle}>СВОДКА</p>
-              <TableMonth />
-            </div>
+          <TableCashfloTabl typeInfo={typeInfo} />
+          <div className={s.monthCashflow}>
+            <p className={s.summaryTitle}>СВОДКА</p>
+            <TableMonth />
           </div>
-        </p>
+        </div>
 
         {/* <div className={s.boxTabl}>
           <TableCashflo typeInfo={typeInfo} />

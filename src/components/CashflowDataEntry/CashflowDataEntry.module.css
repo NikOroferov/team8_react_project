@@ -1,34 +1,65 @@
 .formCashflow {
-  /* margin-left: 23px; */
-  display: flex;
-  margin-top: 33px;
-  margin-bottom: 59px;
+}
+
+@media screen and (min-width: 768px) {
+  .formCashflow {
+    /* display: block; */
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 28px;
+    margin-bottom: 33px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .formCashflow {
+    display: flex;
+    margin-top: 33px;
+    margin-bottom: 59px;
+  }
+}
+
+.description {
+  height: 40px;
+  width: 282px;
+  border: solid 2px #f5f6fb;
+  border-radius: 16px 0 0 0;
+}
+@media screen and (min-width: 768px) {
+  .description {
+    width: 175px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .description {
+    width: 289px;
+  }
 }
 
 .formCashflow .category {
   font-size: 12px;
   color: #52555f;
-
   font-weight: 500;
+
   width: 188px;
   height: 40px;
+
   border: solid 2px #f5f6fb;
   padding-left: 6px;
   padding-right: 6px;
 }
 
-.category:focus {
-  outline: var(--backgroundActive);
-  border: solid 2px var(--backgroundActive);
+@media screen and (min-width: 768px) {
+  .formCashflow .category {
+    width: 171px;
+  }
 }
-.description {
-  width: 289px;
-  height: 40px;
-
-  border: solid 2px #f5f6fb;
-  border-radius: 16px 0 0 0;
-  padding-left: 20px;
-  padding-right: 20px;
+@media screen and (min-width: 1280px) {
+  .formCashflow .category {
+    width: 188px;
+  }
 }
 
 .boxCalculator {
@@ -36,7 +67,7 @@
 }
 
 .calculator {
-  width: 124px;
+  width: 185px;
   height: 40px;
   border: solid 2px #f5f6fb;
   border-radius: 0 16px 16px 0;
@@ -46,9 +77,15 @@
   text-align: right;
 }
 
-.calculator:focus {
-  outline: var(--backgroundActive);
-  border: solid 2px var(--backgroundActive);
+@media screen and (min-width: 768px) {
+  .calculator {
+    width: 104px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .calculator {
+    width: 124px;
+  }
 }
 
 .calcIcon {
@@ -64,7 +101,7 @@
   margin-right: 15px;
 }
 
-.formCashflow
+/* .formCashflow
   .MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
   color: red;
   background-color: royalblue;
@@ -77,4 +114,4 @@
 
 .formCashflow .MuiSelect-select {
   color: aqua;
-}
+} */

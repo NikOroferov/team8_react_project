@@ -2,13 +2,32 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   .table {
-    display: inline-block;
+    /* display: none; */
     border-spacing: 0;
-    width: 760px;
+    /* width: 760px; */
     margin-right: 30px;
     border: solid 2px #f5f6fb;
     border-radius: 16px 16px 0 0;
     border-collapse: collapse;
+
+    @media screen and (min-width: 768px) {
+      width: 605px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      display: inline-block;
+      border-spacing: 0;
+      width: 760px;
+      margin-right: 30px;
+      border: solid 2px #f5f6fb;
+      border-radius: 16px 16px 0 0;
+      border-collapse: collapse;
+    }
+
+    .tablHead {
+      background-color: var(--secondaryBackgroundColor);
+      border-radius: 16px 16px 0 0;
+    }
 
     .buttonDel {
       width: 32px;
@@ -39,6 +58,7 @@ const Styles = styled.div`
       align-items: center;
       border-bottom-style: solid;
       border-bottom-color: #f5f6fb;
+
       :last-child {
         .td {
           border-bottom: 0;
@@ -56,12 +76,39 @@ const Styles = styled.div`
 
       :first-child {
         padding-left: 20px;
+        @media screen and (min-width: 768px) {
+          width: 84px;
+        }
+        @media screen and (min-width: 1280px) {
+          width: 90px;
+        }
       }
+      :nth-child(2) {
+        @media screen and (min-width: 768px) {
+          width: 188px;
+        }
+        @media screen and (min-width: 1280px) {
+          width: 300px;
+        }
+      }
+
       :nth-child(3) {
         text-align: center;
+        @media screen and (min-width: 768px) {
+          width: 144px;
+        }
+        @media screen and (min-width: 1280px) {
+          width: 160px;
+        }
       }
       :nth-child(4) {
         text-align: right;
+        @media screen and (min-width: 768px) {
+          width: 124px;
+        }
+        @media screen and (min-width: 1280px) {
+          width: 130px;
+        }
       }
     }
 
@@ -80,27 +127,66 @@ const Styles = styled.div`
         padding-left: 20px;
       }
       :nth-child(1) {
-        width: 84px;
+        /* width: 90px; */
+        @media screen and (min-width: 768px) {
+          width: 84px;
+        }
+        @media screen and (min-width: 1280px) {
+          width: 90px;
+        }
       }
 
       :nth-child(2) {
-        width: 208px;
+        /* width: 208px; */
+        @media screen and (min-width: 768px) {
+          width: 188px;
+        }
+        @media screen and (min-width: 1280px) {
+          width: 300px;
+        }
       }
 
       :nth-child(3) {
         text-align: center;
+        @media screen and (min-width: 768px) {
+          width: 144px;
+        }
+        @media screen and (min-width: 1280px) {
+          width: 160px;
+        }
       }
 
       :nth-child(4) {
         color: #e7192e;
         font-weight: 700;
         text-align: right;
+        @media screen and (min-width: 768px) {
+          width: 124px;
+        }
+        @media screen and (min-width: 1280px) {
+          width: 130px;
+        }
+      }
+
+      :nth-child(5) {
+        @media screen and (min-width: 768px) {
+          width: 70px;
+        }
+        @media screen and (min-width: 1280px) {
+          width: 70px;
+        }
       }
     }
 
-    .tablHead {
-      background-color: var(--secondaryBackgroundColor);
-      border-radius: 16px 16px 0 0;
+    .tr {
+      .td {
+        :first-child {
+          @media screen and (min-width: 768px) {
+          }
+          @media screen and (min-width: 1280px) {
+          }
+        }
+      }
     }
   }
 `;

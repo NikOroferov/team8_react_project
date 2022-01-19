@@ -1,4 +1,4 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import s from './HomePage.module.css';
 import Container from '../../components/Container/Container';
@@ -7,6 +7,12 @@ import imgText from '../../img/homepage/KapustaText.svg';
 export default function HomePage() {
   return (
     <>
+      <button>
+        <Link to="/cashflow">Go to Cashflo</Link>
+      </button>
+      <button>
+        <Link to="/reports">Go to ReportsPage</Link>
+      </button>
       <section className={s.section}>
         <Container>
           <div className={s.mainWrapper}>

@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
+import Media from 'react-media';
+
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -136,6 +138,22 @@ export default function CashflowDataEntry({ typeInfo }) {
         <Button name="ВВОД" type="submit" click={enterData} />
       </div>
       <Button name="ОЧИСТИТЬ" type="submit" click={clearForm} />
+
+      <Media
+        queries={{
+          small: '(min-width: 320px) and (max-width: 767px)',
+          medium: '(min-width: 768px) and (max-width: 1279px)',
+          large: '(min-width: 1280px)',
+        }}
+      >
+        {matches => (
+          <Fragment>
+            {matches.small && <></>}
+            {matches.medium && <></>}
+            {matches.large && <></>}
+          </Fragment>
+        )}
+      </Media>
     </form>
   );
 }

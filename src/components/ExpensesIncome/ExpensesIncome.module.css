@@ -1,16 +1,4 @@
-/* .body {
-  background-color: #e5e5e5;
-} */
-
-/* .section {
-  background-color: var(--backgroundGray);
-  border-radius: 0 0 0 100px;
-  max-width: 1280px;
-  height: 583px;
-  margin-left: auto;
-  margin-right: auto;
-} */
-
+/* Блок Баланс */
 .boxBalance {
   display: flex;
   align-items: center;
@@ -19,106 +7,24 @@
   margin-left: auto;
   margin-right: auto;
 
-  /* margin-right: 115px; */
   padding-top: 40px;
 }
 
-.reportBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 154px;
+@media screen and (min-width: 768px) {
+  .boxBalance {
+  }
 }
 
-/* .balance {
-  font-size: 12px;
-} */
-
-.text {
-  font-size: 12px;
-  margin-right: 21px;
-  font-weight: 500;
-  color: var(--fontColorSecondary);
+@media screen and (min-width: 1280px) {
+  .boxBalance {
+  }
 }
 
-.reportsLink {
-  text-decoration: none;
-  font-size: 12px;
-  line-height: 1.17;
-  font-weight: 400;
-
-  color: var(--fontColorSecondary);
+.balBtnform {
+  padding-right: 205px;
 }
 
-.reportsLink:hover {
-  color: var(--backgroundActive);
-}
-
-.icon {
-  min-width: 14px;
-  height: 14px;
-  margin-left: 20px;
-}
-
-.Summ {
-  font-size: 12px;
-
-  width: 125px;
-  height: 37px;
-  line-height: 1.17;
-  font-weight: 700;
-
-  text-align: center;
-
-  border-radius: 16px;
-  border: solid 2px;
-  border-color: var(--mainBackgroundColor);
-  background-color: var(--backgroundGray);
-  color: var(--mainFontColor);
-  outline: none;
-  margin-right: 15px;
-}
-
-.analysis {
-  width: 1060px;
-  height: 579px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: var(--mainBackgroundColor);
-  border-radius: 0px 30px 30px 30px;
-  padding-bottom: 61px;
-  box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
-}
-
-.cashflowInput {
-  margin-left: 20px;
-  margin-right: 20px;
-  display: flex;
-  align-items: center;
-  align-items: center;
-}
-
-.description:focus {
-  outline: var(--backgroundActive);
-  border: solid 2px var(--backgroundActive);
-}
-
-.boxTabl {
-  display: flex;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.monthCashflow {
-  width: 230px;
-  height: 278px;
-  border-radius: 16px 16px 16px 0;
-}
-
-.btnForMobil {
-  display: none;
-}
-
+/* Кнопки меню Расход Доход */
 .boxBtn {
   margin-left: 110px;
   margin-top: 9px;
@@ -159,12 +65,96 @@
   background-color: var(--backgroundActive);
 }
 
-.cashflowInput .datePicker {
+/* Общий контейнер*/
+.analysis {
+  min-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--mainBackgroundColor);
+  border-radius: 0px 30px 30px 30px;
+  box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+}
+
+@media screen and (min-width: 768px) {
+  .analysis {
+    width: 665px;
+    height: 626px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .analysis {
+    width: 1060px;
+    height: 579px;
+    padding-bottom: 61px;
+  }
+}
+
+/* Контейнер для ввода данных*/
+
+.cashflowInput {
+  /* margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  align-items: center; */
+}
+@media screen and (min-width: 768px) {
+  .cashflowInput {
+    margin-left: 30px;
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    align-items: center;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .cashflowInput {
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    align-items: center;
+  }
+}
+
+/* Контанер с таблицами */
+.boxTabl {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .boxTabl {
+    width: 665px;
+    display: inline-block;
+    margin-left: 51px;
+    margin-right: 52px;
+    /* justify-content: center; */
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .boxTabl {
+    width: 1060px;
+
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+/* Контейнер таблици по месяцам */
+.monthCashflow {
+  width: 230px;
+  height: 278px;
+  border-radius: 16px 16px 16px 0;
+}
+
+/* .cashflowInput .datePicker {
   width: 74px;
   height: 40px;
   border: none;
   outline: none;
-}
+} */
 
 .summaryTitle {
   display: flex;
@@ -185,5 +175,8 @@
   text-transform: uppercase;
 }
 
-.btn {
+/* Копки для мобилки */
+
+.btnForMobil {
+  display: none;
 }

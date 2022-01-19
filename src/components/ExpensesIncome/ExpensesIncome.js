@@ -1,5 +1,7 @@
-import { useState } from 'react';
-// import { NavLink } from 'react-router-dom';
+import React, { useState, Fragment } from 'react';
+import Media from 'react-media';
+
+// import { useState } from 'react';
 
 import Balance from '../Balance/Balance';
 
@@ -10,6 +12,7 @@ import DateCalendar from '../DateCalendar/DateCalendar';
 import CashflowDataEntry from '../CashflowDataEntry/CashflowDataEntry';
 
 import TableCashflo from '../TableCashflo/TableCashflo';
+import TableCashfloTabl from '../TableCashflo/TableCashflo';
 import TableMonth from '../TableMonth/TableMonth';
 // import Icons from '../../img/svg/sprite.svg';
 
@@ -19,25 +22,6 @@ export default function ExpensesIncome() {
   const [typeInfo, setTypeInfo] = useState('расход');
   const [activeCostsBtn, setActiveCostsBtn] = useState(true);
   const [activeIncomeBtn, setActiveIncomeBtn] = useState(false);
-
-  //   const [category, setСategory] = useState('');
-  //   const [description, setDescription] = useState('');
-  //   const [sum, setSum] = useState([]);
-
-  // const [balance, setBalance] = useState(55000.0);
-
-  //   const handleChange = e => {
-  //     setСategory(e.target.value);
-  //   };
-
-  //   const clearForm = e => {
-  //     e.preventDefault();
-  //     console.log(e.target);
-  //     setСategory('');
-  //     setDescription('');
-  //     setSum();
-  //   };
-  //   const [balance, setBalance] = useState(55000.0);
 
   const classes = ['navBtn'];
   const classesStr = classes.join(' ');
@@ -62,9 +46,10 @@ export default function ExpensesIncome() {
 
   return (
     <Background>
-      {/* <section className={s.section}> */}
       <div className={s.boxBalance}>
-        <Balance />
+        <div className={s.balBtnform}>
+          <Balance />
+        </div>
         <LinkToReports />
       </div>
 
@@ -79,24 +64,67 @@ export default function ExpensesIncome() {
 
       <div className={s.analysis}>
         <div className={s.cashflowInput}>
-          <DateCalendar />
-          <CashflowDataEntry typeInfo={typeInfo} />
+          <Media
+            queries={{
+              small: '(min-width: 320px)',
+              medium: '(min-width: 768px)',
+            }}
+          >
+            {matches => (
+              <Fragment>
+                {matches.small && <DateCalendar />}
+                {matches.medium && (
+                  <>
+                    <CashflowDataEntry typeInfo={typeInfo} />
+                  </>
+                )}
+              </Fragment>
+            )}
+          </Media>
+          {/* <DateCalendar />
+          <CashflowDataEntry typeInfo={typeInfo} /> */}
         </div>
 
-        <div className={s.boxTabl}>
+        <p>
+          <div className={s.boxTabl}>
+            {/* <Media
+              queries={{
+                small: '(min-width: 320px) and (max-width: 767px)',
+                medium: '(min-width: 768px) and (max-width: 1279px)',
+                large: '(min-width: 1280px)',
+              }}
+            >
+              {matches => (
+                <Fragment>
+                  {matches.small && <></>}
+                  {matches.medium && <TableCashfloTabl typeInfo={typeInfo} />}
+                  {matches.large && <TableCashflo typeInfo={typeInfo} />}
+                </Fragment>
+              )}
+            </Media> */}
+
+            <TableCashfloTabl typeInfo={typeInfo} />
+            <div className={s.monthCashflow}>
+              <p className={s.summaryTitle}>СВОДКА</p>
+              <TableMonth />
+            </div>
+          </div>
+        </p>
+
+        {/* <div className={s.boxTabl}>
           <TableCashflo typeInfo={typeInfo} />
+          <TableCashfloTabl typeInfo={typeInfo} />
           <div className={s.monthCashflow}>
             <p className={s.summaryTitle}>СВОДКА</p>
             <TableMonth />
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className={s.btnForMobil}>
         <button>РАСХОД</button>
         <button>ДОХОД</button>
       </div>
-      {/* </section> */}
     </Background>
   );
 }

@@ -1,15 +1,14 @@
-
-.form{
-	display: flex;
+.form {
+  display: flex;
   align-items: center;
   justify-content: space-around;
-	margin: 0 auto;
-	width: 370px;
-	text-align: center;
+  margin: 0 auto;
+  width: 370px;
+  text-align: center;
 }
 
-.label{
-	font-family: Roboto, sans-serif;
+.label {
+  font-family: Roboto, sans-serif;
   font-size: 12px;
   font-weight: 500;
   text-align: center;
@@ -17,21 +16,21 @@
   color: #52555fb2;
 }
 
-.span{
-	position: relative;
+.span {
+  position: relative;
 }
 
-.span::after{
-  content: "UAH";
-	position: absolute;
+.span::after {
+  content: 'UAH';
+  position: absolute;
   top: 12px;
   right: 17px;
   font-weight: bold;
   font-size: 12px;
 }
 
-.input{
-	color: #000000;
+.input {
+  color: #000000;
   font-weight: bold;
   font-size: 12px;
   line-height: 1.17;
@@ -46,7 +45,7 @@
   filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
 }
 
-.btn{
+.btn {
   display: inline-block;
   color: #52555fb2;
   font-weight: 400;
@@ -65,14 +64,13 @@
   filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
 }
 
-
-.btn:hover{
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-	cursor: pointer;
+.btn:hover {
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  cursor: pointer;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }

@@ -11,33 +11,6 @@
   margin-right: auto;
 }
 
-/* .hero {
-  object-fit: contain;
-  width: 100%;
-  height: 232px;
-}
-
-@media screen and (min-width: 320px) {
-  .hero {
-    background-image: none;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .hero {
-    background-image: url(../../img/Kapusta2.png);
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .hero {
-    background-image: url(../../img/Group\ 37.png);
-    object-fit: contain;
-    width: 100%;
-    height: 232px;
-  }
-} */
-
 .boxBalance {
   display: flex;
   align-items: center;
@@ -50,7 +23,7 @@
   padding-top: 40px;
 }
 
-.reportBox{
+.reportBox {
   display: flex;
   justify-content: center;
   align-items: center;

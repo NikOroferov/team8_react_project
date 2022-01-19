@@ -26,9 +26,9 @@ export default function ExpensesIncome() {
   const [activeCostsBtn, setActiveCostsBtn] = useState(true);
   const [activeIncomeBtn, setActiveIncomeBtn] = useState(false);
 
-  const [category, setСategory] = useState('');
-  const [description, setDescription] = useState('');
-  const [sum, setSum] = useState([]);
+  //   const [category, setСategory] = useState('');
+  //   const [description, setDescription] = useState('');
+  //   const [sum, setSum] = useState([]);
 
   // const [balance, setBalance] = useState(55000.0);
 

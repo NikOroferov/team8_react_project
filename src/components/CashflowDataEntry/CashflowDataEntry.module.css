@@ -1,5 +1,4 @@
 .formCashflow {
-  /* margin-left: 23px; */
 }
 
 @media screen and (min-width: 768px) {
@@ -11,11 +10,6 @@
     margin-bottom: 33px;
   }
 }
-@media screen and (min-width: 768px) {
-  .formCashflow :last-child {
-    /* margin-top: 15px; */
-  }
-}
 
 @media screen and (min-width: 1280px) {
   .formCashflow {
@@ -25,11 +19,6 @@
   }
 }
 
-/* .category:focus {
-  outline: var(--backgroundActive);
-  border: solid 2px var(--backgroundActive);
-} */
-
 .description {
   height: 40px;
   width: 282px;
@@ -38,7 +27,6 @@
 }
 @media screen and (min-width: 768px) {
   .description {
-    /* height: 40px; */
     width: 175px;
     padding-left: 20px;
     padding-right: 20px;
@@ -49,11 +37,6 @@
     width: 289px;
   }
 }
-
-/* .description:focus {
-  outline: var(--backgroundActive);
-  border: solid 2px var(--backgroundActive);
-} */
 
 .formCashflow .category {
   font-size: 12px;
@@ -105,11 +88,6 @@
   }
 }
 
-/* .calculator:focus {
-  outline: var(--backgroundActive);
-  border: solid 2px var(--backgroundActive);
-} */
-
 .calcIcon {
   width: 20px;
   height: 20px;
@@ -118,20 +96,6 @@
   left: 60%;
   color: var(--fontСolorTextForms);
 }
-
-/* .btnBox {
-  display: block;
-}
-
-@media screen and (min-width: 768px) {
-  .btnBox {
-  }
-}
-@media screen and (min-width: 1280px) {
-  .btnBox {
-    display: flex;
-  }
-} */
 
 .btn {
   margin-right: 15px;

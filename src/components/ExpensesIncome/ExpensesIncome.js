@@ -87,7 +87,7 @@ export default function ExpensesIncome() {
 
         <p>
           <div className={s.boxTabl}>
-            <Media
+            {/* <Media
               queries={{
                 small: '(min-width: 320px) and (max-width: 767px)',
                 medium: '(min-width: 768px) and (max-width: 1279px)',
@@ -101,9 +101,9 @@ export default function ExpensesIncome() {
                   {matches.large && <TableCashflo typeInfo={typeInfo} />}
                 </Fragment>
               )}
-            </Media>
+            </Media> */}
 
-            {/* <TableCashfloTabl typeInfo={typeInfo} /> */}
+            <TableCashfloTabl typeInfo={typeInfo} />
             <div className={s.monthCashflow}>
               <p className={s.summaryTitle}>СВОДКА</p>
               <TableMonth />

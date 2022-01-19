@@ -139,7 +139,7 @@ export default function CashflowDataEntry({ typeInfo }) {
       </div>
       <Button name="ОЧИСТИТЬ" type="submit" click={clearForm} />
 
-      {/* <Media
+      <Media
         queries={{
           small: '(min-width: 320px) and (max-width: 767px)',
           medium: '(min-width: 768px) and (max-width: 1279px)',
@@ -149,11 +149,11 @@ export default function CashflowDataEntry({ typeInfo }) {
         {matches => (
           <Fragment>
             {matches.small && <></>}
-            {matches.medium && <TableCashfloTabl typeInfo={typeInfo} />}
-            {matches.large && <TableCashflo typeInfo={typeInfo} />}
+            {matches.medium && <></>}
+            {matches.large && <></>}
           </Fragment>
         )}
-      </Media> */}
+      </Media>
     </form>
   );
 }

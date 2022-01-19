@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 // import { useSelector } from 'react-redux';
 
 import { BalanceModal } from '../Modal';
+import ButtonGrey from '../Button/ButtonGrey';
 
 // import { getBalance } from '../../redux/balance/balance-selectors';
 
@@ -41,9 +42,15 @@ export default function Balance() {
         />
       </span>
 
-      <button type="button" className={css.btn} onClick={null}>
+      {/* <button type="button" className={css.btn} onClick={null}>
         Подтвердить
-      </button>
+      </button> */}
+      <ButtonGrey
+        name="Подтвердить"
+        type="button"
+        className={css.btn}
+        onClick={null}
+      />
       {initialBalance === '00.00' && <BalanceModal />}
     </form>
   );

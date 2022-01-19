@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import { NavLink } from 'react-router-dom';
 
 import Balance from '../Balance/Balance';
 
@@ -19,25 +18,6 @@ export default function ExpensesIncome() {
   const [typeInfo, setTypeInfo] = useState('расход');
   const [activeCostsBtn, setActiveCostsBtn] = useState(true);
   const [activeIncomeBtn, setActiveIncomeBtn] = useState(false);
-
-  //   const [category, setСategory] = useState('');
-  //   const [description, setDescription] = useState('');
-  //   const [sum, setSum] = useState([]);
-
-  // const [balance, setBalance] = useState(55000.0);
-
-  //   const handleChange = e => {
-  //     setСategory(e.target.value);
-  //   };
-
-  //   const clearForm = e => {
-  //     e.preventDefault();
-  //     console.log(e.target);
-  //     setСategory('');
-  //     setDescription('');
-  //     setSum();
-  //   };
-  //   const [balance, setBalance] = useState(55000.0);
 
   const classes = ['navBtn'];
   const classesStr = classes.join(' ');
@@ -64,7 +44,9 @@ export default function ExpensesIncome() {
     <Background>
       {/* <section className={s.section}> */}
       <div className={s.boxBalance}>
-        <Balance />
+        <div className={s.balBtnform}>
+          <Balance />
+        </div>
         <LinkToReports />
       </div>
 

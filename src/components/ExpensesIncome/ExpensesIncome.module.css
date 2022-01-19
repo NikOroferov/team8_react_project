@@ -1,16 +1,3 @@
-/* .body {
-  background-color: #e5e5e5;
-} */
-
-/* .section {
-  background-color: var(--backgroundGray);
-  border-radius: 0 0 0 100px;
-  max-width: 1280px;
-  height: 583px;
-  margin-left: auto;
-  margin-right: auto;
-} */
-
 .boxBalance {
   display: flex;
   align-items: center;
@@ -19,8 +6,15 @@
   margin-left: auto;
   margin-right: auto;
 
-  /* margin-right: 115px; */
   padding-top: 40px;
+}
+
+.balBtnform {
+  padding-right: 205px;
+}
+
+.boxBalance .reportsLink {
+  padding-right: 10px;
 }
 
 .reportBox {
@@ -29,10 +23,6 @@
   align-items: center;
   width: 154px;
 }
-
-/* .balance {
-  font-size: 12px;
-} */
 
 .text {
   font-size: 12px;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Styles = styled.div`
   .table {
-    display: inline-block;
+    /* display: none; */
     border-spacing: 0;
     width: 760px;
     margin-right: 30px;
@@ -11,12 +11,22 @@ const Styles = styled.div`
     border-collapse: collapse;
 
     @media screen and (min-width: 768px) {
-      width: 605px;
-      display: inline-block;
-      margin-left: 51px;
-      margin-right: 52px;
+      /* width: 605px; */
+      /* display: inline-block; */
+      /* margin-left: 51px; */
+      /* margin-right: 52px; */
       /* justify-content: center; */
     }
+
+    /* @media screen and (min-width: 1280px) {
+      display: inline-block;
+      border-spacing: 0;
+      width: 760px;
+      margin-right: 30px;
+      border: solid 2px #f5f6fb;
+      border-radius: 16px 16px 0 0;
+      border-collapse: collapse;
+    } */
 
     .buttonDel {
       width: 32px;

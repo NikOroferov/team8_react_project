@@ -15,8 +15,7 @@ const CurrentDateRaport = ({ handleDate }) => {
     const normalizedMonth =
       monthNumber > 9 ? `${selectedYear}${monthNumber}` : `${selectedYear}0${monthNumber}`;
    return handleDate(normalizedMonth);
-  }, [selectedMonth, selectedYear]);
-
+  }, [selectedMonth, selectedYear, handleDate]);
   
   const handleNext = e => {
     e.preventDefault();

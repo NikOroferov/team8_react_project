@@ -1,15 +1,9 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 import Balance from '../Balance/Balance';
 
-/* import { MdBarChart } from 'react-icons/md';
-
-import { FcCalendar } from 'react-icons/fc';
-import { BiCalculator } from 'react-icons/bi';
-
-import Button from '../Button/Button'; */
-// import ButtonGrey from '../Button/ButtonGrey';
+import Background from '../../views/Background/background.jsx';
 
 import LinkToReports from '../LinkToReports/LinkToReports';
 import DateCalendar from '../DateCalendar/DateCalendar';
@@ -17,7 +11,7 @@ import CashflowDataEntry from '../CashflowDataEntry/CashflowDataEntry';
 
 import TableCashflo from '../TableCashflo/TableCashflo';
 import TableMonth from '../TableMonth/TableMonth';
-import Icons from '../../img/svg/sprite.svg';
+// import Icons from '../../img/svg/sprite.svg';
 
 import s from './ExpensesIncome.module.css';
 
@@ -67,42 +61,42 @@ export default function ExpensesIncome() {
   };
 
   return (
-    <>
-      <section className={s.section}>
-        <div className={s.boxBalance}>
-          <Balance />
-          <LinkToReports />
+    <Background>
+      {/* <section className={s.section}> */}
+      <div className={s.boxBalance}>
+        <Balance />
+        <LinkToReports />
+      </div>
+
+      <div className={s.boxBtn}>
+        <button className={s.navBtn} type="button" onClick={сostsClick}>
+          РАСХОД
+        </button>
+        <button className={s.navBtn} type="button" onClick={incomeClick}>
+          ДОХОД
+        </button>
+      </div>
+
+      <div className={s.analysis}>
+        <div className={s.cashflowInput}>
+          <DateCalendar />
+          <CashflowDataEntry typeInfo={typeInfo} />
         </div>
 
-        <div className={s.boxBtn}>
-          <button className={s.navBtn} type="button" onClick={сostsClick}>
-            РАСХОД
-          </button>
-          <button className={s.navBtn} type="button" onClick={incomeClick}>
-            ДОХОД
-          </button>
-        </div>
-
-        <div className={s.analysis}>
-          <div className={s.cashflowInput}>
-            <DateCalendar />
-            <CashflowDataEntry typeInfo={typeInfo} />
+        <div className={s.boxTabl}>
+          <TableCashflo typeInfo={typeInfo} />
+          <div className={s.monthCashflow}>
+            <p className={s.summaryTitle}>СВОДКА</p>
+            <TableMonth />
           </div>
-
-          <div className={s.boxTabl}>
-            <TableCashflo typeInfo={typeInfo} />
-            <div className={s.monthCashflow}>
-              <p className={s.summaryTitle}>СВОДКА</p>
-              <TableMonth />
-            </div>
-          </div>
         </div>
+      </div>
 
-        <div className={s.btnForMobil}>
-          <button>РАСХОД</button>
-          <button>ДОХОД</button>
-        </div>
-      </section>
-    </>
+      <div className={s.btnForMobil}>
+        <button>РАСХОД</button>
+        <button>ДОХОД</button>
+      </div>
+      {/* </section> */}
+    </Background>
   );
 }

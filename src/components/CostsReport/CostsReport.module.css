@@ -60,6 +60,14 @@
   color: #52555f;
 }
 
+.button {
+  border: 1px solid tomato;
+}
+
+.button:focus {
+  border-color: aqua;
+}
+
 @media (max-width: 771px) {
   .item {
     border-bottom: 1px solid #e0e5eb;

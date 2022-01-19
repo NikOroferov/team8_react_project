@@ -26,7 +26,6 @@
   --time-cubic: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -102,16 +101,15 @@ img {
   display: block;
 }
 
-/* стиль скрола */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 8px;
- background-color: #F5F6FB);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #FF751D;
-  border-radius: 9em;
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  /* отображаем курсор в виде руки при наведении; некоторые
+  считают, что необходимо оставлять стрелочный вид для кнопок */
+  cursor: pointer;
 }
 
 /* Стили для свг иконок */
@@ -124,11 +122,26 @@ img {
   fill: #071f41;
 }
 
-.active .svg-icons {
+.cat-button:hover .svg-icons {
   fill: #ff751d;
 }
 
-.active .ellipse {
+.cat-button:hover .ellipse {
   fill: #ffdac0;
 }
 
+.cat-button:focus .svg-icons {
+  fill: #ff751d;
+}
+
+.cat-button:focus .ellipse {
+  fill: #ffdac0;
+}
+
+.active_btn .svg-icons {
+  fill: #ff751d;
+}
+
+.active_btn .ellipse {
+  fill: #ffdac0;
+}

@@ -42,7 +42,6 @@ export default function ExpensesIncome() {
 
   return (
     <Background>
-      {/* <section className={s.section}> */}
       <div className={s.boxBalance}>
         <div className={s.balBtnform}>
           <Balance />
@@ -78,7 +77,6 @@ export default function ExpensesIncome() {
         <button>РАСХОД</button>
         <button>ДОХОД</button>
       </div>
-      {/* </section> */}
     </Background>
   );
 }

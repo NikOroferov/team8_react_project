@@ -10,6 +10,14 @@ const Styles = styled.div`
     border-radius: 16px 16px 0 0;
     border-collapse: collapse;
 
+    @media screen and (min-width: 768px) {
+      width: 605px;
+      display: inline-block;
+      margin-left: 51px;
+      margin-right: 52px;
+      /* justify-content: center; */
+    }
+
     .buttonDel {
       width: 32px;
       height: 32px;

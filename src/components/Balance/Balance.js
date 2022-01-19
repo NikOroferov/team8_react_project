@@ -51,7 +51,7 @@ export default function Balance() {
         className={css.btn}
         onClick={null}
       />
-      {initialBalance === '00.00' && <BalanceModal />}
+      {/* {initialBalance === '00.00' && <BalanceModal />} */}
     </form>
   );
 }

@@ -9,6 +9,16 @@
   padding-top: 40px;
 }
 
+@media screen and (min-width: 768px) {
+  .boxBalance {
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .boxBalance {
+  }
+}
+
 .balBtnform {
   padding-right: 205px;
 }
@@ -93,20 +103,33 @@
   border: solid 2px var(--backgroundActive);
 }
 
+/* Таблици с данными */
 .boxTabl {
-  display: flex;
-  margin-left: 20px;
-  margin-right: 20px;
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .boxTabl {
+    width: 665px;
+    display: inline-block;
+    margin-left: 51px;
+    margin-right: 52px;
+    /* justify-content: center; */
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .boxTabl {
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
 
 .monthCashflow {
   width: 230px;
   height: 278px;
   border-radius: 16px 16px 16px 0;
-}
-
-.btnForMobil {
-  display: none;
 }
 
 .boxBtn {
@@ -175,5 +198,6 @@
   text-transform: uppercase;
 }
 
-.btn {
+.btnForMobil {
+  display: none;
 }

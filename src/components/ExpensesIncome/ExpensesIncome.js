@@ -22,30 +22,28 @@ import Icons from '../../img/svg/sprite.svg';
 import s from './ExpensesIncome.module.css';
 
 export default function ExpensesIncome() {
-
-
   const [typeInfo, setTypeInfo] = useState('расход');
   const [activeCostsBtn, setActiveCostsBtn] = useState(true);
   const [activeIncomeBtn, setActiveIncomeBtn] = useState(false);
 
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
-  const [sum, setSum] = useState([]); */
+  const [sum, setSum] = useState([]);
+
   // const [balance, setBalance] = useState(55000.0);
 
-//   const handleChange = e => {
-//     setСategory(e.target.value);
-//   };
+  //   const handleChange = e => {
+  //     setСategory(e.target.value);
+  //   };
 
-//   const clearForm = e => {
-//     e.preventDefault();
-//     console.log(e.target);
-//     setСategory('');
-//     setDescription('');
-//     setSum();
-//   };
+  //   const clearForm = e => {
+  //     e.preventDefault();
+  //     console.log(e.target);
+  //     setСategory('');
+  //     setDescription('');
+  //     setSum();
+  //   };
   //   const [balance, setBalance] = useState(55000.0);
-
 
   const classes = ['navBtn'];
   const classesStr = classes.join(' ');
@@ -69,13 +67,11 @@ export default function ExpensesIncome() {
   };
 
   return (
-
     <>
       <section className={s.section}>
         <div className={s.boxBalance}>
           <Balance />
           <LinkToReports />
-
         </div>
 
         <div className={s.boxBtn}>
@@ -102,13 +98,11 @@ export default function ExpensesIncome() {
           </div>
         </div>
 
-
-      <div className={s.btnForMobil}>
-        <button>РАСХОД</button>
-        <button>ДОХОД</button>
+        <div className={s.btnForMobil}>
+          <button>РАСХОД</button>
+          <button>ДОХОД</button>
         </div>
-        </div>
-    </section>
-
+      </section>
+    </>
   );
 }

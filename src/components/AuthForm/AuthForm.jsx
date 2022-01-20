@@ -49,7 +49,7 @@ export default function AuthForm() {
 
           <GoogleLogin
             className={s.googleBtn}
-            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+            clientId="206254104485-oifk2jvjrjpas1im07mbr0eqdh4ot584.apps.googleusercontent.com"
             buttonText="Login"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}

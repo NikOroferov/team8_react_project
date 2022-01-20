@@ -13,78 +13,102 @@ import {
 import style from './ReportsGraph.module.css';
 import { useState, useEffect } from 'react';
 
-export default function BarGraph() {
+export default function BarGraph({ date, typeReport, activeCategory }) {
+  const [subcategories, setSubcategories] = useState([]);
   const [isDesktopOrTablet, setIsDesktopOrTablet] = useState(
     window.innerWidth > 767,
   );
-
   const updateMedia = () => {
     setIsDesktopOrTablet(window.innerWidth > 767);
   };
-
   useEffect(() => {
     window.addEventListener('resize', updateMedia);
     return () => window.removeEventListener('resize', updateMedia);
   });
 
-  const subcategories = {
-    status: 'success',
-    code: 200,
-    data: {
-      result: [
-        {
-          _id: 'Малина',
-          total: 4589,
-          count: 11,
-        },
-        {
-          _id: 'Торт',
-          total: 3260,
-          count: 25,
-        },
-        {
-          _id: 'Свинина',
-          total: 2505,
-          count: 16,
-        },
-        {
-          _id: 'Курица',
-          total: 1950,
-          count: 13,
-        },
-        {
-          _id: 'Корkkkkkkkkkkkkkkkkица',
-          total: 1915,
-          count: 7,
-        },
-        {
-          _id: 'Хлеб',
-          total: 1563,
-          count: 27,
-        },
-        {
-          _id: 'Орехи',
-          total: 1305,
-          count: 7,
-        },
-        {
-          _id: 'Вермишель',
-          total: 1128,
-          count: 9,
-        },
-        {
-          _id: 'Картошка',
-          total: 1020,
-          count: 10,
-        },
-        {
-          _id: 'Морковь',
-          total: 770,
-          count: 12,
-        },
-      ],
-    },
-  };
+  useEffect(() => {
+    const sub = {
+      status: 'success',
+      code: 200,
+      data: {
+        result: [
+          {
+            _id: 'свинина',
+            totalInSubcategory: 2100,
+            count: 3,
+          },
+          {
+            _id: 'молоко',
+            totalInSubcategory: 1800,
+            count: 30,
+          },
+          {
+            _id: 'Творог',
+            totalInSubcategory: 1550,
+            count: 3,
+          },
+          {
+            _id: 'Картошка',
+            totalInSubcategory: 1400,
+            count: 3,
+          },
+          {
+            _id: 'Пицца',
+            totalInSubcategory: 1200,
+            count: 50,
+          },
+          {
+            _id: 'Красная рыба',
+            totalInSubcategory: 900,
+            count: 3,
+          },
+          {
+            _id: 'Зелень',
+            totalInSubcategory: 800,
+            count: 6,
+          },
+          {
+            _id: 'Кулинария',
+            totalInSubcategory: 530,
+            count: 10,
+          },
+          {
+            _id: 'Торт',
+            totalInSubcategory: 440,
+            count: 2,
+          },
+          {
+            _id: 'Колбаса',
+            totalInSubcategory: 200,
+            count: 2,
+          },
+          {
+            _id: 'Овсянка',
+            totalInSubcategory: 150,
+            count: 8,
+          },
+          {
+            _id: 'Чупа-чупс',
+            totalInSubcategory: 50,
+            count: 2,
+          },
+          {
+            _id: 'Авокадо',
+            totalInSubcategory: 35,
+            count: 1,
+          },
+        ],
+      },
+    };
+
+    // const queryReports = [date, typeReport, activeCategory];
+    // getSubcategoryReport(queryReports)
+    //   .then(resp =>
+    setSubcategories(sub.data.result);
+    //     )
+    // .catch(error => {
+    //     setError('Hey, Kapusta! We have a problem!');
+  }, [activeCategory, date, typeReport]);
 
   let barColors;
   const currency = 'грн';
@@ -110,10 +134,10 @@ export default function BarGraph() {
     padding: '5px',
   };
 
-  const results = subcategories.data.result.map(item => ({
+  const results = subcategories.map(item => ({
     name: item._id,
-    total: item.total,
-    totalLabel: `${item.total} ${currency}`,
+    total: item.totalInSubcategory,
+    totalLabel: `${item.totalInSubcategory} ${currency}`,
     count: item.count,
   }));
 
@@ -169,7 +193,6 @@ export default function BarGraph() {
   };
 
   const CustomTooltip = ({ active, payload, label, results }) => {
-    
     if (active && payload && payload.length) {
       const formattingTooltipLable = formatLabelList(results[label].name);
       return (
@@ -215,7 +238,9 @@ export default function BarGraph() {
 
     return (
       <>
-        <p style={textLegendStyle}>Сколько раз было внесено за текущий месяц:</p>
+        <p style={textLegendStyle}>
+          Сколько раз было внесено за текущий месяц:
+        </p>
         <div style={itemLegendStyle}>
           <div style={firstColor}></div>
           <p style={textLegendStyle}>{firstRange}</p>
@@ -249,7 +274,7 @@ export default function BarGraph() {
                 />
 
                 <Bar barSize={38} dataKey="total" radius={[10, 10, 0, 0]}>
-                  {subcategories.data.result.map((item, index) => (
+                  {subcategories.map((item, index) => (
                     <Cell
                       className={style.barCeil}
                       key={`cell-${index}`}
@@ -281,14 +306,14 @@ export default function BarGraph() {
               margin={{ top: 30, right: 0, left: 30, bottom: 0 }}
             >
               <XAxis type="number" hide={true} />
-                <Legend
+              <Legend
                 width="80%"
                 verticalAlign="bottom"
                 content={<CustomizeLegend />}
               ></Legend>
 
               <Bar barSize={15} dataKey="total" radius={[0, 10, 10, 0]}>
-                {subcategories.data.result.map((item, index) => (
+                {subcategories.map((item, index) => (
                   <Cell
                     className={style.barCeil}
                     key={`cell-${index}`}

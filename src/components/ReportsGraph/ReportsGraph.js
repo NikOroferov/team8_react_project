@@ -15,11 +15,11 @@ import { useState, useEffect } from 'react';
 
 export default function BarGraph() {
   const [isDesktopOrTablet, setIsDesktopOrTablet] = useState(
-    window.innerWidth > 773,
+    window.innerWidth > 767,
   );
 
   const updateMedia = () => {
-    setIsDesktopOrTablet(window.innerWidth > 773);
+    setIsDesktopOrTablet(window.innerWidth > 767);
   };
 
   useEffect(() => {
@@ -64,8 +64,8 @@ export default function BarGraph() {
         },
         {
           _id: 'Орехи',
-          total: 130045,
-          count: 700,
+          total: 1305,
+          count: 7,
         },
         {
           _id: 'Вермишель',

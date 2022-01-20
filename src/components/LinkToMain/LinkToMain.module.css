@@ -1,0 +1,40 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+}
+
+.text {
+  color: #52555FB2;
+  font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+letter-spacing: 0.04em;
+margin-left: 15px;
+}
+
+.icon {
+width: 24px;
+height: 24px;
+}
+
+/* @media (max-width: 771px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 772px) and (max-width: 1279px) {
+  .container {
+    max-width: 666px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    width: 1060px;
+  }
+} */

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import CurrentDate from '../CurrentDate';
-import s from './CurrentDateRaport.module.css';
 
 const currentData = new Date();
 const currentYear = currentData.getFullYear();
@@ -44,14 +43,12 @@ const CurrentDateRaport = ({ handleDate }) => {
 
   return (
     <>
-      <div className={s.section}>
         <CurrentDate
         month={selectedMonth}
         year={selectedYear}
         handleNext={handleNext}
         handlePrevious={handlePrevious}
       />
-      </div>
     </>
   );
 };

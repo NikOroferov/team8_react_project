@@ -46,31 +46,41 @@ export default function ReportsPage() {
   return (
     <>
       <Background>
-        <LinkToMain />
-        <Balance />
-        <CurrentDateRaport handleDate={handleDate} />
-        <ExpensesComponent />
-        <ReportsSwitcher
-          className={styles.reportSwitcher}
-          typeReport={typeReport}
-          handleTypeReport={handleTypeReport}
-        />
-        <CostsReport
-          categories={categories}
-          firstCategory={firstCategory}
-          typeReport={typeReport}
-          date={date}
-          handleSubcategories={handleSubcategories}
-        />
+        <div className={styles.sections}>
 
-        {categories.length ? (
-          <ReportsGraph
-            subcategories={subcategories}
+          <div className={styles.upperBar}>
+            <LinkToMain />
+            <Balance />
+            <CurrentDateRaport handleDate={handleDate} />
+          </div>
+
+          <ExpensesComponent />
+
+          <div className={styles.wrapperSection}>
+          <ReportsSwitcher
+            className={styles.reportSwitcher}
+            typeReport={typeReport}
+            handleTypeReport={handleTypeReport}
+          />
+          <CostsReport
+            categories={categories}
+            firstCategory={firstCategory}
             typeReport={typeReport}
             date={date}
-          />
-        ) : null}
+            handleSubcategories={handleSubcategories}
+            />
+          </div>
+
+          {/* {categories.length ? ( */}
+            <ReportsGraph
+              subcategories={subcategories}
+              typeReport={typeReport}
+              date={date}
+            />
+          {/* ) : null} */}
+        </div>
       </Background>
+
     </>
   );
 }

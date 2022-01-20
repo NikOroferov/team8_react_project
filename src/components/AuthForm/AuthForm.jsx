@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 // import ReactDOM from 'react-dom';
 import GoogleLogin from 'react-google-login';
-import GoogleAuthBtn from '../GoogleAuthBtn/GoogleAuthBtn';
+// import GoogleAuthBtn from '../GoogleAuthBtn/GoogleAuthBtn';
 
 export default function AuthForm() {
   const formik = useFormik({
@@ -47,7 +47,7 @@ export default function AuthForm() {
           <p className={s.text}>
             Вы можете авторизоваться с помощью Google Account:
           </p>
-          <GoogleAuthBtn />
+          {/* <GoogleAuthBtn /> */}
           <GoogleLogin
             className={s.googleBtn}
             clientId="206254104485-oifk2jvjrjpas1im07mbr0eqdh4ot584.apps.googleusercontent.com"

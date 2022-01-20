@@ -9,13 +9,13 @@
   width: 122px;
   border-radius: 26px;
   text-decoration: none;
-  background-color: #000000;
+  background-color: #f6f7fb;
   font-weight: 500;
   font-style: normal;
   font-size: 14px;
   line-height: 1.142;
   letter-spacing: 0.02em;
-  color: $black-color;
+  color: #000000;
   filter: drop-shadow(1px 2px 3px rgba(170, 178, 197, 0.2));
   transition: box-shadow 600ms ease-in-out, background-color 600ms ease-in-out;
 }

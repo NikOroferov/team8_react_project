@@ -1,5 +1,5 @@
 import React from 'react';
-import GoogleBtnIcon from '../../img/homepage/GoogleBtnIcon.svg';
+import { ReactComponent as GoogleBtnIcon } from '../../img/homepage/GoogleBtnIcon.svg';
 import s from './GoogleAuthBtn.module.css';
 
 function GoogleAuthBtn() {

@@ -105,12 +105,14 @@
   color: #52555f;
   transition: box-shadow 600ms ease-in-out, background-color 600ms ease-in-out;
 }
-.buttonAct:hover {
+.buttonAct:hover,
+.buttonAct:focus {
   background-color: #ff751d;
   color: #ffffff;
   box-shadow: 0 0 20px 20px #ff751d inset;
 }
-.butTextAct:hover {
+.butTextAct:hover,
+.butTextAct:focus {
   color: #ffffff;
 }
 

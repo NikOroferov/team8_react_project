@@ -123,6 +123,33 @@
   margin-right: 15px;
 }
 
+@media screen and (min-width: 768px) {
+  .btn {
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .btn {
+    margin-top: 0;
+    margin-left: 0;
+  }
+}
+
+.btnCleer {
+}
+
+@media screen and (min-width: 768px) {
+  .btnCleer {
+    margin-top: 30px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .btnCleer {
+    margin-top: 0;
+  }
+}
+
 /* .formCashflow
   .MuiMenuItem-root.MuiMenuItem-gutters.MuiButtonBase-root.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
   color: red;

@@ -98,7 +98,7 @@ export default function TableCashflo({ typeInfo }) {
       date: '12.01.2022',
       category: 'Продукты',
       transactionType: 'расход',
-      costs: '10000.00',
+      costs: '10000.50',
       subcategory: 'Описание товара',
     },
     {

@@ -6,12 +6,15 @@
   color: var(--fontColorSecondary);
   display: flex;
   align-items: center;
-  padding-right: 115px;
+  margin-bottom: 45px;
+  padding-top: 35px;
 }
 
 @media screen and (min-width: 768px) {
   .reportsLink {
     padding-right: 57px;
+    margin-bottom: 0;
+    padding-top: 0;
   }
 }
 @media screen and (min-width: 1280px) {

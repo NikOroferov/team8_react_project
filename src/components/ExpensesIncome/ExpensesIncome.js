@@ -114,8 +114,12 @@ export default function ExpensesIncome() {
               {matches.small && (
                 <div className={s.btnForMobil}>
                   <TableCashfloMobile />
-                  <button className={s.btvExpense}>РАСХОД</button>
-                  <button className={s.btvIncome}>ДОХОД</button>
+                  <button className={s.btvExpense} onClick={null}>
+                    РАСХОД
+                  </button>
+                  <button className={s.btvIncome} onClick={null}>
+                    ДОХОД
+                  </button>
                 </div>
               )}
             </Fragment>

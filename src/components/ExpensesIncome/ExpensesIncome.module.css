@@ -1,10 +1,15 @@
 /* Блок Баланс */
 .boxBalance {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
 }
 
 @media screen and (min-width: 768px) {
   .boxBalance {
     display: flex;
+    flex-direction: row;
+
     align-items: center;
     justify-content: right;
 
@@ -52,7 +57,7 @@
   .boxBtn {
     display: block;
     margin-left: 51px;
-    margin-top: 9px;
+    margin-top: 58px;
   }
 }
 
@@ -144,8 +149,7 @@
     margin-left: 30px;
     margin-right: 30px;
     display: flex;
-    align-items: center;
-    align-items: center;
+    align-items: flex-start;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -153,7 +157,6 @@
     margin-left: 20px;
     margin-right: 20px;
     display: flex;
-    align-items: center;
     align-items: center;
   }
 }
@@ -190,12 +193,17 @@
   border-radius: 16px 16px 16px 0;
 }
 
-/* .cashflowInput .datePicker {
-  width: 74px;
-  height: 40px;
-  border: none;
-  outline: none;
-} */
+@media screen and (min-width: 768px) {
+  .monthCashflow {
+    margin-top: 50px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .monthCashflow {
+    margin-top: 0px;
+  }
+}
 
 .summaryTitle {
   display: flex;
@@ -219,9 +227,10 @@
 /* Копки для мобилки */
 
 .conteinerMobileBtn {
-  position: relative;
+  /* position: relative; */
   /* width: 320x; */
-  height: 100vh;
+  /* height: 100vh; */
+  /* height: 100%; */
 }
 
 .btnForMobil {
@@ -233,7 +242,7 @@
 
   margin-left: 20px;
   margin-right: 20px;
-  margin-top: 54px;
+  margin-top: 105px;
 }
 
 .btvExpense {
@@ -269,8 +278,6 @@
   background-color: #f5f6fb;
   outline: none;
   border: none;
-
-  /* background-color: red; */
 }
 
 .btvIncome:hover {

@@ -26,7 +26,7 @@ export default function Balance() {
   return (
     <form className={css.form}>
       <label htmlFor="input" className={css.label}>
-        Баланс:
+        <span className={css.text}>Баланс:</span>
       </label>
 
       <span className={css.span}>

@@ -170,7 +170,9 @@ export default function CashflowDataEntry({ typeInfo }) {
       <div className={s.btn}>
         <Button name="ВВОД" type="submit" click={enterData} />
       </div>
-      <Button name="ОЧИСТИТЬ" type="submit" click={clearForm} />
+      <div className={s.btnCleer}>
+        <Button name="ОЧИСТИТЬ" type="submit" click={clearForm} />
+      </div>
 
       {/* <Media
         queries={{

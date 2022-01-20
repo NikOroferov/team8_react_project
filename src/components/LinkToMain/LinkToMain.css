@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon {
+    fill: #FF751D
+}
+
+@media (max-width: 771px) {
+  .container {
+  }
+}
+
+@media screen and (min-width: 772px) and (max-width: 1279px) {
+  .container {
+    max-width: 666px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    width: 1060px;
+  }
+}

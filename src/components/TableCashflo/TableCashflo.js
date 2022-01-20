@@ -98,7 +98,7 @@ export default function TableCashflo({ typeInfo }) {
       date: '12.01.2022',
       category: 'Продукты',
       transactionType: 'расход',
-      costs: '10000.00',
+      costs: '10000.50',
       subcategory: 'Описание товара',
     },
     {
@@ -181,9 +181,87 @@ export default function TableCashflo({ typeInfo }) {
       costs: '15000.00',
       subcategory: 'Описание товара',
     },
+    {
+      id: '11',
+      date: '18.01.2022',
+      category: 'Продукты',
+      transactionType: 'расход',
+      costs: '10000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '12',
+      date: '18.01.2022',
+      category: 'Продукты',
+      transactionType: 'расход',
+      costs: '10000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '13',
+      date: '18.01.2022',
+      category: 'Продукты',
+      transactionType: 'расход',
+      costs: '10000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '14',
+      date: '18.01.2022',
+      category: 'Продукты',
+      transactionType: 'расход',
+      costs: '10000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '15',
+      date: '18.01.2022',
+      category: 'Продукты',
+      transactionType: 'расход',
+      costs: '10000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '16',
+      date: '18.01.2022',
+      category: 'Продукты',
+      transactionType: 'расход',
+      costs: '10000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '17',
+      date: '18.01.2022',
+      category: 'Продукты',
+      transactionType: 'расход',
+      costs: '10000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '18',
+      date: '18.01.2022',
+      category: 'Продукты',
+      transactionType: 'расход',
+      costs: '10000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '19',
+      date: '18.01.2022',
+      category: 'Продукты',
+      transactionType: 'расход',
+      costs: '10000.00',
+      subcategory: 'Описание товара',
+    },
+    {
+      id: '20',
+      date: '18.01.2022',
+      category: 'Продукты',
+      transactionType: 'расход',
+      costs: '10000.00',
+      subcategory: 'Описание товара',
+    },
   ]);
-
-  //   const [dataWidth, setDatadWidth] = useState('90');
 
   const onClickDelete = e => {
     console.log(`УДИЛИТЬ`);
@@ -213,31 +291,26 @@ export default function TableCashflo({ typeInfo }) {
     () => [
       {
         width: '90',
-        //   width: '{ }',
         Header: 'Дата',
         accessor: 'col1',
       },
       {
         width: '300',
-        // width: '{}',
         Header: 'Описание',
         accessor: 'col2',
       },
       {
         width: '160',
-        //  width: '{}',
         Header: 'Категория',
         accessor: 'col3',
       },
       {
         width: '130',
-        //   width: '{}',
         Header: 'Сумма',
         accessor: 'col4',
       },
       {
         width: '70',
-        //   width: '{}',
         marginLeft: '20',
         Header: '',
         accessor: 'col5',

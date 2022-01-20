@@ -11,7 +11,7 @@ import css from './Balance.module.css';
 export default function Balance() {
   // const initialBalance = useSelector(getBalance);
 
-  const initialBalance = 0;
+  const initialBalance = 1;
 
   const [input, setInput] = useState(initialBalance);
 
@@ -26,7 +26,7 @@ export default function Balance() {
   return (
     <form className={css.form}>
       <label htmlFor="input" className={css.label}>
-        Баланс:
+        <span className={css.text}>Баланс:</span>
       </label>
 
       <span className={css.span}>

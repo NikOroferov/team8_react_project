@@ -20,6 +20,10 @@
 }
 
 .description {
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 700;
+  color: #52555f;
   height: 40px;
   width: 282px;
   border: solid 2px #f5f6fb;
@@ -38,6 +42,13 @@
   }
 }
 
+/* .categoryLabel {
+  color: aqua;
+  background-color: blue;
+} */
+
+/* Выбор категории */
+
 .formCashflow .category {
   font-size: 12px;
   color: #52555f;
@@ -46,9 +57,12 @@
   width: 188px;
   height: 40px;
 
-  border: solid 2px #f5f6fb;
+  /* border: solid 2px #f5f6fb; */
+  border: none;
   padding-left: 6px;
   padding-right: 6px;
+  border-radius: 0;
+  outline: none;
 }
 
 @media screen and (min-width: 768px) {
@@ -60,6 +74,14 @@
   .formCashflow .category {
     width: 188px;
   }
+}
+
+.categoryItamMenu {
+  color: #c7ccdc;
+}
+
+.categoryItamMenu:hover {
+  color: #52555f;
 }
 
 .boxCalculator {
@@ -99,6 +121,33 @@
 
 .btn {
   margin-right: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .btn {
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .btn {
+    margin-top: 0;
+    margin-left: 0;
+  }
+}
+
+.btnCleer {
+}
+
+@media screen and (min-width: 768px) {
+  .btnCleer {
+    margin-top: 30px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .btnCleer {
+    margin-top: 0;
+  }
 }
 
 /* .formCashflow

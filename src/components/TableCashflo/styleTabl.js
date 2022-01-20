@@ -4,7 +4,7 @@ const Styles = styled.div`
   .table {
     /* display: none; */
     border-spacing: 0;
-    /* width: 760px; */
+    width: 760px;
     margin-right: 30px;
     border: solid 2px #f5f6fb;
     border-radius: 16px 16px 0 0;
@@ -77,7 +77,7 @@ const Styles = styled.div`
       :first-child {
         padding-left: 20px;
         @media screen and (min-width: 768px) {
-          width: 84px;
+          width: 104px;
         }
         @media screen and (min-width: 1280px) {
           width: 90px;

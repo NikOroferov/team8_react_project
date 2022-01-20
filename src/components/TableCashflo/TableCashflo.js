@@ -182,7 +182,8 @@ export default function TableCashflo({ typeInfo }) {
       subcategory: 'Описание товара',
     },
   ]);
-  //   const [col1, setCol1] = useState('90');
+
+  //   const [dataWidth, setDatadWidth] = useState('90');
 
   const onClickDelete = e => {
     console.log(`УДИЛИТЬ`);
@@ -211,27 +212,32 @@ export default function TableCashflo({ typeInfo }) {
   const columns = useMemo(
     () => [
       {
-        width: '{}',
+        width: '90',
+        //   width: '{ }',
         Header: 'Дата',
         accessor: 'col1',
       },
       {
         width: '300',
+        // width: '{}',
         Header: 'Описание',
         accessor: 'col2',
       },
       {
         width: '160',
+        //  width: '{}',
         Header: 'Категория',
         accessor: 'col3',
       },
       {
         width: '130',
+        //   width: '{}',
         Header: 'Сумма',
         accessor: 'col4',
       },
       {
         width: '70',
+        //   width: '{}',
         marginLeft: '20',
         Header: '',
         accessor: 'col5',

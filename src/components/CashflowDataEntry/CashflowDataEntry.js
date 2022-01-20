@@ -83,7 +83,6 @@ export default function CashflowDataEntry({ typeInfo }) {
       <InputLabel
         id="demo-simple-select-label"
         placeholder="Описание товара"
-        //   className={s.categoryLabel}
       ></InputLabel>
       {typeInfo === 'расход' && (
         <Select
@@ -141,7 +140,11 @@ export default function CashflowDataEntry({ typeInfo }) {
           placeholder="Описание товара"
           required
         >
-          <MenuItem value="Прочее" className={s.categoryItamMenu}>
+          <MenuItem
+            value="Прочее"
+            classes={s.categoryItamMenu}
+            className={s.categoryItamMenu}
+          >
             ЗП
           </MenuItem>
           <MenuItem value="Прочее" className={s.categoryItamMenu}>
@@ -173,22 +176,6 @@ export default function CashflowDataEntry({ typeInfo }) {
       <div className={s.btnCleer}>
         <Button name="ОЧИСТИТЬ" type="submit" click={clearForm} />
       </div>
-
-      {/* <Media
-        queries={{
-          small: '(min-width: 320px) and (max-width: 767px)',
-          medium: '(min-width: 768px) and (max-width: 1279px)',
-          large: '(min-width: 1280px)',
-        }}
-      >
-        {matches => (
-          <Fragment>
-            {matches.small && <></>}
-            {matches.medium && <></>}
-            {matches.large && <></>}
-          </Fragment>
-        )}
-      </Media> */}
     </form>
   );
 }

@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './ReportsPage.module.css';
 import getCategoryReport from '../../services/api-services';
 import ReportsSwitcher from '../../components/ReportsSwitcher/ReportsSwitcher';
@@ -14,23 +13,9 @@ import Balance from '../../components/Balance/Balance';
 export default function ReportsPage() {
   const [typeReport, setTypeReport] = useState(null);
   const [date, setDate] = useState(null);
-  const [categories, setCategories] = useState([]);
-  const [subcategories, setSubcategories] = useState(null);
-  const [firstCategory, setFirstCategory] = useState(null);
-
-  useEffect(() => {
-    const queryReports = [date, typeReport];
-    // getCategoryReport(queryReports)
-    //   .then(resp =>
-    // setCategories(categories))
-
-    if (categories.length) {
-      setFirstCategory(categories[0].title);
-    } else {
-      return;
-    }
-  }, [date, typeReport, categories]);
-
+  const [activeCategory, setActiveCategory] = useState(null);
+  const [isCategoryLenght, setIsCategoryLenght] = useState(true);
+  
   const handleDate = newDate => {
     setDate(newDate);
   };
@@ -39,8 +24,12 @@ export default function ReportsPage() {
     setTypeReport(newTypeReport);
   };
 
-  const handleSubcategories = newSubcategories => {
-    setSubcategories(newSubcategories);
+  const handleActiveCategory = activeCategory => {
+    setActiveCategory(activeCategory);
+  };
+
+  const handleCategoriesLenght = lengthBoolean => {
+    setIsCategoryLenght(lengthBoolean);
   };
 
   return (
@@ -63,24 +52,22 @@ export default function ReportsPage() {
             handleTypeReport={handleTypeReport}
           />
           <CostsReport
-            categories={categories}
-            firstCategory={firstCategory}
             typeReport={typeReport}
             date={date}
-            handleSubcategories={handleSubcategories}
+              handleActiveCategory={handleActiveCategory}
+              handleCategoriesLenght={handleCategoriesLenght}
             />
           </div>
 
-          {/* {categories.length ? ( */}
+          {(isCategoryLenght) ? (
             <ReportsGraph
-              subcategories={subcategories}
+              activeCategory={activeCategory}
               typeReport={typeReport}
               date={date}
-            />
-          {/* ) : null} */}
+            />)
+            : null}
         </div>
       </Background>
-
     </>
   );
 }

@@ -145,3 +145,11 @@ button {
 .active_btn .ellipse {
   fill: #ffdac0;
 }
+
+.cat-button1 .ellipse {
+  fill: #ffdac0;
+}
+
+.cat-button1 .svg-icons {
+  fill: #ff751d;
+}

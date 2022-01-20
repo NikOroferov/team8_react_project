@@ -20,6 +20,10 @@
 }
 
 .description {
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 700;
+  color: #52555f;
   height: 40px;
   width: 282px;
   border: solid 2px #f5f6fb;

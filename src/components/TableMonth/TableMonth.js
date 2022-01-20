@@ -17,15 +17,6 @@ function Table({ columns, data }) {
 
   return (
     <table {...getTableProps()} className="table">
-      {/* <thead>
-        {headerGroups.map(headerGroup => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-            ))}
-          </tr>
-        ))}
-      </thead> */}
       <tbody {...getTableBodyProps()}>
         {rows.map((row, i) => {
           prepareRow(row);
@@ -49,60 +40,39 @@ function Table({ columns, data }) {
 export default function TableMonth() {
   const [dataCash, setDatadCash] = useState([
     {
-      col1: 'Декабрь',
-      col2: '10000.00',
+      month: 'Декабрь',
+      costs: '10000.00',
     },
     {
-      col1: 'Ноябрь',
-      col2: '15000.00',
+      month: 'Ноябрь',
+      costs: '15000.00',
     },
     {
-      col1: 'Октябрь',
-      col2: '20000,00',
+      month: 'Октябрь',
+      costs: '20000,00',
     },
     {
-      col1: 'Сентябрь',
-      col2: '2000,00',
+      month: 'Сентябрь',
+      costs: '2000,00',
     },
     {
-      col1: 'Август',
-      col2: '7000,00',
+      month: 'Август',
+      costs: '7000,00',
     },
     {
-      col1: 'Июль',
-      col2: '10000,00',
+      month: 'Июль',
+      costs: '10000,00',
     },
   ]);
 
-  const data = useMemo(
-    () => [
-      {
-        col1: 'Декабрь',
-        col2: '10 000.00',
-      },
-      {
-        col1: 'Ноябрь',
-        col2: '15 000.00',
-      },
-      {
-        col1: 'Октябрь',
-        col2: '20 000,00',
-      },
-      {
-        col1: 'Сентябрь',
-        col2: '2 000,00',
-      },
-      {
-        col1: 'Август',
-        col2: '7 000,00',
-      },
-      {
-        col1: 'Июль',
-        col2: '10 000,00',
-      },
-    ],
-    [],
-  );
+  const dataMonthFoTabl = dataCash.map(({ month, costs }) => {
+    return {
+      col1: month,
+      col2: `${costs} грн.`,
+    };
+  });
+
+  const data = useMemo(() => [...dataMonthFoTabl], [dataMonthFoTabl]);
 
   const columns = useMemo(
     () => [

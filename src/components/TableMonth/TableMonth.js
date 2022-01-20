@@ -50,27 +50,27 @@ export default function TableMonth() {
   const [dataCash, setDatadCash] = useState([
     {
       col1: 'Декабрь',
-      col2: '10 000.00',
+      col2: '10000.00',
     },
     {
       col1: 'Ноябрь',
-      col2: '15 000.00',
+      col2: '15000.00',
     },
     {
       col1: 'Октябрь',
-      col2: '20 000,00',
+      col2: '20000,00',
     },
     {
       col1: 'Сентябрь',
-      col2: '2 000,00',
+      col2: '2000,00',
     },
     {
       col1: 'Август',
-      col2: '7 000,00',
+      col2: '7000,00',
     },
     {
       col1: 'Июль',
-      col2: '10 000,00',
+      col2: '10000,00',
     },
   ]);
 
@@ -121,15 +121,6 @@ export default function TableMonth() {
           },
         ],
       },
-
-      // {
-      //   Header: 'Месяц',
-      //   accessor: 'col1',
-      // },
-      // {
-      //   Header: 'Сумма',
-      //   accessor: 'col2',
-      // },
     ],
     [],
   );

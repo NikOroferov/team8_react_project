@@ -12,7 +12,7 @@ import DateCalendar from '../DateCalendar/DateCalendar';
 import CashflowDataEntry from '../CashflowDataEntry/CashflowDataEntry';
 
 import TableCashflo from '../TableCashflo/TableCashflo';
-import TableCashfloTabl from '../TableCashflo/TableCashflo';
+import TableCashfloTabl from '../TableCashflo/TableCashfloTabl';
 import TableMonth from '../TableMonth/TableMonth';
 // import Icons from '../../img/svg/sprite.svg';
 
@@ -97,23 +97,23 @@ export default function ExpensesIncome() {
         </div>
 
         <div className={s.boxTabl}>
-          {/* <Media
-              queries={{
-                small: '(min-width: 320px) and (max-width: 767px)',
-                medium: '(min-width: 768px) and (max-width: 1279px)',
-                large: '(min-width: 1280px)',
-              }}
-            >
-              {matches => (
-                <Fragment>
-                  {matches.small && <></>}
-                  {matches.medium && <TableCashfloTabl typeInfo={typeInfo} />}
-                  {matches.large && <TableCashflo typeInfo={typeInfo} />}
-                </Fragment>
-              )}
-            </Media> */}
+          <Media
+            queries={{
+              small: '(min-width: 320px) and (max-width: 767px)',
+              medium: '(min-width: 768px) and (max-width: 1279px)',
+              large: '(min-width: 1280px)',
+            }}
+          >
+            {matches => (
+              <Fragment>
+                {matches.small && <></>}
+                {matches.medium && <TableCashfloTabl typeInfo={typeInfo} />}
+                {matches.large && <TableCashflo typeInfo={typeInfo} />}
+              </Fragment>
+            )}
+          </Media>
 
-          <TableCashfloTabl typeInfo={typeInfo} />
+          {/* <TableCashflo typeInfo={typeInfo} /> */}
           <div className={s.monthCashflow}>
             <p className={s.summaryTitle}>СВОДКА</p>
             <TableMonth />

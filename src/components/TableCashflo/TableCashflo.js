@@ -183,8 +183,6 @@ export default function TableCashflo({ typeInfo }) {
     },
   ]);
 
-  //   const [dataWidth, setDatadWidth] = useState('90');
-
   const onClickDelete = e => {
     console.log(`УДИЛИТЬ`);
     console.log(e.currentTarget.id);
@@ -192,6 +190,7 @@ export default function TableCashflo({ typeInfo }) {
 
   const dataCashFoTabl = dataCash.map(
     ({ id, date, subcategory, category, transactionType, costs }) => {
+      // if ((transactionType = 'расход')) {
       return {
         col1: date,
         col2: subcategory,
@@ -200,12 +199,24 @@ export default function TableCashflo({ typeInfo }) {
         col5: <ButtoDelet click={onClickDelete} idItams={id} />,
         transactionType: transactionType,
       };
+      // } else {
+      //   return {
+      //     col1: date,
+      //     col2: subcategory,
+      //     col3: category,
+      //     col4: `+ ${costs} грн.`,
+      //     col5: <ButtoDelet click={onClickDelete} idItams={id} />,
+      //     transactionType: transactionType,
+      //   };
+      // }
     },
   );
 
   const dataCashFoTablFiter = dataCashFoTabl.filter(function (e) {
     return e.transactionType === typeInfo;
   });
+
+  //   console.log(dataCashFoTabl);
 
   const data = useMemo(() => [...dataCashFoTablFiter], [dataCashFoTablFiter]);
 

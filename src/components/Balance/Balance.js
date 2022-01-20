@@ -11,7 +11,7 @@ import css from './Balance.module.css';
 export default function Balance() {
   // const initialBalance = useSelector(getBalance);
 
-  const initialBalance = 0;
+  const initialBalance = 1;
 
   const [input, setInput] = useState(initialBalance);
 
@@ -52,7 +52,7 @@ export default function Balance() {
         className={css.btn}
         onClick={null}
       />
-      {/* {initialBalance === 0 && <BalanceModal />} */}
+      {initialBalance === 0 && <BalanceModal />}
     </form>
   );
 }

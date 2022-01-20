@@ -141,13 +141,13 @@ export default function CashflowDataEntry({ typeInfo }) {
           required
         >
           <MenuItem
-            value="Прочее"
-            classes={s.categoryItamMenu}
+            value="ЗП"
+            // classes={s.categoryItamMenu}
             className={s.categoryItamMenu}
           >
             ЗП
           </MenuItem>
-          <MenuItem value="Прочее" className={s.categoryItamMenu}>
+          <MenuItem value="Допдоход" className={s.categoryItamMenu}>
             Доп.доход
           </MenuItem>
         </Select>

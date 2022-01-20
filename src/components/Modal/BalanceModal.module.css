@@ -6,7 +6,8 @@
   box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
   padding: 20px 30px 31px 30px;
   display: block;
-  top: 25%;
+  top: 130%;
+  left: 10%;
   position: absolute;
   z-index: 2;
   text-align: center;
@@ -15,7 +16,7 @@
 @media screen and (min-width: 768px) {
   .modalContainer {
     width: 292px;
-    left: 37%;
+    
   }
 }
 

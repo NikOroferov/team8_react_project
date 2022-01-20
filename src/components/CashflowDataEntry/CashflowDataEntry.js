@@ -1,5 +1,5 @@
 import { useState, Fragment } from 'react';
-import Media from 'react-media';
+// import Media from 'react-media';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -14,8 +14,8 @@ export default function CashflowDataEntry({ typeInfo }) {
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [dataItem, setDataItem] = useState('');
-  //   const [dataCategory, setDataItem] = useState([]);
 
   const hendleChangeDescription = ({ target: { name, value } }) => {
     switch (name) {
@@ -66,20 +66,6 @@ export default function CashflowDataEntry({ typeInfo }) {
     setSum([]);
   };
 
-  //   const dataCategoryFoTabl = categoryData.map(({ id, category }) => {
-  //     return {
-  //       item: <MenuItem value={id}> {category}</MenuItem>,
-  //     };
-  //   });
-
-  //   const fff = dataCategoryFoTabl.forEach(data => {
-  //     //  console.log(data.item);
-  //     return data.item;
-  //   });
-
-  //   console.log(dataCategoryFoTabl);
-  //   console.log(fff);
-
   return (
     <form className={s.formCashflow}>
       <label>
@@ -97,28 +83,72 @@ export default function CashflowDataEntry({ typeInfo }) {
       <InputLabel
         id="demo-simple-select-label"
         placeholder="Описание товара"
+        //   className={s.categoryLabel}
       ></InputLabel>
-      <Select
-        className={s.category}
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        value={category}
-        onChange={handleChange}
-        placeholder="Описание товара"
-        required
-      >
-        <MenuItem value="Алкоголь">Алкоголь</MenuItem>
-        <MenuItem value="Все для дома">Все для дома</MenuItem>
-        <MenuItem value="Здоровье">Здоровье</MenuItem>
-        <MenuItem value="Коммуналка, связь">Коммуналка, связь</MenuItem>
-        <MenuItem value="Образование">Образование</MenuItem>
-        <MenuItem value="Продукты">Продукты</MenuItem>
-        <MenuItem value="Развлечения">Развлечения</MenuItem>
-        <MenuItem value="Спорт, хобби">Спорт, хобби</MenuItem>
-        <MenuItem value="Транспорт">Транспорт</MenuItem>
-        <MenuItem value="Техника">Техника</MenuItem>
-        <MenuItem value="Прочее">Прочее</MenuItem>
-      </Select>
+      {typeInfo === 'расход' && (
+        <Select
+          className={s.category}
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={category}
+          onChange={handleChange}
+          //  placeholder="Описание товара"
+          required
+        >
+          <MenuItem value="Алкоголь" className={s.categoryItamMenu}>
+            Алкоголь
+          </MenuItem>
+          <MenuItem value="Все для дома" className={s.categoryItamMenu}>
+            Все для дома
+          </MenuItem>
+          <MenuItem value="Здоровье" className={s.categoryItamMenu}>
+            Здоровье
+          </MenuItem>
+          <MenuItem value="Коммуналка, связь" className={s.categoryItamMenu}>
+            Коммуналка, связь
+          </MenuItem>
+          <MenuItem value="Образование" className={s.categoryItamMenu}>
+            Образование
+          </MenuItem>
+          <MenuItem value="Продукты" className={s.categoryItamMenu}>
+            Продукты
+          </MenuItem>
+          <MenuItem value="Развлечения" className={s.categoryItamMenu}>
+            Развлечения
+          </MenuItem>
+          <MenuItem value="Спорт, хобби" className={s.categoryItamMenu}>
+            Спорт, хобби
+          </MenuItem>
+          <MenuItem value="Транспорт" className={s.categoryItamMenu}>
+            Транспорт
+          </MenuItem>
+          <MenuItem value="Техника" className={s.categoryItamMenu}>
+            Техника
+          </MenuItem>
+          <MenuItem value="Прочее" className={s.categoryItamMenu}>
+            Прочее
+          </MenuItem>
+        </Select>
+      )}
+
+      {typeInfo === 'доход' && (
+        <Select
+          className={s.category}
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={category}
+          onChange={handleChange}
+          placeholder="Описание товара"
+          required
+        >
+          <MenuItem value="Прочее" className={s.categoryItamMenu}>
+            ЗП
+          </MenuItem>
+          <MenuItem value="Прочее" className={s.categoryItamMenu}>
+            Доп.доход
+          </MenuItem>
+        </Select>
+      )}
 
       <label className={s.boxCalculator}>
         <input

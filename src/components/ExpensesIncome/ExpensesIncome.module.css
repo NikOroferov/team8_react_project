@@ -1,33 +1,66 @@
 /* Блок Баланс */
 .boxBalance {
-  display: flex;
-  align-items: center;
-  justify-content: right;
-
-  margin-left: auto;
-  margin-right: auto;
-
-  padding-top: 40px;
 }
 
 @media screen and (min-width: 768px) {
   .boxBalance {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-top: 40px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .boxBalance {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-top: 40px;
   }
 }
 
 .balBtnform {
-  padding-right: 205px;
+}
+
+@media screen and (min-width: 768px) {
+  .balBtnform {
+    padding-right: 111px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .balBtnform {
+    padding-right: 205px;
+  }
 }
 
 /* Кнопки меню Расход Доход */
 .boxBtn {
-  margin-left: 110px;
-  margin-top: 9px;
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .boxBtn {
+    display: block;
+    margin-left: 51px;
+    margin-top: 9px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .boxBtn {
+    margin-left: 110px;
+    margin-top: 9px;
+  }
 }
 
 .navBtnActive {
@@ -67,18 +100,26 @@
 
 /* Общий контейнер*/
 .analysis {
+  display: flex;
+  justify-content: center;
+
   min-width: 320px;
   margin-left: auto;
   margin-right: auto;
-  background-color: var(--mainBackgroundColor);
-  border-radius: 0px 30px 30px 30px;
-  box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+  background-color: #f5f6fb;
+  /* border-radius: 0px 30px 30px 30px; */
+  /* box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%); */
 }
 
 @media screen and (min-width: 768px) {
   .analysis {
+    display: block;
+
     width: 665px;
     height: 626px;
+    background-color: var(--mainBackgroundColor);
+    border-radius: 0px 30px 30px 30px;
+    box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
   }
 }
 @media screen and (min-width: 1280px) {

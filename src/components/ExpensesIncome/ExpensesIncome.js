@@ -46,6 +46,21 @@ export default function ExpensesIncome() {
 
   return (
     <Background>
+      {/* <Media
+        queries={{
+          small: '(min-width: 320px)',
+          medium: '(min-width: 768px and (max-width: 1279px))',
+          large: '(min-width: 1280px)',
+        }} */}
+      {/* > */}
+      {/* {matches => (
+          <Fragment>
+            {matches.small && <DateCalendar />}
+            {matches.medium && <CashflowDataEntry typeInfo={typeInfo} />}
+          </Fragment>
+        )}
+      </Media> */}
+
       <div className={s.boxBalance}>
         <div className={s.balBtnform}>
           <Balance />
@@ -73,11 +88,7 @@ export default function ExpensesIncome() {
             {matches => (
               <Fragment>
                 {matches.small && <DateCalendar />}
-                {matches.medium && (
-                  <>
-                    <CashflowDataEntry typeInfo={typeInfo} />
-                  </>
-                )}
+                {matches.medium && <CashflowDataEntry typeInfo={typeInfo} />}
               </Fragment>
             )}
           </Media>

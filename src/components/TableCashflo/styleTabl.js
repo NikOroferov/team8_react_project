@@ -4,7 +4,7 @@ const Styles = styled.div`
   .table {
     /* display: none; */
     border-spacing: 0;
-    /* width: 760px; */
+    width: 760px;
     margin-right: 30px;
     border: solid 2px #f5f6fb;
     border-radius: 16px 16px 0 0;

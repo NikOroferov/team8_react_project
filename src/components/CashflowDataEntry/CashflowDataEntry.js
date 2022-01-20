@@ -14,7 +14,7 @@ export default function CashflowDataEntry({ typeInfo }) {
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState([]);
-  const [dataItem, setDataItem] = useState([]);
+  const [dataItem, setDataItem] = useState('');
   //   const [dataCategory, setDataItem] = useState([]);
 
   const hendleChangeDescription = ({ target: { name, value } }) => {
@@ -49,9 +49,15 @@ export default function CashflowDataEntry({ typeInfo }) {
     }
   };
 
+  const dateWWW = new Date().getFullYear();
+  console.log(dateWWW);
+
   const enterData = e => {
     setDataItem({
-      created_at: Date.now(),
+      created_at: new Date().toLocaleDateString(),
+      Year: new Date().getFullYear(),
+      Month: new Date().getMonth() + 1,
+      Day: new Date().getDate(),
       subcategory: description,
       category: category,
       transactionType: typeInfo,
@@ -139,7 +145,7 @@ export default function CashflowDataEntry({ typeInfo }) {
       </div>
       <Button name="ОЧИСТИТЬ" type="submit" click={clearForm} />
 
-      <Media
+      {/* <Media
         queries={{
           small: '(min-width: 320px) and (max-width: 767px)',
           medium: '(min-width: 768px) and (max-width: 1279px)',
@@ -153,7 +159,7 @@ export default function CashflowDataEntry({ typeInfo }) {
             {matches.large && <></>}
           </Fragment>
         )}
-      </Media>
+      </Media> */}
     </form>
   );
 }

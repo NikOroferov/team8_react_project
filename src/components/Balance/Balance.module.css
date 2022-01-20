@@ -2,9 +2,14 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  /* margin: 0 auto; */
-  width: 370px;
+  width: 320px;
   text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    width: 370px;
+  }
 }
 
 .label {

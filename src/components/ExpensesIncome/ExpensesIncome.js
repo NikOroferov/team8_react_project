@@ -14,6 +14,7 @@ import CashflowDataEntry from '../CashflowDataEntry/CashflowDataEntry';
 import TableCashflo from '../TableCashflo/TableCashflo';
 import TableCashfloTabl from '../TableCashflo/TableCashfloTabl';
 import TableMonth from '../TableMonth/TableMonth';
+import TableCashfloMobile from '../TableCashflo/TableCashfloMobile';
 // import Icons from '../../img/svg/sprite.svg';
 
 import s from './ExpensesIncome.module.css';
@@ -23,12 +24,12 @@ export default function ExpensesIncome() {
   const [activeCostsBtn, setActiveCostsBtn] = useState(true);
   const [activeIncomeBtn, setActiveIncomeBtn] = useState(false);
 
-  const classes = ['navBtn'];
-  const classesStr = classes.join(' ');
+  //   const classes = ['navBtn'];
+  //   const classesStr = classes.join(' ');
 
-  if (activeCostsBtn === true) {
-    classes.push('active');
-  }
+  //   if (activeCostsBtn === true) {
+  //     classes.push('active');
+  //   }
 
   const сostsClick = e => {
     e.preventDefault();
@@ -46,21 +47,6 @@ export default function ExpensesIncome() {
 
   return (
     <Background>
-      {/* <Media
-        queries={{
-          small: '(min-width: 320px)',
-          medium: '(min-width: 768px and (max-width: 1279px))',
-          large: '(min-width: 1280px)',
-        }} */}
-      {/* > */}
-      {/* {matches => (
-          <Fragment>
-            {matches.small && <DateCalendar />}
-            {matches.medium && <CashflowDataEntry typeInfo={typeInfo} />}
-          </Fragment>
-        )}
-      </Media> */}
-
       <div className={s.boxBalance}>
         <div className={s.balBtnform}>
           <Balance />
@@ -92,8 +78,6 @@ export default function ExpensesIncome() {
               </Fragment>
             )}
           </Media>
-          {/* <DateCalendar />
-          <CashflowDataEntry typeInfo={typeInfo} /> */}
         </div>
 
         <div className={s.boxTabl}>
@@ -113,26 +97,30 @@ export default function ExpensesIncome() {
             )}
           </Media>
 
-          {/* <TableCashflo typeInfo={typeInfo} /> */}
           <div className={s.monthCashflow}>
             <p className={s.summaryTitle}>СВОДКА</p>
             <TableMonth />
           </div>
         </div>
-
-        {/* <div className={s.boxTabl}>
-          <TableCashflo typeInfo={typeInfo} />
-          <TableCashfloTabl typeInfo={typeInfo} />
-          <div className={s.monthCashflow}>
-            <p className={s.summaryTitle}>СВОДКА</p>
-            <TableMonth />
-          </div>
-        </div> */}
       </div>
-
-      <div className={s.btnForMobil}>
-        <button>РАСХОД</button>
-        <button>ДОХОД</button>
+      <div className={s.conteinerMobileBtn}>
+        <Media
+          queries={{
+            small: '(min-width: 320px) and (max-width: 767px)',
+          }}
+        >
+          {matches => (
+            <Fragment>
+              {matches.small && (
+                <div className={s.btnForMobil}>
+                  <TableCashfloMobile />
+                  <button className={s.btvExpense}>РАСХОД</button>
+                  <button className={s.btvIncome}>ДОХОД</button>
+                </div>
+              )}
+            </Fragment>
+          )}
+        </Media>
       </div>
     </Background>
   );

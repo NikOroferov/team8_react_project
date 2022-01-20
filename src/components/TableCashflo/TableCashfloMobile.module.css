@@ -1,0 +1,62 @@
+.boxCashfloo {
+  display: inline-block;
+  width: 320px;
+
+  overflow: auto;
+  height: 150px;
+
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.boxCashfloo::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.item {
+  display: flex;
+  margin-top: 20px;
+}
+
+.item:first-child {
+  margin-top: 0px;
+}
+
+/* 1 */
+.boxOne {
+  display: flex;
+  flex-direction: column;
+  width: 168px;
+  color: #52555f;
+}
+
+.descr {
+  width: 168px;
+  height: 20px;
+}
+
+.data {
+  font-size: 8px;
+  line-height: 1.12;
+  font-weight: 400;
+  height: 7px;
+}
+
+.category {
+  margin-left: 5px;
+}
+
+/* 2 */
+.boxTwo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  width: 112px;
+}
+
+.costs {
+  margin-right: 25px;
+}

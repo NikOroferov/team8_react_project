@@ -218,6 +218,62 @@
 
 /* Копки для мобилки */
 
+.conteinerMobileBtn {
+  position: relative;
+  /* width: 320x; */
+  height: 100vh;
+}
+
 .btnForMobil {
-  display: none;
+  max-width: 100%;
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 700;
+  color: #000000;
+
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 54px;
+}
+
+.btvExpense {
+  display: inline-block;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 159px;
+  height: 53px;
+  background-color: #f5f6fb;
+  outline: none;
+  border: none;
+  border-right-style: solid;
+  border-right-color: #ffffff;
+}
+
+.btvExpense:hover {
+  background-color: #ff751d;
+  color: #ffffff;
+}
+
+.btvIncome {
+  display: inline-block;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  width: 159px;
+  height: 53px;
+  background-color: #f5f6fb;
+  outline: none;
+  border: none;
+
+  /* background-color: red; */
+}
+
+.btvIncome:hover {
+  background-color: #ff751d;
+  color: #ffffff;
 }

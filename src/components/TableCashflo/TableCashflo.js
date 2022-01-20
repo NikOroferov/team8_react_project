@@ -190,7 +190,6 @@ export default function TableCashflo({ typeInfo }) {
 
   const dataCashFoTabl = dataCash.map(
     ({ id, date, subcategory, category, transactionType, costs }) => {
-      // if ((transactionType = 'расход')) {
       return {
         col1: date,
         col2: subcategory,
@@ -199,16 +198,6 @@ export default function TableCashflo({ typeInfo }) {
         col5: <ButtoDelet click={onClickDelete} idItams={id} />,
         transactionType: transactionType,
       };
-      // } else {
-      //   return {
-      //     col1: date,
-      //     col2: subcategory,
-      //     col3: category,
-      //     col4: `+ ${costs} грн.`,
-      //     col5: <ButtoDelet click={onClickDelete} idItams={id} />,
-      //     transactionType: transactionType,
-      //   };
-      // }
     },
   );
 
@@ -216,39 +205,32 @@ export default function TableCashflo({ typeInfo }) {
     return e.transactionType === typeInfo;
   });
 
-  //   console.log(dataCashFoTabl);
-
   const data = useMemo(() => [...dataCashFoTablFiter], [dataCashFoTablFiter]);
 
   const columns = useMemo(
     () => [
       {
         width: '90',
-        //   width: '{ }',
         Header: 'Дата',
         accessor: 'col1',
       },
       {
         width: '300',
-        // width: '{}',
         Header: 'Описание',
         accessor: 'col2',
       },
       {
         width: '160',
-        //  width: '{}',
         Header: 'Категория',
         accessor: 'col3',
       },
       {
         width: '130',
-        //   width: '{}',
         Header: 'Сумма',
         accessor: 'col4',
       },
       {
         width: '70',
-        //   width: '{}',
         marginLeft: '20',
         Header: '',
         accessor: 'col5',

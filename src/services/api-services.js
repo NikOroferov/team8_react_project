@@ -22,11 +22,8 @@ const updateUserBalance = balance => axios.patch('/user/balance', balance); //ba
 const getUserInfo = () => axios.get('/user');
 
 // Transactions
-const postIncome = income => axios.post('/transaction/income', income); //income={description,amount,date}
-const getIncome = () => axios.get('/transaction/income');
-
-const postExpense = expense => axios.post('/transaction/expense', expense); //expense={description,amount,date,category}
-const getExpense = () => axios.get('/transaction/expense');
+const postTransaction = income => axios.post('/transaction', income); //income={description,amount,date}
+const getTransaction = () => axios.get('/transaction');
 
 const deleteTransaction = transactionId =>
   axios.delete(`/transaction/${transactionId}`);
@@ -38,10 +35,8 @@ const api = {
   logout,
   updateUserBalance,
   getUserInfo,
-  postIncome,
-  getIncome,
-  postExpense,
-  getExpense,
+  postTransaction,
+  getTransaction,
   deleteTransaction,
 };
 

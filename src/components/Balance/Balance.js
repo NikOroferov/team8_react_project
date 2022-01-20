@@ -11,11 +11,11 @@ import css from './Balance.module.css';
 export default function Balance() {
   // const initialBalance = useSelector(getBalance);
 
-  const initialBalance = '00.00';
+  const initialBalance = 0;
 
   const [input, setInput] = useState(initialBalance);
 
-  const handleChange = e => {
+  const handleChangeInput = e => {
     setInput(e.target.value);
   };
 
@@ -37,8 +37,9 @@ export default function Balance() {
           pattern="^[ 0-9]+$"
           title="Пожалуйста, вводите только цифры"
           type="number"
-          value={input}
-          onChange={handleChange}
+          min="1"
+          value={input !== 0 ? input : ''}
+          onChange={handleChangeInput}
         />
       </span>
 
@@ -51,7 +52,7 @@ export default function Balance() {
         className={css.btn}
         onClick={null}
       />
-      {/* {initialBalance === '00.00' && <BalanceModal />} */}
+      {initialBalance === 0 && <BalanceModal />}
     </form>
   );
 }

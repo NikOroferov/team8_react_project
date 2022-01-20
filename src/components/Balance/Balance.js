@@ -52,7 +52,7 @@ export default function Balance() {
         className={css.btn}
         onClick={null}
       />
-      {initialBalance === 0 && <BalanceModal />}
+      {/* {initialBalance === 0 && <BalanceModal />} */}
     </form>
   );
 }

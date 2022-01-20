@@ -8,7 +8,7 @@ import Select from '@mui/material/Select';
 import Button from '../Button/Button';
 import s from './CashflowDataEntry.module.css';
 import Icons from '../../img/svg/sprite.svg';
-import categoryData from '../../json/categoryCosts.json';
+// import categoryData from '../../json/categoryCosts.json';
 
 export default function CashflowDataEntry({ typeInfo }) {
   const [category, setСategory] = useState('');
@@ -43,14 +43,11 @@ export default function CashflowDataEntry({ typeInfo }) {
 
   const typeInfoEnty = () => {
     if (typeInfo === 'расход') {
-      return true;
-    } else {
       return false;
+    } else {
+      return true;
     }
   };
-
-  const dateWWW = new Date().getFullYear();
-  console.log(dateWWW);
 
   const enterData = e => {
     setDataItem({
@@ -69,16 +66,16 @@ export default function CashflowDataEntry({ typeInfo }) {
     setSum([]);
   };
 
-  const dataCategoryFoTabl = categoryData.map(({ id, category }) => {
-    return {
-      item: <MenuItem value={id}> {category}</MenuItem>,
-    };
-  });
+  //   const dataCategoryFoTabl = categoryData.map(({ id, category }) => {
+  //     return {
+  //       item: <MenuItem value={id}> {category}</MenuItem>,
+  //     };
+  //   });
 
-  const fff = dataCategoryFoTabl.forEach(data => {
-    //  console.log(data.item);
-    return data.item;
-  });
+  //   const fff = dataCategoryFoTabl.forEach(data => {
+  //     //  console.log(data.item);
+  //     return data.item;
+  //   });
 
   //   console.log(dataCategoryFoTabl);
   //   console.log(fff);

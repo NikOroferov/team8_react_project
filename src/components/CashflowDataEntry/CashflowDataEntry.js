@@ -13,7 +13,7 @@ import Icons from '../../img/svg/sprite.svg';
 export default function CashflowDataEntry({ typeInfo }) {
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
-  const [sum, setSum] = useState([]);
+  const [sum, setSum] = useState('');
 
   const [dataItem, setDataItem] = useState('');
 

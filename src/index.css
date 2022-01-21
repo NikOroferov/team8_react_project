@@ -162,3 +162,38 @@ button {
   background-color: #ff751d;
   border-radius: 9em;
 }
+
+.navBtn {
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 700;
+
+  width: 138px;
+  height: 40px;
+  color: black;
+  background-color: #fafbfd;
+  border: none;
+  border-radius: 16px 16px 0 0;
+  cursor: pointer;
+}
+
+.navBtn:hover {
+  color: #ffffff;
+  background-color: var(--backgroundActive);
+}
+
+.navBtnActive {
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 700;
+
+  width: 138px;
+  height: 40px;
+
+  color: var(--backgroundActive);
+
+  background-color: #fefefe;
+  border: none;
+  border-radius: 16px 16px 0 0;
+  cursor: pointer;
+}

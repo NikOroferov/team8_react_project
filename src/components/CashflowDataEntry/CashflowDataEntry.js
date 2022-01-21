@@ -51,7 +51,7 @@ export default function CashflowDataEntry({ typeInfo }) {
 
   const enterData = e => {
     setDataItem({
-      created_at: new Date().toLocaleDateString(),
+      created_at: new Date().toISOString(),
       Year: new Date().getFullYear(),
       Month: new Date().getMonth() + 1,
       Day: new Date().getDate(),

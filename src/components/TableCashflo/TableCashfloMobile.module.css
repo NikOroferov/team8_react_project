@@ -1,9 +1,8 @@
 .boxCashfloo {
   display: inline-block;
   width: 320px;
-
-  overflow: auto;
   height: 162px;
+  /* height: calc(100vp - (324px)); */
 
   overflow: auto;
   -ms-overflow-style: none;

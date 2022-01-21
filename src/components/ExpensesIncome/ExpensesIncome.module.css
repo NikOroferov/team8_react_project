@@ -284,3 +284,12 @@
   background-color: #ff751d;
   color: #ffffff;
 }
+
+/* Кнопка Назад */
+
+.btnBeck {
+  width: 24px;
+  height: 24px;
+  margin-top: 15px;
+  margin-left: 20px;
+}

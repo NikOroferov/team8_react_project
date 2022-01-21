@@ -165,8 +165,8 @@ export default function ExpensesIncome() {
 
       {сostsMobileBtn === false && (
         <Background>
-          <button onClick={beckHome}>
-            <svg width="18" height="18" className="">
+          <button className={s.btnBeck} onClick={beckHome}>
+            <svg width="18" height="18">
               <use
                 xlinkHref={`${Icons}#icon-keyboard_backspace-24px-1`}
                 //  className=""
@@ -181,8 +181,8 @@ export default function ExpensesIncome() {
 
       {incomeMobileBtn === false && (
         <Background>
-          <button onClick={beckHome}>
-            <svg width="18" height="18" className="">
+          <button className={s.btnBeck} onClick={beckHome}>
+            <svg width="24" height="24">
               <use
                 xlinkHref={`${Icons}#icon-keyboard_backspace-24px-1`}
                 //  className=""

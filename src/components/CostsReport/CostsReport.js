@@ -9,7 +9,7 @@ async function fetchWithErrorHandling(url = '') {
   const response = await fetch(url, {
     headers: {
       Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjc1OTU4MCwiZXhwIjoxNjQzOTY5MTgwfQ.dzTDXVdSFwErS6LbyCR8Djn6rs7tL1-WDXx9N2vnrXQ',
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjc2ODA2NCwiZXhwIjoxNjQzOTc3NjY0fQ.-xnGlU0KqSdnpfM15YTy2yz8OrH5MmXUu6sDGxEdbTk',
     },
   });
   return response.ok
@@ -87,7 +87,7 @@ function CostsReport({
                   className={
                     clicked
                       ? 'cat-button'
-                      : `cat-button cat-button-${category.id}`
+                      : `cat-button cat-button-${categories.indexOf(category)}`
                   }
                 >
                   <div className={styles.sum}>{category.totalInCategory}</div>

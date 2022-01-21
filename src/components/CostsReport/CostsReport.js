@@ -9,7 +9,7 @@ async function fetchWithErrorHandling(url = '') {
   const response = await fetch(url, {
     headers: {
       Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjc2ODA2NCwiZXhwIjoxNjQzOTc3NjY0fQ.-xnGlU0KqSdnpfM15YTy2yz8OrH5MmXUu6sDGxEdbTk',
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjc4MzYyMCwiZXhwIjoxNjQzOTkzMjIwfQ.OZ37O5eFQ5XYdcjx8pZwp4CL_9Qh6pJLT9nkO-Npfcg',
     },
   });
   return response.ok
@@ -35,7 +35,8 @@ function CostsReport({
   const [error, setError] = useState('');
 
   useEffect(() => {
-    fetchCategory(date, typeReport)
+    if (date && typeReport !== null) {
+      fetchCategory(date, typeReport)
       .then(response => {
         setClicked(false);
         setCategories(response.data.result);
@@ -44,6 +45,10 @@ function CostsReport({
       .catch(error => {
         setError('Hey, Kapusta! We have a problem!');
       });
+    } else {
+      return
+    }
+    
   }, [date, typeReport]);
 
   // const queryReports = [date, typeReport];

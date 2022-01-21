@@ -13,14 +13,13 @@ export default function BarGraph({ date, typeReport, activeCategory }) {
     const response = await fetch(url, {
       headers: {
         Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjc2ODA2NCwiZXhwIjoxNjQzOTc3NjY0fQ.-xnGlU0KqSdnpfM15YTy2yz8OrH5MmXUu6sDGxEdbTk',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjc4MzYyMCwiZXhwIjoxNjQzOTkzMjIwfQ.OZ37O5eFQ5XYdcjx8pZwp4CL_9Qh6pJLT9nkO-Npfcg',
       },
     });
     return response.ok
       ? await response.json()
       : Promise.reject(new Error('Not found'));
   }
-
 
   //Device screen size listener
   const [isDesktopOrTablet, setIsDesktopOrTablet] = useState(
@@ -36,22 +35,21 @@ export default function BarGraph({ date, typeReport, activeCategory }) {
   });
 
   useEffect(() => {
+    if (activeCategory !== null) {
       function fetchSubcategory(date, typeReport, activeCategory) {
-    return fetchWithErrorHandling(`
+        return fetchWithErrorHandling(`
     ${BASE_URL}/subcategory-by-month?date=${date}&isIncome=${typeReport}&category=${activeCategory}`);
+      }
+      fetchSubcategory(date, typeReport, activeCategory)
+        .then(response => {
+            setSubcategories(response.data.result);
+        })
+        .catch(error => {
+          setError('Hey, Kapusta! We have a problem!');
+        });
+    } else {
+      return
     }
-    let isMounted = true;  
-    fetchSubcategory(date, typeReport, activeCategory)
-      .then(response => {
-        if (isMounted) {
-  setSubcategories(response.data.result);
-        } 
-        return () => { isMounted = false }
-      })
-      .catch(error => {
-        error.message();
-        setError('Hey, Kapusta! We have a problem!');
-      })
   }, [activeCategory, date, typeReport]);
 
   let barColors;

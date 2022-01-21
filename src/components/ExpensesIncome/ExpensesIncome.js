@@ -18,8 +18,8 @@ export default function ExpensesIncome() {
   const [typeInfo, setTypeInfo] = useState('расход');
   const [сostsMobileBtn, setCostsMobileBtn] = useState(true);
   const [incomeMobileBtn, setIncomeMobileBtn] = useState(true);
-
   const [clicked, setClicked] = useState(false);
+  const [requestType, setRequestType] = useState(false);
 
   const сostsClick = e => {
     e.preventDefault();
@@ -45,6 +45,7 @@ export default function ExpensesIncome() {
     console.log('+');
     setIncomeMobileBtn(false);
     setTypeInfo('доход');
+    setRequestType(true);
   };
 
   const beckHome = e => {

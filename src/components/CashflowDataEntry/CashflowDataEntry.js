@@ -14,7 +14,7 @@ export default function CashflowDataEntry({ typeInfo }) {
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState([]);
-  // eslint-disable-next-line no-unused-vars
+
   const [dataItem, setDataItem] = useState('');
 
   const hendleChangeDescription = ({ target: { name, value } }) => {
@@ -82,7 +82,7 @@ export default function CashflowDataEntry({ typeInfo }) {
 
       <InputLabel
         id="demo-simple-select-label"
-        placeholder="Описание товара"
+        //   placeholder="Описание товара"
       ></InputLabel>
 
       {typeInfo === 'расход' && (
@@ -92,7 +92,6 @@ export default function CashflowDataEntry({ typeInfo }) {
           id="demo-simple-select"
           value={category}
           onChange={handleChange}
-          //  placeholder="Описание товара"
           required
         >
           <MenuItem value="Алкоголь" className={s.categoryItamMenu}>

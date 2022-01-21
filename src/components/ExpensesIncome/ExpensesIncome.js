@@ -1,5 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import Media from 'react-media';
+// import f from '../../services/api-services';
+import axios from 'axios';
 
 import Background from '../../views/Background/background.jsx';
 import Balance from '../Balance/Balance';
@@ -13,6 +15,17 @@ import TableCashfloMobile from '../TableCashflo/TableCashfloMobile';
 import Icons from '../../img/svg/sprite.svg';
 
 import s from './ExpensesIncome.module.css';
+
+// console.log(f.getTransaction());
+
+// axios.defaults.baseURL = 'http://localhost:3001/api/transaction';
+
+// const fech = async () => {
+//   const response = await axios.get(`/total-by-month`);
+//   return response.data;
+// };
+
+// console.log(fech());
 
 export default function ExpensesIncome() {
   const [typeInfo, setTypeInfo] = useState('расход');

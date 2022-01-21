@@ -12,11 +12,18 @@
 
   background-color: var(--backgroundGray);
   color: var(--fontColorSecondary);
-  border-radius: 16px;
+  border-radius: 0 16px 16px 0;
   border: solid 2px;
   border-color: var(--mainBackgroundColor);
   /* border-color: red; */
   cursor: pointer;
+  outline: none;
+}
+
+@media screen and (min-width: 768px) {
+  .greyBtn {
+    border-radius: 16px;
+  }
 }
 
 .greyBtn:hover {

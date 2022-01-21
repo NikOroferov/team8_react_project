@@ -92,6 +92,7 @@ function Table({ columns, data }) {
 }
 
 export default function TableCashfloTabl({ typeInfo }) {
+  // eslint-disable-next-line no-unused-vars
   const [dataCash, setDatadCash] = useState([
     {
       id: '1',
@@ -215,22 +216,22 @@ export default function TableCashfloTabl({ typeInfo }) {
         accessor: 'col1',
       },
       {
-        width: '168',
+        width: '192',
         Header: 'Описание',
         accessor: 'col2',
       },
       {
-        width: '124',
+        width: '114',
         Header: 'Категория',
         accessor: 'col3',
       },
       {
-        width: '104',
+        width: '124',
         Header: 'Сумма',
         accessor: 'col4',
       },
       {
-        width: '50',
+        width: '90',
         marginLeft: '20',
         Header: '',
         accessor: 'col5',

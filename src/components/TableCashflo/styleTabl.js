@@ -157,7 +157,7 @@ const Styles = styled.div`
       }
 
       :nth-child(4) {
-        color: #e7192e;
+        /* color: #e7192e; */
         font-weight: 700;
         text-align: right;
         @media screen and (min-width: 768px) {

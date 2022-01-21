@@ -3,61 +3,127 @@ import getSubcategoryReport from '../../services/api-services';
 import styles from './CostsReport.module.css';
 import Icons from '../../img/svg/sprite.svg';
 
-function CostsReport({ handleSubcategories, categories, date, typeReport, firstCategory }) {
+const BASE_URL = 'http://localhost:3001/api/transaction';
+
+async function fetchWithErrorHandling(url = '') {
+  const response = await fetch(url, {
+    headers: {
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjc2ODA2NCwiZXhwIjoxNjQzOTc3NjY0fQ.-xnGlU0KqSdnpfM15YTy2yz8OrH5MmXUu6sDGxEdbTk',
+    },
+  });
+  return response.ok
+    ? await response.json()
+    : Promise.reject(new Error('Not found'));
+}
+
+function fetchCategory(date, typeReport) {
+  return fetchWithErrorHandling(
+    `${BASE_URL}/category-by-month?date=${date}&isIncome=${typeReport}`,
+  );
+}
+
+function CostsReport({
+  date,
+  typeReport,
+  handleActiveCategory,
+  handleCategoriesLenght,
+}) {
   const [clicked, setClicked] = useState(false);
-  const [activeCategory, setActiveCategory] = useState(firstCategory);
+  const [categories, setCategories] = useState([]);
+  const [firstCategory, setfirstCategory] = useState(null);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    const queryReports = [date, typeReport, activeCategory];
-  
-    // getSubcategoryReport(queryReports)
-    //   .then(resp => {
-    //     handleSubcategories(resp))}
-    // .catch(error => {
-    //     setError('Hey, Kapusta! We have a problem!');
-      }, [activeCategory, date, typeReport, handleSubcategories])
+    fetchCategory(date, typeReport)
+      .then(response => {
+        setClicked(false);
+        setCategories(response.data.result);
+        setfirstCategory(response.data.result[0]._id);
+      })
+      .catch(error => {
+        setError('Hey, Kapusta! We have a problem!');
+      });
+  }, [date, typeReport]);
 
-  const handleCategory = (e, title) => {
-    e.preventDefault();
+  // const queryReports = [date, typeReport];
+  // getCategoryReport(queryReports)
+  //   .then(resp =>
+
+  // setClicked(false);
+  // setCategories(expCategories);
+  // )
+  //  .catch(error => {
+  //   setError('Hey, Kapusta! We have a problem!');
+  // }, [
+  //   date,
+  //   typeReport
+  // ]);
+
+  useEffect(() => {
+    if (categories.length) {
+      handleCategoriesLenght(true);
+      handleActiveCategory(categories[0].id);
+    } else {
+      handleCategoriesLenght(false);
+    }
+  }, [categories, handleActiveCategory, handleCategoriesLenght]);
+
+  const handleCategory = title => {
     setClicked(true);
-    setActiveCategory(title)
+    handleActiveCategory(title);
   };
 
-  return (  
-        <section className={styles.sections}>
-          <div className={styles.container}>
-        
+  return (
+    <section className={styles.sectionCostRep}>
+      <div className={styles.container}>
         {categories.length ? (
           <ul className={styles.list} id="categoriesList">
-            {categories.map(item => (
-              <li
-                key={item.id}
-                className={styles.item}
-                id={item.sum}
-              >
+            {categories.map(category => (
+              <li key={category.id} className={styles.item} id={category.id}>
                 <button
                   type="submit"
-                  onClick={() => handleCategory(item.title)}
-                  className={clicked ? 'cat-button' : `cat-button cat-button${item.id}`}
+                  onClick={() => handleCategory(category.id)}
+                  className={
+                    clicked
+                      ? 'cat-button'
+                      : `cat-button cat-button-${categories.indexOf(category)}`
+                  }
                 >
-                  <div className={styles.sum}>{item.sum}</div>
+                  <div className={styles.sum}>{category.totalInCategory}</div>
                   <svg width="56" height="56" className="svg">
                     <use
-                      xlinkHref={`${Icons}#icon-oval-expenditure`}
+                      href={`${Icons}#icon-oval-expenditure`}
                       className="ellipse"
                     ></use>
                     <use
-                      xlinkHref={`${Icons}#icon-${item.id}`}
+                      href={`${Icons}${category.icon}`}
                       className="svg-icons"
                     ></use>
                   </svg>
-                  <div className={styles.category_title}>{item.id}</div>
+                  <div className={styles.category_title}>
+                    {category.category_title}
+                  </div>
                 </button>
-              </li>))}
-          </ul>) : (<div> {typeReport === true ? <p className={styles.text}>За данный период не найдено записей в списке доходов</p> : <p className={styles.text}>За данный период не найдено записей в списке расходов</p>}</div>)}
-
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div>
+            {' '}
+            {typeReport === true ? (
+              <p className={styles.text}>
+                За данный период не найдено записей в списке доходов
+              </p>
+            ) : (
+              <p className={styles.text}>
+                За данный период не найдено записей в списке расходов
+              </p>
+            )}
           </div>
-        </section>
+        )}
+      </div>
+    </section>
   );
 }
 

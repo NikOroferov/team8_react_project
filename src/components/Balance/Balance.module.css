@@ -1,11 +1,20 @@
 .form {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
-  /* margin: 0 auto; */
-  width: 370px;
+  width: 320px;
   text-align: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    width: 370px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
 }
 
 .label {
@@ -15,6 +24,21 @@
   text-align: center;
   line-height: 1.17;
   color: #52555fb2;
+}
+
+.text {
+  margin-left: 100px;
+  margin-right: 100px;
+  /* padding-bottom: 10px; */
+  margin-bottom: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .text {
+    margin-left: 0;
+    margin-right: 0;
+    /* margin-bottom: 0; */
+  }
 }
 
 .span {
@@ -40,10 +64,19 @@
 
   padding: 12px 35px 12px 10px;
   width: 125px;
-  border-radius: 16px;
+  border-radius: 16px 0 0 16px;
   border: 2px solid rgba(255, 255, 255, 1);
   background-color: #f2f5fc;
   filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+}
+
+@media screen and (min-width: 768px) {
+  .input {
+    border-radius: 16px;
+  }
+}
+
+.btn {
 }
 
 /* .btn {

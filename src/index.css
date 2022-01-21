@@ -153,3 +153,12 @@ button {
 .cat-button1 .svg-icons {
   fill: #ff751d;
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ff751d;
+  border-radius: 9em;
+}

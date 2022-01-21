@@ -46,7 +46,7 @@ function Table({ columns, data }) {
       return (
         <div
           {...row.getRowProps({
-            // style,
+            style,
           })}
           className="tr"
         >

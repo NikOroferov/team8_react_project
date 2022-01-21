@@ -8,6 +8,7 @@ import Header from './components/Header/Header';
 import Container from './components/Container';
 // import Balance from './components/Balance/Balance';
 // import CommonModal from './components/Modal/CommonModal';
+import GoogleRedirectPage from './views/GoogleRedirectPage/GoogleRedirectPage';
 
 function App() {
   // const [showModal, setShowModal] = useState(true);
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/cashflow" element={<CashFlowPage />} />
           <Route path="/reports" element={<ReportsPage />} />
+          <Route path="/google-redirect" element={<GoogleRedirectPage />} />
         </Routes>
       </Container>
     </>

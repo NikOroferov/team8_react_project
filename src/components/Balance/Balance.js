@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-// import { useSelector, useDispatch  } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 import { BalanceModal } from '../Modal';
 import ButtonGrey from '../Button/ButtonGrey';
@@ -10,20 +10,17 @@ import css from './Balance.module.css';
 
 export default function Balance() {
   // const initialBalance = useSelector(getBalance);
-  // const dispatch = useDispatch();
-
 
   const initialBalance = 1;
 
-
-  const [balance, setBalance] = useState(initialBalance);
+  const [input, setInput] = useState(initialBalance);
 
   const handleChangeInput = e => {
-    setBalance(e.target.value);
+    setInput(e.target.value);
   };
 
   useEffect(() => {
-    setBalance(initialBalance);
+    setInput(initialBalance);
   }, [initialBalance]);
 
   return (
@@ -41,7 +38,7 @@ export default function Balance() {
           title="Пожалуйста, вводите только цифры"
           type="number"
           min="1"
-          value={balance !== null ? balance : ''}
+          value={input !== 0 ? input : ''}
           onChange={handleChangeInput}
         />
       </span>

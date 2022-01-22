@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import Media from 'react-media';
 // import f from '../../services/api-services';
 import axios from 'axios';
@@ -16,34 +16,81 @@ import Icons from '../../img/svg/sprite.svg';
 
 import s from './ExpensesIncome.module.css';
 
-// console.log(f.getTransaction());
+axios.defaults.headers.common = {
+  Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg3NDE0OSwiZXhwIjoxNjQ0MDgzNzQ5fQ.XDSTb16DBgzWSLYCWCQTVlJJkGbOEu1AUWzzzrHWK7U`,
+};
 
-// axios.defaults.baseURL = 'http://localhost:3001/api/transaction';
-
-// const fech = async () => {
-//   const response = await axios.get(`/total-by-month`);
-//   return response.data;
-// };
-
-// console.log(fech());
+const idUser = '61ebe0f1bc769156e60da5f2';
 
 export default function ExpensesIncome() {
   const [typeInfo, setTypeInfo] = useState('расход');
+  const [typeIncomes, setTypeIncomes] = useState(false);
+
+  const [clicked, setClicked] = useState(false);
+
   const [сostsMobileBtn, setCostsMobileBtn] = useState(true);
   const [incomeMobileBtn, setIncomeMobileBtn] = useState(true);
-  const [clicked, setClicked] = useState(false);
-  const [requestType, setRequestType] = useState(false);
+
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    if (typeIncomes !== null) {
+      const fetchTransaction = async () => {
+        const response = await axios.get(
+          'http://localhost:3001/api/transaction',
+          {
+            params: { _id: `${idUser}`, isIncome: `${typeIncomes}` },
+          },
+        );
+        setTransactions(response.data.data.transactions);
+      };
+      fetchTransaction();
+    }
+  }, [typeIncomes]);
+
+  const fetchCostsMouth = async (idUser, typeIncomes) => {
+    const response = await axios.get(
+      'http://localhost:3001/api/transaction/summary',
+      {
+        params: { _id: `${idUser}`, isIncome: `${typeIncomes}` },
+      },
+    );
+    return response.data.data;
+  };
+
+  //   const dataM = fetchCostsMouth(idUser, typeIncomes);
+  //   console.log(dataM);
+
+  const fetchOther = async idUser => {
+    const response = await axios.get('http://localhost:3001/api/transaction', {
+      params: { _id: `${idUser}` },
+    });
+
+    return response.data;
+  };
+  //   console.log(fetchOther(idUser));
+
+  //   const fetchTransaction = async ({ idUser, typeIncomes }) => {
+  //     const response = await axios.get('http://localhost:3001/api/transaction', {
+  //       params: { _id: `${idUser}`, isIncome: `${typeIncomes}` },
+  //     });
+  //     return response.data;
+  //   };
+
+  //   console.log(fetchTransaction({ idUser, typeIncomes }));
 
   const сostsClick = e => {
     e.preventDefault();
     setTypeInfo('расход');
     setClicked(false);
+    setTypeIncomes(false);
   };
 
   const incomeClick = e => {
     e.preventDefault();
     setTypeInfo('доход');
     setClicked(true);
+    setTypeIncomes(true);
   };
 
   const clicCostBtnMobile = e => {
@@ -58,7 +105,7 @@ export default function ExpensesIncome() {
     console.log('+');
     setIncomeMobileBtn(false);
     setTypeInfo('доход');
-    setRequestType(true);
+    //  setRequestType(true);
   };
 
   const beckHome = e => {
@@ -126,15 +173,25 @@ export default function ExpensesIncome() {
                 {matches => (
                   <Fragment>
                     {matches.small && <></>}
-                    {matches.medium && <TableCashfloTabl typeInfo={typeInfo} />}
-                    {matches.large && <TableCashflo typeInfo={typeInfo} />}
+                    {matches.medium && (
+                      <TableCashfloTabl
+                        typeInfo={typeInfo}
+                        transactions={transactions}
+                      />
+                    )}
+                    {matches.large && (
+                      <TableCashflo
+                        typeInfo={typeInfo}
+                        transactions={transactions}
+                      />
+                    )}
                   </Fragment>
                 )}
               </Media>
 
               <div className={s.monthCashflow}>
                 <p className={s.summaryTitle}>СВОДКА</p>
-                <TableMonth />
+                <TableMonth typeIncomes={typeIncomes} />
               </div>
             </div>
           </div>
@@ -148,7 +205,7 @@ export default function ExpensesIncome() {
                 <Fragment>
                   {matches.small && (
                     <div className={s.btnForMobil}>
-                      <TableCashfloMobile />
+                      <TableCashfloMobile transactions={transactions} />
                       <button
                         className={s.btvExpense}
                         onClick={clicCostBtnMobile}

@@ -1,5 +1,6 @@
 import { useState, Fragment } from 'react';
 import Media from 'react-media';
+import axios from 'axios';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -10,12 +11,32 @@ import s from './CashflowDataEntry.module.css';
 import Icons from '../../img/svg/sprite.svg';
 // import categoryData from '../../json/categoryCosts.json';
 
+axios.defaults.headers.common = {
+  Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg0ODU2OSwiZXhwIjoxNjQ0MDU4MTY5fQ.dTjoLjfhdOIpYVxubsVGGC41l7iDtBkZO0Rw0P7pvPg`,
+};
+
+const idUser = '61ebe0f1bc769156e60da5f2';
+
 export default function CashflowDataEntry({ typeInfo }) {
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState('');
 
   const [dataItem, setDataItem] = useState('');
+
+  //   console.log(strDataItem);
+  //   console.log(dataItem);
+
+  const fetchEntry = async data => {
+    const response = await axios.post(
+      'http://localhost:3001/api/transaction',
+      data,
+      {
+        params: { _id: `${idUser}` },
+      },
+    );
+    return response.data;
+  };
 
   const hendleChangeDescription = ({ target: { name, value } }) => {
     switch (name) {
@@ -34,7 +55,7 @@ export default function CashflowDataEntry({ typeInfo }) {
     e.preventDefault();
     setСategory('');
     setDescription('');
-    setSum([]);
+    setSum('');
   };
 
   const handleChange = e => {
@@ -52,9 +73,9 @@ export default function CashflowDataEntry({ typeInfo }) {
   const enterData = e => {
     setDataItem({
       created_at: new Date().toISOString(),
-      Year: new Date().getFullYear(),
-      Month: new Date().getMonth() + 1,
-      Day: new Date().getDate(),
+      year: new Date().getFullYear(),
+      month: new Date().getMonth() + 1,
+      day: new Date().getDate(),
       subcategory: description,
       category: category,
       transactionType: typeInfo,
@@ -64,6 +85,7 @@ export default function CashflowDataEntry({ typeInfo }) {
     setСategory('');
     setDescription('');
     setSum([]);
+    fetchEntry(dataItem);
   };
 
   return (
@@ -94,38 +116,38 @@ export default function CashflowDataEntry({ typeInfo }) {
           onChange={handleChange}
           required
         >
-          <MenuItem value="Алкоголь" className={s.categoryItamMenu}>
-            Алкоголь
+          <MenuItem value="алкоголь" className={s.categoryItamMenu}>
+            алкоголь
           </MenuItem>
-          <MenuItem value="Все для дома" className={s.categoryItamMenu}>
-            Все для дома
+          <MenuItem value="все для дома" className={s.categoryItamMenu}>
+            все для дома
           </MenuItem>
-          <MenuItem value="Здоровье" className={s.categoryItamMenu}>
-            Здоровье
+          <MenuItem value="здоровье" className={s.categoryItamMenu}>
+            здоровье
           </MenuItem>
-          <MenuItem value="Коммуналка, связь" className={s.categoryItamMenu}>
-            Коммуналка, связь
+          <MenuItem value="коммуналка, связь" className={s.categoryItamMenu}>
+            коммуналка, связь
           </MenuItem>
-          <MenuItem value="Образование" className={s.categoryItamMenu}>
-            Образование
+          <MenuItem value="образование" className={s.categoryItamMenu}>
+            образование
           </MenuItem>
-          <MenuItem value="Продукты" className={s.categoryItamMenu}>
-            Продукты
+          <MenuItem value="продукты" className={s.categoryItamMenu}>
+            продукты
           </MenuItem>
-          <MenuItem value="Развлечения" className={s.categoryItamMenu}>
-            Развлечения
+          <MenuItem value="развлечения" className={s.categoryItamMenu}>
+            развлечения
           </MenuItem>
-          <MenuItem value="Спорт, хобби" className={s.categoryItamMenu}>
-            Спорт, хобби
+          <MenuItem value="спорт, хобби" className={s.categoryItamMenu}>
+            спорт, хобби
           </MenuItem>
-          <MenuItem value="Транспорт" className={s.categoryItamMenu}>
-            Транспорт
+          <MenuItem value="транспорт" className={s.categoryItamMenu}>
+            транспорт
           </MenuItem>
-          <MenuItem value="Техника" className={s.categoryItamMenu}>
-            Техника
+          <MenuItem value="техника" className={s.categoryItamMenu}>
+            техника
           </MenuItem>
-          <MenuItem value="Прочее" className={s.categoryItamMenu}>
-            Прочее
+          <MenuItem value="прочее" className={s.categoryItamMenu}>
+            прочее
           </MenuItem>
         </Select>
       )}
@@ -140,15 +162,11 @@ export default function CashflowDataEntry({ typeInfo }) {
           placeholder="Описание товара"
           required
         >
-          <MenuItem
-            value="ЗП"
-            // classes={s.categoryItamMenu}
-            className={s.categoryItamMenu}
-          >
-            ЗП
+          <MenuItem value="зп" className={s.categoryItamMenu}>
+            зп
           </MenuItem>
-          <MenuItem value="Допдоход" className={s.categoryItamMenu}>
-            Доп.доход
+          <MenuItem value="доп. доход" className={s.categoryItamMenu}>
+            доп. доход
           </MenuItem>
         </Select>
       )}

@@ -2,9 +2,16 @@ import { useMemo, useCallback, useState } from 'react';
 import { useTable, useBlockLayout } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
+import axios from 'axios';
 
 import Styles from './styleTabl';
 import Icons from '../../img/svg/sprite.svg';
+
+axios.defaults.headers.common = {
+  Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg0ODU2OSwiZXhwIjoxNjQ0MDU4MTY5fQ.dTjoLjfhdOIpYVxubsVGGC41l7iDtBkZO0Rw0P7pvPg`,
+};
+
+const idUser = '61ebe0f1bc769156e60da5f2';
 
 const ButtoDelet = data => {
   return (
@@ -187,6 +194,7 @@ export default function TableCashfloTabl({ typeInfo }) {
   const onClickDelete = e => {
     console.log(`УДИЛИТЬ`);
     console.log(e.currentTarget.id);
+    fetchDel(e.currentTarget.id);
   };
 
   const dataCashFoTabl = dataCash.map(
@@ -239,6 +247,17 @@ export default function TableCashfloTabl({ typeInfo }) {
     ],
     [],
   );
+
+  const fetchDel = async data => {
+    const response = await axios.delete(
+      'http://localhost:3001/api/transaction',
+      data,
+      {
+        params: { _id: `${idUser}` },
+      },
+    );
+    return response.data;
+  };
 
   return (
     <Styles>

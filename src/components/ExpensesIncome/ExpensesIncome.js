@@ -16,23 +16,32 @@ import Icons from '../../img/svg/sprite.svg';
 
 import s from './ExpensesIncome.module.css';
 
-// console.log(f.getTransaction());
+axios.defaults.headers.common = {
+  Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg0ODU2OSwiZXhwIjoxNjQ0MDU4MTY5fQ.dTjoLjfhdOIpYVxubsVGGC41l7iDtBkZO0Rw0P7pvPg`,
+};
 
-// axios.defaults.baseURL = 'http://localhost:3001/api/transaction';
-
-// const fech = async () => {
-//   const response = await axios.get(`/total-by-month`);
-//   return response.data;
-// };
-
-// console.log(fech());
+const idUser = '61ebe0f1bc769156e60da5f2';
 
 export default function ExpensesIncome() {
   const [typeInfo, setTypeInfo] = useState('расход');
   const [сostsMobileBtn, setCostsMobileBtn] = useState(true);
   const [incomeMobileBtn, setIncomeMobileBtn] = useState(true);
   const [clicked, setClicked] = useState(false);
-  const [requestType, setRequestType] = useState(false);
+  //   const [requestType, setRequestType] = useState(false);
+
+  const fetchCostsMouth = async () => {
+    const response = await axios.get(
+      'http://localhost:3001/api/transaction/summary',
+      {
+        params: { _id: `${idUser}`, isIncome: 'true' },
+      },
+    );
+    console.log(response.data.data.result);
+    return response.data;
+  };
+
+  const dataM = fetchCostsMouth();
+  console.log(dataM);
 
   const сostsClick = e => {
     e.preventDefault();
@@ -58,7 +67,7 @@ export default function ExpensesIncome() {
     console.log('+');
     setIncomeMobileBtn(false);
     setTypeInfo('доход');
-    setRequestType(true);
+    //  setRequestType(true);
   };
 
   const beckHome = e => {

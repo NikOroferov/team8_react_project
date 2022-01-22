@@ -25,19 +25,10 @@ export default function HomePage() {
             </div>
             <div className={s.loginWrapper}>
               <AuthForm />
-              {/* {login ? (
-                <LoginForm onClickRegister={onRegisterClick} />
-              ) : (
-                <RegistrationForm onClickComeBack={onComeBackClick} />
-              )} */}
             </div>
           </div>
         </Container>
       </section>
-
-      {/* <button>
-        <Link to="/cashflow">Go to CashFlowPage</Link>
-      </button> */}
     </>
   );
 }

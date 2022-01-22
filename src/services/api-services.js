@@ -56,11 +56,9 @@ const getSubcategoryReport = (date, isIncome, category) =>
     `/transaction/subcategory-by-month?date=${date}&isIncome=${isIncome}&category=${category}`,
   );
 
-
-// const getPeriodReports = () => axios.get('/transaction/period');
+const getPeriodReports = () => axios.get('/transaction/period');
 
 const getResumeReport = date => axios.get(`/transaction/summary?date=${date}`);
-
 
 const api = {
   token,
@@ -81,7 +79,7 @@ const api = {
   getCategoryReport,
   getSubcategoryReport,
   getResumeReport,
-
+  getPeriodReports,
 };
 
 export default api;

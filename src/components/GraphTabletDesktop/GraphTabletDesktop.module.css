@@ -1,32 +1,10 @@
-.graphDesktopAndTablet {
-  max-width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.barContainer {
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
-
-@media (min-width: 1280px) {
-  .graphDesktopAndTablet {
-    max-width: 758px;
-  }
-}
-
 .sections {
-  height: 403px;
+  height: 422px;
   background-color: #ffffff;
   box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
   border-radius: 30px;
   margin: 0 auto 0;
-  padding: 20px 26px 30px;
+ 
   text-align: center; 
 }
 
@@ -41,11 +19,13 @@
 @media screen and (min-width: 772px) and (max-width: 1279px) {
   .sections {
     max-width: 666px;
+    padding: 20px 15px 19px 15px;
   }
 }
 
 @media (min-width: 1280px) {
   .sections {
     width: 1060px;
+     padding: 20px 76px 19px 76px;
   }
 }

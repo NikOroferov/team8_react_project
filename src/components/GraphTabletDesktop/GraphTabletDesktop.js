@@ -42,10 +42,10 @@ export default function GraphTabletDesktop({
 
   const CustomTooltip = ({ active, payload, label, results }) => {
     if (active && payload && payload.length) {
-      const formattingTooltipLable = formatLabelList(results[label].name);
+      const tooltipLable = results[label].name;
       return (
         <div className="custom-tooltip">
-          <p className="label">{`${formattingTooltipLable} : ${payload[0].value} ${currency}`}</p>
+          <p className="label">{`${tooltipLable} : ${payload[0].value} ${currency}`}</p>
           <p className="desc">{`За месяц было внесено в список ${results[label].count} раз(а)`}</p>
         </div>
       );
@@ -55,12 +55,10 @@ export default function GraphTabletDesktop({
 
   return (
     <section className={styles.sections}>
-    <div className={styles.graphDesktopAndTablet}>
-      <div className={styles.barContainer}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={subcategories}
-            margin={{ top: 20, right: 0, left: 0, bottom: 19 }}
+            margin={{ top: 35, right: 0, left: 0, bottom: 35 }}
           >
             <CartesianGrid vertical={false} />
             <YAxis tickCount={9} hide={true} />
@@ -97,8 +95,6 @@ export default function GraphTabletDesktop({
             ></Legend> */}
           </BarChart>
         </ResponsiveContainer>
-      </div>
-      </div>
     </section>
   );
 }

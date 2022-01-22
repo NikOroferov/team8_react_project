@@ -60,7 +60,7 @@
   color: #ff751d;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .header {
     padding-left: 10px;
     padding-right: 10px;

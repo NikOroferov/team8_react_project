@@ -1,12 +1,12 @@
 import styles from './ReportsGraph.module.css';
-import { useState, useEffect } from 'react';
+import Media from 'react-media';
+import { useState, useEffect} from 'react';
 import GraphMobile from '../GraphMobile/GraphMobile';
 import GraphTabletDesktop from '../GraphTabletDesktop/GraphTabletDesktop';
 
 export default function BarGraph({ date, typeReport, activeCategory }) {
   const [subcategories, setSubcategories] = useState([]);
   const [error, setError] = useState('');
-
   const BASE_URL = 'http://localhost:3001/api/transaction';
 
   async function fetchWithErrorHandling(url = '') {
@@ -21,19 +21,6 @@ export default function BarGraph({ date, typeReport, activeCategory }) {
       : Promise.reject(new Error('Not found'));
   }
 
-  //Device screen size listener
-  const [isDesktopOrTablet, setIsDesktopOrTablet] = useState(
-    window.innerWidth > 767,
-  );
-
-  const updateMedia = () => {
-    setIsDesktopOrTablet(window.innerWidth > 767);
-  };
-  useEffect(() => {
-    window.addEventListener('resize', updateMedia);
-    return () => window.removeEventListener('resize', updateMedia);
-  });
-
   useEffect(() => {
     if (activeCategory !== null) {
       function fetchSubcategory(date, typeReport, activeCategory) {
@@ -42,13 +29,14 @@ export default function BarGraph({ date, typeReport, activeCategory }) {
       }
       fetchSubcategory(date, typeReport, activeCategory)
         .then(response => {
-            setSubcategories(response.data.result);
+          setSubcategories(response.data.result);
         })
         .catch(error => {
+          error.message();
           setError('Hey, Kapusta! We have a problem!');
         });
     } else {
-      return
+      return;
     }
   }, [activeCategory, date, typeReport]);
 
@@ -147,21 +135,29 @@ export default function BarGraph({ date, typeReport, activeCategory }) {
 
   return (
     <>
-      {isDesktopOrTablet ? (
-        <GraphTabletDesktop
-          subcategories={results}
-          barColors={barColors}
-          CustomizeLegend={CustomizeLegend}
-          formatLabelList={formatLabelList}
-        />
-      ) : (
-        <GraphMobile
-          subcategories={results}
-          barColors={barColors}
-          CustomizeLegend={CustomizeLegend}
-          formatLabelList={formatLabelList}
-        />
-      )}
+      <Media
+        queries={{
+          mobile: '(max-width: 767px)',
+          tabletDesktop: '(min-width: 768px)',
+        }}
+      >
+        {matches =>
+          matches.tabletDesktop ? (
+            <GraphTabletDesktop
+              subcategories={results}
+              barColors={barColors}
+              CustomizeLegend={CustomizeLegend}
+              formatLabelList={formatLabelList}
+            />
+          ) : (
+            <GraphMobile
+              subcategories={results}
+              barColors={barColors}
+              CustomizeLegend={CustomizeLegend}
+            />
+          )
+        }
+      </Media>
     </>
   );
 }

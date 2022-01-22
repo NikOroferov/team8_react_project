@@ -146,11 +146,11 @@ button {
   fill: #ffdac0;
 }
 
-.cat-button1 .ellipse {
+.cat-button-0 .ellipse {
   fill: #ffdac0;
 }
 
-.cat-button1 .svg-icons {
+.cat-button-0 .svg-icons {
   fill: #ff751d;
 }
 
@@ -197,3 +197,4 @@ button {
   border-radius: 16px 16px 0 0;
   cursor: pointer;
 }
+

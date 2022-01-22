@@ -31,7 +31,8 @@ function CostsReport({
 }) {
   const [clicked, setClicked] = useState(false);
   const [categories, setCategories] = useState([]);
-  const [firstCategory, setfirstCategory] = useState(null);
+  const [firstCategory, setFirstCategory] = useState(null);
+  const [activeCategory, setActiveCategory] = useState(null);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -40,43 +41,35 @@ function CostsReport({
       .then(response => {
         setClicked(false);
         setCategories(response.data.result);
-        setfirstCategory(response.data.result[0]._id);
+        setFirstCategory(response.data.result[0].id);
       })
       .catch(error => {
         setError('Hey, Kapusta! We have a problem!');
       });
     } else {
       return
-    }
-    
+    }    
   }, [date, typeReport]);
-
-  // const queryReports = [date, typeReport];
-  // getCategoryReport(queryReports)
-  //   .then(resp =>
-
-  // setClicked(false);
-  // setCategories(expCategories);
-  // )
-  //  .catch(error => {
-  //   setError('Hey, Kapusta! We have a problem!');
-  // }, [
-  //   date,
-  //   typeReport
-  // ]);
+  
+  useEffect(() => {
+    if (firstCategory) {
+      setActiveCategory(firstCategory);
+      setFirstCategory(null);
+    }
+    handleActiveCategory(activeCategory)
+  }, [activeCategory, handleActiveCategory, firstCategory]);
 
   useEffect(() => {
     if (categories.length) {
       handleCategoriesLenght(true);
-      handleActiveCategory(categories[0].id);
     } else {
       handleCategoriesLenght(false);
     }
-  }, [categories, handleActiveCategory, handleCategoriesLenght]);
+  }, [categories, handleCategoriesLenght]);
 
   const handleCategory = title => {
     setClicked(true);
-    handleActiveCategory(title);
+    setActiveCategory(title);
   };
 
   return (

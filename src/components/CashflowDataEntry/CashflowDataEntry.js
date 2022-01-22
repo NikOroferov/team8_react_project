@@ -12,7 +12,7 @@ import Icons from '../../img/svg/sprite.svg';
 // import categoryData from '../../json/categoryCosts.json';
 
 axios.defaults.headers.common = {
-  Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg0ODU2OSwiZXhwIjoxNjQ0MDU4MTY5fQ.dTjoLjfhdOIpYVxubsVGGC41l7iDtBkZO0Rw0P7pvPg`,
+  Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg3NDE0OSwiZXhwIjoxNjQ0MDgzNzQ5fQ.XDSTb16DBgzWSLYCWCQTVlJJkGbOEu1AUWzzzrHWK7U`,
 };
 
 const idUser = '61ebe0f1bc769156e60da5f2';
@@ -23,9 +23,6 @@ export default function CashflowDataEntry({ typeInfo }) {
   const [sum, setSum] = useState('');
 
   const [dataItem, setDataItem] = useState('');
-
-  //   console.log(strDataItem);
-  //   console.log(dataItem);
 
   const fetchEntry = async data => {
     const response = await axios.post(

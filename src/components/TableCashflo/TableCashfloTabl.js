@@ -1,4 +1,4 @@
-import { useMemo, useCallback, useState } from 'react';
+import { useMemo, useCallback, useState, useEffect } from 'react';
 import { useTable, useBlockLayout } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
@@ -98,7 +98,7 @@ function Table({ columns, data }) {
   );
 }
 
-export default function TableCashfloTabl({ typeInfo }) {
+export default function TableCashfloTabl({ typeInfo, transactions }) {
   // eslint-disable-next-line no-unused-vars
   const [dataCash, setDatadCash] = useState([
     {
@@ -191,26 +191,56 @@ export default function TableCashfloTabl({ typeInfo }) {
     },
   ]);
 
+  const [dataCash2, setDatadCash2] = useState([]);
+
   const onClickDelete = e => {
     console.log(`УДИЛИТЬ`);
     console.log(e.currentTarget.id);
     fetchDel(e.currentTarget.id);
   };
 
-  const dataCashFoTabl = dataCash.map(
-    ({ id, date, subcategory, category, transactionType, costs }) => {
-      return {
-        col1: date,
-        col2: subcategory,
-        col3: category,
-        col4: `${costs} грн.`,
-        col5: <ButtoDelet click={onClickDelete} idItams={id} />,
-        transactionType: transactionType,
-      };
-    },
-  );
+  useEffect(() => {
+    if (transactions !== []) {
+      const dataCashFoTabl = transactions.map(
+        ({
+          _id,
+          created_at,
+          subcategory,
+          category,
+          transactionType,
+          costs,
+        }) => {
+          return {
+            col1: created_at,
+            col2: subcategory,
+            col3: category,
+            col4: `${costs} грн.`,
+            col5: <ButtoDelet click={onClickDelete} idItams={_id} />,
+            transactionType: transactionType,
+          };
+        },
+      );
+      setDatadCash2(dataCashFoTabl);
+    }
+  }, [transactions]);
 
-  const dataCashFoTablFiter = dataCashFoTabl.filter(function (e) {
+  //   const dataCashFoTabl = dataCash.map(
+  //     ({ id, date, subcategory, category, transactionType, costs }) => {
+  //       return {
+  //         col1: date,
+  //         col2: subcategory,
+  //         col3: category,
+  //         col4: `${costs} грн.`,
+  //         col5: <ButtoDelet click={onClickDelete} idItams={id} />,
+  //         transactionType: transactionType,
+  //       };
+  //     },
+  //   );
+
+  //   const dataCashFoTablFiter = dataCashFoTabl.filter(function (e) {
+  //     return e.transactionType === typeInfo;
+  //   });
+  const dataCashFoTablFiter = dataCash2.filter(function (e) {
     return e.transactionType === typeInfo;
   });
 

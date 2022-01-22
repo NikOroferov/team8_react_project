@@ -39,8 +39,10 @@ export default function ReportsPage() {
 
           <div className={styles.upperBar}>
             <LinkToMain />
+            <div className={styles.mobileBar}>
             <Balance />
-            <CurrentDateRaport handleDate={handleDate} />
+              <CurrentDateRaport handleDate={handleDate} />
+            </div>
           </div>
 
           <ExpensesComponent />

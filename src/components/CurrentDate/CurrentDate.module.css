@@ -17,7 +17,7 @@
   align-items: center;
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
-  width: 174px;
+  width: 150px;
   height: 44px;
 }
 .wrapper {
@@ -35,15 +35,14 @@
   background: none;
   cursor: pointer;
 }
+
 .svg {
   fill: #ff812d;
 }
 
 .period {
-  margin-bottom: 5px;
   text-align: center;
-  margin-left: 6px;
-  margin-right: 6px;
+  margin: 0 4px 5px;
   font-weight: bold;
   font-size: 12px;
   line-height: 1.17;
@@ -67,4 +66,22 @@
 
 .month {
   margin-right: 5px;
+}
+
+@media (max-width: 767px) {
+  .container {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .container {
+    margin-left: 15px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    margin-left: 219px;
+  }
 }

@@ -45,7 +45,7 @@ export default function ReportsPage() {
             </div>
           </div>
 
-          <ExpensesComponent />
+          <ExpensesComponent date={ date }/>
 
           <div className={styles.wrapperSection}>
           <ReportsSwitcher

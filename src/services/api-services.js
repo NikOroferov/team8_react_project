@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = '';
+axios.defaults.baseURL = 'http://localhost:3001';
 
 const baseUrl = axios.defaults.baseURL;
 // Token

@@ -1,7 +1,8 @@
 import React from 'react';
 // import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { register,logIn } from '../../redux/auth/auth-operations';
+// import { register, logIn } from '../../redux/auth/auth-operation';
+import { authOperations } from '../../redux/auth';
 import s from './Auth.module.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -30,7 +31,7 @@ export default function AuthForm() {
       console.log('войти', values);
       const email = formik.values.email;
       const password = formik.values.name;
-      // dispatch(logIn({ email, password }));
+      dispatch(authOperations.logIn({ email, password }));
       // alert(JSON.stringify(values, null, 2));
     },
   });
@@ -40,7 +41,7 @@ export default function AuthForm() {
       const registration = formik.values;
       const email = formik.values.email;
       const password = formik.values.password;
-      // dispatch(register({ email, password }));
+      dispatch(authOperations.register({ email, password }));
       console.log('регистрация', registration);
 
       formik.resetForm();

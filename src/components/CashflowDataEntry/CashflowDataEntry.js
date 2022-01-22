@@ -1,5 +1,5 @@
 import { useState, Fragment } from 'react';
-// import Media from 'react-media';
+import Media from 'react-media';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -13,8 +13,8 @@ import Icons from '../../img/svg/sprite.svg';
 export default function CashflowDataEntry({ typeInfo }) {
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
-  const [sum, setSum] = useState([]);
-  // eslint-disable-next-line no-unused-vars
+  const [sum, setSum] = useState('');
+
   const [dataItem, setDataItem] = useState('');
 
   const hendleChangeDescription = ({ target: { name, value } }) => {
@@ -51,7 +51,7 @@ export default function CashflowDataEntry({ typeInfo }) {
 
   const enterData = e => {
     setDataItem({
-      created_at: new Date().toLocaleDateString(),
+      created_at: new Date().toISOString(),
       Year: new Date().getFullYear(),
       Month: new Date().getMonth() + 1,
       Day: new Date().getDate(),
@@ -68,7 +68,7 @@ export default function CashflowDataEntry({ typeInfo }) {
 
   return (
     <form className={s.formCashflow}>
-      <label>
+      <label className={s.labelDescription}>
         <input
           className={s.description}
           type="text"
@@ -82,8 +82,9 @@ export default function CashflowDataEntry({ typeInfo }) {
 
       <InputLabel
         id="demo-simple-select-label"
-        placeholder="Описание товара"
+        //   placeholder="Описание товара"
       ></InputLabel>
+
       {typeInfo === 'расход' && (
         <Select
           className={s.category}
@@ -91,7 +92,6 @@ export default function CashflowDataEntry({ typeInfo }) {
           id="demo-simple-select"
           value={category}
           onChange={handleChange}
-          //  placeholder="Описание товара"
           required
         >
           <MenuItem value="Алкоголь" className={s.categoryItamMenu}>
@@ -152,30 +152,58 @@ export default function CashflowDataEntry({ typeInfo }) {
           </MenuItem>
         </Select>
       )}
+      <span className={s.span}>
+        <label className={s.boxCalculator}>
+          <input
+            className={s.calculator}
+            type="number"
+            placeholder="0,00"
+            name="sum"
+            value={sum}
+            step="0.01"
+            min="0"
+            onChange={hendleChangeDescription}
+            required
+          />
+          <div className={s.boxIconCalc}>
+            <svg width="56" height="56" className={s.calcIcon}>
+              <use xlinkHref={`${Icons}#icon-calculator`} className=""></use>
+            </svg>
+          </div>
+        </label>
+      </span>
 
-      <label className={s.boxCalculator}>
-        <input
-          className={s.calculator}
-          type="number"
-          placeholder="0,00"
-          name="sum"
-          value={sum}
-          step="0.01"
-          min="0"
-          onChange={hendleChangeDescription}
-          required
-        />
-        <svg width="56" height="56" className={s.calcIcon}>
-          <use xlinkHref={`${Icons}#icon-calculator`} className=""></use>
-        </svg>
-      </label>
-
-      <div className={s.btn}>
-        <Button name="ВВОД" type="submit" click={enterData} />
-      </div>
-      <div className={s.btnCleer}>
-        <Button name="ОЧИСТИТЬ" type="submit" click={clearForm} />
-      </div>
+      <Media
+        queries={{
+          small: '(min-width: 320px) and (max-width: 767px)',
+          medium: '(min-width: 768px)',
+        }}
+      >
+        {matches => (
+          <Fragment>
+            {matches.small && (
+              <div className={s.btnBoxSubmit}>
+                <div className={s.btn}>
+                  <Button name="ВВОД" type="submit" click={enterData} />
+                </div>
+                <div className={s.btnCleer}>
+                  <Button name="ОЧИСТИТЬ" type="submit" click={clearForm} />
+                </div>
+              </div>
+            )}
+            {matches.medium && (
+              <>
+                <div className={s.btn}>
+                  <Button name="ВВОД" type="submit" click={enterData} />
+                </div>
+                <div className={s.btnCleer}>
+                  <Button name="ОЧИСТИТЬ" type="submit" click={clearForm} />
+                </div>
+              </>
+            )}
+          </Fragment>
+        )}
+      </Media>
     </form>
   );
 }

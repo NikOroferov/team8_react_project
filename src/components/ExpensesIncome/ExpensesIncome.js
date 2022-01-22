@@ -1,16 +1,13 @@
 import React, { useState, Fragment } from 'react';
 import Media from 'react-media';
-
-// import { useState } from 'react';
-
-import Balance from '../Balance/Balance';
+// import f from '../../services/api-services';
+import axios from 'axios';
 
 import Background from '../../views/Background/background.jsx';
-
-import LinkToReports from '../LinkToReports/LinkToReports';
+import Balance from '../Balance/Balance';
 import DateCalendar from '../DateCalendar/DateCalendar';
+import LinkToReports from '../LinkToReports/LinkToReports';
 import CashflowDataEntry from '../CashflowDataEntry/CashflowDataEntry';
-
 import TableCashflo from '../TableCashflo/TableCashflo';
 import TableCashfloTabl from '../TableCashflo/TableCashfloTabl';
 import TableMonth from '../TableMonth/TableMonth';
@@ -19,33 +16,34 @@ import Icons from '../../img/svg/sprite.svg';
 
 import s from './ExpensesIncome.module.css';
 
+// console.log(f.getTransaction());
+
+// axios.defaults.baseURL = 'http://localhost:3001/api/transaction';
+
+// const fech = async () => {
+//   const response = await axios.get(`/total-by-month`);
+//   return response.data;
+// };
+
+// console.log(fech());
+
 export default function ExpensesIncome() {
   const [typeInfo, setTypeInfo] = useState('расход');
   const [сostsMobileBtn, setCostsMobileBtn] = useState(true);
   const [incomeMobileBtn, setIncomeMobileBtn] = useState(true);
-
-  const [activeCostsBtn, setActiveCostsBtn] = useState(true);
-  const [activeIncomeBtn, setActiveIncomeBtn] = useState(false);
-
-  //   const classes = ['navBtn'];
-  //   const classesStr = classes.join(' ');
-
-  //   if (activeCostsBtn === true) {
-  //     classes.push('active');
-  //   }
+  const [clicked, setClicked] = useState(false);
+  const [requestType, setRequestType] = useState(false);
 
   const сostsClick = e => {
     e.preventDefault();
     setTypeInfo('расход');
-    setActiveCostsBtn(true);
-    setActiveIncomeBtn(false);
+    setClicked(false);
   };
 
   const incomeClick = e => {
     e.preventDefault();
     setTypeInfo('доход');
-    setActiveIncomeBtn(true);
-    setActiveCostsBtn(false);
+    setClicked(true);
   };
 
   const clicCostBtnMobile = e => {
@@ -60,6 +58,7 @@ export default function ExpensesIncome() {
     console.log('+');
     setIncomeMobileBtn(false);
     setTypeInfo('доход');
+    setRequestType(true);
   };
 
   const beckHome = e => {
@@ -81,10 +80,18 @@ export default function ExpensesIncome() {
           </div>
 
           <div className={s.boxBtn}>
-            <button className={s.navBtn} type="button" onClick={сostsClick}>
+            <button
+              className={clicked ? 'navBtn' : `navBtnActive`}
+              type="button"
+              onClick={сostsClick}
+            >
               РАСХОД
             </button>
-            <button className={s.navBtn} type="button" onClick={incomeClick}>
+            <button
+              className={clicked ? 'navBtnActive' : `navBtn`}
+              type="button"
+              onClick={incomeClick}
+            >
               ДОХОД
             </button>
           </div>
@@ -165,12 +172,9 @@ export default function ExpensesIncome() {
 
       {сostsMobileBtn === false && (
         <Background>
-          <button onClick={beckHome}>
-            <svg width="18" height="18" className="">
-              <use
-                xlinkHref={`${Icons}#icon-keyboard_backspace-24px-1`}
-                //  className=""
-              ></use>
+          <button className={s.btnBeck} onClick={beckHome}>
+            <svg width="18" height="18">
+              <use xlinkHref={`${Icons}#icon-keyboard_backspace-24px-1`}></use>
             </svg>
           </button>
           <div className={s.cashflowInput}>
@@ -181,12 +185,9 @@ export default function ExpensesIncome() {
 
       {incomeMobileBtn === false && (
         <Background>
-          <button onClick={beckHome}>
-            <svg width="18" height="18" className="">
-              <use
-                xlinkHref={`${Icons}#icon-keyboard_backspace-24px-1`}
-                //  className=""
-              ></use>
+          <button className={s.btnBeck} onClick={beckHome}>
+            <svg width="24" height="24">
+              <use xlinkHref={`${Icons}#icon-keyboard_backspace-24px-1`}></use>
             </svg>
           </button>
           <div className={s.cashflowInput}>

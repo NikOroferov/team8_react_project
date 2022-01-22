@@ -5,6 +5,8 @@ import CashFlowPage from './views/CashFlowPage/CashFlowPage';
 import ReportsPage from './views/ReportsPage/ReportsPage';
 import Header from './components/Header/Header';
 import Container from './components/Container';
+import GoogleRedirectPage from './views/GoogleRedirectPage/GoogleRedirectPage';
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/cashflow" element={<CashFlowPage />} />
           <Route path="/reports" element={<ReportsPage />} />
+          <Route path="/google-redirect" element={<GoogleRedirectPage />} />
         </Routes>
       </Container>
     </>

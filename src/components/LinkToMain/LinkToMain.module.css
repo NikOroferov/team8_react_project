@@ -21,20 +21,20 @@ width: 24px;
 height: 24px;
 }
 
-/* @media (max-width: 771px) {
+@media (max-width: 767px) {
   .container {
-    width: 100%;
+    margin-bottom: 10px;
   }
 }
 
-@media screen and (min-width: 772px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .container {
-    max-width: 666px;
+    margin-right: 5px;
   }
 }
 
 @media (min-width: 1280px) {
   .container {
-    width: 1060px;
+    margin-right: 158px;
   }
-} */
+}

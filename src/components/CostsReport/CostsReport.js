@@ -9,7 +9,7 @@ async function fetchWithErrorHandling(url = '') {
   const response = await fetch(url, {
     headers: {
       Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjc2ODA2NCwiZXhwIjoxNjQzOTc3NjY0fQ.-xnGlU0KqSdnpfM15YTy2yz8OrH5MmXUu6sDGxEdbTk',
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjc4MzYyMCwiZXhwIjoxNjQzOTkzMjIwfQ.OZ37O5eFQ5XYdcjx8pZwp4CL_9Qh6pJLT9nkO-Npfcg',
     },
   });
   return response.ok
@@ -31,47 +31,45 @@ function CostsReport({
 }) {
   const [clicked, setClicked] = useState(false);
   const [categories, setCategories] = useState([]);
-  const [firstCategory, setfirstCategory] = useState(null);
+  const [firstCategory, setFirstCategory] = useState(null);
+  const [activeCategory, setActiveCategory] = useState(null);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    fetchCategory(date, typeReport)
+    if (date && typeReport !== null) {
+      fetchCategory(date, typeReport)
       .then(response => {
         setClicked(false);
         setCategories(response.data.result);
-        setfirstCategory(response.data.result[0]._id);
+        setFirstCategory(response.data.result[0].id);
       })
       .catch(error => {
         setError('Hey, Kapusta! We have a problem!');
       });
+    } else {
+      return
+    }    
   }, [date, typeReport]);
-
-  // const queryReports = [date, typeReport];
-  // getCategoryReport(queryReports)
-  //   .then(resp =>
-
-  // setClicked(false);
-  // setCategories(expCategories);
-  // )
-  //  .catch(error => {
-  //   setError('Hey, Kapusta! We have a problem!');
-  // }, [
-  //   date,
-  //   typeReport
-  // ]);
+  
+  useEffect(() => {
+    if (firstCategory) {
+      setActiveCategory(firstCategory);
+      setFirstCategory(null);
+    }
+    handleActiveCategory(activeCategory)
+  }, [activeCategory, handleActiveCategory, firstCategory]);
 
   useEffect(() => {
     if (categories.length) {
       handleCategoriesLenght(true);
-      handleActiveCategory(categories[0].id);
     } else {
       handleCategoriesLenght(false);
     }
-  }, [categories, handleActiveCategory, handleCategoriesLenght]);
+  }, [categories, handleCategoriesLenght]);
 
   const handleCategory = title => {
     setClicked(true);
-    handleActiveCategory(title);
+    setActiveCategory(title);
   };
 
   return (

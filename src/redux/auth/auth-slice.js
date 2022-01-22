@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import authOperations from './auth-operation';
+import authOperations from './auth-operations';
 import balanceOperations from '../balance/balance-operations';
 
 const initialState = {
@@ -10,12 +10,15 @@ const initialState = {
   },
   token: null,
   isLogedIn: false,
+  isRegistered: false,
+  // isFetchingCurrentUser: false,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraRedusers: {
+
     [authOperations.register.fulfilled](
       { user, token, isLogedIn },
       { payload },
@@ -23,6 +26,7 @@ const authSlice = createSlice({
       user = payload.user;
       token = payload.token;
       isLogedIn = true;
+
     },
     [authOperations.logIn.fulfilled]({ user, token, isLogedIn }, { payload }) {
       user = payload.user;
@@ -41,7 +45,9 @@ const authSlice = createSlice({
       user = payload;
       isLogedIn = true;
     },
-    [authOperations.googleLogIn.fulfilled](state, action) {},
+    [authOperations.googleLogIn.fulfilled](state, action) {
+      state.user = { email: '' };
+    },
     [authOperations.googleLogIn.rejected](state, action) {},
 
     [balanceOperations.setUserBalance.fulfilled]({ user }, { payload }) {

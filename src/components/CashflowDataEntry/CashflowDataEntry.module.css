@@ -1,10 +1,14 @@
 .formCashflow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media screen and (min-width: 768px) {
   .formCashflow {
-    /* display: block; */
     display: flex;
+    flex-direction: row;
+
     flex-wrap: wrap;
     margin-top: 28px;
     margin-bottom: 33px;
@@ -19,55 +23,95 @@
   }
 }
 
+/* Инпут ОПИСАНИЕ */
+.labelDescription {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .labelDescription {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
 .description {
   font-size: 12px;
   line-height: 1.17;
-  font-weight: 700;
+  font-weight: 400;
   color: #52555f;
-  height: 40px;
+  height: 44px;
   width: 282px;
-  border: solid 2px #f5f6fb;
-  border-radius: 16px 0 0 0;
+  border: solid 2px #ffffff;
+  border-radius: 16px 16px 0 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #f5f6fb;
+  margin-top: 20px;
 }
 @media screen and (min-width: 768px) {
   .description {
     width: 175px;
-    padding-left: 20px;
-    padding-right: 20px;
+    border-radius: 16px 0 0 0;
+    border: solid 2px #f5f6fb;
+    background-color: #ffffff;
+    margin-top: 0;
   }
 }
 @media screen and (min-width: 1280px) {
   .description {
     width: 289px;
+    width: 285px;
   }
 }
 
-/* .categoryLabel {
-  color: aqua;
-  background-color: blue;
+.description::placeholder {
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 400;
+  color: #c7ccdc;
+}
+
+/* Input Выбор категории */
+
+/* .formCashflow #demo-simple-select-label {
+  margin-right: auto;
+  margin-left: auto;
 } */
 
-/* Выбор категории */
+@media screen and (min-width: 768px) {
+  #demo-simple-select-label {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
 
 .formCashflow .category {
   font-size: 12px;
   color: #52555f;
   font-weight: 500;
 
-  width: 188px;
+  width: 268px;
   height: 40px;
+  margin-right: auto;
+  margin-left: auto;
 
-  /* border: solid 2px #f5f6fb; */
+  border: solid 2px #f5f6fb;
   border: none;
   padding-left: 6px;
   padding-right: 6px;
   border-radius: 0;
   outline: none;
+  background-color: #f5f6fb;
 }
 
 @media screen and (min-width: 768px) {
   .formCashflow .category {
     width: 171px;
+    margin-right: 0;
+    margin-left: 0;
+    background-color: #ffffff;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -84,43 +128,121 @@
   color: #52555f;
 }
 
+/* ВВОД СУММЫ */
 .boxCalculator {
   position: relative;
+  margin-top: 30px;
+  display: flex;
+}
+
+@media screen and (min-width: 768px) {
+  .boxCalculator {
+    margin-top: 0;
+  }
 }
 
 .calculator {
-  width: 185px;
-  height: 40px;
-  border: solid 2px #f5f6fb;
-  border-radius: 0 16px 16px 0;
-  margin-right: 27px;
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 400;
+  color: #52555f;
+
+  width: 125px;
+  height: 44px;
+  border: solid 2px #ffffff;
+  border-radius: 16px 0 0 16px;
   padding-left: 20px;
-  padding-right: 40px;
+  padding-right: 50px;
   text-align: right;
+  background-color: #f5f6fb;
+  border-right-style: none;
 }
 
 @media screen and (min-width: 768px) {
   .calculator {
-    width: 104px;
+    height: 40px;
+
+    border-radius: 0;
+    border: solid 2px #f5f6fb;
+    background-color: #ffffff;
+    padding-right: 5px;
+    border-right-style: none;
   }
 }
-@media screen and (min-width: 1280px) {
+
+@media screen and (min-width: 768px) {
   .calculator {
-    width: 124px;
+    width: 91px;
+  }
+}
+
+.calculator::placeholder {
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 400;
+  color: #c7ccdc;
+}
+
+.span {
+  position: relative;
+}
+
+.span::after {
+  content: 'UAH';
+  position: absolute;
+  top: 59%;
+  right: 35%;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .span::after {
+    content: none;
+  }
+}
+
+.boxIconCalc {
+  border: solid 2px #ffffff;
+  border-radius: 0 16px 16px 0;
+  display: flex;
+  align-items: center;
+}
+@media screen and (min-width: 768px) {
+  .boxIconCalc {
+    border: solid 2px #f5f6fb;
+    border-radius: 0 16px 16px 0;
+    border-left-style: none;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .boxIconCalc {
+    margin-right: 27px;
   }
 }
 
 .calcIcon {
-  width: 20px;
+  width: 50px;
   height: 20px;
-  position: absolute;
-  top: 25%;
-  left: 60%;
   color: var(--fontСolorTextForms);
+}
+
+@media screen and (min-width: 768px) {
+  .calcIcon {
+    width: 35px;
+  }
+}
+
+/* КОНПКи Очистить и ввод */
+.btnBoxSubmit {
+  display: flex;
+  margin-top: 83px;
 }
 
 .btn {
   margin-right: 15px;
+  flex-wrap: wrap;
 }
 
 @media screen and (min-width: 768px) {

@@ -2,9 +2,12 @@ import React from 'react';
 import styles from './Header.module.css';
 import Logo from '../Logo/Logo';
 import Icons from '../../img/svg/sprite.svg';
+import { useSelector } from 'react-redux';
+import { authSelectors } from '../../redux/auth';
 
 function Header() {
-  const isLoggedIn = true;
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  console.log(isLoggedIn);
 
   return (
     <header>

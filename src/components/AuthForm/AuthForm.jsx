@@ -1,4 +1,8 @@
 import React from 'react';
+// import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+// import { register, logIn } from '../../redux/auth/auth-operation';
+import { authOperations } from '../../redux/auth';
 import s from './Auth.module.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -7,6 +11,8 @@ import GoogleLogin from 'react-google-login';
 import GoogleAuthBtn from '../GoogleAuthBtn/GoogleAuthBtn';
 
 export default function AuthForm() {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -23,18 +29,30 @@ export default function AuthForm() {
 
     onSubmit: values => {
       console.log('войти', values);
+      const email = formik.values.email;
+      const password = formik.values.name;
+      dispatch(authOperations.logIn({ email, password }));
       // alert(JSON.stringify(values, null, 2));
     },
   });
 
-  function handleButton() {
+  const handleButtonReg = () => {
     if (!Object.keys(formik.errors).length > 0) {
       const registration = formik.values;
+      const email = formik.values.email;
+      const password = formik.values.password;
+      dispatch(authOperations.register({ email, password }));
       console.log('регистрация', registration);
-    }
-  }
 
-  // console.log(!formik.errors);
+      formik.resetForm();
+      alert('Вы зарегистрировались, введите свою почту и пароль еще раз');
+    }
+  };
+
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   dispatch(authOperations.logIn({ email, password }));
+  // };
 
   const responseGoogle = response => {
     console.log(response);
@@ -109,7 +127,7 @@ export default function AuthForm() {
               <button
                 className={s.buttonAct}
                 type="button"
-                onClick={() => handleButton()}
+                onClick={() => handleButtonReg()}
               >
                 <span className={s.butTextAct}>Регистрация</span>
               </button>

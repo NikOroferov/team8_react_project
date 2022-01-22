@@ -1,19 +1,19 @@
 import styles from './ReportsGraph.module.css';
-import { useState, useEffect } from 'react';
+import Media from 'react-media';
+import { useState, useEffect} from 'react';
 import GraphMobile from '../GraphMobile/GraphMobile';
 import GraphTabletDesktop from '../GraphTabletDesktop/GraphTabletDesktop';
 
 export default function BarGraph({ date, typeReport, activeCategory }) {
   const [subcategories, setSubcategories] = useState([]);
   const [error, setError] = useState('');
-
   const BASE_URL = 'http://localhost:3001/api/transaction';
 
   async function fetchWithErrorHandling(url = '') {
     const response = await fetch(url, {
       headers: {
         Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjc2ODA2NCwiZXhwIjoxNjQzOTc3NjY0fQ.-xnGlU0KqSdnpfM15YTy2yz8OrH5MmXUu6sDGxEdbTk',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjc4MzYyMCwiZXhwIjoxNjQzOTkzMjIwfQ.OZ37O5eFQ5XYdcjx8pZwp4CL_9Qh6pJLT9nkO-Npfcg',
       },
     });
     return response.ok
@@ -21,37 +21,23 @@ export default function BarGraph({ date, typeReport, activeCategory }) {
       : Promise.reject(new Error('Not found'));
   }
 
-
-  //Device screen size listener
-  const [isDesktopOrTablet, setIsDesktopOrTablet] = useState(
-    window.innerWidth > 767,
-  );
-
-  const updateMedia = () => {
-    setIsDesktopOrTablet(window.innerWidth > 767);
-  };
   useEffect(() => {
-    window.addEventListener('resize', updateMedia);
-    return () => window.removeEventListener('resize', updateMedia);
-  });
-
-  useEffect(() => {
+    if (activeCategory !== null) {
       function fetchSubcategory(date, typeReport, activeCategory) {
-    return fetchWithErrorHandling(`
+        return fetchWithErrorHandling(`
     ${BASE_URL}/subcategory-by-month?date=${date}&isIncome=${typeReport}&category=${activeCategory}`);
+      }
+      fetchSubcategory(date, typeReport, activeCategory)
+        .then(response => {
+          setSubcategories(response.data.result.slice(0, 10));
+        })
+        .catch(error => {
+          error.message();
+          setError('Hey, Kapusta! We have a problem!');
+        });
+    } else {
+      return;
     }
-    let isMounted = true;  
-    fetchSubcategory(date, typeReport, activeCategory)
-      .then(response => {
-        if (isMounted) {
-  setSubcategories(response.data.result);
-        } 
-        return () => { isMounted = false }
-      })
-      .catch(error => {
-        error.message();
-        setError('Hey, Kapusta! We have a problem!');
-      })
   }, [activeCategory, date, typeReport]);
 
   let barColors;
@@ -79,10 +65,12 @@ export default function BarGraph({ date, typeReport, activeCategory }) {
     const countColors = counts.map(item => {
       if (item < minCount + difference) {
         return (item = '#FFDAC0');
-      } else if (maxCount - difference < item) {
+      } else if ((maxCount - difference < item) && counts.length !== 1) {
         return (item = '#FF751D');
-      } else {
+      } else if (counts.length !== 1 || counts.length !== 2){
         return (item = '#fc9b5d');
+      } else {
+        return item = '';
       }
     });
     barColors = countColors;
@@ -149,21 +137,29 @@ export default function BarGraph({ date, typeReport, activeCategory }) {
 
   return (
     <>
-      {isDesktopOrTablet ? (
-        <GraphTabletDesktop
-          subcategories={results}
-          barColors={barColors}
-          CustomizeLegend={CustomizeLegend}
-          formatLabelList={formatLabelList}
-        />
-      ) : (
-        <GraphMobile
-          subcategories={results}
-          barColors={barColors}
-          CustomizeLegend={CustomizeLegend}
-          formatLabelList={formatLabelList}
-        />
-      )}
+      <Media
+        queries={{
+          mobile: '(max-width: 767px)',
+          tabletDesktop: '(min-width: 768px)',
+        }}
+      >
+        {matches =>
+          matches.tabletDesktop ? (
+            <GraphTabletDesktop
+              subcategories={results}
+              barColors={barColors}
+              CustomizeLegend={CustomizeLegend}
+              formatLabelList={formatLabelList}
+            />
+          ) : (
+            <GraphMobile
+              subcategories={results}
+              barColors={barColors}
+              CustomizeLegend={CustomizeLegend}
+            />
+          )
+        }
+      </Media>
     </>
   );
 }

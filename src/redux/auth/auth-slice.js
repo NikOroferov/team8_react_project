@@ -4,6 +4,7 @@ import balanceOperations from '../balance/balance-operations';
 
 const initialState = {
   user: {
+    name: '',
     email: '',
     balance: null,
   },
@@ -15,35 +16,41 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraRedusers: {
-    [authOperations.register.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isLogedIn = true;
+    [authOperations.register.fulfilled](
+      { user, token, isLogedIn },
+      { payload },
+    ) {
+      user = payload.user;
+      token = payload.token;
+      isLogedIn = true;
     },
-    [authOperations.logIn.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isLogedIn = true;
+    [authOperations.logIn.fulfilled]({ user, token, isLogedIn }, { payload }) {
+      user = payload.user;
+      token = payload.token;
+      isLogedIn = true;
     },
-    [authOperations.logOut.fulfilled](state, action) {
-      state.user = { email: '' };
-      state.token = null;
-      state.isLogedIn = false;
+    [authOperations.logOut.fulfilled]({ user, token, isLogedIn }, action) {
+      user = { email: '' };
+      token = null;
+      isLogedIn = false;
     },
-    [authOperations.fetchCurrentUser.fulfilled](state, action) {
-      state.user = action.payload;
-      state.isLogedIn = true;
+    [authOperations.fetchCurrentUser.fulfilled](
+      { user, isLogedIn },
+      { payload },
+    ) {
+      user = payload;
+      isLogedIn = true;
     },
     [authOperations.googleLogIn.fulfilled](state, action) {},
     [authOperations.googleLogIn.rejected](state, action) {},
 
-    [balanceOperations.setUserBalance.fulfilled](state, action) {
-      state.user.balance = action.payload.balance;
+    [balanceOperations.setUserBalance.fulfilled]({ user }, { payload }) {
+      user.balance = payload.balance;
     },
-    [balanceOperations.getUserBalance.fulfilled](state, action) {
-      state.user.balance = action.payload.balance;
+    [balanceOperations.getUserBalance.fulfilled]({ user }, { payload }) {
+      user.balance = payload.balance;
     },
   },
 });
 
-export default authSlice;
+export default authSlice.reducer;

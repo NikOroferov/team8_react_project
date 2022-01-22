@@ -3,7 +3,9 @@ import axios from 'axios';
 axios.defaults.baseURL = '';
 
 const baseUrl = axios.defaults.baseURL;
+
 // Token
+
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -14,33 +16,47 @@ const token = {
 };
 
 // Auth
-const register = requisites => axios.post('auth/register', requisites); //requisites={email,password}
-const login = requisites => axios.post('auth/login', requisites); //requisites={email,password}
-const logout = () => axios.post(`auth/logout`);
+
+const register = requisites => axios.post('api/auth/register', requisites); //requisites={email,password}
+
+const login = requisites => axios.post('api/auth/login', requisites); //requisites={email,password}
+
+const logout = () => axios.post(`api/auth/logout`);
+
 // const refresh = () => axios.get('auth/refresh');
 
 // User
-const setUserBalance = balance => axios.post('/user/balance', balance);
-const getUserBalance = () => axios.get('/user/balance');
-const updateUserBalance = balance => axios.patch('/user/balance', balance); //balance={newBalance: balance}
-const getUserInfo = () => axios.get('/user');
-const getCurrentUser = () => axios.get('/user/current');
+
+const setUserBalance = balance => axios.post('api/user/balance', balance);
+const getUserBalance = () => axios.get('api/user/balance');
+const updateUserBalance = balance => axios.patch('api/user/balance', balance);
+const getUserInfo = () => axios.get('api/user');
+const getCurrentUser = () => axios.get('api/user/current');
 
 // Transactions
-const postTransaction = transaction => axios.post('/transaction', transaction);
+
 const getTransaction = () => axios.get('/transaction');
+
+const addTransaction = transaction => axios.post('/transaction', transaction);
 
 const deleteTransaction = transactionId =>
   axios.delete(`/transaction/${transactionId}`);
+
+const getIncomes = () => axios.get('/transactionIncomes');
+
+const getExpenses = () => axios.get('/transactionExpenses');
 
 // Reports
 
 const getCategoryReport = (date, isIncome) =>
   axios.get(`/transaction/category-by-month?date=${date}&isIncome=${isIncome}`);
+
 const getSubcategoryReport = (date, isIncome, category) =>
   axios.get(
     `/transaction/subcategory-by-month?date=${date}&isIncome=${isIncome}&category=${category}`,
   );
+
+const getPeriodReports = () => axios.get('/transaction/period');
 
 const api = {
   token,
@@ -53,11 +69,14 @@ const api = {
   updateUserBalance,
   getUserInfo,
   getCurrentUser,
-  postTransaction,
+  addTransaction,
   getTransaction,
   deleteTransaction,
+  getIncomes,
+  getExpenses,
   getCategoryReport,
   getSubcategoryReport,
+  getPeriodReports,
 };
 
 export default api;

@@ -37,10 +37,13 @@ const deleteTransaction = transactionId =>
 
 const getCategoryReport = (date, isIncome) =>
   axios.get(`/transaction/category-by-month?date=${date}&isIncome=${isIncome}`);
+
 const getSubcategoryReport = (date, isIncome, category) =>
   axios.get(
     `/transaction/subcategory-by-month?date=${date}&isIncome=${isIncome}&category=${category}`,
   );
+
+const getResumeReport = date => axios.get(`/transaction/summary?date=${date}`);
 
 const api = {
   token,
@@ -58,6 +61,7 @@ const api = {
   deleteTransaction,
   getCategoryReport,
   getSubcategoryReport,
+  getResumeReport,
 };
 
 export default api;

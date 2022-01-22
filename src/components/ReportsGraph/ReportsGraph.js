@@ -29,7 +29,7 @@ export default function BarGraph({ date, typeReport, activeCategory }) {
       }
       fetchSubcategory(date, typeReport, activeCategory)
         .then(response => {
-          setSubcategories(response.data.result);
+          setSubcategories(response.data.result.slice(0, 10));
         })
         .catch(error => {
           error.message();
@@ -65,10 +65,12 @@ export default function BarGraph({ date, typeReport, activeCategory }) {
     const countColors = counts.map(item => {
       if (item < minCount + difference) {
         return (item = '#FFDAC0');
-      } else if (maxCount - difference < item) {
+      } else if ((maxCount - difference < item) && counts.length !== 1) {
         return (item = '#FF751D');
-      } else {
+      } else if (counts.length !== 1 || counts.length !== 2){
         return (item = '#fc9b5d');
+      } else {
+        return item = '';
       }
     });
     barColors = countColors;

@@ -1,6 +1,7 @@
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useEffect } from 'react';
 import Media from 'react-media';
 import axios from 'axios';
+import Notiflix from 'notiflix';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,29 +10,23 @@ import Select from '@mui/material/Select';
 import Button from '../Button/Button';
 import s from './CashflowDataEntry.module.css';
 import Icons from '../../img/svg/sprite.svg';
-// import categoryData from '../../json/categoryCosts.json';
+import toast from 'react-hot-toast';
 
 axios.defaults.headers.common = {
   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg3NDE0OSwiZXhwIjoxNjQ0MDgzNzQ5fQ.XDSTb16DBgzWSLYCWCQTVlJJkGbOEu1AUWzzzrHWK7U`,
 };
 
-const idUser = '61ebe0f1bc769156e60da5f2';
-
 export default function CashflowDataEntry({ typeInfo }) {
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState('');
-  const [balance, setBalance] = useState(1000);
-
   const [dataItem, setDataItem] = useState('');
+  const [balance, setBalance] = useState(1000);
 
   const fetchEntry = async data => {
     const response = await axios.post(
       'http://localhost:3001/api/transaction',
       data,
-      {
-        params: { _id: `${idUser}` },
-      },
     );
     return response.data;
   };
@@ -74,14 +69,13 @@ export default function CashflowDataEntry({ typeInfo }) {
     }
     if (typeInfo === 'расход') {
       if (balance - sum < 0) {
-        console.log('Вы привышаета свой баланс!');
+        toast.error('Вы превышаете свой баланс!');
         return;
       } else {
         setBalance(balance - sum);
       }
     }
     if (balance !== null) {
-      console.log(balance);
       setDataItem({
         created_at: new Date().toISOString(),
         year: new Date().getFullYear(),
@@ -92,14 +86,18 @@ export default function CashflowDataEntry({ typeInfo }) {
         transactionType: typeInfo,
         costs: sum,
         incomes: typeInfoEnty(),
-        //   balance: balance,
       });
       setСategory('');
       setDescription('');
       setSum('');
-      fetchEntry(dataItem);
     }
   };
+
+  useEffect(() => {
+    if (dataItem !== '') {
+      fetchEntry(dataItem);
+    }
+  }, [dataItem]);
 
   return (
     <form className={s.formCashflow}>

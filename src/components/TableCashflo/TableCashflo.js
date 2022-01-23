@@ -2,9 +2,17 @@ import { useMemo, useCallback, useState, useEffect } from 'react';
 import { useTable, useBlockLayout } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+
+// import deleteTransaction from '../../services/api-services';
 
 import Styles from './styleTabl';
 import Icons from '../../img/svg/sprite.svg';
+
+axios.defaults.headers.common = {
+  Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg3NDE0OSwiZXhwIjoxNjQ0MDgzNzQ5fQ.XDSTb16DBgzWSLYCWCQTVlJJkGbOEu1AUWzzzrHWK7U`,
+};
 
 const ButtoDelet = data => {
   return (
@@ -13,6 +21,7 @@ const ButtoDelet = data => {
       type="button"
       onClick={data.click}
       id={data.idItams}
+      value={data.summ}
     >
       <svg width="18" height="18" className="iconButtonDel">
         <use xlinkHref={`${Icons}#icon-delete-1`} className=""></use>
@@ -91,12 +100,27 @@ function Table({ columns, data }) {
   );
 }
 
-export default function TableCashflo({ typeInfo, transactions }) {
+export default function TableCashflo({
+  typeInfo,
+  transactions,
+  fetchDelete,
+  deleteTranId,
+}) {
   const [dataCash, setDatadCash] = useState([]);
+  const [balance, setBalance] = useState(1000);
 
   const onClickDelete = e => {
-    console.log(`УДИЛИТЬ`);
-    console.log(e.currentTarget.id);
+    const transactionId = e.currentTarget.id;
+
+    if (balance - e.currentTarget.value < 0 && typeInfo === 'расход') {
+      toast.error('Вы превышаете свой баланс!');
+
+      return;
+    } else {
+      fetchDelete(transactionId);
+      deleteTranId(transactionId);
+    }
+    console.log(`УДИЛЯЕМ`);
   };
 
   useEffect(() => {
@@ -116,13 +140,16 @@ export default function TableCashflo({ typeInfo, transactions }) {
             col2: subcategory,
             col3: category,
             col4: `${costs} грн.`,
-            col5: <ButtoDelet click={onClickDelete} idItams={_id} />,
+            col5: (
+              <ButtoDelet click={onClickDelete} idItams={_id} summ={costs} />
+            ),
             transactionType: transactionType,
           };
         },
       );
       setDatadCash(dataCashFoTabl);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [transactions]);
 
   const dataCashFoTablFiter = dataCash.filter(function (e) {

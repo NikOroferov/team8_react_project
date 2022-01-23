@@ -103,7 +103,7 @@ export default function TableCashflo({
   typeInfo,
   transactions,
   fetchDelete,
-  //   deleteTranId,
+  deleteTranId,
 }) {
   const [dataCash, setDatadCash] = useState([]);
   const [balance, setBalance] = useState(1000);
@@ -113,12 +113,12 @@ export default function TableCashflo({
   const onClickDelete = e => {
     const transactionId = e.currentTarget.id;
 
-    if (balance - e.currentTarget.value < 0) {
-      console.log(`Не удаляем Балан не может быть "-"`);
+    if (balance - e.currentTarget.value < 0 && typeInfo === 'расход') {
+      console.log(`Не удаляем БАЛАНС не может быть "-"`);
       return;
     } else {
       fetchDelete(transactionId);
-      // deleteTranId(transactionId);
+      deleteTranId(transactionId);
     }
     console.log(`УДИЛЯЕМ`);
   };

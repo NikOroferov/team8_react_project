@@ -56,21 +56,14 @@ export default function ExpensesIncome() {
   };
 
   function deleteTranId(data) {
+    console.log(transactions);
     console.log(data);
-    //  const fff = transactions.filter(obj => obj.id !== data);
-    //  console.log(fff);
-    //  setTransactions(transactions.filter(obj => obj.id !== data));
-    //   console.log(transactions);
-    //  const fetchTransaction = async () => {
-    //    const response = await axios.get(
-    //      'http://localhost:3001/api/transaction',
-    //      {
-    //        params: { _id: `${idUser}`, isIncome: `${typeIncomes}` },
-    //      },
-    //    );
-    //    setTransactions(response.data.data.transactions);
-    //  };
-    //  fetchTransaction();
+
+    const dataCashFoTablFiter = transactions.filter(function (e) {
+      return e._id !== data;
+    });
+    console.log(dataCashFoTablFiter);
+    setTransactions(dataCashFoTablFiter);
   }
 
   const сostsClick = e => {

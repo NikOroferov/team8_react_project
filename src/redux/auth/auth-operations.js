@@ -6,14 +6,16 @@ const token = api.token;
 
 const register = createAsyncThunk(
   'auth/register',
-  async (requisites, rejected) => {
+  async (requisites, { rejectWithValue }) => {
     try {
       const { data } = await api.register(requisites);
       token.set(data.token);
       return data;
     } catch (error) {
       console.log(error.message);
-      return rejected(error);
+      const err = rejectWithValue(error.response.data);
+      alert(err.payload.message);
+      return rejectWithValue(error.response.data);
     }
   },
 );

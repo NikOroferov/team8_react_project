@@ -27,7 +27,6 @@ export default function ExpensesIncome() {
   const [typeIncomes, setTypeIncomes] = useState(false);
 
   const [clicked, setClicked] = useState(false);
-
   const [сostsMobileBtn, setCostsMobileBtn] = useState(true);
   const [incomeMobileBtn, setIncomeMobileBtn] = useState(true);
 
@@ -55,6 +54,25 @@ export default function ExpensesIncome() {
 
     return response.data;
   };
+
+  function deleteTranId(data) {
+    console.log(data);
+    //  const fff = transactions.filter(obj => obj.id !== data);
+    //  console.log(fff);
+    //  setTransactions(transactions.filter(obj => obj.id !== data));
+    //   console.log(transactions);
+    //  const fetchTransaction = async () => {
+    //    const response = await axios.get(
+    //      'http://localhost:3001/api/transaction',
+    //      {
+    //        params: { _id: `${idUser}`, isIncome: `${typeIncomes}` },
+    //      },
+    //    );
+    //    setTransactions(response.data.data.transactions);
+    //  };
+    //  fetchTransaction();
+  }
+
   const сostsClick = e => {
     e.preventDefault();
     setTypeInfo('расход');
@@ -159,6 +177,7 @@ export default function ExpensesIncome() {
                         typeInfo={typeInfo}
                         transactions={transactions}
                         fetchDelete={fetchDelete}
+                        deleteTranId={deleteTranId}
                       />
                     )}
                   </Fragment>

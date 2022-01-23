@@ -99,9 +99,16 @@ function Table({ columns, data }) {
   );
 }
 
-export default function TableCashflo({ typeInfo, transactions, fetchDelete }) {
+export default function TableCashflo({
+  typeInfo,
+  transactions,
+  fetchDelete,
+  //   deleteTranId,
+}) {
   const [dataCash, setDatadCash] = useState([]);
   const [balance, setBalance] = useState(1000);
+
+  //   console.log(transactions);
 
   const onClickDelete = e => {
     const transactionId = e.currentTarget.id;
@@ -111,6 +118,7 @@ export default function TableCashflo({ typeInfo, transactions, fetchDelete }) {
       return;
     } else {
       fetchDelete(transactionId);
+      // deleteTranId(transactionId);
     }
     console.log(`УДИЛЯЕМ`);
   };
@@ -141,6 +149,7 @@ export default function TableCashflo({ typeInfo, transactions, fetchDelete }) {
       );
       setDatadCash(dataCashFoTabl);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [transactions]);
 
   const dataCashFoTablFiter = dataCash.filter(function (e) {

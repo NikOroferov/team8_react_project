@@ -15,8 +15,6 @@ axios.defaults.headers.common = {
   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg3NDE0OSwiZXhwIjoxNjQ0MDgzNzQ5fQ.XDSTb16DBgzWSLYCWCQTVlJJkGbOEu1AUWzzzrHWK7U`,
 };
 
-const idUser = '61ebe0f1bc769156e60da5f2';
-
 export default function CashflowDataEntry({ typeInfo }) {
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
@@ -96,7 +94,6 @@ export default function CashflowDataEntry({ typeInfo }) {
 
   useEffect(() => {
     if (dataItem !== '') {
-      console.log(dataItem);
       fetchEntry(dataItem);
     }
   }, [dataItem]);

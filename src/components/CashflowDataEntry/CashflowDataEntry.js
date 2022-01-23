@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useEffect } from 'react';
 import Media from 'react-media';
 import axios from 'axios';
 
@@ -21,17 +21,13 @@ export default function CashflowDataEntry({ typeInfo }) {
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState('');
-  const [balance, setBalance] = useState(1000);
-
   const [dataItem, setDataItem] = useState('');
+  const [balance, setBalance] = useState(1000);
 
   const fetchEntry = async data => {
     const response = await axios.post(
       'http://localhost:3001/api/transaction',
       data,
-      {
-        params: { _id: `${idUser}` },
-      },
     );
     return response.data;
   };
@@ -81,7 +77,6 @@ export default function CashflowDataEntry({ typeInfo }) {
       }
     }
     if (balance !== null) {
-      console.log(balance);
       setDataItem({
         created_at: new Date().toISOString(),
         year: new Date().getFullYear(),
@@ -92,14 +87,19 @@ export default function CashflowDataEntry({ typeInfo }) {
         transactionType: typeInfo,
         costs: sum,
         incomes: typeInfoEnty(),
-        //   balance: balance,
       });
       setСategory('');
       setDescription('');
       setSum('');
-      fetchEntry(dataItem);
     }
   };
+
+  useEffect(() => {
+    if (dataItem !== '') {
+      console.log(dataItem);
+      fetchEntry(dataItem);
+    }
+  }, [dataItem]);
 
   return (
     <form className={s.formCashflow}>

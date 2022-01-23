@@ -48,37 +48,13 @@ export default function ExpensesIncome() {
     }
   }, [typeIncomes]);
 
-  const fetchCostsMouth = async (idUser, typeIncomes) => {
-    const response = await axios.get(
-      'http://localhost:3001/api/transaction/summary',
-      {
-        params: { _id: `${idUser}`, isIncome: `${typeIncomes}` },
-      },
+  const fetchDelete = async transactionId => {
+    const response = await axios.delete(
+      `http://localhost:3001/api/transaction/${transactionId}`,
     );
-    return response.data.data;
-  };
-
-  //   const dataM = fetchCostsMouth(idUser, typeIncomes);
-  //   console.log(dataM);
-
-  const fetchOther = async idUser => {
-    const response = await axios.get('http://localhost:3001/api/transaction', {
-      params: { _id: `${idUser}` },
-    });
 
     return response.data;
   };
-  //   console.log(fetchOther(idUser));
-
-  //   const fetchTransaction = async ({ idUser, typeIncomes }) => {
-  //     const response = await axios.get('http://localhost:3001/api/transaction', {
-  //       params: { _id: `${idUser}`, isIncome: `${typeIncomes}` },
-  //     });
-  //     return response.data;
-  //   };
-
-  //   console.log(fetchTransaction({ idUser, typeIncomes }));
-
   const сostsClick = e => {
     e.preventDefault();
     setTypeInfo('расход');
@@ -95,14 +71,12 @@ export default function ExpensesIncome() {
 
   const clicCostBtnMobile = e => {
     e.preventDefault();
-    console.log('-');
     setCostsMobileBtn(false);
     setTypeInfo('расход');
   };
 
   const incomeCostBtnMobile = e => {
     e.preventDefault();
-    console.log('+');
     setIncomeMobileBtn(false);
     setTypeInfo('доход');
     //  setRequestType(true);
@@ -172,17 +146,19 @@ export default function ExpensesIncome() {
               >
                 {matches => (
                   <Fragment>
-                    {matches.small && <></>}
+                    {matches.small && <>аап</>}
                     {matches.medium && (
                       <TableCashfloTabl
                         typeInfo={typeInfo}
                         transactions={transactions}
+                        fetchDelete={fetchDelete}
                       />
                     )}
                     {matches.large && (
                       <TableCashflo
                         typeInfo={typeInfo}
                         transactions={transactions}
+                        fetchDelete={fetchDelete}
                       />
                     )}
                   </Fragment>
@@ -205,7 +181,10 @@ export default function ExpensesIncome() {
                 <Fragment>
                   {matches.small && (
                     <div className={s.btnForMobil}>
-                      <TableCashfloMobile transactions={transactions} />
+                      <TableCashfloMobile
+                        transactions={transactions}
+                        fetchDelete={fetchDelete}
+                      />
                       <button
                         className={s.btvExpense}
                         onClick={clicCostBtnMobile}

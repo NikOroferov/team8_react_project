@@ -20,6 +20,7 @@ const ButtoDelet = data => {
       type="button"
       onClick={data.click}
       id={data.idItams}
+      value={data.summ}
     >
       <svg width="18" height="18" className="iconButtonDel">
         <use xlinkHref={`${Icons}#icon-delete-1`} className=""></use>
@@ -98,13 +99,25 @@ function Table({ columns, data }) {
   );
 }
 
-export default function TableCashfloTabl({ typeInfo, transactions }) {
+export default function TableCashfloTabl({
+  typeInfo,
+  transactions,
+  fetchDelete,
+}) {
   const [dataCash, setDatadCash] = useState([]);
+  const [balance, setBalance] = useState(800);
 
   const onClickDelete = e => {
-    console.log(`УДИЛИТЬ`);
-    console.log(e.currentTarget.id);
-    fetchDel(e.currentTarget.id);
+    const transactionId = e.currentTarget.id;
+
+    if (balance - e.currentTarget.value < 0) {
+      console.log(`Не удаляем Балан не может быть "-"`);
+      return;
+    } else {
+      setBalance(balance - e.currentTarget.value);
+      fetchDelete(transactionId);
+    }
+    console.log(`УДИЛЯЕМ`);
   };
 
   useEffect(() => {
@@ -124,7 +137,9 @@ export default function TableCashfloTabl({ typeInfo, transactions }) {
             col2: subcategory,
             col3: category,
             col4: `${costs} грн.`,
-            col5: <ButtoDelet click={onClickDelete} idItams={_id} />,
+            col5: (
+              <ButtoDelet click={onClickDelete} idItams={_id} summ={costs} />
+            ),
             transactionType: transactionType,
           };
         },

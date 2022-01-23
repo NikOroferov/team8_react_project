@@ -120,7 +120,6 @@ export default function TableCashflo({
       fetchDelete(transactionId);
       deleteTranId(transactionId);
     }
-    console.log(`УДИЛЯЕМ`);
   };
 
   useEffect(() => {

@@ -20,7 +20,7 @@ axios.defaults.headers.common = {
   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg3NDE0OSwiZXhwIjoxNjQ0MDgzNzQ5fQ.XDSTb16DBgzWSLYCWCQTVlJJkGbOEu1AUWzzzrHWK7U`,
 };
 
-const idUser = '61ebe0f1bc769156e60da5f2';
+// const idUser = '61ebe0f1bc769156e60da5f2';
 
 export default function ExpensesIncome() {
   const [typeInfo, setTypeInfo] = useState('расход');
@@ -38,7 +38,7 @@ export default function ExpensesIncome() {
         const response = await axios.get(
           'http://localhost:3001/api/transaction',
           {
-            params: { _id: `${idUser}`, isIncome: `${typeIncomes}` },
+            params: { isIncome: `${typeIncomes}` },
           },
         );
         setTransactions(response.data.data.transactions);

@@ -1,7 +1,6 @@
 import { useState, Fragment, useEffect } from 'react';
 import Media from 'react-media';
 import axios from 'axios';
-import Notiflix from 'notiflix';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -66,17 +65,16 @@ export default function CashflowDataEntry({ typeInfo }) {
   const enterData = () => {
     if (balance === null) {
       console.log('Не введен баланс');
+      //  сюда вставить вызов модалки про баланс
     }
     if (typeInfo === 'расход') {
       if (balance - sum < 0) {
         toast.error('Вы превышаете свой баланс!');
         return;
-      } else {
-        setBalance(balance - sum);
       }
     }
     if (balance !== null) {
-      setDataItem({
+      const objItem = {
         created_at: new Date().toISOString(),
         year: new Date().getFullYear(),
         month: new Date().getMonth() + 1,
@@ -86,7 +84,8 @@ export default function CashflowDataEntry({ typeInfo }) {
         transactionType: typeInfo,
         costs: sum,
         incomes: typeInfoEnty(),
-      });
+      };
+      setDataItem(objItem);
       setСategory('');
       setDescription('');
       setSum('');

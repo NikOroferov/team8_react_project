@@ -99,99 +99,7 @@ function Table({ columns, data }) {
 }
 
 export default function TableCashfloTabl({ typeInfo, transactions }) {
-  // eslint-disable-next-line no-unused-vars
-  const [dataCash, setDatadCash] = useState([
-    {
-      id: '1',
-      date: '12.01.2022',
-      category: 'Продукты',
-      transactionType: 'расход',
-      costs: '10000.00',
-      subcategory: 'Описание товара',
-    },
-    {
-      id: '2',
-      date: '13.01.2022',
-      category: 'Алкоголь',
-      transactionType: 'расход',
-      costs: '5000.00',
-      subcategory: 'Описание товара',
-    },
-    {
-      id: '3',
-      date: '14.01.2022',
-      category: 'Продукты',
-      transactionType: 'расход',
-      costs: '10000.00',
-      subcategory: 'Описание товара',
-    },
-    {
-      id: '4',
-      date: '15.01.2022',
-      category: 'Продукты',
-      transactionType: 'расход',
-      costs: '10000.00',
-      subcategory: 'Описание товара',
-    },
-    {
-      id: '11',
-      date: '05.01.2022',
-      category: 'зп',
-      transactionType: 'доход',
-      costs: '6000.00',
-      subcategory: 'Аренда',
-    },
-    {
-      id: '5',
-      date: '16.01.2022',
-      category: 'Продукты',
-      transactionType: 'расход',
-      costs: '10000.00',
-      subcategory: 'Описание товара',
-    },
-    {
-      id: '6',
-      date: '17.01.2022',
-      category: 'Продукты',
-      transactionType: 'расход',
-      costs: '10000.00',
-      subcategory: 'Описание товара',
-    },
-    {
-      id: '7',
-      date: '18.01.2022',
-      category: 'Продукты',
-      transactionType: 'расход',
-      costs: '10000.00',
-      subcategory: 'Описание товара',
-    },
-    {
-      id: '8',
-      date: '17.01.2022',
-      category: 'зп',
-      transactionType: 'доход',
-      costs: '15000.00',
-      subcategory: 'Описание товара',
-    },
-    {
-      id: '9',
-      date: '17.01.2022',
-      category: 'доп.доход',
-      transactionType: 'доход',
-      costs: '1000.00',
-      subcategory: 'Описание товара',
-    },
-    {
-      id: '10',
-      date: '18.01.2022',
-      category: 'зп',
-      transactionType: 'доход',
-      costs: '15000.00',
-      subcategory: 'Описание товара',
-    },
-  ]);
-
-  const [dataCash2, setDatadCash2] = useState([]);
+  const [dataCash, setDatadCash] = useState([]);
 
   const onClickDelete = e => {
     console.log(`УДИЛИТЬ`);
@@ -201,17 +109,18 @@ export default function TableCashfloTabl({ typeInfo, transactions }) {
 
   useEffect(() => {
     if (transactions !== []) {
+      function dateFormat(date) {
+        if (date.month.length < 2) {
+          return `0${date.month}`;
+        } else {
+          return date.month;
+        }
+      }
       const dataCashFoTabl = transactions.map(
-        ({
-          _id,
-          created_at,
-          subcategory,
-          category,
-          transactionType,
-          costs,
-        }) => {
+        ({ _id, subcategory, category, transactionType, costs, date }) => {
           return {
-            col1: created_at,
+            col1: `${date.day}.${dateFormat(date)}.${date.year}`,
+
             col2: subcategory,
             col3: category,
             col4: `${costs} грн.`,
@@ -220,27 +129,11 @@ export default function TableCashfloTabl({ typeInfo, transactions }) {
           };
         },
       );
-      setDatadCash2(dataCashFoTabl);
+      setDatadCash(dataCashFoTabl);
     }
   }, [transactions]);
 
-  //   const dataCashFoTabl = dataCash.map(
-  //     ({ id, date, subcategory, category, transactionType, costs }) => {
-  //       return {
-  //         col1: date,
-  //         col2: subcategory,
-  //         col3: category,
-  //         col4: `${costs} грн.`,
-  //         col5: <ButtoDelet click={onClickDelete} idItams={id} />,
-  //         transactionType: transactionType,
-  //       };
-  //     },
-  //   );
-
-  //   const dataCashFoTablFiter = dataCashFoTabl.filter(function (e) {
-  //     return e.transactionType === typeInfo;
-  //   });
-  const dataCashFoTablFiter = dataCash2.filter(function (e) {
+  const dataCashFoTablFiter = dataCash.filter(function (e) {
     return e.transactionType === typeInfo;
   });
 

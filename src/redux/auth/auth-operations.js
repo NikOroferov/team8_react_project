@@ -1,5 +1,6 @@
 import api from '../../services/api-services';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+// import * as authAPI from '../../services/api-services';
 
 const token = api.token;
 
@@ -20,12 +21,35 @@ const register = createAsyncThunk(
 const logIn = createAsyncThunk('auth/login', async (requisites, rejected) => {
   try {
     const { data } = await api.login(requisites);
-    token.set(data.token);
+    token.set(data.data.token);
+    return data.data;
   } catch (error) {
     console.log(error.message);
     return rejected(error);
   }
 });
+
+// export const logIn = createAsyncThunk(
+//   'auth/login',
+//   async (credentials, { rejectWithValue }) => {
+//     try {
+//       const { data } = await authAPI.login(credentials);
+//       token.set(data.data.token);
+//       return data;
+//     } catch (error) {
+//       if (error.response.data.message === 'Invalid password') {
+//         // toast.error('Неверный пароль. Пожалуйста, попробуйте еще раз.');
+//       } else if (error.response.data.message === 'Email not verify') {
+//         // toast.error('Ваш имейл не верифицырован.');
+//       } else {
+//         // toast.error(
+//         //   'Пожалуйста, проверьте свои данные для входа и попробуйте еще раз.',
+//         // );
+//       }
+//       return rejectWithValue(error.message);
+//     }
+//   },
+// );
 
 const logOut = createAsyncThunk('auth/logout', async (_, rejected) => {
   try {

@@ -31,7 +31,8 @@ export default function AuthForm() {
       console.log('войти', values);
       const email = formik.values.email;
       const password = formik.values.name;
-      dispatch(authOperations.logIn({ email, password }));
+      // dispatch(authOperations.logIn({ email, password }));
+      dispatch(authOperations.logIn(formik.values));
       // alert(JSON.stringify(values, null, 2));
     },
   });
@@ -42,6 +43,7 @@ export default function AuthForm() {
       const email = formik.values.email;
       const password = formik.values.password;
       dispatch(authOperations.register({ email, password }));
+
       console.log('регистрация', registration);
 
       formik.resetForm();

@@ -15,6 +15,25 @@ axios.defaults.headers.common = {
   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg3NDE0OSwiZXhwIjoxNjQ0MDgzNzQ5fQ.XDSTb16DBgzWSLYCWCQTVlJJkGbOEu1AUWzzzrHWK7U`,
 };
 
+// const expensesValue = [
+//   { value: 'алкоголь', label: 'алкоголь' },
+//   { value: 'все для дома', label: 'все для дома' },
+//   { value: 'здоровье', label: 'здоровье' },
+//   { value: 'коммуналка, связь', label: 'коммуналка, связь' },
+//   { value: 'образование', label: 'образование' },
+//   { value: 'продукты', label: 'продукты' },
+//   { value: 'развлечения', label: 'развлечения' },
+//   { value: 'спорт, хобби', label: 'спорт, хобби' },
+//   { value: 'транспорт', label: 'транспорт' },
+//   { value: 'техника', label: 'техника' },
+//   { value: 'прочее', label: 'прочее' },
+// ];
+
+// const incomeValue = [
+//   { value: 'зп', label: 'зп' },
+//   { value: 'доп. доход', label: 'доп. доход' },
+// ];
+
 export default function CashflowDataEntry({ typeInfo }) {
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');

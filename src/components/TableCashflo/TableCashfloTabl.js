@@ -86,7 +86,7 @@ function Table({ columns, data }) {
 
       <div {...getTableBodyProps()} className="boxLine">
         <FixedSizeList
-          height={400}
+          height={347}
           itemCount={rows.length}
           itemSize={35}
           width={totalColumnsWidth + scrollBarSize}

@@ -70,11 +70,11 @@ export default function GraphMobile({
 
   let num;
 
-  const calculatedHeight = () => {
-    const n = 35;
+   const calculatedHeight = () => {
+    const n = 30;
     const lengthNum = subcategoriesForMobile.length;
-    num = (6 * n + lengthNum * n);
-  }
+    num =  ((5 + lengthNum) + (lengthNum/2.5)) * n;
+  };
 
 calculatedHeight()
 
@@ -89,7 +89,7 @@ calculatedHeight()
             <BarChart
               data={subcategoriesForMobile}
               layout="vertical"
-              margin={{ top: 25, right: 70, left: 0, bottom: 30 }}
+              margin={{ top: 15, right: 70, left: 0, bottom: 25 }}
           >
             <Legend
                 width="100%"

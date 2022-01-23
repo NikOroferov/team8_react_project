@@ -21,7 +21,6 @@ export default function GraphTabletDesktop({
 
   const textStyle = {
     fontSize: '12px',
-    fontFamily: 'Roboto',
     textAlign: 'center',
     fill: '#52555F',
   };
@@ -32,7 +31,6 @@ export default function GraphTabletDesktop({
     backgroundImage:
       'linear-gradient(to left, rgba(232, 130, 23, 0.9), rgba(240, 187, 132, 0.9))',
     fontSize: '12px',
-    fontFamily: 'Roboto',
     textAlign: 'center',
     fill: '#52555F',
     borderRadius: '10px',
@@ -63,7 +61,8 @@ export default function GraphTabletDesktop({
             <CartesianGrid vertical={false} />
             <YAxis tickCount={9} hide={true} />
 
-            <Tooltip
+          <Tooltip
+            cursor={{fill: 'rgba(	242, 245, 252, 0.8)'}}
               wrapperStyle={tooltipStyle}
               content={<CustomTooltip results={subcategories} />}
             />
@@ -88,11 +87,15 @@ export default function GraphTabletDesktop({
                 style={textStyle}
               />
             </Bar>
-            {/* <Legend
-              width="80%"
+            <Legend
+              layout='vertical'
+              width="70%"
               verticalAlign="bottom"
               content={<CustomizeLegend />}
-            ></Legend> */}
+              wrapperStyle={{
+                    paddingTop: '50px',
+                  }}
+            ></Legend>
           </BarChart>
         </ResponsiveContainer>
     </section>

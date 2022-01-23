@@ -1,0 +1,10 @@
+.legendStyleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.itemsStyleContainer{
+    display: flex;
+    flex-direction: column;
+  }

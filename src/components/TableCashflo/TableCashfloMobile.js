@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import Icons from '../../img/svg/sprite.svg';
+import toast from 'react-hot-toast';
 
 import s from './TableCashfloMobile.module.css';
 
@@ -9,6 +11,7 @@ const ButtoDelet = data => {
       type="button"
       onClick={data.click}
       id={data.idItams}
+      value={data.summ}
     >
       <svg width="18" height="18" className="iconButtonDel">
         <use xlinkHref={`${Icons}#icon-delete-1`} className=""></use>
@@ -17,11 +20,24 @@ const ButtoDelet = data => {
   );
 };
 
-export default function TableCashfloMobile({ transactions }) {
-  console.log(transactions);
+export default function TableCashfloMobile({
+  transactions,
+  fetchDelete,
+  deleteTranId,
+}) {
+  const [balance, setBalance] = useState(500);
+
   const onClickDelete = e => {
-    console.log(`УДИЛИТЬ`);
-    console.log(e.currentTarget.id);
+    const transactionId = e.currentTarget.id;
+
+    if (balance - e.currentTarget.value < 0) {
+      toast.error('Вы превышаете свой баланс!');
+      return;
+    } else {
+      fetchDelete(transactionId);
+      deleteTranId(transactionId);
+    }
+    console.log(`УДИЛЯЕМ`);
   };
 
   function dateFormat(date) {
@@ -46,7 +62,7 @@ export default function TableCashfloMobile({ transactions }) {
             </div>
             <div className={s.boxTwo}>
               <p className={s.costs}>{costs}</p>
-              <ButtoDelet click={onClickDelete} idItams={_id} />
+              <ButtoDelet click={onClickDelete} idItams={_id} summ={costs} />
             </div>
           </li>
         ))}

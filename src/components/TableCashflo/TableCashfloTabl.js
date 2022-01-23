@@ -12,8 +12,6 @@ axios.defaults.headers.common = {
   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg0ODU2OSwiZXhwIjoxNjQ0MDU4MTY5fQ.dTjoLjfhdOIpYVxubsVGGC41l7iDtBkZO0Rw0P7pvPg`,
 };
 
-const idUser = '61ebe0f1bc769156e60da5f2';
-
 const ButtoDelet = data => {
   return (
     <button
@@ -187,17 +185,6 @@ export default function TableCashfloTabl({
     ],
     [],
   );
-
-  const fetchDel = async data => {
-    const response = await axios.delete(
-      'http://localhost:3001/api/transaction',
-      data,
-      {
-        params: { _id: `${idUser}` },
-      },
-    );
-    return response.data;
-  };
 
   return (
     <Styles>

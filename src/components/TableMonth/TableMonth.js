@@ -74,7 +74,7 @@ export default function TableMonth({ typeIncomes }) {
 
   const [dataCash1, setDatadCash1] = useState([]);
 
-  console.log(dataCash1);
+  //   console.log(dataCash1);
 
   useEffect(() => {
     if (typeIncomes !== []) {
@@ -85,7 +85,7 @@ export default function TableMonth({ typeIncomes }) {
             params: { _id: `${idUser}`, isIncome: `${typeIncomes}` },
           },
         );
-        console.log(response.data.data.result);
+        //   console.log(response.data.data.result);
         setDatadCash1(response.data.data.result);
       };
       fetchCostsMouth();

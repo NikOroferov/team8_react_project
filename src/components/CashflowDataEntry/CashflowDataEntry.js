@@ -21,6 +21,7 @@ export default function CashflowDataEntry({ typeInfo }) {
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState('');
+  const [balance, setBalance] = useState(1000);
 
   const [dataItem, setDataItem] = useState('');
 
@@ -67,22 +68,37 @@ export default function CashflowDataEntry({ typeInfo }) {
     }
   };
 
-  const enterData = e => {
-    setDataItem({
-      created_at: new Date().toISOString(),
-      year: new Date().getFullYear(),
-      month: new Date().getMonth() + 1,
-      day: new Date().getDate(),
-      subcategory: description,
-      category: category,
-      transactionType: typeInfo,
-      costs: sum,
-      incomes: typeInfoEnty(),
-    });
-    setСategory('');
-    setDescription('');
-    setSum([]);
-    fetchEntry(dataItem);
+  const enterData = () => {
+    if (balance === null) {
+      console.log('Не введен баланс');
+    }
+    if (typeInfo === 'расход') {
+      if (balance - sum < 0) {
+        console.log('Вы привышаета свой баланс!');
+        return;
+      } else {
+        setBalance(balance - sum);
+      }
+    }
+    if (balance !== null) {
+      console.log(balance);
+      setDataItem({
+        created_at: new Date().toISOString(),
+        year: new Date().getFullYear(),
+        month: new Date().getMonth() + 1,
+        day: new Date().getDate(),
+        subcategory: description,
+        category: category,
+        transactionType: typeInfo,
+        costs: sum,
+        incomes: typeInfoEnty(),
+        //   balance: balance,
+      });
+      setСategory('');
+      setDescription('');
+      setSum('');
+      fetchEntry(dataItem);
+    }
   };
 
   return (

@@ -42,7 +42,7 @@ export default function AuthForm() {
       const registration = formik.values;
       const email = formik.values.email;
       const password = formik.values.password;
-      dispatch(authOperations.register({ email, password }));
+      dispatch(authOperations.register(formik.values));
 
       console.log('регистрация', registration);
 

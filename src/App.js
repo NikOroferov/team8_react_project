@@ -7,7 +7,6 @@ import Header from './components/Header/Header';
 import Container from './components/Container';
 import GoogleRedirectPage from './views/GoogleRedirectPage/GoogleRedirectPage';
 
-
 function App() {
   return (
     <>

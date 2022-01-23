@@ -5,7 +5,7 @@ import css from './CommonModal.module.css';
 import closeBtn from '../../img/closeBtn.png';
 import Button from '../Button';
 
-export default function CommonModal({ toggleModal, modalText }) {
+export default function CommonModal({ toggleModal, modalText, logOut }) {
   const portalModal = document.querySelector('#modalRoot');
 
   const escModal = e => {
@@ -39,7 +39,7 @@ export default function CommonModal({ toggleModal, modalText }) {
         <p className={css.title}>{modalText}</p>
 
         <div className={css.btnContainer}>
-          <Button name="Да" click={null} />
+          <Button name="Да" click={logOut} />
           <Button name="Нет" click={toggleModal} />
         </div>
       </div>

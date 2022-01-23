@@ -9,7 +9,7 @@ async function fetchWithErrorHandling(url = '') {
   const response = await fetch(url, {
     headers: {
       Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjc4MzYyMCwiZXhwIjoxNjQzOTkzMjIwfQ.OZ37O5eFQ5XYdcjx8pZwp4CL_9Qh6pJLT9nkO-Npfcg',
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjk1NzYyMywiZXhwIjoxNjQ0MTY3MjIzfQ.HPWY_CAoJbTTEl7U5z78zzIPDFpYk-dIeR3Pg1y0-dE',
     },
   });
   return response.ok
@@ -26,8 +26,7 @@ function fetchCategory(date, typeReport) {
 function CostsReport({
   date,
   typeReport,
-  handleActiveCategory,
-  handleCategoriesLenght,
+  handleActiveCategory
 }) {
   const [clicked, setClicked] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -58,14 +57,6 @@ function CostsReport({
     }
     handleActiveCategory(activeCategory)
   }, [activeCategory, handleActiveCategory, firstCategory]);
-
-  useEffect(() => {
-    if (categories.length) {
-      handleCategoriesLenght(true);
-    } else {
-      handleCategoriesLenght(false);
-    }
-  }, [categories, handleCategoriesLenght]);
 
   const handleCategory = title => {
     setClicked(true);

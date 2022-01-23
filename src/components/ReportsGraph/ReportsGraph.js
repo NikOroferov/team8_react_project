@@ -1,10 +1,10 @@
 import styles from './ReportsGraph.module.css';
 import Media from 'react-media';
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import GraphMobile from '../GraphMobile/GraphMobile';
 import GraphTabletDesktop from '../GraphTabletDesktop/GraphTabletDesktop';
 
-export default function BarGraph({ date, typeReport, activeCategory }) {
+export default function ReportsGraph({ date, typeReport, activeCategory }) {
   const [subcategories, setSubcategories] = useState([]);
   const [error, setError] = useState('');
   const BASE_URL = 'http://localhost:3001/api/transaction';
@@ -13,7 +13,7 @@ export default function BarGraph({ date, typeReport, activeCategory }) {
     const response = await fetch(url, {
       headers: {
         Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjc4MzYyMCwiZXhwIjoxNjQzOTkzMjIwfQ.OZ37O5eFQ5XYdcjx8pZwp4CL_9Qh6pJLT9nkO-Npfcg',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjk1NzYyMywiZXhwIjoxNjQ0MTY3MjIzfQ.HPWY_CAoJbTTEl7U5z78zzIPDFpYk-dIeR3Pg1y0-dE',
       },
     });
     return response.ok
@@ -50,32 +50,39 @@ export default function BarGraph({ date, typeReport, activeCategory }) {
     count: item.count,
   }));
 
-  //Calculation for count range
+  //Calculation bar color dependly to procent range
   const counts = results.map(item => item.count);
-  const minCount = Math.min(...counts);
-  const maxCount = Math.max(...counts);
-  const difference = Math.ceil((maxCount - minCount) / 3);
-  const firstRange = `${minCount} - ${minCount + difference}`;
-  const secondRange = `${minCount + difference + 1} - ${
-    maxCount - difference - 1
-  }`;
-  const thirdRange = `${maxCount - difference} - ${maxCount}`;
 
   const barColorsMaker = () => {
+    let countsSum = [];
+
+    if (counts.length !== 0) {
+      const reducerCounts = (previousValue, currentValue) =>
+        previousValue + currentValue;
+      countsSum = counts.reduce(reducerCounts);
+    }
+
     const countColors = counts.map(item => {
-      if (item < minCount + difference) {
+      const procent = Math.floor((item * 100) / countsSum);
+
+      if (procent < 26) {
         return (item = '#FFDAC0');
-      } else if ((maxCount - difference < item) && counts.length !== 1) {
-        return (item = '#FF751D');
-      } else if (counts.length !== 1 || counts.length !== 2){
+      } else if (25 < procent && procent < 51) {
+        return (item = '#efa474');
+      } else if (50 < procent && procent < 76) {
         return (item = '#fc9b5d');
+      } else if (75 < procent && procent < 101) {
+        return (item = '#ff751d');
       } else {
-        return item = '';
+        return (item = '#ff751d');
       }
     });
+
     barColors = countColors;
     return barColors;
   };
+
+  barColorsMaker();
 
   const formatLabelList = item => {
     if (item.length < 8) {
@@ -86,80 +93,109 @@ export default function BarGraph({ date, typeReport, activeCategory }) {
   };
 
   const CustomizeLegend = () => {
-    const firstColor = {
+    const minColorItem = {
       height: '10px',
       width: '10px',
+      marginRight: '5px',
       backgroundColor: '#FFDAC0',
     };
-
-    const secondColor = {
+    const middleOneColorItem = {
       height: '10px',
       width: '10px',
+      marginRight: '5px',
+      backgroundColor: '#efa474',
+    };
+    const middleTwoColorItem = {
+      height: '10px',
+      width: '10px',
+      marginRight: '5px',
       backgroundColor: '#fc9b5d',
     };
-
-    const thirdColor = {
+    const maxColorItem = {
       height: '10px',
       width: '10px',
+      marginRight: '5px',
       backgroundColor: '#FF751D',
     };
-
     const textLegendStyle = {
-      fontSize: '12px',
-      fontFamily: 'Roboto',
+      fontSize: '11px',
       fill: '#52555F',
       fontWeight: '500',
     };
-
-    const itemLegendStyle = {
+    const legendDescrContainer = {
+      width: '70%',
       display: 'flex',
-      justifyContent: 'space-evenly',
+      justifyContent: 'space-between',
+    };
+    const legendItemContainer = {
+      display: 'flex',
+      alignItems: 'center',
     };
 
     return (
       <>
-        <p style={textLegendStyle}>
-          Сколько раз было внесено за текущий месяц:
-        </p>
-        <div style={itemLegendStyle}>
-          <div style={firstColor}></div>
-          <p style={textLegendStyle}>{firstRange}</p>
-          <div style={secondColor}></div>
-          <p style={textLegendStyle}>{secondRange}</p>
-          <div style={thirdColor}></div>
-          <p style={textLegendStyle}>{thirdRange}</p>
+        <div className={styles.legendStyleContainer}>
+          <p style={textLegendStyle}>
+            Процент от общего числа записей по категории:
+          </p>
+
+          <div style={legendDescrContainer}>
+            <div className={styles.itemsStyleContainer}>
+              <div style={legendItemContainer}>
+                <div style={minColorItem}></div>
+                <p style={textLegendStyle}>0% - 25%</p>
+              </div>
+
+              <div style={legendItemContainer}>
+                <div style={middleOneColorItem}></div>
+                <p style={textLegendStyle}>26% - 50%</p>
+              </div>
+            </div>
+
+            <div className={styles.itemsStyleContainer}>
+              <div style={legendItemContainer}>
+                <div style={middleTwoColorItem}></div>
+                <p style={textLegendStyle}>51% - 75%</p>
+              </div>
+
+              <div style={legendItemContainer}>
+                <div style={maxColorItem}></div>
+                <p style={textLegendStyle}>76% - 100%</p>
+              </div>
+            </div>
+          </div>
         </div>
       </>
     );
   };
 
-  barColorsMaker();
-
   return (
     <>
-      <Media
-        queries={{
-          mobile: '(max-width: 767px)',
-          tabletDesktop: '(min-width: 768px)',
-        }}
-      >
-        {matches =>
-          matches.tabletDesktop ? (
-            <GraphTabletDesktop
-              subcategories={results}
-              barColors={barColors}
-              CustomizeLegend={CustomizeLegend}
-              formatLabelList={formatLabelList}
-            />
-          ) : (
-            <GraphMobile
-              subcategories={results}
-              barColors={barColors}
-              CustomizeLegend={CustomizeLegend}
-            />
-          )
-        }
-      </Media>
+      {barColors ? (
+        <Media
+          queries={{
+            mobile: '(max-width: 767px)',
+            tabletDesktop: '(min-width: 768px)',
+          }}
+        >
+          {matches =>
+            matches.tabletDesktop ? (
+              <GraphTabletDesktop
+                subcategories={results}
+                barColors={barColors}
+                CustomizeLegend={CustomizeLegend}
+                formatLabelList={formatLabelList}
+              />
+            ) : (
+              <GraphMobile
+                subcategories={results}
+                barColors={barColors}
+                CustomizeLegend={CustomizeLegend}
+              />
+            )
+          }
+        </Media>
+      ) : null}
     </>
   );
 }

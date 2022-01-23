@@ -21,7 +21,6 @@ export default function GraphTabletDesktop({
 
   const textStyle = {
     fontSize: '12px',
-    fontFamily: 'Roboto',
     textAlign: 'center',
     fill: '#52555F',
   };
@@ -32,7 +31,6 @@ export default function GraphTabletDesktop({
     backgroundImage:
       'linear-gradient(to left, rgba(232, 130, 23, 0.9), rgba(240, 187, 132, 0.9))',
     fontSize: '12px',
-    fontFamily: 'Roboto',
     textAlign: 'center',
     fill: '#52555F',
     borderRadius: '10px',
@@ -54,47 +52,54 @@ export default function GraphTabletDesktop({
   };
 
   return (
-    <section className={styles.sections}>
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={subcategories}
-            margin={{ top: 35, right: 0, left: 0, bottom: 35 }}
-          >
-            <CartesianGrid vertical={false} />
-            <YAxis tickCount={9} hide={true} />
+    <>
+        <section className={styles.sections}>
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+              data={subcategories}
+              margin={{ top: 35, right: 0, left: 0, bottom: 20 }}
+            >
+              <CartesianGrid vertical={false} />
+              <YAxis tickCount={9} hide={true} />
 
             <Tooltip
-              wrapperStyle={tooltipStyle}
-              content={<CustomTooltip results={subcategories} />}
-            />
+              cursor={{backgroundColor: 'red'}}
+                wrapperStyle={tooltipStyle}
+                content={<CustomTooltip results={subcategories} />}
+              />
 
-            <Bar barSize={38} dataKey="total" radius={[10, 10, 0, 0]}>
-              {subcategories.map((item, index) => (
-                <Cell
-                  className={styles.barCeil}
-                  key={`cell-${index}`}
-                  fill={barColors[index]}
+              <Bar barSize={38} dataKey="total" radius={[10, 10, 0, 0]}>
+                {subcategories.map((item, index) => (
+                  <Cell
+                    className={styles.barCeil}
+                    key={`cell-${index}`}
+                    fill={barColors[index]}
+                  />
+                ))}
+                <LabelList
+                  dataKey="totalLabel"
+                  position="top"
+                  style={textStyle}
                 />
-              ))}
-              <LabelList
-                dataKey="totalLabel"
-                position="top"
-                style={textStyle}
-              />
-              <LabelList
-                dataKey="name"
-                position="bottom"
-                formatter={formatLabelList}
-                style={textStyle}
-              />
-            </Bar>
-            {/* <Legend
-              width="80%"
+                <LabelList
+                  dataKey="name"
+                  position="bottom"
+                  formatter={formatLabelList}
+                  style={textStyle}
+                />
+              </Bar>
+            <Legend
+              layout='vertical'
+              width="70%"
               verticalAlign="bottom"
               content={<CustomizeLegend />}
-            ></Legend> */}
-          </BarChart>
-        </ResponsiveContainer>
-    </section>
+              wrapperStyle={{
+                    paddingTop: '50px',
+                  }}
+            ></Legend>
+            </BarChart>
+          </ResponsiveContainer>
+        </section>
+      </>
   );
 }

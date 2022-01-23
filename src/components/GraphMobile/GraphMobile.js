@@ -68,68 +68,66 @@ export default function GraphMobile({
     );
   };
 
+  //Height container calculation
   let num;
 
   const calculatedHeight = () => {
-    const n = 35;
+    const n = 30;
     const lengthNum = subcategoriesForMobile.length;
-    num = (6 * n + lengthNum * n);
-  }
+    num =  ((5 + lengthNum) + (lengthNum/2.5)) * n;
+  };
 
-calculatedHeight()
+  calculatedHeight();
 
   const styleWithHeightCalculate = {
-    height: `${num}px`
+    height: `${num}px`,
   };
 
   return (
-      <section style={styleWithHeightCalculate}>
-        <div className={styles.barContainer}>
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart
-              data={subcategoriesForMobile}
-              layout="vertical"
-              margin={{ top: 25, right: 70, left: 0, bottom: 30 }}
-          >
-            <Legend
-                width="100%"
-                verticalAlign="top"
-                content={<CustomizeLegend />}
-                wrapperStyle={{
-                  paddingBottom: '40px',
-                }}
-              ></Legend>
-              <XAxis type="number" hide={true} />
-
-              <Bar
-                barSize={15}
-                dataKey="total"
-                radius={[0, 10, 10, 0]}
+    <>
+        <section style={styleWithHeightCalculate}>
+          <div className={styles.barContainer}>
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                data={subcategoriesForMobile}
+                layout="vertical"
+                margin={{ top: 15, right: 70, left: 0, bottom: 25 }}
               >
-                {subcategoriesForMobile.map((item, index) => (
-                  <Cell
-                    className={styles.barCeil}
-                    key={`cell-${index}`}
-                    fill={barColors[index]}
-                  />
-                ))}
+                <Legend
+                  width="100%"
+                  verticalAlign="top"
+                  content={<CustomizeLegend />}
+                  wrapperStyle={{
+                    paddingBottom: '40px',
+                  }}
+                ></Legend>
+                <XAxis type="number" hide={true} />
 
-                <LabelList
-                  dataKey="totalLabel"
-                  content={renderCustomizedTotalLabel}
-                  position="top"
-                />
-                <LabelList
-                  subcategories={subcategoriesForMobile}
-                  dataKey="name"
-                  content={renderCustomizedNameLabel}
-                  position="top"
-                />
-              </Bar>
-              
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-    </section>
+                <Bar barSize={15} dataKey="total" radius={[0, 10, 10, 0]}>
+                  {subcategoriesForMobile.map((item, index) => (
+                    <Cell
+                      className={styles.barCeil}
+                      key={`cell-${index}`}
+                      fill={barColors[index]}
+                    />
+                  ))}
+
+                  <LabelList
+                    dataKey="totalLabel"
+                    content={renderCustomizedTotalLabel}
+                    position="top"
+                  />
+                  <LabelList
+                    subcategories={subcategoriesForMobile}
+                    dataKey="name"
+                    content={renderCustomizedNameLabel}
+                    position="top"
+                  />
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </section>
+    </>
   );
 }

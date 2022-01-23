@@ -14,7 +14,6 @@ export default function ReportsPage() {
   const [typeReport, setTypeReport] = useState(null);
   const [date, setDate] = useState(null);
   const [activeCategory, setActiveCategory] = useState(null);
-  const [isCategoryLenght, setIsCategoryLenght] = useState(true);
   
   const handleDate = newDate => {
     setDate(newDate);
@@ -26,10 +25,6 @@ export default function ReportsPage() {
 
   const handleActiveCategory = activeCategory => {
     setActiveCategory(activeCategory);
-  };
-
-  const handleCategoriesLenght = lengthBoolean => {
-    setIsCategoryLenght(lengthBoolean);
   };
 
   return (
@@ -57,17 +52,14 @@ export default function ReportsPage() {
             typeReport={typeReport}
             date={date}
               handleActiveCategory={handleActiveCategory}
-              handleCategoriesLenght={handleCategoriesLenght}
             />
           </div>
 
-          {(isCategoryLenght) ? (
             <ReportsGraph
               activeCategory={activeCategory}
               typeReport={typeReport}
               date={date}
-            />)
-            : null}
+          /> 
         </div>
       </Background>
     </>

@@ -17,45 +17,44 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  extraRedusers: {
+  extraReducers: {
+    // [authOperations.register.fulfilled](
+    //   { user, token, isLogedIn },
+    //   { payload },
+    // ) {
+    //   user = payload.user;
+    //   token = payload.token;
+    //   isLogedIn = true;
+    // },
+    [authOperations.logIn.fulfilled]: (state, action) => {
+      state.user = action.payload.user.name;
+      state.user = action.payload.user.email;
+      state.token = action.payload.token;
+      state.isLogedIn = true;
+    },
+    // [authOperations.logOut.fulfilled]({ user, token, isLogedIn }, action) {
+    //   user = { email: '' };
+    //   token = null;
+    //   isLogedIn = false;
+    // },
+    // [authOperations.fetchCurrentUser.fulfilled](
+    //   { user, isLogedIn },
+    //   { payload },
+    // ) {
+    //   user = payload;
+    //   isLogedIn = true;
+    // },
+    // [authOperations.googleLogIn.fulfilled](state, action) {
+    //   state.user = { email: '' };
+    // },
+    // [authOperations.googleLogIn.rejected](state, action) {},
 
-    [authOperations.register.fulfilled](
-      { user, token, isLogedIn },
-      { payload },
-    ) {
-      user = payload.user;
-      token = payload.token;
-      isLogedIn = true;
-
-    },
-    [authOperations.logIn.fulfilled]({ user, token, isLogedIn }, { payload }) {
-      user = payload.user;
-      token = payload.token;
-      isLogedIn = true;
-    },
-    [authOperations.logOut.fulfilled]({ user, token, isLogedIn }, action) {
-      user = { email: '' };
-      token = null;
-      isLogedIn = false;
-    },
-    [authOperations.fetchCurrentUser.fulfilled](
-      { user, isLogedIn },
-      { payload },
-    ) {
-      user = payload;
-      isLogedIn = true;
-    },
-    [authOperations.googleLogIn.fulfilled](state, action) {
-      state.user = { email: '' };
-    },
-    [authOperations.googleLogIn.rejected](state, action) {},
-
-    [balanceOperations.setUserBalance.fulfilled]({ user }, { payload }) {
-      user.balance = payload.balance;
-    },
-    [balanceOperations.getUserBalance.fulfilled]({ user }, { payload }) {
-      user.balance = payload.balance;
-    },
+    // [balanceOperations.setUserBalance.fulfilled]({ user }, { payload }) {
+    //   user.balance = payload.balance;
+    // },
+    // [balanceOperations.getUserBalance.fulfilled]({ user }, { payload }) {
+    //   user.balance = payload.balance;
+    // },
   },
 });
 

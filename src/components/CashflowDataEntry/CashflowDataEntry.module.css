@@ -80,12 +80,12 @@
   margin-left: auto;
 } */
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   #demo-simple-select-label {
     margin-right: 0;
     margin-left: 0;
   }
-}
+} */
 
 .formCashflow .category {
   font-size: 12px;
@@ -101,6 +101,7 @@
   border: none;
   padding-left: 6px;
   padding-right: 6px;
+
   border-radius: 0;
   outline: none;
   background-color: #f5f6fb;
@@ -120,14 +121,19 @@
   }
 }
 
-.categoryItamMenu {
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+  border: red;
+  background-color: red;
+}
+
+/* .categoryItamMenu {
   color: #c7ccdc;
   text-transform: capitalize;
 }
 
-.categoryItamMenu:hover {
+.MuiSelect-select .categoryItamMenu:hover {
   color: #52555f;
-}
+} */
 
 /* ВВОД СУММЫ */
 .boxCalculator {

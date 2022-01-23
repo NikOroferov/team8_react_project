@@ -177,7 +177,10 @@ export default function ExpensesIncome() {
 
               <div className={s.monthCashflow}>
                 <p className={s.summaryTitle}>СВОДКА</p>
-                <TableMonth typeIncomes={typeIncomes} />
+                <TableMonth
+                  typeIncomes={typeIncomes}
+                  transactions={transactions}
+                />
               </div>
             </div>
           </div>

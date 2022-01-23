@@ -43,11 +43,11 @@ function Table({ columns, data }) {
   );
 }
 
-export default function TableMonth({ typeIncomes }) {
+export default function TableMonth({ typeIncomes, transactions }) {
   const [dataCash, setDatadCash] = useState([]);
 
   useEffect(() => {
-    if (typeIncomes !== []) {
+    if (typeIncomes !== [] && transactions !== '') {
       const fetchCostsMouth = async () => {
         const response = await axios.get(
           'http://localhost:3001/api/transaction/summary',
@@ -59,7 +59,7 @@ export default function TableMonth({ typeIncomes }) {
       };
       fetchCostsMouth();
     }
-  }, [typeIncomes]);
+  }, [transactions, typeIncomes]);
 
   const monthName = month => {
     if (month === 1) {

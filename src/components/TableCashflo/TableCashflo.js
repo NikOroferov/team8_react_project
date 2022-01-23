@@ -3,6 +3,7 @@ import { useTable, useBlockLayout } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 // import deleteTransaction from '../../services/api-services';
 
@@ -108,13 +109,12 @@ export default function TableCashflo({
   const [dataCash, setDatadCash] = useState([]);
   const [balance, setBalance] = useState(1000);
 
-  //   console.log(transactions);
-
   const onClickDelete = e => {
     const transactionId = e.currentTarget.id;
 
     if (balance - e.currentTarget.value < 0 && typeInfo === 'расход') {
-      console.log(`Не удаляем БАЛАНС не может быть "-"`);
+      toast.error('Вы превышаете свой баланс!');
+
       return;
     } else {
       fetchDelete(transactionId);

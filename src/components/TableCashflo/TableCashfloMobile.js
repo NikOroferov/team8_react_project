@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Icons from '../../img/svg/sprite.svg';
+import toast from 'react-hot-toast';
 
 import s from './TableCashfloMobile.module.css';
 
@@ -19,17 +20,22 @@ const ButtoDelet = data => {
   );
 };
 
-export default function TableCashfloMobile({ transactions, fetchDelete }) {
+export default function TableCashfloMobile({
+  transactions,
+  fetchDelete,
+  deleteTranId,
+}) {
   const [balance, setBalance] = useState(500);
 
   const onClickDelete = e => {
     const transactionId = e.currentTarget.id;
 
     if (balance - e.currentTarget.value < 0) {
-      console.log(`Не удаляем Балан не может быть "-"`);
+      toast.error('Вы превышаете свой баланс!');
       return;
     } else {
       fetchDelete(transactionId);
+      deleteTranId(transactionId);
     }
     console.log(`УДИЛЯЕМ`);
   };

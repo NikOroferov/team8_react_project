@@ -56,13 +56,10 @@ export default function ExpensesIncome() {
   };
 
   function deleteTranId(data) {
-    console.log(transactions);
-    console.log(data);
-
     const dataCashFoTablFiter = transactions.filter(function (e) {
       return e._id !== data;
     });
-    console.log(dataCashFoTablFiter);
+
     setTransactions(dataCashFoTablFiter);
   }
 
@@ -163,6 +160,7 @@ export default function ExpensesIncome() {
                         typeInfo={typeInfo}
                         transactions={transactions}
                         fetchDelete={fetchDelete}
+                        deleteTranId={deleteTranId}
                       />
                     )}
                     {matches.large && (
@@ -196,6 +194,7 @@ export default function ExpensesIncome() {
                       <TableCashfloMobile
                         transactions={transactions}
                         fetchDelete={fetchDelete}
+                        deleteTranId={deleteTranId}
                       />
                       <button
                         className={s.btvExpense}

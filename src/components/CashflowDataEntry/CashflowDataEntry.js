@@ -1,6 +1,7 @@
 import { useState, Fragment, useEffect } from 'react';
 import Media from 'react-media';
 import axios from 'axios';
+import Notiflix from 'notiflix';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,7 +10,7 @@ import Select from '@mui/material/Select';
 import Button from '../Button/Button';
 import s from './CashflowDataEntry.module.css';
 import Icons from '../../img/svg/sprite.svg';
-// import categoryData from '../../json/categoryCosts.json';
+import toast from 'react-hot-toast';
 
 axios.defaults.headers.common = {
   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg3NDE0OSwiZXhwIjoxNjQ0MDgzNzQ5fQ.XDSTb16DBgzWSLYCWCQTVlJJkGbOEu1AUWzzzrHWK7U`,
@@ -68,7 +69,7 @@ export default function CashflowDataEntry({ typeInfo }) {
     }
     if (typeInfo === 'расход') {
       if (balance - sum < 0) {
-        console.log('Вы привышаета свой баланс!');
+        toast.error('Вы превышаете свой баланс!');
         return;
       } else {
         setBalance(balance - sum);

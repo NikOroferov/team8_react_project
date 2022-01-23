@@ -21,6 +21,11 @@ const register = requisites => axios.post('auth/register', requisites); //requis
 
 const login = requisites => axios.post('auth/login', requisites); //requisites={email,password}
 
+// export const login = async credentials => {
+//   const response = await axios.post('/auth/login', credentials);
+//   return response;
+// };
+
 const logout = () => axios.post(`auth/logout`);
 
 // const refresh = () => axios.get('auth/refresh');

@@ -37,7 +37,6 @@ export default function TableCashfloMobile({
       fetchDelete(transactionId);
       deleteTranId(transactionId);
     }
-    console.log(`УДИЛЯЕМ`);
   };
 
   function dateFormat(date) {

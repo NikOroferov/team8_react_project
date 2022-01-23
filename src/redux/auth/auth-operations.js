@@ -22,6 +22,7 @@ const logIn = createAsyncThunk('auth/login', async (requisites, rejected) => {
   try {
     const { data } = await api.login(requisites);
     token.set(data.token);
+    return data;
   } catch (error) {
     console.log(error.message);
     return rejected(error);

@@ -33,9 +33,6 @@ export default function GoogleRedirectPage() {
 
   return (
     <>
-      <button>
-        <Link to="/">Home page</Link>
-      </button>
       <section className={s.section}>
         <Container>
           <div className={s.mainWrapper}>

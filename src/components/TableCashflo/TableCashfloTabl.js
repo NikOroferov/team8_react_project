@@ -12,7 +12,7 @@ axios.defaults.headers.common = {
   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg0ODU2OSwiZXhwIjoxNjQ0MDU4MTY5fQ.dTjoLjfhdOIpYVxubsVGGC41l7iDtBkZO0Rw0P7pvPg`,
 };
 
-const ButtoDelet = data => {
+const ButtonDelet = data => {
   return (
     <button
       className="buttonDel"
@@ -105,7 +105,20 @@ export default function TableCashfloTabl({
   deleteTranId,
 }) {
   const [dataCash, setDatadCash] = useState([]);
+  const [sign, setSign] = useState('-');
+  //   const [color, setColor] = useState({ color: '#E7192E' });
+
   const [balance, setBalance] = useState(800);
+
+  useEffect(() => {
+    if (typeInfo === 'расход') {
+      setSign('-');
+      // setColor({ color: '#E7192E' });
+    } else {
+      setSign('+');
+      // setColor({ color: '#407946' });
+    }
+  }, [typeInfo]);
 
   const onClickDelete = e => {
     const transactionId = e.currentTarget.id;
@@ -133,12 +146,11 @@ export default function TableCashfloTabl({
         ({ _id, subcategory, category, transactionType, costs, date }) => {
           return {
             col1: `${date.day}.${dateFormat(date)}.${date.year}`,
-
             col2: subcategory,
             col3: category,
-            col4: `${costs} грн.`,
+            col4: `${sign} ${costs} грн.`,
             col5: (
-              <ButtoDelet click={onClickDelete} idItams={_id} summ={costs} />
+              <ButtonDelet click={onClickDelete} idItams={_id} summ={costs} />
             ),
             transactionType: transactionType,
           };
@@ -177,7 +189,7 @@ export default function TableCashfloTabl({
         accessor: 'col4',
       },
       {
-        width: '90',
+        width: '83',
         marginLeft: '20',
         Header: '',
         accessor: 'col5',

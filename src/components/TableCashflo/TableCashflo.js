@@ -4,6 +4,7 @@ import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { styled } from '@mui/material/styles';
 
 // import deleteTransaction from '../../services/api-services';
 
@@ -14,7 +15,7 @@ axios.defaults.headers.common = {
   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg3NDE0OSwiZXhwIjoxNjQ0MDgzNzQ5fQ.XDSTb16DBgzWSLYCWCQTVlJJkGbOEu1AUWzzzrHWK7U`,
 };
 
-const ButtoDelet = data => {
+const ButtonDelet = data => {
   return (
     <button
       className="buttonDel"
@@ -30,7 +31,7 @@ const ButtoDelet = data => {
   );
 };
 
-function Table({ columns, data }) {
+function Table({ columns, data, color, typeInfo }) {
   const scrollBarSize = useMemo(() => scrollbarWidth(), []);
 
   const {
@@ -44,6 +45,8 @@ function Table({ columns, data }) {
     {
       columns,
       data,
+      // color,
+      // typeInfo,
     },
     useBlockLayout,
   );
@@ -61,6 +64,7 @@ function Table({ columns, data }) {
         >
           {row.cells.map(cell => {
             return (
+              //   <div {...cell.getCellProps()} className="td" style={color}>
               <div {...cell.getCellProps()} className="td">
                 {cell.render('Cell')}
               </div>
@@ -107,7 +111,19 @@ export default function TableCashflo({
   deleteTranId,
 }) {
   const [dataCash, setDatadCash] = useState([]);
+  const [sign, setSign] = useState('-');
+  const [color, setColor] = useState({ color: '#E7192E' });
   const [balance, setBalance] = useState(1000);
+
+  useEffect(() => {
+    if (typeInfo === 'расход') {
+      setSign('-');
+      setColor({ color: '#E7192E' });
+    } else {
+      setSign('+');
+      setColor({ color: '#407946' });
+    }
+  }, [typeInfo]);
 
   const onClickDelete = e => {
     const transactionId = e.currentTarget.id;
@@ -121,6 +137,15 @@ export default function TableCashflo({
       deleteTranId(transactionId);
     }
   };
+
+  //   const Text = styled.td`
+  //     color: green;
+  //     font-size: 12px;
+  //     &:first-child {
+  //       color: red;
+  //       margin-bottom: 20px;
+  //     }
+  //   `;
 
   useEffect(() => {
     if (transactions !== []) {
@@ -138,9 +163,9 @@ export default function TableCashflo({
             col1: `${date.day}.${dateFormat(date)}.${date.year}`,
             col2: subcategory,
             col3: category,
-            col4: `${costs} грн.`,
+            col4: `${sign} ${costs} грн.`,
             col5: (
-              <ButtoDelet click={onClickDelete} idItams={_id} summ={costs} />
+              <ButtonDelet click={onClickDelete} idItams={_id} summ={costs} />
             ),
             transactionType: transactionType,
           };
@@ -191,7 +216,7 @@ export default function TableCashflo({
 
   return (
     <Styles>
-      <Table columns={columns} data={data} />
+      <Table columns={columns} data={data} color={color} typeInfo={typeInfo} />
     </Styles>
   );
 }

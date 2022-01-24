@@ -1,33 +1,18 @@
 import styles from './ReportsGraph.module.css';
 import Media from 'react-media';
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import GraphMobile from '../GraphMobile/GraphMobile';
 import GraphTabletDesktop from '../GraphTabletDesktop/GraphTabletDesktop';
+import * as reportsAPI from '../../services/reports-api';
 
 export default function BarGraph({ date, typeReport, activeCategory }) {
   const [subcategories, setSubcategories] = useState([]);
   const [error, setError] = useState('');
-  const BASE_URL = 'http://localhost:3001/api/transaction';
-
-  async function fetchWithErrorHandling(url = '') {
-    const response = await fetch(url, {
-      headers: {
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjk1NzYyMywiZXhwIjoxNjQ0MTY3MjIzfQ.HPWY_CAoJbTTEl7U5z78zzIPDFpYk-dIeR3Pg1y0-dE',
-      },
-    });
-    return response.ok
-      ? await response.json()
-      : Promise.reject(new Error('Not found'));
-  }
 
   useEffect(() => {
     if (activeCategory !== null) {
-      function fetchSubcategory(date, typeReport, activeCategory) {
-        return fetchWithErrorHandling(`
-    ${BASE_URL}/subcategory-by-month?date=${date}&isIncome=${typeReport}&category=${activeCategory}`);
-      }
-      fetchSubcategory(date, typeReport, activeCategory)
+      reportsAPI
+        .fetchSubcategoryByMonth(date, typeReport, activeCategory)
         .then(response => {
           setSubcategories(response.data.result.slice(0, 10));
         })
@@ -39,7 +24,7 @@ export default function BarGraph({ date, typeReport, activeCategory }) {
       return;
     }
   }, [activeCategory, date, typeReport]);
-  
+
   const currency = 'грн';
 
   const results = subcategories.map(item => ({

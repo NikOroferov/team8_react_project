@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import Avatar from 'react-avatar';
 import styles from './Header.module.css';
 import Logo from '../Logo/Logo';
 import Icons from '../../img/svg/sprite.svg';
@@ -11,6 +12,7 @@ function Header() {
   const dispatch = useDispatch();
   const [isModalOpen, setModalOpen] = useState(false);
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const name = useSelector(authSelectors.getUserName);
 
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
@@ -23,8 +25,21 @@ function Header() {
 
         {isLoggedIn && (
           <div className={styles.userMenu}>
-            <div className={styles.firstLetter}>U</div>
-            <p className={styles.userName}>User Name</p>
+            <Avatar
+              name={name}
+              size="32"
+              color={Avatar.getRandomColor('sitebase', [
+                'red',
+                'green',
+                'blue',
+                'orange',
+                'violete',
+                'rose',
+                'yellow',
+              ])}
+              className={styles.firstLetter}
+            />
+            <p className={styles.userName}>{name}</p>
             <div className={styles.line}></div>
             <button
               type="button"

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import s from './HomePage.module.css';
 import Container from '../../components/Container/Container';
@@ -8,9 +8,13 @@ import { authSelectors } from '../../redux/auth';
 
 export default function HomePage() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  // if (isLoggedIn) {
+  //   navigate('/cashflow');
+  // }
+
   if (isLoggedIn) {
-    navigate('/cashflow');
+    return <Navigate to="/cashflow" />;
   }
 
   return (

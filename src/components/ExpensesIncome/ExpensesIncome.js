@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import Media from 'react-media';
-import axios from 'axios';
+// import axios from 'axios';
 
 import { fetchTransactions, fetchDelete } from '../../services/cashflooApi';
 

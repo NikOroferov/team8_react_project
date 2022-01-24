@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'http://localhost:3001/api/';
-axios.defaults.baseURL = 'https://mongo-kapusta-team8.herokuapp.com/api/';
+axios.defaults.baseURL = 'http://localhost:3001/api/';
+// axios.defaults.baseURL = 'https://mongo-kapusta-team8.herokuapp.com/api/';
 
 const baseUrl = axios.defaults.baseURL;
 
@@ -26,15 +26,13 @@ const logout = () => axios.get(`auth/logout`);
 
 const googleLogin = () => axios.get('auth/googleLogin');
 
-const refresh = token => axios.post('user/refresh', token);
-
 // User
 
-const setUserBalance = balance => axios.patch('user/balance', balance);
+const setUserBalance = balance => axios.patch('users/balance', balance);
 
-const getCurrentUser = () => axios.get('user/current');
+const getCurrentUser = () => axios.get('users/current');
 
-const updateUserBalance = balance => axios.patch('user/balance', balance);
+const updateUserBalance = balance => axios.patch('users/balance', balance);
 
 // Transactions
 
@@ -66,7 +64,6 @@ const api = {
   login,
   logout,
   googleLogin,
-  refresh,
   setUserBalance,
   updateUserBalance,
   getCurrentUser,

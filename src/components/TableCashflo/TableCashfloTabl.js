@@ -3,7 +3,7 @@ import { useTable, useBlockLayout } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
 import axios from 'axios';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 
 import Styles from './styleTabl';
 import Icons from '../../img/svg/sprite.svg';
@@ -124,7 +124,7 @@ export default function TableCashfloTabl({
     const transactionId = e.currentTarget.id;
 
     if (balance - e.currentTarget.value < 0 && typeInfo === 'расход') {
-      toast.error('Вы превышаете свой баланс!');
+      // toast.error('Вы превышаете свой баланс!');
 
       return;
     } else {

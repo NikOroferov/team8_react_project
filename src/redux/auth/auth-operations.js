@@ -31,28 +31,6 @@ const logIn = createAsyncThunk('auth/login', async (requisites, rejected) => {
   }
 });
 
-// export const logIn = createAsyncThunk(
-//   'auth/login',
-//   async (credentials, { rejectWithValue }) => {
-//     try {
-//       const { data } = await authAPI.login(credentials);
-//       token.set(data.data.token);
-//       return data;
-//     } catch (error) {
-//       if (error.response.data.message === 'Invalid password') {
-//         // toast.error('Неверный пароль. Пожалуйста, попробуйте еще раз.');
-//       } else if (error.response.data.message === 'Email not verify') {
-//         // toast.error('Ваш имейл не верифицырован.');
-//       } else {
-//         // toast.error(
-//         //   'Пожалуйста, проверьте свои данные для входа и попробуйте еще раз.',
-//         // );
-//       }
-//       return rejectWithValue(error.message);
-//     }
-//   },
-// );
-
 const logOut = createAsyncThunk('auth/logout', async (_, rejected) => {
   try {
     await api.logout();
@@ -78,7 +56,9 @@ const fetchCurrentUser = createAsyncThunk(
     try {
       const { data } = await api.getCurrentUser();
       return data;
-    } catch (error) {}
+    } catch (error) {
+      return thunkAPI.rejectWithValue();
+    }
   },
 );
 
@@ -91,7 +71,7 @@ const googleLogIn = createAsyncThunk(
 
     token.set(token);
     try {
-      const { data } = await api.getCurrentUser();
+      const { data } = await api.googleLogin();
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue();

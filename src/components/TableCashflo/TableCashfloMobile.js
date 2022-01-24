@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Icons from '../../img/svg/sprite.svg';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 import axios from 'axios';
 
 import s from './TableCashfloMobile.module.css';
@@ -45,7 +45,7 @@ export default function TableCashfloMobile({ fetchDelete, deleteTranId }) {
     const transactionId = e.currentTarget.id;
 
     if (balance - e.currentTarget.value < 0) {
-      toast.error('Вы превышаете свой баланс!');
+      // toast.error('Вы превышаете свой баланс!');
       return;
     } else {
       const dataCashFoTablFiter = transactionsAll.filter(function (e) {

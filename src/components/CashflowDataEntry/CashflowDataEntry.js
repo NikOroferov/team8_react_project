@@ -10,7 +10,7 @@ import Select from '@mui/material/Select';
 import Button from '../Button/Button';
 import s from './CashflowDataEntry.module.css';
 import Icons from '../../img/svg/sprite.svg';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 import { blue, red } from '@mui/material/colors';
 
 axios.defaults.headers.common = {
@@ -95,7 +95,7 @@ export default function CashflowDataEntry({ typeInfo }) {
     }
     if (typeInfo === 'расход') {
       if (balance - sum < 0) {
-        toast.error('Вы превышаете свой баланс!');
+        // toast.error('Вы превышаете свой баланс!');
         return;
       }
     }

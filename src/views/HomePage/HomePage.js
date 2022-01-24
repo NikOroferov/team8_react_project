@@ -15,15 +15,6 @@ export default function HomePage() {
 
   return (
     <>
-      <button>
-        <Link to="/cashflow">Go to Cashflo</Link>
-      </button>
-      <button>
-        <Link to="/reports">Go to ReportsPage</Link>
-      </button>
-      <button>
-        <Link to="/google-redirect">GoogleRedirectView</Link>
-      </button>
       <section className={s.section}>
         <Container>
           <div className={s.mainWrapper}>

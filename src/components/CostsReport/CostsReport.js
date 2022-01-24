@@ -1,27 +1,32 @@
 import { useState, useEffect } from 'react';
-import getSubcategoryReport from '../../services/api-services';
+import * as reportsAPI from '../../services/reports-api';
 import styles from './CostsReport.module.css';
 import Icons from '../../img/svg/sprite.svg';
+// import api from '../../services/api-services.js';
+// import { store } from '../../redux/store';
 
-const BASE_URL = 'http://localhost:3001/api/transaction';
+// const a = store.getState().auth.token;
+// console.log(a)
 
-async function fetchWithErrorHandling(url = '') {
-  const response = await fetch(url, {
-    headers: {
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0Mjk1NzYyMywiZXhwIjoxNjQ0MTY3MjIzfQ.HPWY_CAoJbTTEl7U5z78zzIPDFpYk-dIeR3Pg1y0-dE',
-    },
-  });
-  return response.ok
-    ? await response.json()
-    : Promise.reject(new Error('Not found'));
-}
+// const BASE_URL = 'https://mongo-kapusta-team8.herokuapp.com/api/transaction';
 
-function fetchCategory(date, typeReport) {
-  return fetchWithErrorHandling(
-    `${BASE_URL}/category-by-month?date=${date}&isIncome=${typeReport}`,
-  );
-}
+// async function fetchWithErrorHandling(url = '') {
+//   const response = await fetch(url, {
+//     headers: {
+//       Authorization: `Bearer ${store.getState().auth.token}`
+//         // 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTk1NmUxNjVmODdiYWJmYzFhMzcxMiIsImlhdCI6MTY0MzA0MjU0MywiZXhwIjoxNjQ0MjUyMTQzfQ.ujceW3L2w0AmRqlvG3EW4zj6tQg3Dr97ynDEy32xkOc',
+//     },
+//   });
+//   return response.ok
+//     ? await response.json()
+//     : Promise.reject(new Error('Not found'));
+// }
+
+// function fetchCategory(date, typeReport) {
+//   return fetchWithErrorHandling(
+//     `${BASE_URL}/category-by-month?date=${date}&isIncome=${typeReport}`,
+//   );
+// }
 
 function CostsReport({
   date,
@@ -37,26 +42,27 @@ function CostsReport({
 
   useEffect(() => {
     if (date && typeReport !== null) {
-      fetchCategory(date, typeReport)
-      .then(response => {
-        setClicked(false);
-        setCategories(response.data.result);
-        setFirstCategory(response.data.result[0].id);
-      })
-      .catch(error => {
-        setError('Hey, Kapusta! We have a problem!');
-      });
+      reportsAPI
+        .fetchCategoryByMonth(date, typeReport)
+        .then(response => {
+          setClicked(false);
+          setCategories(response.data.result);
+          setFirstCategory(response.data.result[0].id);
+        })
+        .catch(error => {
+          setError('Hey, Kapusta! We have a problem!');
+        });
     } else {
-      return
-    }    
+      return;
+    }
   }, [date, typeReport]);
-  
+
   useEffect(() => {
     if (firstCategory) {
       setActiveCategory(firstCategory);
       setFirstCategory(null);
     }
-    handleActiveCategory(activeCategory)
+    handleActiveCategory(activeCategory);
   }, [activeCategory, handleActiveCategory, firstCategory]);
 
   useEffect(() => {

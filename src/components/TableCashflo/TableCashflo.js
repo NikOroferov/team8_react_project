@@ -150,10 +150,11 @@ export default function TableCashflo({
   useEffect(() => {
     if (transactions !== []) {
       function dateFormat(date) {
-        if (date.month.length < 2) {
-          return `0${date.month}`;
+        const toStringData = String(date.month);
+        if (toStringData.length < 2) {
+          return `0${toStringData}`;
         } else {
-          return date.month;
+          return toStringData;
         }
       }
 

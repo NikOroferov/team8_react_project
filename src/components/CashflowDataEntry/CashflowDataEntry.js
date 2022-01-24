@@ -41,7 +41,11 @@ const styleSelect = {
 //   { value: 'доп. доход', label: 'доп. доход' },
 // ];
 
-export default function CashflowDataEntry({ typeInfo }) {
+export default function CashflowDataEntry({
+  typeInfo,
+  beckHomeInput,
+  beckHome,
+}) {
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState('');
@@ -63,6 +67,7 @@ export default function CashflowDataEntry({ typeInfo }) {
       case 'category':
         return setСategory(value);
       case 'sum':
+        //   console.log(parseFloat(value));
         return setSum(value);
       default:
         return;
@@ -88,7 +93,10 @@ export default function CashflowDataEntry({ typeInfo }) {
     }
   };
 
-  const enterData = () => {
+  const enterData = e => {
+    const attrBtn = e.target.getAttribute('typebtn');
+
+    //  getAttribute;
     if (balance === null) {
       console.log('Не введен баланс');
       //  сюда вставить вызов модалки про баланс
@@ -115,6 +123,11 @@ export default function CashflowDataEntry({ typeInfo }) {
       setСategory('');
       setDescription('');
       setSum('');
+    }
+    if (attrBtn === 'mobile' && attrBtn !== undefined) {
+      console.log(beckHome);
+      //  beckHomeInput();
+      beckHome();
     }
   };
 
@@ -290,7 +303,12 @@ export default function CashflowDataEntry({ typeInfo }) {
             {matches.small && (
               <div className={s.btnBoxSubmit}>
                 <div className={s.btn}>
-                  <Button name="ВВОД" type="submit" click={enterData} />
+                  <Button
+                    name="ВВОД"
+                    type="submit"
+                    click={enterData}
+                    typebtn="mobile"
+                  />
                 </div>
                 <div className={s.btnCleer}>
                   <Button name="ОЧИСТИТЬ" type="submit" click={clearForm} />

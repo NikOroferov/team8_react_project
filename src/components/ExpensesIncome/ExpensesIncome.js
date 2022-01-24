@@ -97,6 +97,13 @@ export default function ExpensesIncome() {
     setTypeInfo('расход');
   };
 
+  //   function beckHomeInput(e) {
+  //     e.preventDefault();
+  //     setCostsMobileBtn(true);
+  //     setIncomeMobileBtn(true);
+  //     setTypeInfo('расход');
+  //   }
+
   return (
     <>
       {сostsMobileBtn && incomeMobileBtn && (
@@ -228,7 +235,11 @@ export default function ExpensesIncome() {
             </svg>
           </button>
           <div className={s.cashflowInput}>
-            <CashflowDataEntry typeInfo={typeInfo} />
+            <CashflowDataEntry
+              typeInfo={typeInfo}
+              //   beckHome={beckHome}
+              //   beckHomeInput={beckHomeInput}
+            />
           </div>
         </Background>
       )}
@@ -241,7 +252,11 @@ export default function ExpensesIncome() {
             </svg>
           </button>
           <div className={s.cashflowInput}>
-            <CashflowDataEntry typeInfo={typeInfo} />
+            <CashflowDataEntry
+              typeInfo={typeInfo}
+              //   beckHome={beckHome}
+              //   beckHomeInput={beckHomeInput}
+            />
           </div>
         </Background>
       )}

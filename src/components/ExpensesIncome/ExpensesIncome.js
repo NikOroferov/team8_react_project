@@ -87,14 +87,13 @@ export default function ExpensesIncome() {
     e.preventDefault();
     setIncomeMobileBtn(false);
     setTypeInfo('доход');
-    //  setRequestType(true);
   };
 
   const beckHome = e => {
     e.preventDefault();
     setCostsMobileBtn(true);
     setIncomeMobileBtn(true);
-    setTypeInfo('расход');
+    //  setTypeInfo('расход');
   };
 
   //   function beckHomeInput(e) {
@@ -205,6 +204,7 @@ export default function ExpensesIncome() {
                         transactions={transactions}
                         fetchDelete={fetchDelete}
                         deleteTranId={deleteTranId}
+                        // typeInfo={typeInfo}
                       />
                       <button
                         className={s.btvExpense}
@@ -240,6 +240,14 @@ export default function ExpensesIncome() {
               //   beckHome={beckHome}
               //   beckHomeInput={beckHomeInput}
             />
+          </div>
+          <div className={s.btnForMobil}>
+            {/* <TableCashfloMobile
+              transactions={transactions}
+              fetchDelete={fetchDelete}
+              deleteTranId={deleteTranId}
+              typeInfo={typeInfo}
+            /> */}
           </div>
         </Background>
       )}

@@ -43,8 +43,8 @@ const styleSelect = {
 
 export default function CashflowDataEntry({
   typeInfo,
-  beckHomeInput,
-  beckHome,
+  //   beckHomeInput,
+  //   beckHome,
 }) {
   const [category, setСategory] = useState('');
   const [description, setDescription] = useState('');
@@ -94,9 +94,8 @@ export default function CashflowDataEntry({
   };
 
   const enterData = e => {
-    const attrBtn = e.target.getAttribute('typebtn');
+    //  const attrBtn = e.target.getAttribute('typebtn');
 
-    //  getAttribute;
     if (balance === null) {
       console.log('Не введен баланс');
       //  сюда вставить вызов модалки про баланс
@@ -107,6 +106,12 @@ export default function CashflowDataEntry({
         return;
       }
     }
+
+    if (description === '' || category === '' || sum === '') {
+      // toast.error('Не заполнены все поля для ввода!');
+      return;
+    }
+
     if (balance !== null) {
       const objItem = {
         created_at: new Date().toISOString(),
@@ -124,11 +129,11 @@ export default function CashflowDataEntry({
       setDescription('');
       setSum('');
     }
-    if (attrBtn === 'mobile' && attrBtn !== undefined) {
-      console.log(beckHome);
-      //  beckHomeInput();
-      beckHome();
-    }
+    //  if (attrBtn === 'mobile' && attrBtn !== undefined) {
+    // console.log(beckHome);
+    //  beckHomeInput();
+    // beckHome();
+    //  }
   };
 
   useEffect(() => {

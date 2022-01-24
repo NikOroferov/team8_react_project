@@ -1,7 +1,12 @@
 import { useState, Fragment, useEffect } from 'react';
-import Media from 'react-media';
-import axios from 'axios';
+import { useSelector } from 'react-redux';
 
+import Media from 'react-media';
+// import axios from 'axios';
+
+import { fetchEntry } from '../../services/cashflooApi';
+
+import getBalance from '../../redux/balance/balance-selectors';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -11,7 +16,6 @@ import Button from '../Button/Button';
 import s from './CashflowDataEntry.module.css';
 import Icons from '../../img/svg/sprite.svg';
 // import toast from 'react-hot-toast';
-// import { blue, red } from '@mui/material/colors';
 
 const styleSelect = {
   color: '#c7ccdc',
@@ -28,15 +32,9 @@ export default function CashflowDataEntry({
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState('');
   const [dataItem, setDataItem] = useState('');
-  const [balance, setBalance] = useState(1000);
+  //   const [balance, setBalance] = useState(1000);
 
-  const fetchEntry = async data => {
-    const response = await axios.post(
-      'http://localhost:3001/api/transaction',
-      data,
-    );
-    return response.data;
-  };
+  const balance = useSelector(getBalance);
 
   const hendleChangeDescription = ({ target: { name, value } }) => {
     switch (name) {
@@ -90,7 +88,7 @@ export default function CashflowDataEntry({
     }
 
     if (balance !== null) {
-      const objItem = {
+      const data = {
         created_at: new Date().toISOString(),
         year: new Date().getFullYear(),
         month: new Date().getMonth() + 1,
@@ -101,7 +99,7 @@ export default function CashflowDataEntry({
         costs: sum,
         incomes: typeInfoEnty(),
       };
-      setDataItem(objItem);
+      setDataItem(data);
       setСategory('');
       setDescription('');
       setSum('');
@@ -113,8 +111,27 @@ export default function CashflowDataEntry({
     //  }
   };
 
+  //   const fetchEntry = async data => {
+  //     const response = await axios.post(
+  //       'http://localhost:3001/api/transaction',
+  //       data,
+  //     );
+  //     return response.data;
+  //   };
+
   useEffect(() => {
     if (dataItem !== '') {
+      console.log(dataItem);
+
+      fetchEntry(dataItem)
+        .then(response => {
+          console.log(response);
+          //  setTransactions(response.data.transactions);
+        })
+        .catch(error => {
+          // toast.error('Hey, Kapusta! We have a problem!');
+          console.log(error);
+        });
       fetchEntry(dataItem);
     }
   }, [dataItem]);

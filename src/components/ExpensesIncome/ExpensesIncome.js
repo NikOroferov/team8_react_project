@@ -2,7 +2,7 @@ import React, { useState, Fragment, useEffect } from 'react';
 import Media from 'react-media';
 import axios from 'axios';
 
-import { fetchTransactions } from '../../services/cashflooApi';
+import { fetchTransactions, fetchDelete } from '../../services/cashflooApi';
 
 import Background from '../../views/Background/background.jsx';
 import Balance from '../Balance/Balance';
@@ -31,7 +31,6 @@ export default function ExpensesIncome() {
     if (typeIncomes !== null) {
       fetchTransactions(typeIncomes)
         .then(response => {
-          console.log(response.data.transactions);
           setTransactions(response.data.transactions);
         })
         .catch(error => {
@@ -41,13 +40,13 @@ export default function ExpensesIncome() {
     }
   }, [typeIncomes]);
 
-  const fetchDelete = async transactionId => {
-    const response = await axios.delete(
-      `http://localhost:3001/api/transaction/${transactionId}`,
-    );
+  //   const fetchDelete = async transactionId => {
+  //     const response = await axios.delete(
+  //       `http://localhost:3001/api/transaction/${transactionId}`,
+  //     );
 
-    return response.data;
-  };
+  //     return response.data;
+  //   };
 
   function deleteTranId(data) {
     const dataCashFoTablFiter = transactions.filter(function (e) {

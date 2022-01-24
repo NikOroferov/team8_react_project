@@ -3,8 +3,6 @@ import transactionOperations from './transactions-operations';
 
 const initialState = {
   transactions: [],
-  income: [],
-  expense: [],
   isLoading: false,
   error: null,
 };

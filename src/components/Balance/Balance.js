@@ -7,7 +7,6 @@ import ButtonGrey from '../Button/ButtonGrey';
 import getBalance from '../../redux/balance/balance-selectors';
 import balanceOperations from '../../redux/balance/balance-operations';
 import authOperations from '../../redux/auth/auth-operations';
-// import authSelectors from '../../redux/auth/auth-selectors';
 
 import css from './Balance.module.css';
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3001/api/';
-// axios.defaults.baseURL = 'https://mongo-kapusta-team8.herokuapp.com/api/';
+// axios.defaults.baseURL = 'http://localhost:3001/api/';
+axios.defaults.baseURL = 'https://mongo-kapusta-team8.herokuapp.com/api/';
 
 const baseUrl = axios.defaults.baseURL;
 
@@ -28,7 +28,8 @@ const googleLogin = () => axios.get('auth/googleLogin');
 
 // User
 
-const setUserBalance = balance => axios.patch('users/balance', balance);
+const setUserBalance = newBalance =>
+  axios.patch('users/balance', { newBalance });
 
 const getCurrentUser = () => axios.get('users/current');
 
@@ -53,7 +54,7 @@ const getSubcategoryReport = (date, isIncome, category) =>
     `transaction/subcategory-by-month?date=${date}&isIncome=${isIncome}&category=${category}`,
   );
 
-const getPeriodReports = month => axios.get('transaction/total-by-month?');
+// const getPeriodReports = month => axios.get('transaction/total-by-month?');
 
 const getResumeReport = date => axios.get(`transaction/summary?date=${date}`);
 
@@ -73,7 +74,6 @@ const api = {
   getCategoryReport,
   getSubcategoryReport,
   getResumeReport,
-  getPeriodReports,
 };
 
 export default api;

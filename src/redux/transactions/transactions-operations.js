@@ -14,6 +14,16 @@ const getAllTransactions = createAsyncThunk(
   },
 );
 
+// const getIncomeTransaction = createAsyncThunk(
+//   'transaction/getIncome',
+//   async (_, thunkAPI) => {
+//     try {
+//       const { data } = await api.getTransaction();
+//       return data;
+//     } catch (error) {}
+//   },
+// );
+
 const addTransaction = createAsyncThunk(
   'reansactions/addTransaction',
   async (transaction, thunkAPI) => {

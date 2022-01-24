@@ -3,9 +3,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const setUserBalance = createAsyncThunk(
   'user/setUserBalance',
-  async (newBalance, thunkAPI) => {
+  async (balance, thunkAPI) => {
     try {
-      const { data } = await api.setUserBalance(newBalance);
+      const { data } = await api.setUserBalance(balance);
+      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

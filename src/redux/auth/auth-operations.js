@@ -47,10 +47,12 @@ const logOut = createAsyncThunk('auth/logout', async (_, rejected) => {
 });
 
 const fetchCurrentUser = createAsyncThunk(
-  'user/current',
+  'users/current',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
+    console.log(state);
     const token = state.auth.token;
+    console.log(token);
 
     if (token === null) {
       return thunkAPI.rejectWithValue();

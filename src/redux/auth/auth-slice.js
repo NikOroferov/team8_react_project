@@ -11,6 +11,7 @@ const initialState = {
   token: null,
   isLogedIn: false,
   isRegistered: false,
+  isFetchCurrentUser: false,
 };
 
 const authSlice = createSlice({
@@ -47,7 +48,9 @@ const authSlice = createSlice({
       state.token = action.token;
       state.isLogedIn = true;
     },
-    [balanceOperations.setUserBalance.fulfilled]: (state, actions) => {},
+    [balanceOperations.setUserBalance.fulfilled]: (state, action) => {
+      state.user.balance = action.meta.arg;
+    },
   },
 });
 

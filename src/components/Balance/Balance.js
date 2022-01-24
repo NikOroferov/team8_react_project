@@ -6,29 +6,37 @@ import ButtonGrey from '../Button/ButtonGrey';
 
 import getBalance from '../../redux/balance/balance-selectors';
 import balanceOperations from '../../redux/balance/balance-operations';
+import authOperations from '../../redux/auth/auth-operations';
+// import authSelectors from '../../redux/auth/auth-selectors';
 
 import css from './Balance.module.css';
 
 export default function Balance() {
   const initialBalance = useSelector(getBalance);
   const dispatch = useDispatch();
-  dispatch(balanceOperations.setUserBalance(initialBalance));
-  // console.log(initialBalance);
-  // const initialBalance = 1;
 
   const [balance, setBalance] = useState(initialBalance);
+  console.log('old: ', initialBalance);
+  console.log('new: ', balance);
 
-  console.log();
   const handleChangeInput = e => {
-    setBalance(e.target.value);
+    const newBalance = Number(e.target.value);
+    setBalance(newBalance);
   };
 
   useEffect(() => {
     setBalance(initialBalance);
   }, [initialBalance, dispatch]);
 
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    dispatch(balanceOperations.setUserBalance(balance));
+    dispatch(authOperations.fetchCurrentUser());
+  };
+
   return (
-    <form className={css.form}>
+    <form className={css.form} onSubmit={handleSubmit}>
       <label htmlFor="input" className={css.label}>
         <span className={css.text}>Баланс:</span>
       </label>
@@ -47,16 +55,8 @@ export default function Balance() {
         />
       </span>
 
-      {/* <button type="button" className={css.btn} onClick={null}>
-        Подтвердить
-      </button> */}
-      <ButtonGrey
-        name="Подтвердить"
-        type="button"
-        className={css.btn}
-        onClick={null}
-      />
-      {initialBalance === 0 && <BalanceModal />}
+      <ButtonGrey name="Подтвердить" type="submit" className={css.btn} />
+      {balance === null && <BalanceModal />}
     </form>
   );
 }

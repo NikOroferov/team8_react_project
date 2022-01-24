@@ -30,7 +30,7 @@ const refresh = token => axios.post('user/refresh', token);
 
 // User
 
-const setUserBalance = balance => axios.post('user/balance', balance);
+const setUserBalance = balance => axios.patch('user/balance', balance);
 
 const getCurrentUser = () => axios.get('user/current');
 

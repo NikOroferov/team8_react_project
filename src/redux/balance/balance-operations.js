@@ -13,21 +13,8 @@ const setUserBalance = createAsyncThunk(
   },
 );
 
-const getUserBalance = createAsyncThunk(
-  'user/getUserBalance',
-  async (_, thunkAPI) => {
-    try {
-      const { data } = await api.getUserBalance();
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue();
-    }
-  },
-);
-
 const balanceOperations = {
   setUserBalance,
-  getUserBalance,
 };
 
 export default balanceOperations;

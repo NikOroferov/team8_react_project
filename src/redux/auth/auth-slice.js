@@ -27,8 +27,9 @@ const authSlice = createSlice({
     //   isLogedIn = true;
     // },
     [authOperations.logIn.fulfilled]: (state, action) => {
-      state.user = action.payload.user.name;
-      state.user = action.payload.user.email;
+      state.user.name = action.payload.user.name;
+      state.user.email = action.payload.user.email;
+      state.user.balance = action.payload.user.balance;
       state.token = action.payload.token;
       state.isLogedIn = true;
     },
@@ -37,6 +38,14 @@ const authSlice = createSlice({
     //   token = null;
     //   isLogedIn = false;
     // },
+    [authOperations.logOut.fulfilled]: state => {
+      state.user.name = '';
+      state.user.email = '';
+      state.user.balance = null;
+      state.token = null;
+      state.isLogedIn = false;
+    },
+
     // [authOperations.fetchCurrentUser.fulfilled](
     //   { user, isLogedIn },
     //   { payload },

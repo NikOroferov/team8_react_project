@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3001/api/';
+// axios.defaults.baseURL = 'http://localhost:3001/api/';
+axios.defaults.baseURL = 'https://mongo-kapusta-team8.herokuapp.com/api/';
 
 const baseUrl = axios.defaults.baseURL;
 
@@ -17,39 +18,32 @@ const token = {
 
 // Auth
 
-const register = requisites => axios.post('auth/register', requisites); //requisites={email,password}
+const register = requisites => axios.post('auth/register', requisites);
 
-const login = requisites => axios.post('auth/login', requisites); //requisites={email,password}
+const login = requisites => axios.post('auth/login', requisites);
 
-// export const login = async credentials => {
-//   const response = await axios.post('/auth/login', credentials);
-//   return response;
-// };
+const logout = () => axios.get(`auth/logout`);
 
-const logout = () => axios.post(`auth/logout`);
+const googleLogin = () => axios.get('auth/googleLogin');
 
-// const refresh = () => axios.get('auth/refresh');
+const refresh = token => axios.post('user/refresh', token);
 
 // User
 
 const setUserBalance = balance => axios.post('user/balance', balance);
-const getUserBalance = () => axios.get('user/balance');
-const updateUserBalance = balance => axios.patch('user/balance', balance);
-const getUserInfo = () => axios.get('user');
+
 const getCurrentUser = () => axios.get('user/current');
+
+const updateUserBalance = balance => axios.patch('user/balance', balance);
 
 // Transactions
 
-const getTransaction = () => axios.get('transaction');
+const getTransaction = () => axios.get('transaction/');
 
-const addTransaction = transaction => axios.post('/transaction', transaction);
+const addTransaction = transaction => axios.post('transaction/', transaction);
 
 const deleteTransaction = transactionId =>
-  axios.delete(`/transaction/${transactionId}`);
-
-const getIncomes = () => axios.get('transactionIncomes');
-
-const getExpenses = () => axios.get('transactionExpenses');
+  axios.delete(`transaction/${transactionId}`);
 
 // Reports
 
@@ -61,7 +55,7 @@ const getSubcategoryReport = (date, isIncome, category) =>
     `transaction/subcategory-by-month?date=${date}&isIncome=${isIncome}&category=${category}`,
   );
 
-const getPeriodReports = () => axios.get('transaction/period');
+const getPeriodReports = month => axios.get('transaction/total-by-month?');
 
 const getResumeReport = date => axios.get(`transaction/summary?date=${date}`);
 
@@ -71,16 +65,14 @@ const api = {
   register,
   login,
   logout,
+  googleLogin,
+  refresh,
   setUserBalance,
-  getUserBalance,
   updateUserBalance,
-  getUserInfo,
   getCurrentUser,
   addTransaction,
   getTransaction,
   deleteTransaction,
-  getIncomes,
-  getExpenses,
   getCategoryReport,
   getSubcategoryReport,
   getResumeReport,

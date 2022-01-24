@@ -5,9 +5,9 @@ import s from './GoogleAuthBtn.module.css';
 function GoogleAuthBtn() {
   return (
     <a
-      href="http://localhost:3001/api/auth/googleLogin"
+      href="https://mongo-kapusta-team8.herokuapp.com/api/auth/googleLogin"
       rel="noreferrer"
-      target="_blank"
+      // target="_blank"
       className={s.googleBtn}
     >
       <GoogleBtnIcon />

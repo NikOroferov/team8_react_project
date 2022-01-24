@@ -29,7 +29,7 @@ const logIn = createAsyncThunk('auth/login', async (requisites, rejected) => {
     return data.data;
   } catch (error) {
     alert(
-      'Вероятно вы спешите и забыли, зайти на почту и верифицироваться либо опечатались в форме',
+      'Вероятно вы спешите и забыли зарегистрироваться, либо зайти на почту и верифицироваться либо опечатались в форме',
     );
     console.log(error.message);
     return rejected(error);

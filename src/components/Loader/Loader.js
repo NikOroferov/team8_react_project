@@ -4,8 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@mui/material/LinearProgress';
 import styles from './Loader.module.css';
 
-export default function Loader({handlerLoading}) {
-  const [progress, setProgress] = useState(0);
+export default function Loader() {
+  const [progress, setProgress] = useState(40);
   const StyledLinearProgress = withStyles({
     colorPrimary: {
       backgroundColor: '#F5F6FB',
@@ -21,10 +21,10 @@ export default function Loader({handlerLoading}) {
         if (oldProgress === 100) {
           return 0;
         }
-        const diff = Math.random() * 2;
+        const diff = Math.random() * 8;
         return Math.min(oldProgress + diff, 100);
       });
-    }, 150);
+    }, 95);
 
     return () => {
       clearInterval(timer);
@@ -42,7 +42,6 @@ export default function Loader({handlerLoading}) {
     <>
       <div className={styles.backdrop}>
         <div className={styles.loaderContainer}>
-          {/* <button type="button" width='200px' heigth="200px" onClick={() => handlerLoading()}>ssssss</button> */}
           <div className={styles.cabbageIcon}>
             <svg
               width="89"

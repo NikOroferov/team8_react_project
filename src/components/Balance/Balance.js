@@ -1,30 +1,31 @@
 import { useEffect, useState } from 'react';
-// import { useSelector, useDispatch  } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { BalanceModal } from '../Modal';
 import ButtonGrey from '../Button/ButtonGrey';
 
-// import { getBalance } from '../../redux/balance/balance-selectors';
+import getBalance from '../../redux/balance/balance-selectors';
+import balanceOperations from '../../redux/balance/balance-operations';
 
 import css from './Balance.module.css';
 
 export default function Balance() {
-  // const initialBalance = useSelector(getBalance);
-  // const dispatch = useDispatch();
-
-
-  const initialBalance = 1;
-
+  const initialBalance = useSelector(getBalance);
+  const dispatch = useDispatch();
+  dispatch(balanceOperations.setUserBalance(initialBalance));
+  // console.log(initialBalance);
+  // const initialBalance = 1;
 
   const [balance, setBalance] = useState(initialBalance);
 
+  console.log();
   const handleChangeInput = e => {
     setBalance(e.target.value);
   };
 
   useEffect(() => {
     setBalance(initialBalance);
-  }, [initialBalance]);
+  }, [initialBalance, dispatch]);
 
   return (
     <form className={css.form}>

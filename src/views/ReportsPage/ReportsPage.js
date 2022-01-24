@@ -9,13 +9,15 @@ import ReportsGraph from '../../components/ReportsGraph/ReportsGraph';
 import Background from '../Background/background';
 import LinkToMain from '../../components/LinkToMain/LinkToMain';
 import Balance from '../../components/Balance/Balance';
+import Loader from '../../components/Loader/Loader';
 
 export default function ReportsPage() {
   const [typeReport, setTypeReport] = useState(null);
   const [date, setDate] = useState(null);
   const [activeCategory, setActiveCategory] = useState(null);
   const [isCategoryLenght, setIsCategoryLenght] = useState(true);
-  
+  // const [isLoading, setLoading] = useState(true);
+
   const handleDate = newDate => {
     setDate(newDate);
   };
@@ -32,8 +34,13 @@ export default function ReportsPage() {
     setIsCategoryLenght(lengthBoolean);
   };
 
+  // const handlerLoading = e => {
+  //   setLoading(false)
+  // }
+
   return (
     <>
+        {/* {isLoading ? <Loader handlerLoading={handlerLoading}/> : null} */}
       <Background>
         <div className={styles.sections}>
 

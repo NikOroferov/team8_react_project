@@ -22,7 +22,7 @@ const register = requisites => axios.post('auth/register', requisites);
 
 const login = requisites => axios.post('auth/login', requisites);
 
-const logout = () => axios.get(`auth/logout`);
+const logout = () => axios.post(`auth/logout`);
 
 const googleLogin = () => axios.get('auth/googleLogin');
 
@@ -30,7 +30,7 @@ const refresh = token => axios.post('user/refresh', token);
 
 // User
 
-const setUserBalance = balance => axios.post('user/balance', balance);
+const setUserBalance = balance => axios.patch('user/balance', balance);
 
 const getCurrentUser = () => axios.get('user/current');
 

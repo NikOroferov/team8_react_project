@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
+import { balanceOperations } from '../balance';
 
 const initialState = {
   user: {
@@ -10,16 +11,15 @@ const initialState = {
   token: null,
   isLogedIn: false,
   isRegistered: false,
-  // isFetchingCurrentUser: false,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
-    [authOperations.register.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+    [authOperations.register.fulfilled](state) {
+      // state.user = action.payload.user;
+      // state.token = action.payload.token;
       state.isRegistered = true;
     },
     [authOperations.logIn.fulfilled]: (state, action) => {
@@ -47,6 +47,7 @@ const authSlice = createSlice({
       state.token = action.token;
       state.isLogedIn = true;
     },
+    [balanceOperations.setUserBalance.fulfilled]: (state, actions) => {},
   },
 });
 

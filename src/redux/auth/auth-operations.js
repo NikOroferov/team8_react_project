@@ -1,6 +1,5 @@
 import api from '../../services/api-services';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import * as authAPI from '../../services/api-services';
 
 const token = api.token;
 
@@ -9,7 +8,10 @@ const register = createAsyncThunk(
   async (requisites, { rejectWithValue }) => {
     try {
       const { data } = await api.register(requisites);
-      token.set(data.token);
+      // token.set(data.token);
+      alert(
+        'Поздравляем, вы успешно зарегистрировались, теперь вам нужно, зайти на свою почту и верифицироваться, после этого еще раз ввести в форму , свою почту и пароль',
+      );
       return data;
     } catch (error) {
       console.log(error.message);
@@ -26,6 +28,9 @@ const logIn = createAsyncThunk('auth/login', async (requisites, rejected) => {
     token.set(data.data.token);
     return data.data;
   } catch (error) {
+    alert(
+      'Вероятно вы спешите и забыли зарегистрироваться, либо зайти на почту и верифицироваться либо опечатались в форме',
+    );
     console.log(error.message);
     return rejected(error);
   }

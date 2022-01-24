@@ -25,9 +25,12 @@ axios.defaults.headers.common = {
   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg3NDE0OSwiZXhwIjoxNjQ0MDgzNzQ5fQ.XDSTb16DBgzWSLYCWCQTVlJJkGbOEu1AUWzzzrHWK7U`,
 };
 
-export default function TableCashfloMobile({ fetchDelete, deleteTranId }) {
+export default function TableCashfloMobile({
+  fetchDelete,
+  deleteTranId,
+  //   typeInfo,
+}) {
   const [transactionsAll, setTransactionsAll] = useState('');
-
   const [balance, setBalance] = useState(500);
 
   useEffect(() => {
@@ -59,10 +62,11 @@ export default function TableCashfloMobile({ fetchDelete, deleteTranId }) {
   };
 
   function dateFormat(date) {
-    if (date.month.length < 2) {
-      return `0${date.month}`;
+    const toStringData = String(date.month);
+    if (toStringData.length < 2) {
+      return `0${toStringData}`;
     } else {
-      return date.month;
+      return toStringData;
     }
   }
 

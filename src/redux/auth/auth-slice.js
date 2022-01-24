@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
+import { balanceOperations } from '../balance';
 
 const initialState = {
   user: {
@@ -10,7 +11,6 @@ const initialState = {
   token: null,
   isLogedIn: false,
   isRegistered: false,
-  // isFetchingCurrentUser: false,
 };
 
 const authSlice = createSlice({
@@ -47,6 +47,7 @@ const authSlice = createSlice({
       state.token = action.token;
       state.isLogedIn = true;
     },
+    [balanceOperations.setUserBalance.fulfilled]: (state, actions) => {},
   },
 });
 

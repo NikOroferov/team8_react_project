@@ -7,7 +7,7 @@ import s from './Auth.module.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 // import ReactDOM from 'react-dom';
-import GoogleLogin from 'react-google-login';
+// import GoogleLogin from 'react-google-login';
 import GoogleAuthBtn from '../GoogleAuthBtn/GoogleAuthBtn';
 
 export default function AuthForm() {
@@ -47,14 +47,8 @@ export default function AuthForm() {
       console.log('регистрация', registration);
 
       formik.resetForm();
-      alert('Вы зарегистрировались, введите свою почту и пароль еще раз');
     }
   };
-
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   dispatch(authOperations.logIn({ email, password }));
-  // };
 
   const responseGoogle = response => {
     console.log(response);
@@ -68,14 +62,14 @@ export default function AuthForm() {
             Вы можете авторизоваться с помощью Google Account:
           </p>
           <GoogleAuthBtn />
-          <GoogleLogin
+          {/* <GoogleLogin
             className={s.googleBtn}
             clientId="206254104485-oifk2jvjrjpas1im07mbr0eqdh4ot584.apps.googleusercontent.com"
             buttonText="Login"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
             cookiePolicy={'single_host_origin'}
-          />
+          /> */}
 
           <p className={s.text}>
             Или зайти с помощью e-mail и пароля, предварительно

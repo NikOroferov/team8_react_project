@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Icons from '../../img/svg/sprite.svg';
 // import toast from 'react-hot-toast';
-// import axios from 'axios';
 import { fetchAll } from '../../services/cashflooApi';
 
 import getBalance from '../../redux/balance/balance-selectors';
@@ -35,22 +34,13 @@ export default function TableCashfloMobile({
   useEffect(() => {
     fetchAll()
       .then(response => {
-        console.log(response);
-        //  setTransactions(response.data.transactions);
-        //  setTransactionsAll(response.data.transactions);
+        console.log(response.data.transactions);
+        setTransactionsAll(response.data.transactions);
       })
       .catch(error => {
         // toast.error('Hey, Kapusta! We have a problem!');
         console.log(error);
       });
-    //  const fetchAll = async () => {
-    //    const response = await axios.get(
-    //      `http://localhost:3001/api/transaction/`,
-    //    );
-    //    setTransactionsAll(response.data.data.transactions);
-    //    return response.data;
-    //  };
-    //  fetchAll();
   }, []);
 
   const onClickDelete = e => {

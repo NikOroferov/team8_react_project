@@ -12,7 +12,7 @@ import Select from '@mui/material/Select';
 import Button from '../Button/Button';
 import s from './CashflowDataEntry.module.css';
 import Icons from '../../img/svg/sprite.svg';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const styleSelect = {
   color: '#c7ccdc',
@@ -74,7 +74,7 @@ export default function CashflowDataEntry({
     }
     if (typeInfo === 'расход') {
       if (balance - sum < 0) {
-        // toast.error('Вы превышаете свой баланс!');
+        toast.error('Вы превышаете свой баланс!');
         return;
       }
     }
@@ -93,7 +93,7 @@ export default function CashflowDataEntry({
         subcategory: description,
         category: category,
         transactionType: typeInfo,
-        costs: sum,
+        costs: Number(sum),
         incomes: typeInfoEnty(),
       };
       setDataItem(data);
@@ -108,28 +108,21 @@ export default function CashflowDataEntry({
     //  }
   };
 
-  //   const fetchEntry = async data => {
-  //     const response = await axios.post(
-  //       'http://localhost:3001/api/transaction',
-  //       data,
-  //     );
-  //     return response.data;
-  //   };
-
   useEffect(() => {
     if (dataItem !== '') {
-      // console.log(dataItem);
-
       fetchEntry(dataItem)
         .then(response => {
-          console.log(response);
+          const data = response.data.result;
+          toast.success(
+            `Статья добавлена: ${data.category} на сумму ${data.costs}`,
+          );
+          //  console.log(response.data.result);
           //  setTransactions(response.data.transactions);
         })
         .catch(error => {
-          // toast.error('Hey, Kapusta! We have a problem!');
+          // toast.error('Извините, ошибка соединения. Побробуйте позже.');
           console.log(error);
         });
-      // fetchEntry(dataItem);
     }
   }, [dataItem]);
 

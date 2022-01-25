@@ -1,16 +1,18 @@
 import { store } from '../redux/store';
 
 const BASE_URL = 'https://mongo-kapusta-team8.herokuapp.com/api/transaction';
+// const BASE_URL = 'http://localhost:3001/api/transaction';
 
 // const token = store.getState().auth.token;
 
 async function fetchWithErrorHandling(url = '', method, data) {
   const response = await fetch(url, {
     method: method,
-    body: JSON.stringify(data),
     headers: {
       Authorization: `Bearer ${store.getState().auth.token}`,
+      'Content-Type': 'application/json',
     },
+    body: JSON.stringify(data),
   });
 
   return response.ok

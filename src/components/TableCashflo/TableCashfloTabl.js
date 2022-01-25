@@ -99,7 +99,7 @@ function Table({ columns, data }) {
 export default function TableCashfloTabl({
   typeInfo,
   transactions,
-  fetchDelete,
+  //   fetchDelete,
   deleteTranId,
 }) {
   const [dataCash, setDatadCash] = useState([]);
@@ -131,7 +131,7 @@ export default function TableCashfloTabl({
 
       return;
     } else {
-      fetchDelete(transactionId);
+      // fetchDelete(transactionId);
       deleteTranId(transactionId);
     }
   };

@@ -117,7 +117,10 @@ export default function CashflowDataEntry({
           const data = response.data.result;
           addTratsInState(data);
           const newBalance = response.data.balance;
+          //  console.log(newBalance);
+
           dispatch(balanceOperations.setUserBalance(newBalance));
+          //  console.log(balance);
 
           //  toast.success(
           //    `Статья добавлена: ${data.category} на сумму ${data.costs}`,

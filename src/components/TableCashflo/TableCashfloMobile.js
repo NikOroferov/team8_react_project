@@ -25,7 +25,7 @@ const ButtonDelet = data => {
   );
 };
 
-export default function TableCashfloMobile({ fetchDelete, deleteTranId }) {
+export default function TableCashfloMobile({ deleteTranId }) {
   const [transactionsAll, setTransactionsAll] = useState('');
   const [isModalOpen, setModalOpen] = useState(false);
   const [idItem, setIdItem] = useState('');
@@ -61,8 +61,6 @@ export default function TableCashfloMobile({ fetchDelete, deleteTranId }) {
       const dataCashFoTablFiter = transactionsAll.filter(function (e) {
         return e._id !== transactionId;
       });
-
-      fetchDelete(transactionId);
       deleteTranId(transactionId);
       setTransactionsAll(dataCashFoTablFiter);
     }

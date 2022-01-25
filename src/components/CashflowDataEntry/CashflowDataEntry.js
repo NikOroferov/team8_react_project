@@ -20,7 +20,7 @@ import toast from 'react-hot-toast';
 
 const styleSelect = {
   color: '#c7ccdc',
-  textTransform: 'capitalize',
+  //   textTransform: 'capitalize',
   ':hover': { color: '#52555f' },
 };
 
@@ -60,6 +60,9 @@ export default function CashflowDataEntry({
 
   const handleChange = e => {
     setСategory(e.target.value);
+    console.log(e.target);
+    console.log(e.target);
+    //  setСategory(e.target.value);
   };
 
   const typeInfoEnty = () => {
@@ -156,8 +159,8 @@ export default function CashflowDataEntry({
           onChange={handleChange}
           required
           //  input={<OutlinedInput />}
-          displayEmpty={<span>Категория товара</span>}
-          //  displayEmpty="Категория товара"
+          //  displayEmpty={<span>Категория товара</span>}
+          displayEmpty={true}
           renderValue={selected => {
             if (selected.length === 0) {
               return (
@@ -214,7 +217,8 @@ export default function CashflowDataEntry({
           placeholder="Описание товара"
           required
           //  input={<OutlinedInput />}
-          displayEmpty={<span>Категория дохода</span>}
+          //  displayEmpty={<span>Категория дохода</span>}
+          displayEmpty={true}
           renderValue={selected => {
             if (selected.length === 0) {
               // return <em className="selectplaceholder">Категория дохода</em>;

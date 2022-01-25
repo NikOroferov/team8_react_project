@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
+import PrivateRoute from './components/TypeRoutes/PrivateRoute';
 import './App.css';
 import HomePage from './views/HomePage/HomePage';
 import CashFlowPage from './views/CashFlowPage/CashFlowPage';
@@ -26,8 +27,11 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/cashflow" element={<CashFlowPage />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/cashflow" element={<CashFlowPage />} />
           <Route path="/reports" element={<ReportsPage />} />
+          </Route>
+          
           <Route path="/google-redirect" element={<GoogleRedirectPage />} />
         </Routes>
       </Container>

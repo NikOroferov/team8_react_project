@@ -26,6 +26,8 @@ const logout = () => axios.post(`auth/logout`);
 
 const googleLogin = () => axios.get('auth/googleLogin');
 
+const googleLogInBtn = requisites =>
+  axios.post('auth/google-redirect', requisites);
 // User
 
 const setUserBalance = newBalance =>
@@ -74,6 +76,7 @@ const api = {
   getCategoryReport,
   getSubcategoryReport,
   getResumeReport,
+  googleLogInBtn,
 };
 
 export default api;

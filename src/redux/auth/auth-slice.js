@@ -30,6 +30,13 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.isLogedIn = true;
     },
+    [authOperations.googleLogInBtn.fulfilled]: (state, action) => {
+      state.user.name = action.payload.user.name;
+      state.user.email = action.payload.user.email;
+      state.user.balance = action.payload.user.balance;
+      state.token = action.payload.token;
+      state.isLogedIn = true;
+    },
     [authOperations.logOut.fulfilled]: state => {
       state.user.name = '';
       state.user.email = '';

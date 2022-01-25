@@ -86,12 +86,28 @@ const googleLogIn = createAsyncThunk(
   },
 );
 
+const googleLogInBtn = createAsyncThunk(
+  'auth/googleLogInBtn',
+  async (requisites, rejected) => {
+    try {
+      const { data } = await api.googleLogInBtn(requisites);
+      token.set(data.data.token);
+      return data.data;
+    } catch (error) {
+      alert('Не пришел ответ от регистрации кнопки гугл');
+      console.log(error.message);
+      return rejected(error);
+    }
+  },
+);
+
 const authOperations = {
   register,
   logIn,
   logOut,
   fetchCurrentUser,
   googleLogIn,
+  googleLogInBtn,
 };
 
 export default authOperations;

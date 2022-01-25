@@ -16,7 +16,6 @@ export default function ReportsPage() {
   const [isCategoryLenght, setIsCategoryLenght] = useState(true);
   const [firstUserDate, setFirstUserDate] = useState(null);
 
-
   const handleDate = newDate => {
     setDate(newDate);
   };

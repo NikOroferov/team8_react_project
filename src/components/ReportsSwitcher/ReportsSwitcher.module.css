@@ -3,6 +3,7 @@
   width: 134px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .section_title {

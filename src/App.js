@@ -27,10 +27,10 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route element={<PrivateRoute />}>
+          {/* <Route element={<PrivateRoute />}> */}
             <Route path="/cashflow" element={<CashFlowPage />} />
           <Route path="/reports" element={<ReportsPage />} />
-          </Route>
+          {/* </Route> */}
           
           <Route path="/google-redirect" element={<GoogleRedirectPage />} />
         </Routes>

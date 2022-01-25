@@ -103,7 +103,7 @@ export default function TableCashfloTabl({
 }) {
   const [dataCash, setDatadCash] = useState([]);
   const [sign, setSign] = useState('-');
-  //   const [color, setColor] = useState({ color: '#E7192E' });
+  //  const [color, setColor] = useState({ color: '#E7192E' });
 
   const balance = useSelector(getBalance);
 
@@ -121,7 +121,7 @@ export default function TableCashfloTabl({
     const transactionId = e.currentTarget.id;
 
     if (balance - e.currentTarget.value < 0 && typeInfo === 'расход') {
-      // toast.error('Вы превышаете свой баланс!');
+      // toast.error('Не возможно удалить.Вы превышаете свой баланс!');
 
       return;
     } else {

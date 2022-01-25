@@ -27,7 +27,8 @@
 .boxOne {
   display: flex;
   flex-direction: column;
-  width: 168px;
+  /* width: 168px; */
+  width: 128px;
   color: #52555f;
 }
 
@@ -52,8 +53,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
-  width: 112px;
+  /* width: 112px; */
+  width: 162px;
 }
 
 .costs {

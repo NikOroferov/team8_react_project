@@ -22,6 +22,7 @@ const styleSelect = {
 
 export default function CashflowDataEntry({
   typeInfo,
+  addTratsInState,
   //   beckHomeInput,
   //   beckHome,
 }) {
@@ -86,7 +87,7 @@ export default function CashflowDataEntry({
 
     if (balance !== null) {
       const data = {
-        created_at: new Date().toISOString(),
+        createdDate: new Date().toISOString(),
         year: new Date().getFullYear(),
         month: new Date().getMonth() + 1,
         day: new Date().getDate(),
@@ -113,18 +114,16 @@ export default function CashflowDataEntry({
       fetchEntry(dataItem)
         .then(response => {
           const data = response.data.result;
-
+          addTratsInState(data);
           //  toast.success(
           //    `Статья добавлена: ${data.category} на сумму ${data.costs}`,
           //  );
-          //  console.log(data);
-          //  setTransactions(response.data.transactions);
         })
         .catch(error => {
           // toast.error('Извините, ошибка соединения. Побробуйте позже.');
-          console.log(error);
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataItem]);
 
   return (

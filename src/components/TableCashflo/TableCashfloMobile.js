@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Icons from '../../img/svg/sprite.svg';
 // import toast from 'react-hot-toast';
+
 import { fetchAll } from '../../services/cashflooApi';
 
 import getBalance from '../../redux/balance/balance-selectors';
+import CommonModal from '../Modal/CommonModal';
 import s from './TableCashfloMobile.module.css';
 
 const ButtonDelet = data => {
@@ -23,13 +25,18 @@ const ButtonDelet = data => {
   );
 };
 
-export default function TableCashfloMobile({
-  fetchDelete,
-  deleteTranId,
-  //   typeInfo,
-}) {
+export default function TableCashfloMobile({ fetchDelete, deleteTranId }) {
   const [transactionsAll, setTransactionsAll] = useState('');
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [idItem, setIdItem] = useState('');
+
   const balance = useSelector(getBalance);
+
+  const toggleModal = e => {
+    setModalOpen(!isModalOpen);
+    const transactionId = e.currentTarget.id;
+    setIdItem(transactionId);
+  };
 
   useEffect(() => {
     fetchAll()
@@ -39,12 +46,12 @@ export default function TableCashfloMobile({
       })
       .catch(error => {
         // toast.error('Hey, Kapusta! We have a problem!');
-        console.log(error);
       });
   }, []);
 
   const onClickDelete = e => {
-    const transactionId = e.currentTarget.id;
+    setModalOpen(!isModalOpen);
+    const transactionId = idItem;
 
     if (balance - e.currentTarget.value < 0) {
       // toast.error('Не возможно удалить.Вы превышаете свой баланс!');
@@ -88,25 +95,34 @@ export default function TableCashfloMobile({
   }
 
   return (
-    <ul className={s.boxCashfloo}>
-      {transactionsAll &&
-        transactionsAll.map(
-          ({ _id, subcategory, category, costs, date, incomes }) => (
-            <li key={_id} id={_id} className={s.item}>
-              <div className={s.boxOne}>
-                <p className={s.descr}>{subcategory}</p>
-                <p className={s.data}>
-                  {date.day}.{dateFormat(date)}.{date.year}
-                  <span className={s.category}>{category}</span>
-                </p>
-              </div>
-              <div className={s.boxTwo}>
-                {colorElement(costs, incomes)}
-                <ButtonDelet click={onClickDelete} idItams={_id} summ={costs} />
-              </div>
-            </li>
-          ),
-        )}
-    </ul>
+    <>
+      <ul className={s.boxCashfloo}>
+        {transactionsAll &&
+          transactionsAll.map(
+            ({ _id, subcategory, category, costs, date, incomes }) => (
+              <li key={_id} id={_id} className={s.item}>
+                <div className={s.boxOne}>
+                  <p className={s.descr}>{subcategory}</p>
+                  <p className={s.data}>
+                    {date.day}.{dateFormat(date)}.{date.year}
+                    <span className={s.category}>{category}</span>
+                  </p>
+                </div>
+                <div className={s.boxTwo}>
+                  {colorElement(costs, incomes)}
+                  <ButtonDelet click={toggleModal} idItams={_id} summ={costs} />
+                </div>
+              </li>
+            ),
+          )}
+      </ul>
+      {isModalOpen && (
+        <CommonModal
+          modalText="Вы уверены? Удалить запись?"
+          toggleModal={toggleModal}
+          logOut={onClickDelete}
+        />
+      )}
+    </>
   );
 }

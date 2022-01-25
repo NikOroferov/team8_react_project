@@ -86,12 +86,12 @@ export default function ExpensesIncome() {
     setTransactions(newTran);
   }
 
-  function beckHomeInput(e) {
-    e.preventDefault();
-    setCostsMobileBtn(true);
-    setIncomeMobileBtn(true);
-    setTypeInfo('расход');
-  }
+  //   function beckHomeInput(e) {
+  //     e.preventDefault();
+  //     setCostsMobileBtn(true);
+  //     setIncomeMobileBtn(true);
+  //     setTypeInfo('расход');
+  //   }
 
   return (
     <>

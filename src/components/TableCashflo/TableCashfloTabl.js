@@ -103,7 +103,7 @@ export default function TableCashfloTabl({
 }) {
   const [dataCash, setDatadCash] = useState([]);
   const [sign, setSign] = useState('-');
-  //   const [color, setColor] = useState({ color: '#E7192E' });
+  //  const [color, setColor] = useState({ color: '#E7192E' });
 
   const balance = useSelector(getBalance);
 

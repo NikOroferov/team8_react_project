@@ -122,7 +122,7 @@ export default function BarGraph({ date, typeReport, activeCategory }) {
       <>
         <div className={styles.legendStyleContainer}>
           <p style={textLegendStyle}>
-            Процент от общего числа записей по категории:
+            Процентное соотношение:
           </p>
 
           <div style={legendDescrContainer}>

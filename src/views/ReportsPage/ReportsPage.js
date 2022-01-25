@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import styles from './ReportsPage.module.css';
-import getCategoryReport from '../../services/api-services';
 import ReportsSwitcher from '../../components/ReportsSwitcher/ReportsSwitcher';
 import CurrentDateRaport from '../../components/CurrentDateRaport';
 import ExpensesComponent from '../../components/ExpensesComponent';
@@ -9,14 +8,13 @@ import ReportsGraph from '../../components/ReportsGraph/ReportsGraph';
 import Background from '../Background/background';
 import LinkToMain from '../../components/LinkToMain/LinkToMain';
 import Balance from '../../components/Balance/Balance';
-import Loader from '../../components/Loader/Loader';
 
 export default function ReportsPage() {
   const [typeReport, setTypeReport] = useState(null);
   const [date, setDate] = useState(null);
   const [activeCategory, setActiveCategory] = useState(null);
   const [isCategoryLenght, setIsCategoryLenght] = useState(true);
-  // const [isLoading, setLoading] = useState(true);
+
 
   const handleDate = newDate => {
     setDate(newDate);
@@ -34,47 +32,43 @@ export default function ReportsPage() {
     setIsCategoryLenght(lengthBoolean);
   };
 
-  // const handlerLoading = e => {
-  //   setLoading(false)
-  // }
-
   return (
     <>
-        {/* {isLoading ? <Loader handlerLoading={handlerLoading}/> : null} */}
       <Background>
         <div className={styles.sections}>
-
           <div className={styles.upperBar}>
             <LinkToMain />
             <div className={styles.mobileBar}>
-            <Balance />
+              <Balance />
               <CurrentDateRaport handleDate={handleDate} />
             </div>
           </div>
 
-          <ExpensesComponent date={ date }/>
+             <>
+              <ExpensesComponent date={date} />
 
-          <div className={styles.wrapperSection}>
-          <ReportsSwitcher
-            className={styles.reportSwitcher}
-            typeReport={typeReport}
-            handleTypeReport={handleTypeReport}
-          />
-          <CostsReport
-            typeReport={typeReport}
-            date={date}
-              handleActiveCategory={handleActiveCategory}
-              handleCategoriesLenght={handleCategoriesLenght}
-            />
-          </div>
+              <div className={styles.wrapperSection}>
+                <ReportsSwitcher
+                  className={styles.reportSwitcher}
+                  typeReport={typeReport}
+                  handleTypeReport={handleTypeReport}
+                />
+                <CostsReport
+                  typeReport={typeReport}
+                  date={date}
+                  handleActiveCategory={handleActiveCategory}
+                  handleCategoriesLenght={handleCategoriesLenght}
+                />
+              </div>
 
-          {(isCategoryLenght) ? (
-            <ReportsGraph
-              activeCategory={activeCategory}
-              typeReport={typeReport}
-              date={date}
-            />)
-            : null}
+              {isCategoryLenght ? (
+                <ReportsGraph
+                  activeCategory={activeCategory}
+                  typeReport={typeReport}
+                  date={date}
+                />
+              ) : null}
+            </>
         </div>
       </Background>
     </>

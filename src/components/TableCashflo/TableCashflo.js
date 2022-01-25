@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useTable, useBlockLayout } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 import Styles from './styleTabl';
 import getBalance from '../../redux/balance/balance-selectors';
@@ -127,11 +127,9 @@ export default function TableCashflo({
     setModalOpen(!isModalOpen);
     const transactionId = idItem;
     if (balance - e.currentTarget.value < 0 && typeInfo === 'расход') {
-      // toast.error('Не возможно удалить.Вы превышаете свой баланс!');
+      toast.error('Не возможно удалить.Вы превышаете свой баланс!');
       return;
     } else {
-      //  ТУТ ПОПРАВИТЬ
-      // fetchDelete(transactionId);
       deleteTranId(transactionId);
     }
   };

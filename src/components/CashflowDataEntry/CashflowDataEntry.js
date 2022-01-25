@@ -15,7 +15,7 @@ import balanceOperations from '../../redux/balance/balance-operations';
 import Button from '../Button/Button';
 import s from './CashflowDataEntry.module.css';
 import Icons from '../../img/svg/sprite.svg';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const styleSelect = {
   color: '#c7ccdc',
@@ -72,17 +72,16 @@ export default function CashflowDataEntry({
   const enterData = e => {
     if (balance === null) {
       console.log('Не введен баланс');
-      //  сюда вставить вызов модалки про баланс
     }
     if (typeInfo === 'расход') {
       if (balance - sum < 0) {
-        //   toast.error('Вы превышаете свой баланс!');
+        toast.error('Вы превышаете свой баланс!');
         return;
       }
     }
 
     if (description === '' || category === '' || sum === '') {
-      // toast.error('Не заполнены все поля для ввода!');
+      toast.error('Не заполнены все поля для ввода!');
       return;
     }
 
@@ -117,17 +116,15 @@ export default function CashflowDataEntry({
           const data = response.data.result;
           addTratsInState(data);
           const newBalance = response.data.balance;
-          //  console.log(newBalance);
 
           dispatch(balanceOperations.setUserBalance(newBalance));
-          //  console.log(balance);
 
-          //  toast.success(
-          //    `Статья добавлена: ${data.category} на сумму ${data.costs}`,
-          //  );
+          toast.success(
+            `Статья добавлена: ${data.category} на сумму ${data.costs}`,
+          );
         })
         .catch(error => {
-          // toast.error('Извините, ошибка соединения. Побробуйте позже.');
+          toast.error('Извините, ошибка соединения. Побробуйте позже.');
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

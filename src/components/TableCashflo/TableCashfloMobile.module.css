@@ -35,6 +35,7 @@
 .descr {
   width: 168px;
   height: 20px;
+  text-transform: capitalize;
 }
 
 .data {

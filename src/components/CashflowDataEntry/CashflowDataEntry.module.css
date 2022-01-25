@@ -49,7 +49,7 @@
   padding-right: 20px;
   background-color: #f5f6fb;
   margin-top: 20px;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 @media screen and (min-width: 768px) {
   .description {

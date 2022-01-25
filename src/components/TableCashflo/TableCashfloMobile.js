@@ -41,7 +41,6 @@ export default function TableCashfloMobile({ deleteTranId }) {
   useEffect(() => {
     fetchAll()
       .then(response => {
-        console.log(response.data.transactions);
         setTransactionsAll(response.data.transactions);
       })
       .catch(error => {

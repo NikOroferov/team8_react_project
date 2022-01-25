@@ -8,6 +8,7 @@ import getBalance from '../../redux/balance/balance-selectors';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+// import OutlinedInput from '@mui/material/OutlinedInput';
 // import { styled } from '@mui/material/styles';
 
 import balanceOperations from '../../redux/balance/balance-operations';
@@ -144,9 +145,7 @@ export default function CashflowDataEntry({
         />
       </label>
 
-      <InputLabel id="demo-simple-select-label" placeholder="Описание товара">
-        {/* Описание товара */}
-      </InputLabel>
+      <InputLabel id="demo-simple-select-label"></InputLabel>
 
       {typeInfo === 'расход' && (
         <Select
@@ -156,7 +155,19 @@ export default function CashflowDataEntry({
           value={category}
           onChange={handleChange}
           required
+          //  input={<OutlinedInput />}
+          displayEmpty={<span>Категория товара</span>}
+          //  displayEmpty="Категория товара"
+          renderValue={selected => {
+            if (selected.length === 0) {
+              return (
+                <span className="selectplaceholder">Категория товара</span>
+              );
+            }
+            return selected;
+          }}
         >
+          {/* <em>Категория товара</em> */}
           <MenuItem value="алкоголь" sx={styleSelect}>
             Aлкоголь
           </MenuItem>
@@ -202,7 +213,19 @@ export default function CashflowDataEntry({
           onChange={handleChange}
           placeholder="Описание товара"
           required
+          //  input={<OutlinedInput />}
+          displayEmpty={<span>Категория дохода</span>}
+          renderValue={selected => {
+            if (selected.length === 0) {
+              // return <em className="selectplaceholder">Категория дохода</em>;
+              return (
+                <span className="selectplaceholder">Категория дохода</span>
+              );
+            }
+            return selected;
+          }}
         >
+          {/* <em>Категория дохода</em> */}
           <MenuItem value="зп" sx={styleSelect}>
             зп
           </MenuItem>

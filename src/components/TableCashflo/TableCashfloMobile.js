@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Icons from '../../img/svg/sprite.svg';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 import { fetchAll } from '../../services/cashflooApi';
 
@@ -45,7 +45,7 @@ export default function TableCashfloMobile({ deleteTranId }) {
         setTransactionsAll(response.data.transactions);
       })
       .catch(error => {
-        // toast.error('Hey, Kapusta! We have a problem!');
+        toast.error('Hey, Kapusta! We have a problem!');
       });
   }, []);
 
@@ -54,7 +54,7 @@ export default function TableCashfloMobile({ deleteTranId }) {
     const transactionId = idItem;
 
     if (balance - e.currentTarget.value < 0) {
-      // toast.error('Не возможно удалить.Вы превышаете свой баланс!');
+      toast.error('Не возможно удалить.Вы превышаете свой баланс!');
 
       return;
     } else {

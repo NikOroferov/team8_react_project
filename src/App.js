@@ -15,7 +15,7 @@ import GoogleRedirectPage from './views/GoogleRedirectPage/GoogleRedirectPage';
 import { authOperations, authSelectors } from './redux/auth';
 import Loader from './components/Loader/Loader';
 
-// import { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const dispatch = useDispatch();
@@ -54,7 +54,7 @@ function App() {
         <Loader />
       )}
 
-      {/* <Toaster position="top-right" /> */}
+      <Toaster position="top-right" />
     </>
   );
 }

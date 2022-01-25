@@ -15,7 +15,7 @@ import TableCashfloTabl from '../TableCashflo/TableCashfloTabl';
 import TableMonth from '../TableMonth/TableMonth';
 import TableCashfloMobile from '../TableCashflo/TableCashfloMobile';
 import Icons from '../../img/svg/sprite.svg';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 import balanceOperations from '../../redux/balance/balance-operations';
 import s from './ExpensesIncome.module.css';
@@ -38,7 +38,7 @@ export default function ExpensesIncome() {
           setTransactions(response.data.transactions);
         })
         .catch(error => {
-          // toast.error('Hey, Kapusta! We have a problem!');
+          toast.error('Hey, Kapusta! We have a problem!');
           console.log(error);
         });
     }
@@ -83,7 +83,7 @@ export default function ExpensesIncome() {
         dispatch(balanceOperations.setUserBalance(newBalance));
       })
       .catch(error => {
-        // toast.error('Hey, Kapusta! We have a problem!');
+        toast.error('Hey, Kapusta! We have a problem!');
         console.log(error);
       });
 

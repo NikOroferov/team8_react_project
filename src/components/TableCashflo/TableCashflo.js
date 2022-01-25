@@ -1,12 +1,13 @@
 import { useMemo, useCallback, useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useTable, useBlockLayout } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
-// import axios from 'axios';
 // import toast from 'react-hot-toast';
 import { styled } from '@mui/material/styles';
 
 import Styles from './styleTabl';
+import getBalance from '../../redux/balance/balance-selectors';
 import Icons from '../../img/svg/sprite.svg';
 
 const ButtonDelet = data => {
@@ -107,7 +108,9 @@ export default function TableCashflo({
   const [dataCash, setDatadCash] = useState([]);
   const [sign, setSign] = useState('-');
   const [color, setColor] = useState({ color: '#E7192E' });
-  const [balance, setBalance] = useState(1000);
+  //   const [balance, setBalance] = useState(1000);
+
+  const balance = useSelector(getBalance);
 
   useEffect(() => {
     if (typeInfo === 'расход') {

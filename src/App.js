@@ -33,13 +33,13 @@ function App() {
         <Header />
 
         <Routes>
+
           <Route path="/" element={<HomePage />} />
 
           <Route element={<PrivateRoute />}>
             <Route path="/cashflow" element={<CashFlowPage />} />
             <Route path="/reports" element={<ReportsPage />} />
           </Route>
-
 
           <Route path="/google-redirect" element={<GoogleRedirectPage />} />
         </Routes>

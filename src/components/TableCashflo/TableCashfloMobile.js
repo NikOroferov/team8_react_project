@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Icons from '../../img/svg/sprite.svg';
 // import toast from 'react-hot-toast';
-import axios from 'axios';
+import { fetchAll } from '../../services/cashflooApi';
 
+import getBalance from '../../redux/balance/balance-selectors';
 import s from './TableCashfloMobile.module.css';
 
 const ButtonDelet = data => {
@@ -21,27 +23,24 @@ const ButtonDelet = data => {
   );
 };
 
-// axios.defaults.headers.common = {
-//   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg3NDE0OSwiZXhwIjoxNjQ0MDgzNzQ5fQ.XDSTb16DBgzWSLYCWCQTVlJJkGbOEu1AUWzzzrHWK7U`,
-// };
-
 export default function TableCashfloMobile({
   fetchDelete,
   deleteTranId,
   //   typeInfo,
 }) {
   const [transactionsAll, setTransactionsAll] = useState('');
-  const [balance, setBalance] = useState(500);
+  const balance = useSelector(getBalance);
 
   useEffect(() => {
-    const fetchAll = async () => {
-      const response = await axios.get(
-        `http://localhost:3001/api/transaction/`,
-      );
-      setTransactionsAll(response.data.data.transactions);
-      return response.data;
-    };
-    fetchAll();
+    fetchAll()
+      .then(response => {
+        console.log(response.data.transactions);
+        setTransactionsAll(response.data.transactions);
+      })
+      .catch(error => {
+        // toast.error('Hey, Kapusta! We have a problem!');
+        console.log(error);
+      });
   }, []);
 
   const onClickDelete = e => {

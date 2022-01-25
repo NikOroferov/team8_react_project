@@ -1,16 +1,13 @@
 import { useMemo, useCallback, useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useTable, useBlockLayout } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
-// import axios from 'axios';
 // import toast from 'react-hot-toast';
 
 import Styles from './styleTabl';
+import getBalance from '../../redux/balance/balance-selectors';
 import Icons from '../../img/svg/sprite.svg';
-
-// axios.defaults.headers.common = {
-//   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg0ODU2OSwiZXhwIjoxNjQ0MDU4MTY5fQ.dTjoLjfhdOIpYVxubsVGGC41l7iDtBkZO0Rw0P7pvPg`,
-// };
 
 const ButtonDelet = data => {
   return (
@@ -108,7 +105,7 @@ export default function TableCashfloTabl({
   const [sign, setSign] = useState('-');
   //   const [color, setColor] = useState({ color: '#E7192E' });
 
-  const [balance, setBalance] = useState(800);
+  const balance = useSelector(getBalance);
 
   useEffect(() => {
     if (typeInfo === 'расход') {

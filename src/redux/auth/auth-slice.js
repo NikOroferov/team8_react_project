@@ -7,6 +7,7 @@ const initialState = {
     name: '',
     email: '',
     balance: null,
+    avatar: null,
   },
   token: null,
   isLogedIn: false,
@@ -22,6 +23,7 @@ const authSlice = createSlice({
       state.user.name = action.payload.name;
       state.user.email = action.payload.email;
       state.user.balance = action.payload.balance;
+      state.user.avatar = action.payload.avatar;
       state.token = action.payload.token;
       state.isLogedIn = true;
     },

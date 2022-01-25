@@ -13,6 +13,7 @@ function Header() {
   const [isModalOpen, setModalOpen] = useState(false);
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const name = useSelector(authSelectors.getUserName);
+  const avatar = useSelector(authSelectors.getUserAvatar);
 
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
@@ -32,6 +33,7 @@ function Header() {
           <div className={styles.userMenu}>
             <Avatar
               name={name}
+              src={avatar}
               size="32"
               color={Avatar.getRandomColor('sitebase', [
                 'red',

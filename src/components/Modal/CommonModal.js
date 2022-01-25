@@ -9,8 +9,7 @@ export default function CommonModal({ toggleModal, modalText, logOut }) {
   const portalModal = document.querySelector('#modalRoot');
 
   const escModal = e => {
-    console.log(e.code);
-    if ((e.code = 'Escape')) {
+    if (e.code === 'Escape') {
       toggleModal();
     }
   };

@@ -1,4 +1,6 @@
 import React, { useState, Fragment, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import Media from 'react-media';
 
 import { fetchTransactions, fetchDelete } from '../../services/cashflooApi';
@@ -15,6 +17,7 @@ import TableCashfloMobile from '../TableCashflo/TableCashfloMobile';
 import Icons from '../../img/svg/sprite.svg';
 // import toast from 'react-hot-toast';
 
+import balanceOperations from '../../redux/balance/balance-operations';
 import s from './ExpensesIncome.module.css';
 
 export default function ExpensesIncome() {
@@ -25,6 +28,8 @@ export default function ExpensesIncome() {
   const [сostsMobileBtn, setCostsMobileBtn] = useState(true);
   const [incomeMobileBtn, setIncomeMobileBtn] = useState(true);
   const [transactions, setTransactions] = useState([]);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (typeIncomes !== null) {
@@ -72,6 +77,16 @@ export default function ExpensesIncome() {
   };
 
   function deleteTranId(data) {
+    fetchDelete(data)
+      .then(response => {
+        const newBalance = response.data.balance;
+        dispatch(balanceOperations.setUserBalance(newBalance));
+      })
+      .catch(error => {
+        // toast.error('Hey, Kapusta! We have a problem!');
+        console.log(error);
+      });
+
     const dataCashFoTablFiter = transactions.filter(function (e) {
       return e._id !== data;
     });
@@ -81,17 +96,8 @@ export default function ExpensesIncome() {
 
   function addTratsInState(data) {
     const newTran = [data, ...transactions];
-    console.log(transactions);
-    console.log(newTran);
     setTransactions(newTran);
   }
-
-  //   function beckHomeInput(e) {
-  //     e.preventDefault();
-  //     setCostsMobileBtn(true);
-  //     setIncomeMobileBtn(true);
-  //     setTypeInfo('расход');
-  //   }
 
   return (
     <>
@@ -158,7 +164,7 @@ export default function ExpensesIncome() {
                       <TableCashfloTabl
                         typeInfo={typeInfo}
                         transactions={transactions}
-                        fetchDelete={fetchDelete}
+                        // fetchDelete={fetchDelete}
                         deleteTranId={deleteTranId}
                       />
                     )}
@@ -166,7 +172,7 @@ export default function ExpensesIncome() {
                       <TableCashflo
                         typeInfo={typeInfo}
                         transactions={transactions}
-                        fetchDelete={fetchDelete}
+                        // fetchDelete={fetchDelete}
                         deleteTranId={deleteTranId}
                       />
                     )}
@@ -194,8 +200,8 @@ export default function ExpensesIncome() {
                   {matches.small && (
                     <div className={s.btnForMobil}>
                       <TableCashfloMobile
-                        transactions={transactions}
-                        fetchDelete={fetchDelete}
+                        // transactions={transactions}
+                        // fetchDelete={fetchDelete}
                         deleteTranId={deleteTranId}
                         // typeInfo={typeInfo}
                       />

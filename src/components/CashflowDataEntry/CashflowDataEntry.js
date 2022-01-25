@@ -12,7 +12,7 @@ import Select from '@mui/material/Select';
 import Button from '../Button/Button';
 import s from './CashflowDataEntry.module.css';
 import Icons from '../../img/svg/sprite.svg';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 
 const styleSelect = {
   color: '#c7ccdc',
@@ -74,7 +74,7 @@ export default function CashflowDataEntry({
     }
     if (typeInfo === 'расход') {
       if (balance - sum < 0) {
-        toast.error('Вы превышаете свой баланс!');
+        //   toast.error('Вы превышаете свой баланс!');
         return;
       }
     }
@@ -113,10 +113,11 @@ export default function CashflowDataEntry({
       fetchEntry(dataItem)
         .then(response => {
           const data = response.data.result;
-          toast.success(
-            `Статья добавлена: ${data.category} на сумму ${data.costs}`,
-          );
-          //  console.log(response.data.result);
+
+          //  toast.success(
+          //    `Статья добавлена: ${data.category} на сумму ${data.costs}`,
+          //  );
+          //  console.log(data);
           //  setTransactions(response.data.transactions);
         })
         .catch(error => {

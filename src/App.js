@@ -13,7 +13,7 @@ import Header from './components/Header/Header';
 import Container from './components/Container';
 import GoogleRedirectPage from './views/GoogleRedirectPage/GoogleRedirectPage';
 import { authOperations } from './redux/auth';
-import { Toaster } from 'react-hot-toast';
+// import { Toaster } from 'react-hot-toast';
 // import { Toaster } from 'react-hot-toast';
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
           <Route path="/google-redirect" element={<GoogleRedirectPage />} />
         </Routes>
       </Container>
-      <Toaster position="top-right" />
+      {/* <Toaster position="top-right" /> */}
     </>
   );
 }

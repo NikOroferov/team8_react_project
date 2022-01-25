@@ -2,7 +2,7 @@ import { useMemo, useCallback, useState, useEffect } from 'react';
 import { useTable, useBlockLayout } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
-import axios from 'axios';
+// import axios from 'axios';
 // import toast from 'react-hot-toast';
 
 import Styles from './styleTabl';

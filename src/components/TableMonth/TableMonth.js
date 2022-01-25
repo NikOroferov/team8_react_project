@@ -1,13 +1,10 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useTable } from 'react-table';
-import axios from 'axios';
 // import toast from 'react-hot-toast';
 
-import Styles from './styleTabMouth';
+import { fetchCostsMouth } from '../../services/cashflooApi';
 
-// axios.defaults.headers.common = {
-//   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg3NDE0OSwiZXhwIjoxNjQ0MDgzNzQ5fQ.XDSTb16DBgzWSLYCWCQTVlJJkGbOEu1AUWzzzrHWK7U`,
-// };
+import Styles from './styleTabMouth';
 
 function Table({ columns, data }) {
   const {
@@ -48,16 +45,14 @@ export default function TableMonth({ typeIncomes, transactions }) {
 
   useEffect(() => {
     if (typeIncomes !== [] && transactions !== '') {
-      const fetchCostsMouth = async () => {
-        const response = await axios.get(
-          'http://localhost:3001/api/transaction/summary',
-          {
-            params: { isIncome: `${typeIncomes}` },
-          },
-        );
-        setDatadCash(response.data.data.result);
-      };
-      fetchCostsMouth();
+      fetchCostsMouth(typeIncomes)
+        .then(response => {
+          setDatadCash(response.data.result);
+        })
+        .catch(error => {
+          // toast.error('Hey, Kapusta! We have a problem!');
+          console.log(error);
+        });
     }
   }, [transactions, typeIncomes]);
 

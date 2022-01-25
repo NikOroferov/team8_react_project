@@ -1,7 +1,8 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import Media from 'react-media';
-// import f from '../../services/api-services';
-import axios from 'axios';
+// import axios from 'axios';
+
+import { fetchTransactions, fetchDelete } from '../../services/cashflooApi';
 
 import Background from '../../views/Background/background.jsx';
 import Balance from '../Balance/Balance';
@@ -13,47 +14,39 @@ import TableCashfloTabl from '../TableCashflo/TableCashfloTabl';
 import TableMonth from '../TableMonth/TableMonth';
 import TableCashfloMobile from '../TableCashflo/TableCashfloMobile';
 import Icons from '../../img/svg/sprite.svg';
+// import toast from 'react-hot-toast';
 
 import s from './ExpensesIncome.module.css';
-
-// axios.defaults.headers.common = {
-//   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg3NDE0OSwiZXhwIjoxNjQ0MDgzNzQ5fQ.XDSTb16DBgzWSLYCWCQTVlJJkGbOEu1AUWzzzrHWK7U`,
-// };
-
-// const idUser = '61ebe0f1bc769156e60da5f2';
 
 export default function ExpensesIncome() {
   const [typeInfo, setTypeInfo] = useState('расход');
   const [typeIncomes, setTypeIncomes] = useState(false);
-
   const [clicked, setClicked] = useState(false);
+
   const [сostsMobileBtn, setCostsMobileBtn] = useState(true);
   const [incomeMobileBtn, setIncomeMobileBtn] = useState(true);
-
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
     if (typeIncomes !== null) {
-      const fetchTransaction = async () => {
-        const response = await axios.get(
-          'http://localhost:3001/api/transaction',
-          {
-            params: { isIncome: `${typeIncomes}` },
-          },
-        );
-        setTransactions(response.data.data.transactions);
-      };
-      fetchTransaction();
+      fetchTransactions(typeIncomes)
+        .then(response => {
+          setTransactions(response.data.transactions);
+        })
+        .catch(error => {
+          // toast.error('Hey, Kapusta! We have a problem!');
+          console.log(error);
+        });
     }
   }, [typeIncomes]);
 
-  const fetchDelete = async transactionId => {
-    const response = await axios.delete(
-      `http://localhost:3001/api/transaction/${transactionId}`,
-    );
+  //   const fetchDelete = async transactionId => {
+  //     const response = await axios.delete(
+  //       `http://localhost:3001/api/transaction/${transactionId}`,
+  //     );
 
-    return response.data;
-  };
+  //     return response.data;
+  //   };
 
   function deleteTranId(data) {
     const dataCashFoTablFiter = transactions.filter(function (e) {
@@ -93,7 +86,6 @@ export default function ExpensesIncome() {
     e.preventDefault();
     setCostsMobileBtn(true);
     setIncomeMobileBtn(true);
-    //  setTypeInfo('расход');
   };
 
   //   function beckHomeInput(e) {

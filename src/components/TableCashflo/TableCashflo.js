@@ -2,18 +2,12 @@ import { useMemo, useCallback, useState, useEffect } from 'react';
 import { useTable, useBlockLayout } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
-import axios from 'axios';
+// import axios from 'axios';
 // import toast from 'react-hot-toast';
 import { styled } from '@mui/material/styles';
 
-// import deleteTransaction from '../../services/api-services';
-
 import Styles from './styleTabl';
 import Icons from '../../img/svg/sprite.svg';
-
-// axios.defaults.headers.common = {
-//   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlMGYxYmM3NjkxNTZlNjBkYTVmMiIsImlhdCI6MTY0Mjg3NDE0OSwiZXhwIjoxNjQ0MDgzNzQ5fQ.XDSTb16DBgzWSLYCWCQTVlJJkGbOEu1AUWzzzrHWK7U`,
-// };
 
 const ButtonDelet = data => {
   return (

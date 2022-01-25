@@ -34,12 +34,12 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/cashflow" element={<CashFlowPage />} />
 
-//           <Route path="/" element={<HomePage />} />
-          {/* <Route element={<PrivateRoute />}> */}
-//             <Route path="/cashflow" element={<CashFlowPage />} />
+         <Route path="/" element={<HomePage />} />
+          <Route element={<PrivateRoute />}>
+             <Route path="/cashflow" element={<CashFlowPage />} />
 
           <Route path="/reports" element={<ReportsPage />} />
-          {/* </Route> */}
+          </Route>
           
           <Route path="/google-redirect" element={<GoogleRedirectPage />} />
         </Routes>

@@ -10,7 +10,6 @@ const ExpensesComponent = ({ date }) => {
     reportsAPI
       .fetchTotalReportByMonth(date)
       .then(response => {
-        //   console.log(response.data.result);
         setTotalReport(response.data.result);
       })
       .catch(error => {

@@ -6,6 +6,7 @@ import Media from 'react-media';
 import { fetchTransactions, fetchDelete } from '../../services/cashflooApi';
 
 import Background from '../../views/Background/background.jsx';
+import Loader from '../Loader/Loader';
 import Balance from '../Balance/Balance';
 import DateCalendar from '../DateCalendar/DateCalendar';
 import LinkToReports from '../LinkToReports/LinkToReports';
@@ -24,7 +25,7 @@ export default function ExpensesIncome() {
   const [typeInfo, setTypeInfo] = useState('расход');
   const [typeIncomes, setTypeIncomes] = useState(false);
   const [clicked, setClicked] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(true);
   const [сostsMobileBtn, setCostsMobileBtn] = useState(true);
   const [incomeMobileBtn, setIncomeMobileBtn] = useState(true);
   const [transactions, setTransactions] = useState([]);
@@ -32,15 +33,19 @@ export default function ExpensesIncome() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    setIsLoading(true);
     if (typeIncomes !== null) {
-      fetchTransactions(typeIncomes)
-        .then(response => {
-          setTransactions(response.data.transactions);
-        })
-        .catch(error => {
-          toast.error('Hey, Kapusta! We have a problem!');
-          console.log(error);
-        });
+      setTimeout(() => {
+        fetchTransactions(typeIncomes)
+          .then(response => {
+            setIsLoading(false);
+            setTransactions(response.data.transactions);
+          })
+          .catch(error => {
+            toast.error('Hey, Kapusta! We have a problem!');
+            console.log(error);
+          });
+      }, 300);
     }
   }, [typeIncomes]);
 
@@ -77,21 +82,25 @@ export default function ExpensesIncome() {
   };
 
   function deleteTranId(data) {
-    fetchDelete(data)
-      .then(response => {
-        const newBalance = response.data.balance;
-        dispatch(balanceOperations.setUserBalance(newBalance));
-      })
-      .catch(error => {
-        toast.error('Hey, Kapusta! We have a problem!');
-        console.log(error);
+    setIsLoading(true);
+    setTimeout(() => {
+      fetchDelete(data)
+        .then(response => {
+          setIsLoading(false);
+          const newBalance = response.data.balance;
+          dispatch(balanceOperations.setUserBalance(newBalance));
+        })
+        .catch(error => {
+          toast.error('Hey, Kapusta! We have a problem!');
+          console.log(error);
+        });
+
+      const dataCashFoTablFiter = transactions.filter(function (e) {
+        return e._id !== data;
       });
 
-    const dataCashFoTablFiter = transactions.filter(function (e) {
-      return e._id !== data;
-    });
-
-    setTransactions(dataCashFoTablFiter);
+      setTransactions(dataCashFoTablFiter);
+    }, 300);
   }
 
   function addTratsInState(data) {
@@ -148,7 +157,10 @@ export default function ExpensesIncome() {
                 )}
               </Media>
             </div>
+            
 
+          
+            {isLoading ? (<Loader /> ) : (
             <div className={s.boxTabl}>
               <Media
                 queries={{
@@ -188,7 +200,9 @@ export default function ExpensesIncome() {
                 />
               </div>
             </div>
+            )}
           </div>
+
           <div className={s.conteinerMobileBtn}>
             <Media
               queries={{

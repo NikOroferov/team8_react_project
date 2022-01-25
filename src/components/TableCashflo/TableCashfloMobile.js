@@ -47,7 +47,8 @@ export default function TableCashfloMobile({
     const transactionId = e.currentTarget.id;
 
     if (balance - e.currentTarget.value < 0) {
-      // toast.error('Вы превышаете свой баланс!');
+      // toast.error('Не возможно удалить.Вы превышаете свой баланс!');
+
       return;
     } else {
       const dataCashFoTablFiter = transactionsAll.filter(function (e) {

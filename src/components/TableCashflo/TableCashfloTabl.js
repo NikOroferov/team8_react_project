@@ -121,7 +121,7 @@ export default function TableCashfloTabl({
     const transactionId = e.currentTarget.id;
 
     if (balance - e.currentTarget.value < 0 && typeInfo === 'расход') {
-      // toast.error('Вы превышаете свой баланс!');
+      // toast.error('Не возможно удалить.Вы превышаете свой баланс!');
 
       return;
     } else {

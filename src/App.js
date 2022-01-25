@@ -13,7 +13,6 @@ import Header from './components/Header/Header';
 import Container from './components/Container';
 import GoogleRedirectPage from './views/GoogleRedirectPage/GoogleRedirectPage';
 import { authOperations, authSelectors } from './redux/auth';
-
 import Loader from './components/Loader/Loader';
 
 // import { Toaster } from 'react-hot-toast';
@@ -21,7 +20,10 @@ import Loader from './components/Loader/Loader';
 function App() {
   const dispatch = useDispatch();
   const token = useSelector(authSelectors.getToken);
-  console.log(token);
+
+  const isFethingCurrentUser = useSelector(
+    authSelectors.getIsFetchingCurrentUser,
+  );
 
   useEffect(() => {
     if (token) {
@@ -31,20 +33,27 @@ function App() {
 
   return (
     <>
-      <Container>
-        <Header />
+      {!isFethingCurrentUser ? (
+        <>
+          <Container>
+            <Header />
 
-        <Routes>
-          <Route path="/" element={<HomePage />} />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
 
-          <Route element={<PrivateRoute />}>
-            <Route path="/cashflow" element={<CashFlowPage />} />
-            <Route path="/reports" element={<ReportsPage />} />
-          </Route>
+              <Route element={<PrivateRoute />}>
+                <Route path="/cashflow" element={<CashFlowPage />} />
+                <Route path="/reports" element={<ReportsPage />} />
+              </Route>
 
-          <Route path="/google-redirect" element={<GoogleRedirectPage />} />
-        </Routes>
-      </Container>
+              <Route path="/google-redirect" element={<GoogleRedirectPage />} />
+            </Routes>
+          </Container>
+        </>
+      ) : (
+        <Loader />
+      )}
+
       {/* <Toaster position="top-right" /> */}
     </>
   );

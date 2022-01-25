@@ -50,15 +50,13 @@ const fetchCurrentUser = createAsyncThunk(
   'users/current',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    // console.log(state);
-    const token = state.auth.token;
-    // console.log(token);
+    const persistedToken = state.auth.token;
 
-    if (token === null) {
+    if (persistedToken === null) {
       return thunkAPI.rejectWithValue();
     }
 
-    token.set(token);
+    token.set(persistedToken);
 
     try {
       const { data } = await api.getCurrentUser();

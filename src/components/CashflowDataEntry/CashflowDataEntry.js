@@ -158,37 +158,37 @@ export default function CashflowDataEntry({
           required
         >
           <MenuItem value="алкоголь" sx={styleSelect}>
-            алкоголь
+            Aлкоголь
           </MenuItem>
           <MenuItem value="все для дома" sx={styleSelect}>
-            все для дома
+            Все для дома
           </MenuItem>
           <MenuItem value="здоровье" sx={styleSelect}>
-            здоровье
+            Здоровье
           </MenuItem>
           <MenuItem value="коммуналка, связь" sx={styleSelect}>
-            коммуналка, связь
+            Коммуналка, связь
           </MenuItem>
           <MenuItem value="образование" sx={styleSelect}>
-            образование
+            Образование
           </MenuItem>
           <MenuItem value="продукты" sx={styleSelect}>
-            продукты
+            Продукты
           </MenuItem>
           <MenuItem value="развлечения" sx={styleSelect}>
-            развлечения
+            Развлечения
           </MenuItem>
           <MenuItem value="спорт, хобби" sx={styleSelect}>
-            спорт, хобби
+            Спорт, хобби
           </MenuItem>
           <MenuItem value="транспорт" sx={styleSelect}>
-            транспорт
+            Транспорт
           </MenuItem>
           <MenuItem value="техника" sx={styleSelect}>
-            техника
+            Техника
           </MenuItem>
           <MenuItem value="прочее" sx={styleSelect}>
-            прочее
+            Прочее
           </MenuItem>
         </Select>
       )}

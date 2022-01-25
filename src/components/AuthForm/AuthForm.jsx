@@ -1,12 +1,9 @@
 import React from 'react';
-// import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { register, logIn } from '../../redux/auth/auth-operation';
 import { authOperations } from '../../redux/auth';
 import s from './Auth.module.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-// import ReactDOM from 'react-dom';
 // import GoogleLogin from 'react-google-login';
 import GoogleAuthBtn from '../GoogleAuthBtn/GoogleAuthBtn';
 

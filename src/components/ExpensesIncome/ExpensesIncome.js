@@ -1,6 +1,5 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import Media from 'react-media';
-// import axios from 'axios';
 
 import { fetchTransactions, fetchDelete } from '../../services/cashflooApi';
 
@@ -40,22 +39,6 @@ export default function ExpensesIncome() {
     }
   }, [typeIncomes]);
 
-  //   const fetchDelete = async transactionId => {
-  //     const response = await axios.delete(
-  //       `http://localhost:3001/api/transaction/${transactionId}`,
-  //     );
-
-  //     return response.data;
-  //   };
-
-  function deleteTranId(data) {
-    const dataCashFoTablFiter = transactions.filter(function (e) {
-      return e._id !== data;
-    });
-
-    setTransactions(dataCashFoTablFiter);
-  }
-
   const сostsClick = e => {
     e.preventDefault();
     setTypeInfo('расход');
@@ -87,6 +70,21 @@ export default function ExpensesIncome() {
     setCostsMobileBtn(true);
     setIncomeMobileBtn(true);
   };
+
+  function deleteTranId(data) {
+    const dataCashFoTablFiter = transactions.filter(function (e) {
+      return e._id !== data;
+    });
+
+    setTransactions(dataCashFoTablFiter);
+  }
+
+  function addTratsInState(data) {
+    const newTran = [data, ...transactions];
+    console.log(transactions);
+    console.log(newTran);
+    setTransactions(newTran);
+  }
 
   //   function beckHomeInput(e) {
   //     e.preventDefault();
@@ -135,7 +133,10 @@ export default function ExpensesIncome() {
                   <Fragment>
                     {matches.small && <DateCalendar />}
                     {matches.medium && (
-                      <CashflowDataEntry typeInfo={typeInfo} />
+                      <CashflowDataEntry
+                        typeInfo={typeInfo}
+                        addTratsInState={addTratsInState}
+                      />
                     )}
                   </Fragment>
                 )}
@@ -229,6 +230,7 @@ export default function ExpensesIncome() {
           <div className={s.cashflowInput}>
             <CashflowDataEntry
               typeInfo={typeInfo}
+              addTratsInState={addTratsInState}
               //   beckHome={beckHome}
               //   beckHomeInput={beckHomeInput}
             />

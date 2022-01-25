@@ -108,6 +108,8 @@ export default function TableCashflo({
   const [dataCash, setDatadCash] = useState([]);
   const [sign, setSign] = useState('-');
   const [color, setColor] = useState({ color: '#E7192E' });
+  const [transLenght, settransLenght] = useState('');
+
   //   const [balance, setBalance] = useState(1000);
 
   const balance = useSelector(getBalance);
@@ -124,12 +126,11 @@ export default function TableCashflo({
 
   const onClickDelete = e => {
     const transactionId = e.currentTarget.id;
-
     if (balance - e.currentTarget.value < 0 && typeInfo === 'расход') {
-      // toast.error('Вы превышаете свой баланс!');
-
+      // toast.error('Не возможно удалить.Вы превышаете свой баланс!');
       return;
     } else {
+      //  ТУТ ПОПРАВИТЬ
       fetchDelete(transactionId);
       deleteTranId(transactionId);
     }
@@ -145,6 +146,8 @@ export default function TableCashflo({
   //   `;
 
   useEffect(() => {
+    console.log(transLenght);
+    console.log(transactions.length);
     if (transactions !== []) {
       function dateFormat(date) {
         const toStringData = String(date.month);
@@ -173,6 +176,8 @@ export default function TableCashflo({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [transactions]);
+
+  useEffect(() => {});
 
   const dataCashFoTablFiter = dataCash.filter(function (e) {
     return e.transactionType === typeInfo;

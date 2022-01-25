@@ -37,3 +37,8 @@ export function fetchEntry(data) {
 export function fetchDelete(transactionId) {
   return fetchWithErrorHandling(`${BASE_URL}/${transactionId}`, 'DELETE');
 }
+
+// Запрос все трансакции для мобилки
+export function fetchAll() {
+  return fetchWithErrorHandling(BASE_URL);
+}

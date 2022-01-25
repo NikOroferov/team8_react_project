@@ -1,11 +1,8 @@
 import { useState, Fragment, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
 import Media from 'react-media';
-// import axios from 'axios';
 
 import { fetchEntry } from '../../services/cashflooApi';
-
 import getBalance from '../../redux/balance/balance-selectors';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -121,7 +118,7 @@ export default function CashflowDataEntry({
 
   useEffect(() => {
     if (dataItem !== '') {
-      console.log(dataItem);
+      // console.log(dataItem);
 
       fetchEntry(dataItem)
         .then(response => {
@@ -132,7 +129,7 @@ export default function CashflowDataEntry({
           // toast.error('Hey, Kapusta! We have a problem!');
           console.log(error);
         });
-      fetchEntry(dataItem);
+      // fetchEntry(dataItem);
     }
   }, [dataItem]);
 
@@ -163,82 +160,37 @@ export default function CashflowDataEntry({
           onChange={handleChange}
           required
         >
-          <MenuItem
-            value="алкоголь"
-            sx={styleSelect}
-            // className={s.categoryItamMenu}
-          >
+          <MenuItem value="алкоголь" sx={styleSelect}>
             алкоголь
           </MenuItem>
-          <MenuItem
-            value="все для дома"
-            sx={styleSelect}
-
-            // className={s.categoryItamMenu}
-          >
+          <MenuItem value="все для дома" sx={styleSelect}>
             все для дома
           </MenuItem>
-          <MenuItem
-            value="здоровье"
-            sx={styleSelect}
-            // className={s.categoryItamMenu}
-          >
+          <MenuItem value="здоровье" sx={styleSelect}>
             здоровье
           </MenuItem>
-          <MenuItem
-            value="коммуналка, связь"
-            sx={styleSelect}
-            // className={s.categoryItamMenu}
-          >
+          <MenuItem value="коммуналка, связь" sx={styleSelect}>
             коммуналка, связь
           </MenuItem>
-          <MenuItem
-            value="образование"
-            sx={styleSelect}
-            // className={s.categoryItamMenu}
-          >
+          <MenuItem value="образование" sx={styleSelect}>
             образование
           </MenuItem>
-          <MenuItem
-            value="продукты"
-            sx={styleSelect}
-            // className={s.categoryItamMenu}
-          >
+          <MenuItem value="продукты" sx={styleSelect}>
             продукты
           </MenuItem>
-          <MenuItem
-            value="развлечения"
-            sx={styleSelect}
-            // className={s.categoryItamMenu}
-          >
+          <MenuItem value="развлечения" sx={styleSelect}>
             развлечения
           </MenuItem>
-          <MenuItem
-            value="спорт, хобби"
-            sx={styleSelect}
-            // className={s.categoryItamMenu}
-          >
+          <MenuItem value="спорт, хобби" sx={styleSelect}>
             спорт, хобби
           </MenuItem>
-          <MenuItem
-            value="транспорт"
-            sx={styleSelect}
-            // className={s.categoryItamMenu}
-          >
+          <MenuItem value="транспорт" sx={styleSelect}>
             транспорт
           </MenuItem>
-          <MenuItem
-            value="техника"
-            sx={styleSelect}
-            // className={s.categoryItamMenu}
-          >
+          <MenuItem value="техника" sx={styleSelect}>
             техника
           </MenuItem>
-          <MenuItem
-            value="прочее"
-            sx={styleSelect}
-            // className={s.categoryItamMenu}
-          >
+          <MenuItem value="прочее" sx={styleSelect}>
             прочее
           </MenuItem>
         </Select>
@@ -254,18 +206,10 @@ export default function CashflowDataEntry({
           placeholder="Описание товара"
           required
         >
-          <MenuItem
-            value="зп"
-            sx={styleSelect}
-            //   className={s.categoryItamMenu}
-          >
+          <MenuItem value="зп" sx={styleSelect}>
             зп
           </MenuItem>
-          <MenuItem
-            value="доп. доход"
-            sx={styleSelect}
-            // className={s.categoryItamMenu}
-          >
+          <MenuItem value="доп. доход" sx={styleSelect}>
             доп. доход
           </MenuItem>
         </Select>

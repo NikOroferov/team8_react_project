@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
@@ -13,6 +13,8 @@ import Header from './components/Header/Header';
 import Container from './components/Container';
 import GoogleRedirectPage from './views/GoogleRedirectPage/GoogleRedirectPage';
 import { authOperations, authSelectors } from './redux/auth';
+
+import Loader from './components/Loader/Loader';
 
 // import { Toaster } from 'react-hot-toast';
 

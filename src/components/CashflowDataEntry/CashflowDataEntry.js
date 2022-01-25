@@ -1,5 +1,6 @@
 import { useState, Fragment, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
 import Media from 'react-media';
 
 import { fetchEntry } from '../../services/cashflooApi';
@@ -8,6 +9,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 // import { styled } from '@mui/material/styles';
+
+import balanceOperations from '../../redux/balance/balance-operations';
 
 import Button from '../Button/Button';
 import s from './CashflowDataEntry.module.css';
@@ -30,9 +33,9 @@ export default function CashflowDataEntry({
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState('');
   const [dataItem, setDataItem] = useState('');
-  //   const [balance, setBalance] = useState(1000);
 
   const balance = useSelector(getBalance);
+  const dispatch = useDispatch();
 
   const hendleChangeDescription = ({ target: { name, value } }) => {
     switch (name) {
@@ -67,8 +70,6 @@ export default function CashflowDataEntry({
   };
 
   const enterData = e => {
-    //  const attrBtn = e.target.getAttribute('typebtn');
-
     if (balance === null) {
       console.log('Не введен баланс');
       //  сюда вставить вызов модалки про баланс
@@ -115,6 +116,9 @@ export default function CashflowDataEntry({
         .then(response => {
           const data = response.data.result;
           addTratsInState(data);
+          const newBalance = response.data.balance;
+          dispatch(balanceOperations.setUserBalance(newBalance));
+
           //  toast.success(
           //    `Статья добавлена: ${data.category} на сумму ${data.costs}`,
           //  );

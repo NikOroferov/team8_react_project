@@ -20,11 +20,7 @@
   outline: none;
 }
 
-@media screen and (min-width: 768px) {
-  .greyBtn {
-    border-radius: 16px;
-  }
-}
+
 
 .greyBtn:hover {
   background-color: var(--backgroundActive);
@@ -42,11 +38,21 @@
   text-transform: uppercase;
   padding: 12px 6px 12px 6px;
   margin-left: 0px;
-  border-radius: 16px;
+  border-radius: 0 16px 16px 0;
   border: 2px solid rgba(255, 255, 255, 1);
   background-color: #f2f5fc;
   width: 125px;
   letter-spacing: 0.02em;
   cursor: not-allowed;
   filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+}
+
+@media screen and (min-width: 768px) {
+  .greyBtn {
+    border-radius: 16px;
+  }
+
+  .btnDisabled{
+      border-radius: 16px ;
+  }
 }

@@ -19,7 +19,7 @@ import { authOperations, authSelectors } from './redux/auth';
 function App() {
   const dispatch = useDispatch();
   const token = useSelector(authSelectors.getToken);
-  // console.log(token);
+  console.log(token);
 
   useEffect(() => {
     if (token) {
@@ -33,7 +33,6 @@ function App() {
         <Header />
 
         <Routes>
-
           <Route path="/" element={<HomePage />} />
 
           <Route element={<PrivateRoute />}>

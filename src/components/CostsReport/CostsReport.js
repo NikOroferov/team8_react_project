@@ -9,7 +9,7 @@ function CostsReport({
   typeReport,
   handleActiveCategory,
   handleCategoriesLenght,
-  handlerLoading,
+  handlerFirstDate
 }) {
   const [clicked, setClicked] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -24,9 +24,10 @@ function CostsReport({
       setTimeout(() => {
         reportsAPI
         .fetchCategoryByMonth(date, typeReport)
-        .then(response => {
+          .then(response => {
           setIsLoading(false);
-          setClicked(false);
+            setClicked(false);
+            handlerFirstDate(response.data.firstDate[0].date);
           setCategories(response.data.result);
           setFirstCategory(response.data.result[0].id);
         })

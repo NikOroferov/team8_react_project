@@ -8,13 +8,31 @@ const currentMonth = currentData.getUTCMonth();
 const CurrentDateRaport = ({ handleDate }) => {
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
   const [selectedYear, setSelectedYear] = useState(currentYear);
+  const [normalizedMonth, setNormalizedMonth] = useState(null);
+  const [isDisabledPrev, setIsDisabledPrev] = useState(false);
+  const [isDisabledNext, setIsDisabledNext] = useState(false);
+
+  const firstDate = 202106;
 
   useEffect(() => {
     const monthNumber = selectedMonth + 1;
-    const normalizedMonth =
-      monthNumber > 9 ? `${selectedYear}${monthNumber}` : `${selectedYear}0${monthNumber}`;
-   return handleDate(normalizedMonth);
-  }, [selectedMonth, selectedYear, handleDate]);
+    setNormalizedMonth(monthNumber > 9 ? `${selectedYear}${monthNumber}` : `${selectedYear}0${monthNumber}`);
+   
+    if (String(firstDate) === normalizedMonth) {
+      setIsDisabledPrev(true);
+    } else {
+      setIsDisabledPrev(false);
+    }
+
+    if (selectedMonth) {
+          setIsDisabledNext(false);
+        } else {
+          setIsDisabledNext(true);
+        }
+    return handleDate(normalizedMonth);
+
+
+  }, [selectedMonth, selectedYear, handleDate, normalizedMonth]);
   
   const handleNext = e => {
     e.preventDefault();
@@ -48,6 +66,8 @@ const CurrentDateRaport = ({ handleDate }) => {
         year={selectedYear}
         handleNext={handleNext}
         handlePrevious={handlePrevious}
+        isDisabledPrev={isDisabledPrev}
+        isDisabledNext={isDisabledNext}
       />
     </>
   );

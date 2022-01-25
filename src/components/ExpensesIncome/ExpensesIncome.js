@@ -81,8 +81,6 @@ export default function ExpensesIncome() {
 
   function addTratsInState(data) {
     const newTran = [data, ...transactions];
-    console.log(transactions);
-    console.log(newTran);
     setTransactions(newTran);
   }
 

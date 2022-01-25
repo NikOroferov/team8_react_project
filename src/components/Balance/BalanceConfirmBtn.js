@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import css from './Balance.module.css';
 
-const BalanceConfirmBtn = ({ input }) => {
+const BalanceConfirmBtn = ({ input, initialBalance }) => {
   const dispatch = useDispatch();
 
   const addBalance = () => {
@@ -19,7 +19,11 @@ const BalanceConfirmBtn = ({ input }) => {
   };
 
   return (
-    <button type="button" className={css.btn} onClick={addBalance}>
+    <button
+      type="button"
+      className={initialBalance === null ? css.btn : css.btnDisabled}
+      onClick={addBalance}
+    >
       Подтвердить
     </button>
   );

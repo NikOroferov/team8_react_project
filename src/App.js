@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 
@@ -12,16 +12,20 @@ import ReportsPage from './views/ReportsPage/ReportsPage';
 import Header from './components/Header/Header';
 import Container from './components/Container';
 import GoogleRedirectPage from './views/GoogleRedirectPage/GoogleRedirectPage';
-import { authOperations } from './redux/auth';
-// import { Toaster } from 'react-hot-toast';
+import { authOperations, authSelectors } from './redux/auth';
+
 // import { Toaster } from 'react-hot-toast';
 
 function App() {
   const dispatch = useDispatch();
+  const token = useSelector(authSelectors.getToken);
+  // console.log(token);
 
   useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser());
-  }, [dispatch]);
+    if (token) {
+      dispatch(authOperations.fetchCurrentUser());
+    }
+  }, [dispatch, token]);
 
   return (
     <>
@@ -29,14 +33,14 @@ function App() {
         <Header />
 
         <Routes>
-          <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/cashflow" element={<CashFlowPage />} />
-          // <Route path="/" element={<HomePage />} />
-          {/* <Route element={<PrivateRoute />}> */}
-          // <Route path="/cashflow" element={<CashFlowPage />} />
-          <Route path="/reports" element={<ReportsPage />} />
-          {/* </Route> */}
+
+          <Route path="/" element={<HomePage />} />
+
+          <Route element={<PrivateRoute />}>
+            <Route path="/cashflow" element={<CashFlowPage />} />
+            <Route path="/reports" element={<ReportsPage />} />
+          </Route>
+
           <Route path="/google-redirect" element={<GoogleRedirectPage />} />
         </Routes>
       </Container>

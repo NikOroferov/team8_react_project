@@ -15,15 +15,15 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Roboto', sans-serif;
   font-size: 12px;
-  width: 150px;
+  width: 155px;
   height: 44px;
 }
 .wrapper {
+  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
 }
 .title {
   color: #52555f;
@@ -82,6 +82,6 @@
 
 @media (min-width: 1280px) {
   .container {
-    margin-left: 219px;
+    margin-left: 210px;
   }
 }

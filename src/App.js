@@ -33,15 +33,14 @@ function App() {
         <Header />
 
         <Routes>
-          <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/cashflow" element={<CashFlowPage />} />
+          <Route path="/" element={<HomePage />} />
 
-          {/* <Route path="/" element={<HomePage />} /> */}
-          {/* <Route element={<PrivateRoute />}> */}
-          {/* <Route path="/cashflow" element={<CashFlowPage />} /> */}
-          <Route path="/reports" element={<ReportsPage />} />
-          {/* </Route> */}
+          <Route element={<PrivateRoute />}>
+            <Route path="/cashflow" element={<CashFlowPage />} />
+            <Route path="/reports" element={<ReportsPage />} />
+          </Route>
+
+
           <Route path="/google-redirect" element={<GoogleRedirectPage />} />
         </Routes>
       </Container>

@@ -14,6 +14,8 @@ export default function Balance() {
   const initialBalance = useSelector(getBalance);
   const dispatch = useDispatch();
 
+  // const [disabled, setDisabled] = useState(false);
+
   const [balance, setBalance] = useState(initialBalance);
   console.log('old: ', initialBalance);
   console.log('new: ', balance);
@@ -22,6 +24,12 @@ export default function Balance() {
     const newBalance = Number(e.target.value);
     setBalance(newBalance);
   };
+
+  // useEffect(() => {
+  //   if (initialBalance !== null) {
+  //     setDisabled(true);
+  //   }
+  // }, [initialBalance]);
 
   useEffect(() => {
     setBalance(initialBalance);
@@ -51,10 +59,17 @@ export default function Balance() {
           min="1"
           value={balance !== null ? balance : ''}
           onChange={handleChangeInput}
+          disabled={initialBalance === null ? false : true}
         />
       </span>
 
-      <ButtonGrey name="Подтвердить" type="submit" className={css.btn} />
+      <ButtonGrey
+        name="Подтвердить"
+        type="submit"
+        initialBalance={initialBalance}
+        className={css.btn}
+        disabled={initialBalance === null ? '' : 'disabled'}
+      />
       {balance === null && <BalanceModal />}
     </form>
   );

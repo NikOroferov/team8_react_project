@@ -6,7 +6,6 @@ const setUserBalance = createAsyncThunk(
   async (balance, thunkAPI) => {
     try {
       const { data } = await api.setUserBalance(balance);
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

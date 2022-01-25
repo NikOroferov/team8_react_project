@@ -18,6 +18,11 @@ function Header() {
     setModalOpen(!isModalOpen);
   };
 
+  const logOut = () => {
+    setModalOpen(!isModalOpen);
+    dispatch(authOperations.logOut());
+  };
+
   return (
     <header>
       <div className={styles.header}>
@@ -64,7 +69,7 @@ function Header() {
               <CommonModal
                 modalText="Вы действительно хотите выйти?"
                 toggleModal={toggleModal}
-                logOut={() => dispatch(authOperations.logOut())}
+                logOut={logOut}
               />
             )}
           </div>

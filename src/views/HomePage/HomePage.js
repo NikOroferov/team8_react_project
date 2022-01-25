@@ -8,15 +8,13 @@ import { authSelectors } from '../../redux/auth';
 
 export default function HomePage() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  if (isLoggedIn) {
+    return <Navigate to="/cashflow" />;
+  }
   // const navigate = useNavigate();
   // if (isLoggedIn) {
   //   navigate('/cashflow');
   // }
-
-  if (isLoggedIn) {
-    return <Navigate to="/cashflow" />;
-  }
-
   return (
     <>
       <section className={s.section}>

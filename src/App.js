@@ -33,7 +33,6 @@ function App() {
         <Header />
 
         <Routes>
-
           <Route path="/" element={<HomePage />} />
 
           <Route element={<PrivateRoute />}>

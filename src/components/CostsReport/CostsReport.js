@@ -29,7 +29,7 @@ function CostsReport({
             setClicked(false);
             handlerFirstDate(response.data.firstDate[0].date);
           setCategories(response.data.result);
-          setFirstCategory(response.data.result[0].id);
+            setFirstCategory(response.data.result[0].id);
         })
         .catch(error => {
           setError('Hey, Kapusta! We have a problem!');
@@ -38,7 +38,7 @@ function CostsReport({
     } else {
       return;
     }
-  }, [date, typeReport]);
+  }, [date, typeReport, handlerFirstDate]);
 
   useEffect(() => {
     if (firstCategory) {

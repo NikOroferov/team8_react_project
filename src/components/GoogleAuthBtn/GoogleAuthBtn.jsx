@@ -7,7 +7,7 @@ function GoogleAuthBtn() {
     <a
       href="https://mongo-kapusta-team8.herokuapp.com/api/auth/googleLogin"
       rel="noreferrer"
-      // target="_blank"
+      target="_blank"
       className={s.googleBtn}
     >
       <GoogleBtnIcon />

@@ -90,7 +90,7 @@ export default function ExpensesIncome() {
           dispatch(balanceOperations.setUserBalance(newBalance));
         })
         .catch(error => {
-          toast.error('Hey, Kapusta! We have a problem!');
+          toast.error('Извините, ошибка соединения. Побробуйте позже.');
           console.log(error);
         });
 

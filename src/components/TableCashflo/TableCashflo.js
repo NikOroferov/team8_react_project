@@ -159,8 +159,6 @@ export default function TableCashflo({ typeInfo, transactions, deleteTranId }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [transactions]);
 
-  useEffect(() => {});
-
   const dataCashFoTablFiter = dataCash.filter(function (e) {
     return e.transactionType === typeInfo;
   });

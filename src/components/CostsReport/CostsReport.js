@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
 import * as reportsAPI from '../../services/reports-api';
 import styles from './CostsReport.module.css';
 import Icons from '../../img/svg/sprite.svg';
@@ -33,7 +34,8 @@ function CostsReport({
             setFirstCategory(response.data.result[0].id);
           })
           .catch(error => {
-            setError('Hey, Kapusta! We have a problem!');
+            setIsLoading(false);
+             setError('Hey, Kapusta! We have a server problem!');
           });
       }, 300);
     } else {

@@ -41,6 +41,7 @@ export default function ExpensesIncome() {
             setTransactions(response.data.transactions);
           })
           .catch(error => {
+            setIsLoading(false);
             toast.error('Hey, Kapusta! We have a problem!');
           });
       }, 300);
@@ -89,6 +90,7 @@ export default function ExpensesIncome() {
           dispatch(balanceOperations.setUserBalance(newBalance));
         })
         .catch(error => {
+          setIsLoading(false);
           toast.error('Извините, ошибка соединения. Побробуйте позже.');
         });
 

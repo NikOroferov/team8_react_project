@@ -33,7 +33,6 @@ function App() {
 
   return (
     <>
-
       {!isFethingCurrentUser ? (
         <>
           <Container>
@@ -55,8 +54,7 @@ function App() {
         <Loader />
       )}
 
-      <Toaster position="top-right" />
-
+      <Toaster position="top-right" toastOptions={{ duration: 3500 }} />
     </>
   );
 }

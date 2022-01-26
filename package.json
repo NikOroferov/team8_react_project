@@ -71,6 +71,7 @@
     "eslint": "^8.6.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.7",
+    "netlify-cli": "^8.14.1",
     "prettier": "^2.5.1"
   }
 }

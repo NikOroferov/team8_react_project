@@ -137,7 +137,7 @@ const Styles = styled.div`
       }
 
       :nth-child(2) {
-        /* width: 208px; */
+        text-transform: capitalize;
         @media screen and (min-width: 768px) {
           width: 188px;
         }

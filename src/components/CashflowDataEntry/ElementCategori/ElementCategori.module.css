@@ -1,0 +1,67 @@
+/* Input Выбор категории */
+
+/* .formCashflow #demo-simple-select-label {
+  margin-right: auto;
+  margin-left: auto;
+} */
+
+/* @media screen and (min-width: 768px) {
+  #demo-simple-select-label {
+    margin-right: 0;
+    margin-left: 0;
+  }
+} */
+
+.formCashflow .category {
+  font-size: 12px;
+  color: #52555f;
+  font-weight: 500;
+
+  width: 282px;
+  height: 40px;
+  margin-right: auto;
+  margin-left: auto;
+
+  border-radius: 0 0 16px 0;
+  border: solid 2px #ffffff;
+  height: 44px;
+
+  padding-left: 6px;
+  padding-right: 6px;
+
+  border-radius: 0;
+  outline: none;
+  background-color: #f5f6fb;
+}
+
+@media screen and (min-width: 768px) {
+  .formCashflow .category {
+    width: 171px;
+    margin-right: 0;
+    margin-left: 0;
+    background-color: #ffffff;
+    border: solid 2px #f5f6fb;
+    border-radius: 0;
+    border-right-style: none;
+    border-left-style: none;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .formCashflow .category {
+    width: 188px;
+  }
+}
+
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+  border: red;
+  background-color: red;
+}
+
+/* .categoryItamMenu {
+  color: #c7ccdc;
+  text-transform: capitalize;
+}
+
+.MuiSelect-select .categoryItamMenu:hover {
+  color: #52555f;
+} */

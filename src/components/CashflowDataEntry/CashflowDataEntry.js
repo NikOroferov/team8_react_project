@@ -8,6 +8,7 @@ import getBalance from '../../redux/balance/balance-selectors';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+// import OutlinedInput from '@mui/material/OutlinedInput';
 // import { styled } from '@mui/material/styles';
 
 import balanceOperations from '../../redux/balance/balance-operations';
@@ -19,7 +20,7 @@ import toast from 'react-hot-toast';
 
 const styleSelect = {
   color: '#c7ccdc',
-  textTransform: 'capitalize',
+  //   textTransform: 'capitalize',
   ':hover': { color: '#52555f' },
 };
 
@@ -59,6 +60,9 @@ export default function CashflowDataEntry({
 
   const handleChange = e => {
     setСategory(e.target.value);
+    console.log(e.target);
+    console.log(e.target);
+    //  setСategory(e.target.value);
   };
 
   const typeInfoEnty = () => {
@@ -144,9 +148,7 @@ export default function CashflowDataEntry({
         />
       </label>
 
-      <InputLabel id="demo-simple-select-label" placeholder="Описание товара">
-        {/* Описание товара */}
-      </InputLabel>
+      <InputLabel id="demo-simple-select-label"></InputLabel>
 
       {typeInfo === 'расход' && (
         <Select
@@ -156,39 +158,51 @@ export default function CashflowDataEntry({
           value={category}
           onChange={handleChange}
           required
+          //  input={<OutlinedInput />}
+          //  displayEmpty={<span>Категория товара</span>}
+          displayEmpty={true}
+          renderValue={selected => {
+            if (selected.length === 0) {
+              return (
+                <span className="selectplaceholder">Категория товара</span>
+              );
+            }
+            return selected;
+          }}
         >
+          {/* <em>Категория товара</em> */}
           <MenuItem value="алкоголь" sx={styleSelect}>
-            алкоголь
+            Aлкоголь
           </MenuItem>
           <MenuItem value="все для дома" sx={styleSelect}>
-            все для дома
+            Все для дома
           </MenuItem>
           <MenuItem value="здоровье" sx={styleSelect}>
-            здоровье
+            Здоровье
           </MenuItem>
           <MenuItem value="коммуналка, связь" sx={styleSelect}>
-            коммуналка, связь
+            Коммуналка, связь
           </MenuItem>
           <MenuItem value="образование" sx={styleSelect}>
-            образование
+            Образование
           </MenuItem>
           <MenuItem value="продукты" sx={styleSelect}>
-            продукты
+            Продукты
           </MenuItem>
           <MenuItem value="развлечения" sx={styleSelect}>
-            развлечения
+            Развлечения
           </MenuItem>
           <MenuItem value="спорт, хобби" sx={styleSelect}>
-            спорт, хобби
+            Спорт, хобби
           </MenuItem>
           <MenuItem value="транспорт" sx={styleSelect}>
-            транспорт
+            Транспорт
           </MenuItem>
           <MenuItem value="техника" sx={styleSelect}>
-            техника
+            Техника
           </MenuItem>
           <MenuItem value="прочее" sx={styleSelect}>
-            прочее
+            Прочее
           </MenuItem>
         </Select>
       )}
@@ -202,7 +216,20 @@ export default function CashflowDataEntry({
           onChange={handleChange}
           placeholder="Описание товара"
           required
+          //  input={<OutlinedInput />}
+          //  displayEmpty={<span>Категория дохода</span>}
+          displayEmpty={true}
+          renderValue={selected => {
+            if (selected.length === 0) {
+              // return <em className="selectplaceholder">Категория дохода</em>;
+              return (
+                <span className="selectplaceholder">Категория дохода</span>
+              );
+            }
+            return selected;
+          }}
         >
+          {/* <em>Категория дохода</em> */}
           <MenuItem value="зп" sx={styleSelect}>
             зп
           </MenuItem>

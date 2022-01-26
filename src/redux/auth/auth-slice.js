@@ -7,6 +7,7 @@ const initialState = {
     name: '',
     email: '',
     balance: null,
+    avatar: null,
   },
   token: null,
   isLogedIn: false,
@@ -17,6 +18,16 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    googleLogIn: (state, action) => {
+      state.user.name = action.payload.name;
+      state.user.email = action.payload.email;
+      state.user.balance = action.payload.balance;
+      state.user.avatar = action.payload.avatar;
+      state.token = action.payload.token;
+      state.isLogedIn = true;
+    },
+  },
   extraReducers: {
     [authOperations.register.fulfilled](state) {
       // state.user = action.payload.user;
@@ -26,6 +37,7 @@ const authSlice = createSlice({
     [authOperations.logIn.fulfilled]: (state, action) => {
       state.user.name = action.payload.user.name;
       state.user.email = action.payload.user.email;
+      // state.user.avatar = action.payload.user.avatar;
       state.user.balance = action.payload.user.balance;
       state.token = action.payload.token;
       state.isLogedIn = true;
@@ -60,4 +72,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { googleLogIn } = authSlice.actions;
 export default authSlice.reducer;

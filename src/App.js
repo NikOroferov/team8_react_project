@@ -33,6 +33,7 @@ function App() {
 
   return (
     <>
+
       {!isFethingCurrentUser ? (
         <>
           <Container>
@@ -55,6 +56,7 @@ function App() {
       )}
 
       <Toaster position="top-right" />
+
     </>
   );
 }

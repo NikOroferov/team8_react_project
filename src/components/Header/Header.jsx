@@ -12,11 +12,14 @@ function Header() {
   const dispatch = useDispatch();
   const [isModalOpen, setModalOpen] = useState(false);
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const name = useSelector(authSelectors.getUserName);
+  const email = useSelector(authSelectors.getUserEmail);
+  const avatar = useSelector(authSelectors.getUserAvatar);
 
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
   };
+
+  const name = email.split('@')[0];
 
   const logOut = () => {
     setModalOpen(!isModalOpen);
@@ -32,6 +35,7 @@ function Header() {
           <div className={styles.userMenu}>
             <Avatar
               name={name}
+              src={avatar}
               size="32"
               color={Avatar.getRandomColor('sitebase', [
                 'red',

@@ -257,7 +257,10 @@ export default function ExpensesIncome() {
             </svg>
           </button>
           <div className={s.cashflowInput}>
-            <CashflowDataEntry typeInfo={typeInfo} />
+            <CashflowDataEntry
+              typeInfo={typeInfo}
+              addTratsInState={addTratsInState}
+            />
           </div>
         </Background>
       )}

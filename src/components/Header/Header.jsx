@@ -14,11 +14,12 @@ function Header() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const email = useSelector(authSelectors.getUserEmail);
   const avatar = useSelector(authSelectors.getUserAvatar);
-  const name = useSelector(authSelectors.getUserName);
+  let name = useSelector(authSelectors.getUserName);
 
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
   };
+  console.log(name);
 
   if (!name) {
     name = email.split('@')[0];

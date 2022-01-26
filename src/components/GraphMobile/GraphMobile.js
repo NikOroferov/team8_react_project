@@ -73,13 +73,14 @@ export default function GraphMobile({
    const calculatedHeight = () => {
     const n = 30;
     const lengthNum = subcategoriesForMobile.length;
-    num =  ((5 + lengthNum) + (lengthNum/2.5)) * n;
+    num =  ((6 + lengthNum) + (lengthNum/1.5)) * n;
   };
 
 calculatedHeight()
 
   const styleWithHeightCalculate = {
-    height: `${num}px`
+    height: `${num}px`,
+    paddingBottom: '30px'
   };
 
   return (
@@ -96,7 +97,7 @@ calculatedHeight()
                 verticalAlign="top"
                 content={<CustomizeLegend />}
                 wrapperStyle={{
-                  paddingBottom: '40px',
+                  paddingBottom: '50px',
                 }}
               ></Legend>
               <XAxis type="number" hide={true} />

@@ -14,7 +14,7 @@ export default function ReportsPage() {
   const [date, setDate] = useState(null);
   const [activeCategory, setActiveCategory] = useState(null);
   const [isCategoryLenght, setIsCategoryLenght] = useState(true);
-
+  const [firstUserDate, setFirstUserDate] = useState(null);
 
   const handleDate = newDate => {
     setDate(newDate);
@@ -32,6 +32,10 @@ export default function ReportsPage() {
     setIsCategoryLenght(lengthBoolean);
   };
 
+  const handlerFirstDate = firstDate => {
+    setFirstUserDate(firstDate)
+  };
+
   return (
     <>
       <Background>
@@ -40,7 +44,7 @@ export default function ReportsPage() {
             <LinkToMain />
             <div className={styles.mobileBar}>
               <Balance />
-              <CurrentDateRaport handleDate={handleDate} />
+              <CurrentDateRaport handleDate={handleDate} firstUserDate={firstUserDate}/>
             </div>
           </div>
 
@@ -57,7 +61,8 @@ export default function ReportsPage() {
                   typeReport={typeReport}
                   date={date}
                   handleActiveCategory={handleActiveCategory}
-                  handleCategoriesLenght={handleCategoriesLenght}
+                handleCategoriesLenght={handleCategoriesLenght}
+                handlerFirstDate={handlerFirstDate}
                 />
               </div>
 

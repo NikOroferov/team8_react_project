@@ -14,22 +14,12 @@ export default function Balance() {
   const initialBalance = useSelector(getBalance);
   const dispatch = useDispatch();
 
-  // const [disabled, setDisabled] = useState(false);
-
   const [balance, setBalance] = useState(initialBalance);
-  console.log('old: ', initialBalance);
-  console.log('new: ', balance);
 
   const handleChangeInput = e => {
     const newBalance = Number(e.target.value);
     setBalance(newBalance);
   };
-
-  // useEffect(() => {
-  //   if (initialBalance !== null) {
-  //     setDisabled(true);
-  //   }
-  // }, [initialBalance]);
 
   useEffect(() => {
     setBalance(initialBalance);

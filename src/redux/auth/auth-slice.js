@@ -50,10 +50,16 @@ const authSlice = createSlice({
       state.isLogedIn = false;
       state.isRegistered = false;
     },
-
+     [authOperations.fetchCurrentUser.pending](state) {
+      state.isFethingCurrentUser = true;
+    },
     [authOperations.fetchCurrentUser.fulfilled]: (state, action) => {
       state.user = action.payload.user;
       state.isLogedIn = true;
+      state.isFethingCurrentUser = false;
+    },
+    [authOperations.fetchCurrentUser.rejected](state) {
+      state.isFethingCurrentUser = false;
     },
     [authOperations.googleLogIn.fulfilled]: (state, action) => {
       state.user = action.payload.user;

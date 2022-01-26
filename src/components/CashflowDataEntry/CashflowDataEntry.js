@@ -1,5 +1,6 @@
 import { useState, Fragment, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
 import Media from 'react-media';
 
 import { fetchEntry } from '../../services/cashflooApi';
@@ -9,10 +10,12 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 // import { styled } from '@mui/material/styles';
 
+import balanceOperations from '../../redux/balance/balance-operations';
+
 import Button from '../Button/Button';
 import s from './CashflowDataEntry.module.css';
 import Icons from '../../img/svg/sprite.svg';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const styleSelect = {
   color: '#c7ccdc',
@@ -22,6 +25,7 @@ const styleSelect = {
 
 export default function CashflowDataEntry({
   typeInfo,
+  addTratsInState,
   //   beckHomeInput,
   //   beckHome,
 }) {
@@ -29,9 +33,9 @@ export default function CashflowDataEntry({
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState('');
   const [dataItem, setDataItem] = useState('');
-  //   const [balance, setBalance] = useState(1000);
 
   const balance = useSelector(getBalance);
+  const dispatch = useDispatch();
 
   const hendleChangeDescription = ({ target: { name, value } }) => {
     switch (name) {
@@ -66,27 +70,24 @@ export default function CashflowDataEntry({
   };
 
   const enterData = e => {
-    //  const attrBtn = e.target.getAttribute('typebtn');
-
     if (balance === null) {
       console.log('Не введен баланс');
-      //  сюда вставить вызов модалки про баланс
     }
     if (typeInfo === 'расход') {
       if (balance - sum < 0) {
-        //   toast.error('Вы превышаете свой баланс!');
+        toast.error('Вы превышаете свой баланс!');
         return;
       }
     }
 
     if (description === '' || category === '' || sum === '') {
-      // toast.error('Не заполнены все поля для ввода!');
+      toast.error('Не заполнены все поля для ввода!');
       return;
     }
 
     if (balance !== null) {
       const data = {
-        created_at: new Date().toISOString(),
+        createdDate: new Date().toISOString(),
         year: new Date().getFullYear(),
         month: new Date().getMonth() + 1,
         day: new Date().getDate(),
@@ -113,18 +114,20 @@ export default function CashflowDataEntry({
       fetchEntry(dataItem)
         .then(response => {
           const data = response.data.result;
+          addTratsInState(data);
+          const newBalance = response.data.balance;
 
-          //  toast.success(
-          //    `Статья добавлена: ${data.category} на сумму ${data.costs}`,
-          //  );
-          //  console.log(data);
-          //  setTransactions(response.data.transactions);
+          dispatch(balanceOperations.setUserBalance(newBalance));
+
+          toast.success(
+            `Статья добавлена: ${data.category} на сумму ${data.costs}`,
+          );
         })
         .catch(error => {
-          // toast.error('Извините, ошибка соединения. Побробуйте позже.');
-          console.log(error);
+          toast.error('Извините, ошибка соединения. Побробуйте позже.');
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataItem]);
 
   return (

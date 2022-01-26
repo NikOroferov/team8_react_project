@@ -1,5 +1,6 @@
 import api from '../../services/api-services';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 
 const token = api.token;
 
@@ -8,57 +9,60 @@ const register = createAsyncThunk(
   async (requisites, { rejectWithValue }) => {
     try {
       const { data } = await api.register(requisites);
-      // token.set(data.token);
-      alert(
-        'Поздравляем, вы успешно зарегистрировались, теперь вам нужно, зайти на свою почту и верифицироваться, после этого еще раз ввести в форму , свою почту и пароль',
+      toast.success(
+        `Вы успешно зарегистрировались! 
+        Зайдите на свою почту и верифицируйтесь.
+        После этого еще раз введите в форму свою почту и пароль`,
       );
       return data;
     } catch (error) {
-      console.log(error.message);
       const err = rejectWithValue(error.response.data);
-      alert(err.payload.message);
+      toast.error(err.payload.message);
       return rejectWithValue(error.response.data);
     }
   },
 );
 
-const logIn = createAsyncThunk('auth/login', async (requisites, rejected) => {
-  try {
-    const { data } = await api.login(requisites);
-    token.set(data.data.token);
-    return data.data;
-  } catch (error) {
-    alert(
-      'Вероятно вы спешите и забыли зарегистрироваться, либо зайти на почту и верифицироваться либо опечатались в форме',
-    );
-    console.log(error.message);
-    return rejected(error);
-  }
-});
+const logIn = createAsyncThunk(
+  'auth/login',
+  async (requisites, { rejectWithValue }) => {
+    try {
+      const { data } = await api.login(requisites);
+      token.set(data.data.token);
+      return data.data;
+    } catch (error) {
+      toast.error(
+        `Вероятно, Вы забыли зарегистрироваться или верифицировать свою почту.
+      А может просто опечатались ¯|_(ツ)_|¯`,
+      );
+      return rejectWithValue(error);
+    }
+  },
+);
 
-const logOut = createAsyncThunk('auth/logout', async (_, rejected) => {
-  try {
-    await api.logout();
-    token.unset();
-  } catch (error) {
-    console.log(error.message);
-    return rejected(error);
-  }
-});
+const logOut = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      await api.logout();
+      token.unset();
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
 
 const fetchCurrentUser = createAsyncThunk(
   'users/current',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    // console.log(state);
-    const token = state.auth.token;
-    // console.log(token);
+    const persistedToken = state.auth.token;
 
-    if (token === null) {
+    if (persistedToken === null) {
       return thunkAPI.rejectWithValue();
     }
 
-    token.set(token);
+    token.set(persistedToken);
 
     try {
       const { data } = await api.getCurrentUser();

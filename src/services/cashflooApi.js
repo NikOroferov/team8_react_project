@@ -1,7 +1,6 @@
 import { store } from '../redux/store';
 
 const BASE_URL = 'https://mongo-kapusta-team8.herokuapp.com/api/transaction';
-// const BASE_URL = 'http://localhost:3001/api/transaction';
 
 // const token = store.getState().auth.token;
 
@@ -20,22 +19,22 @@ async function fetchWithErrorHandling(url = '', method, data) {
     : Promise.reject(new Error('Not found'));
 }
 
-// Запрос за транзакуиями по виду Рсход/Доход
+// Запрос за транзакуиями по виду Расход/Доход
 export function fetchTransactions(typeIncomes) {
   return fetchWithErrorHandling(`${BASE_URL}?isIncome=${typeIncomes}`);
 }
 
-// Запрос за итогами помесяцно по виду Рсход/Доход
+// Запрос за итогами помесяцно по виду Расход/Доход
 export function fetchCostsMouth(typeIncomes) {
   return fetchWithErrorHandling(`${BASE_URL}/summary?isIncome=${typeIncomes}`);
 }
 
-// Запрос на добавление по виду Рсход/Доход
+// Запрос на добавление по виду Расход/Доход
 export function fetchEntry(data) {
   return fetchWithErrorHandling(BASE_URL, 'POST', data);
 }
 
-// Запрос на удаление Рсход/Доход
+// Запрос на удаление Расход/Доход
 export function fetchDelete(transactionId) {
   return fetchWithErrorHandling(`${BASE_URL}/${transactionId}`, 'DELETE');
 }

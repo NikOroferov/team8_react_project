@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import PrivateRoute from './components/TypeRoutes/PrivateRoute';
 
@@ -13,13 +13,17 @@ import Header from './components/Header/Header';
 import Container from './components/Container';
 import GoogleRedirectPage from './views/GoogleRedirectPage/GoogleRedirectPage';
 import { authOperations, authSelectors } from './redux/auth';
+import Loader from './components/Loader/Loader';
 
-// import { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const dispatch = useDispatch();
   const token = useSelector(authSelectors.getToken);
-  // console.log(token);
+
+  const isFethingCurrentUser = useSelector(
+    authSelectors.getIsFetchingCurrentUser,
+  );
 
   useEffect(() => {
     if (token) {
@@ -29,21 +33,30 @@ function App() {
 
   return (
     <>
-      <Container>
-        <Header />
 
-        <Routes>
-          <Route path="/" element={<HomePage />} />
+      {!isFethingCurrentUser ? (
+        <>
+          <Container>
+            <Header />
 
-          <Route element={<PrivateRoute />}>
-            <Route path="/cashflow" element={<CashFlowPage />} />
-            <Route path="/reports" element={<ReportsPage />} />
-          </Route>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
 
-          <Route path="/google-redirect" element={<GoogleRedirectPage />} />
-        </Routes>
-      </Container>
-      {/* <Toaster position="top-right" /> */}
+              <Route element={<PrivateRoute />}>
+                <Route path="/cashflow" element={<CashFlowPage />} />
+                <Route path="/reports" element={<ReportsPage />} />
+              </Route>
+
+              <Route path="/google-redirect" element={<GoogleRedirectPage />} />
+            </Routes>
+          </Container>
+        </>
+      ) : (
+        <Loader />
+      )}
+
+      <Toaster position="top-right" />
+
     </>
   );
 }

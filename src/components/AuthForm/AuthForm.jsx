@@ -25,7 +25,6 @@ export default function AuthForm() {
     }),
 
     onSubmit: values => {
-      console.log('войти', values);
       const email = formik.values.email;
       const password = formik.values.name;
       // dispatch(authOperations.logIn({ email, password }));

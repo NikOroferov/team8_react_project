@@ -3,11 +3,12 @@ import { useSelector } from 'react-redux';
 import { useTable, useBlockLayout } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 import Styles from './styleTabl';
 import getBalance from '../../redux/balance/balance-selectors';
 import Icons from '../../img/svg/sprite.svg';
+import CommonModal from '../Modal/CommonModal';
 
 const ButtonDelet = data => {
   return (
@@ -98,34 +99,38 @@ function Table({ columns, data }) {
 export default function TableCashfloTabl({
   typeInfo,
   transactions,
-  fetchDelete,
+  //   fetchDelete,
   deleteTranId,
 }) {
   const [dataCash, setDatadCash] = useState([]);
   const [sign, setSign] = useState('-');
-  //   const [color, setColor] = useState({ color: '#E7192E' });
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [idItem, setIdItem] = useState('');
 
   const balance = useSelector(getBalance);
+
+  const toggleModal = e => {
+    setModalOpen(!isModalOpen);
+    const transactionId = e.currentTarget.id;
+    setIdItem(transactionId);
+  };
 
   useEffect(() => {
     if (typeInfo === 'расход') {
       setSign('-');
-      // setColor({ color: '#E7192E' });
     } else {
       setSign('+');
-      // setColor({ color: '#407946' });
     }
   }, [typeInfo]);
 
   const onClickDelete = e => {
-    const transactionId = e.currentTarget.id;
-
+    setModalOpen(!isModalOpen);
+    const transactionId = idItem;
     if (balance - e.currentTarget.value < 0 && typeInfo === 'расход') {
-      // toast.error('Вы превышаете свой баланс!');
+      toast.error('Не возможно удалить.Вы превышаете свой баланс!');
 
       return;
     } else {
-      fetchDelete(transactionId);
       deleteTranId(transactionId);
     }
   };
@@ -147,7 +152,7 @@ export default function TableCashfloTabl({
             col3: category,
             col4: `${sign} ${costs} грн.`,
             col5: (
-              <ButtonDelet click={onClickDelete} idItams={_id} summ={costs} />
+              <ButtonDelet click={toggleModal} idItams={_id} summ={costs} />
             ),
             transactionType: transactionType,
           };
@@ -155,6 +160,7 @@ export default function TableCashfloTabl({
       );
       setDatadCash(dataCashFoTabl);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [transactions]);
 
   const dataCashFoTablFiter = dataCash.filter(function (e) {
@@ -198,6 +204,13 @@ export default function TableCashfloTabl({
   return (
     <Styles>
       <Table columns={columns} data={data} />
+      {isModalOpen && (
+        <CommonModal
+          modalText="Вы уверены? Удалить запись?"
+          toggleModal={toggleModal}
+          logOut={onClickDelete}
+        />
+      )}
     </Styles>
   );
 }

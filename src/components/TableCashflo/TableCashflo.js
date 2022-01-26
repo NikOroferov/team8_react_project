@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux';
 import { useTable, useBlockLayout } from 'react-table';
 import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
-// import toast from 'react-hot-toast';
-import { styled } from '@mui/material/styles';
+import toast from 'react-hot-toast';
 
 import Styles from './styleTabl';
 import getBalance from '../../redux/balance/balance-selectors';
 import Icons from '../../img/svg/sprite.svg';
+import CommonModal from '../Modal/CommonModal';
 
 const ButtonDelet = data => {
   return (
@@ -26,7 +26,7 @@ const ButtonDelet = data => {
   );
 };
 
-function Table({ columns, data, color, typeInfo }) {
+function Table({ columns, data }) {
   const scrollBarSize = useMemo(() => scrollbarWidth(), []);
 
   const {
@@ -40,8 +40,6 @@ function Table({ columns, data, color, typeInfo }) {
     {
       columns,
       data,
-      // color,
-      // typeInfo,
     },
     useBlockLayout,
   );
@@ -59,7 +57,6 @@ function Table({ columns, data, color, typeInfo }) {
         >
           {row.cells.map(cell => {
             return (
-              //   <div {...cell.getCellProps()} className="td" style={color}>
               <div {...cell.getCellProps()} className="td">
                 {cell.render('Cell')}
               </div>
@@ -102,47 +99,40 @@ function Table({ columns, data, color, typeInfo }) {
 export default function TableCashflo({
   typeInfo,
   transactions,
-  fetchDelete,
+  //   fetchDelete,
   deleteTranId,
 }) {
   const [dataCash, setDatadCash] = useState([]);
   const [sign, setSign] = useState('-');
-  const [color, setColor] = useState({ color: '#E7192E' });
-  //   const [balance, setBalance] = useState(1000);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [idItem, setIdItem] = useState('');
 
   const balance = useSelector(getBalance);
+
+  const toggleModal = e => {
+    setModalOpen(!isModalOpen);
+    const transactionId = e.currentTarget.id;
+    setIdItem(transactionId);
+  };
 
   useEffect(() => {
     if (typeInfo === 'расход') {
       setSign('-');
-      setColor({ color: '#E7192E' });
     } else {
       setSign('+');
-      setColor({ color: '#407946' });
     }
   }, [typeInfo]);
 
   const onClickDelete = e => {
-    const transactionId = e.currentTarget.id;
-
+    setModalOpen(!isModalOpen);
+    const transactionId = idItem;
     if (balance - e.currentTarget.value < 0 && typeInfo === 'расход') {
-      // toast.error('Вы превышаете свой баланс!');
-
+      toast.error('Не возможно удалить.Вы превышаете свой баланс!');
       return;
     } else {
-      fetchDelete(transactionId);
       deleteTranId(transactionId);
     }
   };
-
-  //   const Text = styled.td`
-  //     color: green;
-  //     font-size: 12px;
-  //     &:first-child {
-  //       color: red;
-  //       margin-bottom: 20px;
-  //     }
-  //   `;
 
   useEffect(() => {
     if (transactions !== []) {
@@ -163,7 +153,7 @@ export default function TableCashflo({
             col3: category,
             col4: `${sign} ${costs} грн.`,
             col5: (
-              <ButtonDelet click={onClickDelete} idItams={_id} summ={costs} />
+              <ButtonDelet click={toggleModal} idItams={_id} summ={costs} />
             ),
             transactionType: transactionType,
           };
@@ -173,6 +163,8 @@ export default function TableCashflo({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [transactions]);
+
+  useEffect(() => {});
 
   const dataCashFoTablFiter = dataCash.filter(function (e) {
     return e.transactionType === typeInfo;
@@ -214,7 +206,14 @@ export default function TableCashflo({
 
   return (
     <Styles>
-      <Table columns={columns} data={data} color={color} typeInfo={typeInfo} />
+      <Table columns={columns} data={data} />
+      {isModalOpen && (
+        <CommonModal
+          modalText="Вы уверены? Удалить запись?"
+          toggleModal={toggleModal}
+          logOut={onClickDelete}
+        />
+      )}
     </Styles>
   );
 }

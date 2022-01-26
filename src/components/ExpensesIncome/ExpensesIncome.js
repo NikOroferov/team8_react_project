@@ -1,10 +1,12 @@
 import React, { useState, Fragment, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import Media from 'react-media';
-// import axios from 'axios';
 
 import { fetchTransactions, fetchDelete } from '../../services/cashflooApi';
 
 import Background from '../../views/Background/background.jsx';
+import Loader from '../Loader/Loader';
 import Balance from '../Balance/Balance';
 import DateCalendar from '../DateCalendar/DateCalendar';
 import LinkToReports from '../LinkToReports/LinkToReports';
@@ -14,47 +16,38 @@ import TableCashfloTabl from '../TableCashflo/TableCashfloTabl';
 import TableMonth from '../TableMonth/TableMonth';
 import TableCashfloMobile from '../TableCashflo/TableCashfloMobile';
 import Icons from '../../img/svg/sprite.svg';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
+import balanceOperations from '../../redux/balance/balance-operations';
 import s from './ExpensesIncome.module.css';
 
 export default function ExpensesIncome() {
   const [typeInfo, setTypeInfo] = useState('расход');
   const [typeIncomes, setTypeIncomes] = useState(false);
   const [clicked, setClicked] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(true);
   const [сostsMobileBtn, setCostsMobileBtn] = useState(true);
   const [incomeMobileBtn, setIncomeMobileBtn] = useState(true);
   const [transactions, setTransactions] = useState([]);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
+    setIsLoading(true);
     if (typeIncomes !== null) {
-      fetchTransactions(typeIncomes)
-        .then(response => {
-          setTransactions(response.data.transactions);
-        })
-        .catch(error => {
-          // toast.error('Hey, Kapusta! We have a problem!');
-          console.log(error);
-        });
+      setTimeout(() => {
+        fetchTransactions(typeIncomes)
+          .then(response => {
+            setIsLoading(false);
+            setTransactions(response.data.transactions);
+          })
+          .catch(error => {
+            toast.error('Hey, Kapusta! We have a problem!');
+            console.log(error);
+          });
+      }, 300);
     }
   }, [typeIncomes]);
-
-  //   const fetchDelete = async transactionId => {
-  //     const response = await axios.delete(
-  //       `http://localhost:3001/api/transaction/${transactionId}`,
-  //     );
-
-  //     return response.data;
-  //   };
-
-  function deleteTranId(data) {
-    const dataCashFoTablFiter = transactions.filter(function (e) {
-      return e._id !== data;
-    });
-
-    setTransactions(dataCashFoTablFiter);
-  }
 
   const сostsClick = e => {
     e.preventDefault();
@@ -88,12 +81,32 @@ export default function ExpensesIncome() {
     setIncomeMobileBtn(true);
   };
 
-  //   function beckHomeInput(e) {
-  //     e.preventDefault();
-  //     setCostsMobileBtn(true);
-  //     setIncomeMobileBtn(true);
-  //     setTypeInfo('расход');
-  //   }
+  function deleteTranId(data) {
+    setIsLoading(true);
+    setTimeout(() => {
+      fetchDelete(data)
+        .then(response => {
+          setIsLoading(false);
+          const newBalance = response.data.balance;
+          dispatch(balanceOperations.setUserBalance(newBalance));
+        })
+        .catch(error => {
+          toast.error('Hey, Kapusta! We have a problem!');
+          console.log(error);
+        });
+
+      const dataCashFoTablFiter = transactions.filter(function (e) {
+        return e._id !== data;
+      });
+
+      setTransactions(dataCashFoTablFiter);
+    }, 300);
+  }
+
+  function addTratsInState(data) {
+    const newTran = [data, ...transactions];
+    setTransactions(newTran);
+  }
 
   return (
     <>
@@ -135,13 +148,19 @@ export default function ExpensesIncome() {
                   <Fragment>
                     {matches.small && <DateCalendar />}
                     {matches.medium && (
-                      <CashflowDataEntry typeInfo={typeInfo} />
+                      <CashflowDataEntry
+                        typeInfo={typeInfo}
+                        addTratsInState={addTratsInState}
+                      />
                     )}
                   </Fragment>
                 )}
               </Media>
             </div>
+            
 
+          
+            {isLoading ? (<Loader /> ) : (
             <div className={s.boxTabl}>
               <Media
                 queries={{
@@ -157,7 +176,7 @@ export default function ExpensesIncome() {
                       <TableCashfloTabl
                         typeInfo={typeInfo}
                         transactions={transactions}
-                        fetchDelete={fetchDelete}
+                        // fetchDelete={fetchDelete}
                         deleteTranId={deleteTranId}
                       />
                     )}
@@ -165,7 +184,7 @@ export default function ExpensesIncome() {
                       <TableCashflo
                         typeInfo={typeInfo}
                         transactions={transactions}
-                        fetchDelete={fetchDelete}
+                        // fetchDelete={fetchDelete}
                         deleteTranId={deleteTranId}
                       />
                     )}
@@ -181,7 +200,9 @@ export default function ExpensesIncome() {
                 />
               </div>
             </div>
+            )}
           </div>
+
           <div className={s.conteinerMobileBtn}>
             <Media
               queries={{
@@ -193,8 +214,8 @@ export default function ExpensesIncome() {
                   {matches.small && (
                     <div className={s.btnForMobil}>
                       <TableCashfloMobile
-                        transactions={transactions}
-                        fetchDelete={fetchDelete}
+                        // transactions={transactions}
+                        // fetchDelete={fetchDelete}
                         deleteTranId={deleteTranId}
                         // typeInfo={typeInfo}
                       />
@@ -229,6 +250,7 @@ export default function ExpensesIncome() {
           <div className={s.cashflowInput}>
             <CashflowDataEntry
               typeInfo={typeInfo}
+              addTratsInState={addTratsInState}
               //   beckHome={beckHome}
               //   beckHomeInput={beckHomeInput}
             />

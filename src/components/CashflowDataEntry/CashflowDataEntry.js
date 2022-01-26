@@ -64,7 +64,7 @@ export default function CashflowDataEntry({ typeInfo, addTratsInState }) {
 
   const enterData = e => {
     if (balance === null) {
-      console.log('Не введен баланс');
+      toast.error('Не введен баланс!');
     }
     if (typeInfo === 'расход') {
       if (balance - sum < 0) {

@@ -74,6 +74,15 @@ export default function TableCashfloMobile({ deleteTranId }) {
     }
   }
 
+  function dayFormat(date) {
+    const toStringDay = String(date.day);
+    if (toStringDay.length < 2) {
+      return `0${toStringDay}`;
+    } else {
+      return toStringDay;
+    }
+  }
+
   function colorElement(costs, incomes) {
     if (incomes === false) {
       return (
@@ -101,7 +110,7 @@ export default function TableCashfloMobile({ deleteTranId }) {
                 <div className={s.boxOne}>
                   <p className={s.descr}>{subcategory}</p>
                   <p className={s.data}>
-                    {date.day}.{dateFormat(date)}.{date.year}
+                    {dayFormat(date)}.{dateFormat(date)}.{date.year}
                     <span className={s.category}>{category}</span>
                   </p>
                 </div>

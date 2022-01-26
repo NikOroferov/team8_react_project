@@ -1,0 +1,15 @@
+.barContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 26px 10px;
+}
+
+.mobileLabel {
+  font-size: 10px;
+  font-family: Roboto;
+  fill: #52555f;
+  margin: 10px 0;
+}

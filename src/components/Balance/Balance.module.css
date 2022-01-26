@@ -1,0 +1,107 @@
+.form {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  width: 320px;
+  text-align: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    width: 370px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+}
+
+.label {
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.17;
+  color: #52555fb2;
+  margin-bottom: 6px;
+}
+
+@media screen and (min-width: 768px) {
+  .label {
+    margin-bottom: 0;
+  }
+}
+
+.text {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+@media screen and (min-width: 768px) {
+  .text {
+    margin-left: 0;
+    margin-right: 0;
+    /* margin-bottom: 0; */
+  }
+}
+
+.span {
+  position: relative;
+}
+
+.span::after {
+  content: 'UAH';
+  position: absolute;
+  top: 12px;
+  right: 17px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.input {
+  color: #000000;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1.17;
+  text-align: center;
+  text-transform: uppercase;
+
+  padding: 12px 35px 12px 10px;
+  width: 125px;
+  border-radius: 16px 0 0 16px;
+  border: 2px solid rgba(255, 255, 255, 1);
+  background-color: #f2f5fc;
+  filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+}
+
+@media screen and (min-width: 768px) {
+  .input {
+    border-radius: 16px;
+  }
+}
+
+.btnDisabled {
+  display: inline-block;
+  color: #52555fb2;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 12px 6px 12px 6px;
+  margin-left: 0px;
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 1);
+  background-color: #f2f5fc;
+  width: 125px;
+  letter-spacing: 0.02em;
+  cursor: not-allowed;
+  filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

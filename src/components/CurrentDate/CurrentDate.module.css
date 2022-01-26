@@ -1,0 +1,87 @@
+.datePicker {
+  width: 115px;
+  background: none;
+  border: none;
+  text-align: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  width: 155px;
+  height: 44px;
+}
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title {
+  color: #52555f;
+  font-weight: 500;
+}
+
+.button {
+  border: 1px solid transparent;
+  background: none;
+  cursor: pointer;
+}
+
+.svg {
+  fill: #ff812d;
+}
+
+.period {
+  text-align: center;
+  margin: 0 4px 5px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: rgba(82, 85, 95, 0.7);
+}
+
+.month,
+.year {
+  width: 115px;
+  background: none;
+  border: none;
+  text-align: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: black;
+}
+
+.month {
+  margin-right: 5px;
+}
+
+@media (max-width: 767px) {
+  .container {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .container {
+    margin-left: 15px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    margin-left: 210px;
+  }
+}

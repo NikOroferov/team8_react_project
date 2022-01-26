@@ -1,0 +1,58 @@
+.greyBtn {
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  width: 125px;
+  height: 44px;
+
+  background-color: var(--backgroundGray);
+  color: var(--fontColorSecondary);
+  border-radius: 0 16px 16px 0;
+  border: solid 2px;
+  border-color: var(--mainBackgroundColor);
+  /* border-color: red; */
+  cursor: pointer;
+  outline: none;
+}
+
+
+
+.greyBtn:hover {
+  background-color: var(--backgroundActive);
+  color: #ffffff;
+  border-color: var(--backgroundActive);
+}
+
+.btnDisabled {
+  display: inline-block;
+  color: #52555fb2;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 12px 6px 12px 6px;
+  margin-left: 0px;
+  border-radius: 0 16px 16px 0;
+  border: 2px solid rgba(255, 255, 255, 1);
+  background-color: #f2f5fc;
+  width: 125px;
+  letter-spacing: 0.02em;
+  cursor: not-allowed;
+  filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+}
+
+@media screen and (min-width: 768px) {
+  .greyBtn {
+    border-radius: 16px;
+  }
+
+  .btnDisabled{
+      border-radius: 16px ;
+  }
+}

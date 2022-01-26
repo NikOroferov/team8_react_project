@@ -1,0 +1,38 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+}
+
+.text {
+  color: #52555FB2;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+margin-left: 15px;
+}
+
+.icon {
+width: 24px;
+height: 24px;
+}
+
+@media (max-width: 767px) {
+  .container {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .container {
+    margin-right: 5px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    margin-right: 158px;
+  }
+}

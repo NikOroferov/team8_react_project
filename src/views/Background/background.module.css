@@ -1,0 +1,39 @@
+.background {
+  /* width: 100%; */
+  height: 268px;
+  background-color: var(--backgroundGray);
+  border-radius: 0 0 0 100px;
+  z-index: -10;
+}
+@media screen and (min-width: 768px) {
+  .background {
+    height: 583px;
+  }
+}
+
+.backgroundImg {
+  /* width: 100%;
+  height: 350px; */
+}
+
+@media screen and (min-width: 768px) {
+  .backgroundImg {
+    margin-top: 350px;
+    width: 100%;
+    height: 350px;
+    background-image: url('../../img/Kapusta2.png');
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: right 104px, left top -240px, 35px bottom;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .backgroundImg {
+    margin-top: 74px;
+    width: 100%;
+    height: 350px;
+    background-image: url('../../img/KapustaGroup.png');
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: right 104px, left top -240px, 35px bottom;
+  }
+}

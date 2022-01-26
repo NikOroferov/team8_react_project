@@ -1,0 +1,52 @@
+.reportSwitcher {
+  height: 20px;
+  width: 134px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section_title {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.sections {
+  background-color: #ffffff;
+  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+  border-radius: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 26px 30px;
+  text-align: center;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  max-width: 613px;
+  display: grid;
+}
+
+@media (max-width: 771px) {
+  .sections {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 772px) and (max-width: 1279px) {
+  .sections {
+    max-width: 666px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .sections {
+    width: 1060px;
+  }
+}

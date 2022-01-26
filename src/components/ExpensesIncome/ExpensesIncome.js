@@ -42,7 +42,6 @@ export default function ExpensesIncome() {
           })
           .catch(error => {
             toast.error('Hey, Kapusta! We have a problem!');
-            console.log(error);
           });
       }, 300);
     }
@@ -91,7 +90,6 @@ export default function ExpensesIncome() {
         })
         .catch(error => {
           toast.error('Извините, ошибка соединения. Побробуйте позже.');
-          console.log(error);
         });
 
       const dataCashFoTablFiter = transactions.filter(function (e) {

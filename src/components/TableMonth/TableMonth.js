@@ -51,7 +51,6 @@ export default function TableMonth({ typeIncomes, transactions }) {
         })
         .catch(error => {
           toast.error('Hey, Kapusta! We have a problem!');
-          console.log(error);
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

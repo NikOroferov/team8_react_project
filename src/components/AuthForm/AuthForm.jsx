@@ -35,7 +35,6 @@ export default function AuthForm() {
       const registration = formik.values;
       dispatch(authOperations.register(formik.values));
 
-      // console.log('регистрация', registration);
       formik.resetForm();
     }
   };

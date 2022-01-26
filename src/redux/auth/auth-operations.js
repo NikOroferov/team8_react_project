@@ -30,7 +30,7 @@ const logIn = createAsyncThunk(
       return data.data;
     } catch (error) {
       toast.error(
-        `Пожалуйста, проверьте правильность написания логина и пароля`,
+        `Пожалуйста, зарегистрируйтесь или проверьте правильность написания логина и пароля`,
       );
       return rejectWithValue(error);
     }

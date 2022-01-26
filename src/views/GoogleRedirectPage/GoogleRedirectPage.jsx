@@ -27,12 +27,6 @@ export default function GoogleRedirectPage() {
     name,
     avatar,
   };
-  console.log(balance);
-  console.log(token);
-  console.log(email);
-  console.log(name);
-  console.log(avatar);
-
   api.token.set(token);
 
   useEffect(() => {

@@ -8,8 +8,7 @@ const getCategoryReports = createAsyncThunk(
       const { data } = await api.getCategoryReport(date, isIncome);
       return data;
     } catch (error) {
-      console.log(error.message);
-      // return thunkAPI.rejectWithValue(error)
+      return thunkAPI.rejectWithValue(error);
     }
   },
 );
@@ -21,8 +20,7 @@ const getSubcategoryReports = createAsyncThunk(
       const { data } = await api.getSubcategoryReport(date, isIncome, category);
       return data;
     } catch (error) {
-      console.log(error.message);
-      // return thunkAPI.rejectWithValue(error)
+      return thunkAPI.rejectWithValue(error);
     }
   },
 );
@@ -34,8 +32,7 @@ const getPeriodReports = createAsyncThunk(
       const { data } = await api.getPeriodReports(date, isIncome);
       return data;
     } catch (error) {
-      console.log(error.message);
-      // return thunkAPI.rejectWithValue(error)
+      return thunkAPI.rejectWithValue(error);
     }
   },
 );

@@ -8,21 +8,10 @@ const getAllTransactions = createAsyncThunk(
       const { data } = await api.getTransaction();
       return data;
     } catch (error) {
-      console.log(error.message);
-      // return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );
-
-// const getIncomeTransaction = createAsyncThunk(
-//   'transaction/getIncome',
-//   async (_, thunkAPI) => {
-//     try {
-//       const { data } = await api.getTransaction();
-//       return data;
-//     } catch (error) {}
-//   },
-// );
 
 const addTransaction = createAsyncThunk(
   'reansactions/addTransaction',
@@ -31,8 +20,7 @@ const addTransaction = createAsyncThunk(
       const { data } = await api.addTransaction(transaction);
       return data;
     } catch (error) {
-      console.log(error.message);
-      // return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );
@@ -44,8 +32,7 @@ const deleteTransaction = createAsyncThunk(
       const { data } = await api.deleteTransaction(id);
       return data;
     } catch (error) {
-      console.log(error.message);
-      // return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );
@@ -57,8 +44,7 @@ const getIncomes = createAsyncThunk(
       const { data } = await api.getIncomes();
       return data;
     } catch (error) {
-      console.log(error.message);
-      // return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );
@@ -70,8 +56,7 @@ const getExpenses = createAsyncThunk(
       const { data } = await api.getExpenses();
       return data;
     } catch (error) {
-      console.log(error.message);
-      // return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );

@@ -47,7 +47,11 @@ function App() {
               </Route>
 
               <Route path="/google-redirect" element={<GoogleRedirectPage />} />
+              
+              <Route path="/*" element={<HomePage />} />
             </Routes>
+
+            
           </Container>
         </>
       ) : (

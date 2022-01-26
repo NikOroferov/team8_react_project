@@ -2,7 +2,6 @@ import React, { useState, Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Media from 'react-media';
-
 import { fetchTransactions, fetchDelete } from '../../services/cashflooApi';
 
 import Background from '../../views/Background/background.jsx';
@@ -157,49 +156,49 @@ export default function ExpensesIncome() {
                 )}
               </Media>
             </div>
-            
 
-          
-            {isLoading ? (<Loader /> ) : (
-            <div className={s.boxTabl}>
-              <Media
-                queries={{
-                  small: '(min-width: 320px) and (max-width: 767px)',
-                  medium: '(min-width: 768px) and (max-width: 1279px)',
-                  large: '(min-width: 1280px)',
-                }}
-              >
-                {matches => (
-                  <Fragment>
-                    {matches.small && <>аап</>}
-                    {matches.medium && (
-                      <TableCashfloTabl
-                        typeInfo={typeInfo}
-                        transactions={transactions}
-                        // fetchDelete={fetchDelete}
-                        deleteTranId={deleteTranId}
-                      />
-                    )}
-                    {matches.large && (
-                      <TableCashflo
-                        typeInfo={typeInfo}
-                        transactions={transactions}
-                        // fetchDelete={fetchDelete}
-                        deleteTranId={deleteTranId}
-                      />
-                    )}
-                  </Fragment>
-                )}
-              </Media>
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <div className={s.boxTabl}>
+                <Media
+                  queries={{
+                    small: '(min-width: 320px) and (max-width: 767px)',
+                    medium: '(min-width: 768px) and (max-width: 1279px)',
+                    large: '(min-width: 1280px)',
+                  }}
+                >
+                  {matches => (
+                    <Fragment>
+                      {matches.small && <>аап</>}
+                      {matches.medium && (
+                        <TableCashfloTabl
+                          typeInfo={typeInfo}
+                          transactions={transactions}
+                          // fetchDelete={fetchDelete}
+                          deleteTranId={deleteTranId}
+                        />
+                      )}
+                      {matches.large && (
+                        <TableCashflo
+                          typeInfo={typeInfo}
+                          transactions={transactions}
+                          // fetchDelete={fetchDelete}
+                          deleteTranId={deleteTranId}
+                        />
+                      )}
+                    </Fragment>
+                  )}
+                </Media>
 
-              <div className={s.monthCashflow}>
-                <p className={s.summaryTitle}>СВОДКА</p>
-                <TableMonth
-                  typeIncomes={typeIncomes}
-                  transactions={transactions}
-                />
+                <div className={s.monthCashflow}>
+                  <p className={s.summaryTitle}>СВОДКА</p>
+                  <TableMonth
+                    typeIncomes={typeIncomes}
+                    transactions={transactions}
+                  />
+                </div>
               </div>
-            </div>
             )}
           </div>
 
@@ -251,18 +250,9 @@ export default function ExpensesIncome() {
             <CashflowDataEntry
               typeInfo={typeInfo}
               addTratsInState={addTratsInState}
-              //   beckHome={beckHome}
-              //   beckHomeInput={beckHomeInput}
             />
           </div>
-          <div className={s.btnForMobil}>
-            {/* <TableCashfloMobile
-              transactions={transactions}
-              fetchDelete={fetchDelete}
-              deleteTranId={deleteTranId}
-              typeInfo={typeInfo}
-            /> */}
-          </div>
+          <div className={s.btnForMobil}></div>
         </Background>
       )}
 
@@ -274,11 +264,7 @@ export default function ExpensesIncome() {
             </svg>
           </button>
           <div className={s.cashflowInput}>
-            <CashflowDataEntry
-              typeInfo={typeInfo}
-              //   beckHome={beckHome}
-              //   beckHomeInput={beckHomeInput}
-            />
+            <CashflowDataEntry typeInfo={typeInfo} />
           </div>
         </Background>
       )}

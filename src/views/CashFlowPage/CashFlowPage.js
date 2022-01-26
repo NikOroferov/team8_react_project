@@ -1,7 +1,4 @@
-
-import ExpensesIncome from "../../components/ExpensesIncome/ExpensesIncome";
-
-// import Balance from '../../components/Balance/Balance';
+import ExpensesIncome from '../../components/ExpensesIncome/ExpensesIncome';
 
 export default function CashFlowPage() {
   return (

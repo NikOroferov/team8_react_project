@@ -96,12 +96,7 @@ function Table({ columns, data }) {
   );
 }
 
-export default function TableCashflo({
-  typeInfo,
-  transactions,
-  //   fetchDelete,
-  deleteTranId,
-}) {
+export default function TableCashflo({ typeInfo, transactions, deleteTranId }) {
   const [dataCash, setDatadCash] = useState([]);
   const [sign, setSign] = useState('-');
   const [isModalOpen, setModalOpen] = useState(false);

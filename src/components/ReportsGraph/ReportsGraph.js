@@ -121,9 +121,7 @@ export default function BarGraph({ date, typeReport, activeCategory }) {
     return (
       <>
         <div className={styles.legendStyleContainer}>
-          <p style={textLegendStyle}>
-            Процентное соотношение:
-          </p>
+          <p style={textLegendStyle}>Процентное соотношение частоты трат:</p>
 
           <div style={legendDescrContainer}>
             <div className={styles.itemsStyleContainer}>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3001/api/';
-// axios.defaults.baseURL = 'https://mongo-kapusta-team8.herokuapp.com/api/';
+// axios.defaults.baseURL = 'http://localhost:3001/api/';
+axios.defaults.baseURL = 'https://mongo-kapusta-team8.herokuapp.com/api/';
 
 const baseUrl = axios.defaults.baseURL;
 

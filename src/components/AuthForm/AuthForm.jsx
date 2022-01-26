@@ -24,17 +24,13 @@ export default function AuthForm() {
     }),
 
     onSubmit: values => {
-      const email = formik.values.email;
-      const password = formik.values.name;
       dispatch(authOperations.logIn(formik.values));
     },
   });
 
   const handleButtonReg = () => {
     if (!Object.keys(formik.errors).length > 0) {
-      const registration = formik.values;
       dispatch(authOperations.register(formik.values));
-
       formik.resetForm();
     }
   };

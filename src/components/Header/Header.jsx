@@ -33,21 +33,40 @@ function Header() {
 
         {isLoggedIn && (
           <div className={styles.userMenu}>
-            <Avatar
-              name={name}
-              src={avatar}
-              size="32"
-              color={Avatar.getRandomColor('sitebase', [
-                'red',
-                'green',
-                'blue',
-                'orange',
-                'violete',
-                'rose',
-                'yellow',
-              ])}
-              className={styles.firstLetter}
-            />
+            {!avatar && (
+              <Avatar
+                name={name}
+                src={avatar}
+                size="32"
+                color={Avatar.getRandomColor('sitebase', [
+                  'red',
+                  'green',
+                  'blue',
+                  'orange',
+                  'violete',
+                  'rose',
+                  'yellow',
+                ])}
+                className={styles.firstLetter}
+              />
+            )}
+            {avatar && (
+              <Avatar
+                name={name}
+                size="32"
+                color={Avatar.getRandomColor('sitebase', [
+                  'red',
+                  'green',
+                  'blue',
+                  'orange',
+                  'violete',
+                  'rose',
+                  'yellow',
+                ])}
+                className={styles.firstLetter}
+              />
+            )}
+
             <p className={styles.userName}>{name}</p>
             <div className={styles.line}></div>
             <button

@@ -45,12 +45,13 @@ const authSlice = createSlice({
     [authOperations.logOut.fulfilled]: state => {
       state.user.name = '';
       state.user.email = '';
+      state.user.avatar = null;
       state.user.balance = null;
       state.token = null;
       state.isLogedIn = false;
       state.isRegistered = false;
     },
-     [authOperations.fetchCurrentUser.pending](state) {
+    [authOperations.fetchCurrentUser.pending](state) {
       state.isFethingCurrentUser = true;
     },
     [authOperations.fetchCurrentUser.fulfilled]: (state, action) => {

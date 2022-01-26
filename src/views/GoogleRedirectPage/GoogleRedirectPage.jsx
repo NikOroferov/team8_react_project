@@ -16,7 +16,7 @@ export default function GoogleRedirectPage() {
   const dispatch = useDispatch();
   const location = useLocation();
   const balance = new URLSearchParams(location.search).get('balance');
-  const token = new URLSearchParams(location.search).get('token');
+  const token = new URLSearchParams(location.search).get('access_token');
   const email = new URLSearchParams(location.search).get('email');
   const name = new URLSearchParams(location.search).get('name');
   const avatar = new URLSearchParams(location.search).get('avatar');
@@ -27,6 +27,7 @@ export default function GoogleRedirectPage() {
     name,
     avatar,
   };
+  console.log(newUser);
 
   api.token.set(token);
 

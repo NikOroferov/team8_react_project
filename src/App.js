@@ -1,7 +1,7 @@
-import { useEffect, Suspense } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import PrivateRoute from './components/TypeRoutes/PrivateRoute';
 

@@ -24,11 +24,11 @@ const ExpensesComponent = ({ date }) => {
           <li key={item._id} className={s.itemId}>
             {item._id ? (
               <div className={s.sum1}>
-                <p className={s.text}>Доходы:</p>+{item.total}.00 грн.
+                <p className={s.text}>Доходы:</p>+{item.total} грн.
               </div>
             ) : (
               <div className={s.sum}>
-                <p className={s.text}>Paсходы:</p>-{item.total}.00 грн.
+                <p className={s.text}>Paсходы:</p>-{item.total} грн.
                 <span className={s.line}></span>
               </div>
             )}

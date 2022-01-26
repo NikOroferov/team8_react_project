@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
@@ -27,13 +26,10 @@ export default function GoogleRedirectPage() {
     name,
     avatar,
   };
-  console.log(newUser);
 
   api.token.set(token);
 
-  useEffect(() => {
-    dispatch(googleLogIn(newUser));
-  }, []);
+  dispatch(googleLogIn(newUser));
 
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   if (isLoggedIn) {

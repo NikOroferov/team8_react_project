@@ -37,7 +37,7 @@ function Header() {
 
         {isLoggedIn && (
           <div className={styles.userMenu}>
-            {!avatar && (
+            {avatar && (
               <Avatar
                 name={name}
                 src={avatar}
@@ -54,7 +54,7 @@ function Header() {
                 className={styles.firstLetter}
               />
             )}
-            {avatar && (
+            {!avatar && (
               <Avatar
                 name={name}
                 size="32"

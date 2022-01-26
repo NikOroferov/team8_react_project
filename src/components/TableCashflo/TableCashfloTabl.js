@@ -143,10 +143,20 @@ export default function TableCashfloTabl({
           return date.month;
         }
       }
+
+      function dayFormat(date) {
+        const toStringDay = String(date.day);
+        if (toStringDay.length < 2) {
+          return `0${toStringDay}`;
+        } else {
+          return toStringDay;
+        }
+      }
+
       const dataCashFoTabl = transactions.map(
         ({ _id, subcategory, category, transactionType, costs, date }) => {
           return {
-            col1: `${date.day}.${dateFormat(date)}.${date.year}`,
+            col1: `${dayFormat(date)}.${dateFormat(date)}.${date.year}`,
             col2: subcategory,
             col3: category,
             col4: `${sign} ${costs} грн.`,

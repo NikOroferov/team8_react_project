@@ -4,7 +4,6 @@ import { authOperations } from '../../redux/auth';
 import s from './Auth.module.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-// import GoogleLogin from 'react-google-login';
 import GoogleAuthBtn from '../GoogleAuthBtn/GoogleAuthBtn';
 
 export default function AuthForm() {
@@ -27,27 +26,18 @@ export default function AuthForm() {
     onSubmit: values => {
       const email = formik.values.email;
       const password = formik.values.name;
-      // dispatch(authOperations.logIn({ email, password }));
       dispatch(authOperations.logIn(formik.values));
-      // alert(JSON.stringify(values, null, 2));
     },
   });
 
   const handleButtonReg = () => {
     if (!Object.keys(formik.errors).length > 0) {
       const registration = formik.values;
-      const email = formik.values.email;
-      const password = formik.values.password;
       dispatch(authOperations.register(formik.values));
 
-      console.log('регистрация', registration);
-
+      // console.log('регистрация', registration);
       formik.resetForm();
     }
-  };
-
-  const responseGoogle = response => {
-    console.log(response);
   };
 
   return (
@@ -58,15 +48,6 @@ export default function AuthForm() {
             Вы можете авторизоваться с помощью Google Account:
           </p>
           <GoogleAuthBtn />
-          {/* <GoogleLogin
-            className={s.googleBtn}
-            clientId="206254104485-oifk2jvjrjpas1im07mbr0eqdh4ot584.apps.googleusercontent.com"
-            buttonText="Login"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            cookiePolicy={'single_host_origin'}
-          /> */}
-
           <p className={s.text}>
             Или зайти с помощью e-mail и пароля, предварительно
             зарегистрировавшись:

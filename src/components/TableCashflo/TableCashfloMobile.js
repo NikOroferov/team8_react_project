@@ -44,7 +44,7 @@ export default function TableCashfloMobile({ deleteTranId }) {
         setTransactionsAll(response.data.transactions);
       })
       .catch(error => {
-        toast.error('Hey, Kapusta! We have a problem!');
+        toast.error('Извините, ошибка соединения. Побробуйте позже.');
       });
   }, []);
 

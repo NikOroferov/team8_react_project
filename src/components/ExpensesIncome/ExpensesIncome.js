@@ -175,7 +175,6 @@ export default function ExpensesIncome() {
                         <TableCashfloTabl
                           typeInfo={typeInfo}
                           transactions={transactions}
-                          // fetchDelete={fetchDelete}
                           deleteTranId={deleteTranId}
                         />
                       )}
@@ -183,7 +182,6 @@ export default function ExpensesIncome() {
                         <TableCashflo
                           typeInfo={typeInfo}
                           transactions={transactions}
-                          // fetchDelete={fetchDelete}
                           deleteTranId={deleteTranId}
                         />
                       )}
@@ -212,12 +210,7 @@ export default function ExpensesIncome() {
                 <Fragment>
                   {matches.small && (
                     <div className={s.btnForMobil}>
-                      <TableCashfloMobile
-                        // transactions={transactions}
-                        // fetchDelete={fetchDelete}
-                        deleteTranId={deleteTranId}
-                        // typeInfo={typeInfo}
-                      />
+                      <TableCashfloMobile deleteTranId={deleteTranId} />
                       <button
                         className={s.btvExpense}
                         onClick={clicCostBtnMobile}

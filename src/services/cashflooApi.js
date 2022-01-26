@@ -24,7 +24,7 @@ export function fetchTransactions(typeIncomes) {
   return fetchWithErrorHandling(`${BASE_URL}?isIncome=${typeIncomes}`);
 }
 
-// Запрос за итогами помесяцно по виду Расход/Доход
+// Запрос за итогами по месяцам в разрезе Расход/Доход
 export function fetchCostsMouth(typeIncomes) {
   return fetchWithErrorHandling(`${BASE_URL}/summary?isIncome=${typeIncomes}`);
 }

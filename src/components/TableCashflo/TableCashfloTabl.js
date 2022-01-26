@@ -99,7 +99,6 @@ function Table({ columns, data }) {
 export default function TableCashfloTabl({
   typeInfo,
   transactions,
-  //   fetchDelete,
   deleteTranId,
 }) {
   const [dataCash, setDatadCash] = useState([]);

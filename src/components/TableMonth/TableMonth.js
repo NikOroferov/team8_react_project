@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useTable } from 'react-table';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 import { fetchCostsMouth } from '../../services/cashflooApi';
 
@@ -44,17 +44,18 @@ export default function TableMonth({ typeIncomes, transactions }) {
   const [dataCash, setDatadCash] = useState([]);
 
   useEffect(() => {
-    if (typeIncomes !== [] && transactions !== '') {
+    if (typeIncomes !== []) {
       fetchCostsMouth(typeIncomes)
         .then(response => {
           setDatadCash(response.data.result);
         })
         .catch(error => {
-          // toast.error('Hey, Kapusta! We have a problem!');
+          toast.error('Hey, Kapusta! We have a problem!');
           console.log(error);
         });
     }
-  }, [transactions, typeIncomes]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const monthName = month => {
     if (month === 1) {

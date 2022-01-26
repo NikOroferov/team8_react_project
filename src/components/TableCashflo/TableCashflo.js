@@ -96,12 +96,7 @@ function Table({ columns, data }) {
   );
 }
 
-export default function TableCashflo({
-  typeInfo,
-  transactions,
-  //   fetchDelete,
-  deleteTranId,
-}) {
+export default function TableCashflo({ typeInfo, transactions, deleteTranId }) {
   const [dataCash, setDatadCash] = useState([]);
   const [sign, setSign] = useState('-');
   const [isModalOpen, setModalOpen] = useState(false);
@@ -163,8 +158,6 @@ export default function TableCashflo({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [transactions]);
-
-  useEffect(() => {});
 
   const dataCashFoTablFiter = dataCash.filter(function (e) {
     return e.transactionType === typeInfo;
